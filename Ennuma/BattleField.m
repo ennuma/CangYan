@@ -32,9 +32,9 @@ CCSprite* bar;
     
     interval = 0.1;
     
-    maxJiQi = 500;
+    maxJiQi = 1000;
     
-    [self schedule:@selector(startJiqi:) interval:0.1];
+    [self schedule:@selector(startJiqi:) interval:0.01];
     
     //Test Purpose
     //sp1 = [CCSprite spriteWithImageNamed:@"Enemy1.png"];
@@ -86,10 +86,13 @@ CCSprite* bar;
     
     [obj initForBattleWithParent:self];
     [whateverTeam addObject:obj];
-    CGPoint spp = CGPointMake([self contentSize].width/2-[bar contentSize].width/2+ [sp1 contentSize].width/2, [self contentSize].height- [bar contentSize].height);
+    //CGPoint spp = CGPointMake([self contentSize].width/2-[bar contentSize].width/2+ [sp1 contentSize].width/2, [self contentSize].height- [bar contentSize].height);
     
     //test
-    obj.smallIcon.position = spp;
+    //obj.smallIcon.position = spp;
+    float percentage = obj.amountofjiqi/maxJiQi;
+    float newx = bar.contentSize.width*percentage + bar.position.x - bar.contentSize.width/2;
+    obj.smallIcon.position = CGPointMake(newx, [self contentSize].height- [bar contentSize].height);
     [self addChild:obj.smallIcon z:99];
 }
 
@@ -101,8 +104,31 @@ CCSprite* bar;
 
 -(void)update:(CCTime)delta{
     //CCLOG(@"update");
+    if ([self checkEndBattle]) {
+        CCLOG(@"END BATTLE");
+        self.paused = YES;
+        //TODO
+        //battle ends here, its time to change scene or pop scene
+    }
+    
 }
-
+-(bool)checkEndBattle
+{
+    bool aliveInRed = false;
+    bool aliveInBlue = false;
+    for (Invader* inv in redTeam) {
+        if (!inv.isDead) {
+            aliveInRed = true;
+        }
+    }
+    
+    for (Invader* inv in blueTeam) {
+        if (!inv.isDead) {
+            aliveInBlue = true;
+        }
+    }
+    return !(aliveInRed&&aliveInBlue);
+}
 -(void)startJiqi:(CCTime) delta
 {
     current_clock += delta;
@@ -138,6 +164,9 @@ static bool isActing = false;
     }];
     
     for (Invader* inv in sorted) {
+        if (inv.isDead) {
+            continue;
+        }
         [self updateJiQi:inv];
     }
 
@@ -146,14 +175,14 @@ static bool isActing = false;
 -(void) updateJiQi: (Invader*) obj
 {
     
-    obj.amountofjiqi+=obj.jiqispeed*interval;
+    obj.amountofjiqi+=obj.jiqispeed;
     
     float percentage = obj.amountofjiqi/maxJiQi;
     float newx = bar.contentSize.width*percentage + bar.position.x - bar.contentSize.width/2;
     obj.smallIcon.position = CGPointMake(newx, obj.smallIcon.position.y);
    // CCLOG(@"%f",obj.amountofjiqi);
     if (obj.amountofjiqi > maxJiQi) {
-        CCLOG(@"startact");
+        //CCLOG(@"startact");
         if (!isActing) {
             [self unschedule:@selector(startJiqi:)];
             [obj doAction];

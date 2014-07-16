@@ -22,11 +22,15 @@
 @synthesize allie = _allie;
 @synthesize enemy = _enemy;
 @synthesize health = _health;
+@synthesize acume = _acume;
+@synthesize maxhealth = _maxhealth;
+@synthesize maxacume = _maxacume;
 @synthesize position = _position;
 @synthesize headIcon = _headIcon;
 @synthesize state = _state;
 @synthesize isDefending = _isDefending;
 @synthesize isDead = _isDead;
+@synthesize stamina = _stamina;
 
 -(id)init
 {
@@ -35,14 +39,17 @@
         return nil;
     }
     //need to be change later TODO
-    _bigIcon = [CCSprite spriteWithImageNamed:@"Enemy1.png"];
-    _smallIcon = [CCSprite spriteWithImageNamed:@"Enemy1.png"];
-    
     wugong = [[NSMutableArray alloc]init];
     reachable = [[NSMutableSet alloc]init];
     reachableLookup =[[NSMutableDictionary alloc]init];
     [self initWuGong];
+    [self initIcon];
     return self;
+}
+-(void)initIcon
+{
+    _bigIcon = [CCSprite spriteWithImageNamed:@"Enemy1.png"];
+    _smallIcon = [CCSprite spriteWithImageNamed:@"Enemy1.png"];
 }
 -(void)initWuGong
 {
@@ -51,8 +58,14 @@
 }
 -(void)initForBattleWithParent:(CCNode *)parent
 {
-    _amountofjiqi = 0;
+    _amountofjiqi = [self initAmountOfJiqi];
+    _health = _maxhealth;
+    _acume = _maxacume;
+    _stamina = 100;
+    _poision = 0;
+    _bleed = 0;
     
+    [self calculateNewJiqiSpeed];
     //variable init
     _isDead=false;
     _isDefending=false;
@@ -137,9 +150,12 @@
 
 -(void)endOfAction
 {
+    
     [self clearReachableRender];
+    
+    [self calculatePoisionAndBleed];
     //CCLOG(@"endofAct");
-    [_smallIcon.parent schedule:@selector(startJiqi:) interval:0.1];
+    [_smallIcon.parent schedule:@selector(startJiqi:) interval:0.02];
     //CCLOG(@"end of action");
     
     //set statehud visible to no
@@ -716,20 +732,89 @@
     }
     
 }
-
+#pragma mathfunction
 -(float)getnewmove
 {
-    if (_agile>160){
+    if (_agile>=160){
         return 6+(_agile-160)/60;
     }
-    else if (_agile>80){
+    else if (_agile>=80){
         return 4+(_agile-80)/40;
     }
-    else if (_agile>30){
+    else if (_agile>=30){
         return 2+(_agile-30)/25;
     }
     else{
         return	_agile/15;
+    }
+}
+-(void)calculateNewJiqiSpeed
+{
+    float basepoint = 5;
+    float acumebuff = [self acumeJiQiBuff:_acume :_maxacume];
+    float agilebuff = [self agileJiQiBuff:_agile];
+    float poisionbleedbuff = [self JiQiBuffpoision:_poision AndBleed:_bleed];
+    float staminabuff = [self JiQiBuffStamina:_stamina];
+
+    _jiqispeed = (int)(acumebuff + agilebuff + poisionbleedbuff + staminabuff + basepoint);
+    CCLOG(@"%f",_jiqispeed);
+}
+-(float)acumeJiQiBuff:(int)acume :(int) maxacume{
+    float x=(acume*2+maxacume)/3.0;
+    //x=2*x;//double
+    if(x>5600){
+        return 8 + MIN((x-5000)/1200,3);
+    }
+    else if(x>3600){
+        return 6 + (x-3600)/1000;
+    }
+    else if(x>2000){
+        return 4 + (x-2000)/800;
+    }
+    else if(x>800){
+        return 2+(x-800)/600;
+    }
+    else{
+        return x/400;
+    }
+}
+-(int)initAmountOfJiqi
+{
+    return _agile*1.5;
+}
+-(float)JiQiBuffpoision:(float)poision AndBleed:(float)bleed{
+    return -poision/25.0-bleed/10.0;
+}
+-(float)JiQiBuffStamina:(float)stamina
+{
+    return stamina/30.0;
+}
+-(float)agileJiQiBuff:(float)agile
+{
+    //agile = 2*agile; //double
+    if (agile>=160){
+        return 6+(agile-160)/60.0;
+    }
+    else if (agile>=80){
+        return 4+(agile-80)/40.0;
+    }
+    else if (agile>=30){
+        return 2+(agile-30)/25.0;
+    }
+    else{
+        return	agile/15.0;
+    }
+}
+-(void)calculatePoisionAndBleed
+{
+    if (_poision>0) {
+        _health-=_poision/3;
+    }
+    if (_bleed>0) {
+        _health-=_bleed/20;
+    }
+    if (_health<=0) {
+        _health=1;
     }
 }
 @end

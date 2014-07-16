@@ -54,8 +54,9 @@
     
     Invader* invader = [[Invader alloc]init];
     invader.strength=20;
-    invader.jiqispeed = 120;
-    invader.health = 500;
+    invader.maxacume = 9000;
+    invader.agile = 380;
+    invader.maxhealth = 700;
     
     //Battle
     BattleField* sc = [BattleField scene];
@@ -63,10 +64,26 @@
     
     Invader* invader2 = [[Invader alloc]init];
     invader2.strength=20;
-    invader2.jiqispeed = 180;
+    invader2.maxacume = 4800;
     invader2.agile=61;
-    invader2.health=210;
+    invader2.maxhealth=210;
     [sc addEntity:invader2 ForTeam:@"blue"];
+    
+    Invader* invader3 = [[Invader alloc]init];
+    invader3.strength=20;
+    invader3.maxacume = 4800;
+    invader3.agile=61;
+    invader3.maxhealth=210;
+    [sc addEntity:invader3 ForTeam:@"blue"];
+    
+    Invader* invader4 = [[Invader alloc]init];
+    invader4.strength=20;
+    invader4.maxacume = 4800;
+    invader4.agile=61;
+    invader4.maxhealth=210;
+    [sc addEntity:invader4 ForTeam:@"blue"];
+
+
     
     return sc;
 }

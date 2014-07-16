@@ -40,7 +40,9 @@
     
     int _health;
     int _acume;
-    
+    int _maxhealth;
+    int _maxacume;
+    int _stamina;
     //variables used for caculate movements
     NSMutableSet* reachable;
     NSMutableDictionary* reachableLookup;
@@ -62,14 +64,20 @@
 @property NSMutableArray* allie;
 @property NSMutableArray* enemy;
 @property CGPoint position;
-@property int health;
 
+@property int health;
+@property int acume;
+@property int maxhealth;
+@property int maxacume;
 @property CCSprite* state;
 @property CCSprite* headIcon;
 @property BOOL isDefending;
 @property BOOL isDead;
+@property int stamina;
 
 -(void)initForBattleWithParent:(CCNode*)parent;
+-(void)initWuGong;
+-(void)initIcon;
 -(void)doAction;
 -(void)endOfBattle;
 -(void)prepareForAction;
