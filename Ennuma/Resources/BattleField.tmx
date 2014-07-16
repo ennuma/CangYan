@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="20" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="tmw_desert_spacing" tilewidth="32" tileheight="32" spacing="1" margin="1">
+  <properties>
+   <property name="" value=""/>
+  </properties>
+  <image source="tmw_desert_spacing.png" width="265" height="199"/>
+ </tileset>
+ <layer name="map" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzjZ2Bg4B/FNMUsQCyOBbOSaZ4AEDMCMRMSZgZiPgrM4wRiLiTMPcjMEwRiISQsTIF5PEDMjgXz0ij+R/EoHq4YAIfhFvM=
+  </data>
+ </layer>
+ <layer name="obj" width="20" height="20">
+  <properties>
+   <property name="collidable" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFIKAw0A4YBYMOKAwzewab3aNg6AMAsU8AgQ==
+  </data>
+ </layer>
+</map>
