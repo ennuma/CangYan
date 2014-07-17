@@ -16,6 +16,8 @@
 @synthesize bleedIndex = _bleedIndex;
 @synthesize level = _level;
 @synthesize rangeType = _rangeType;
+@synthesize acumeCost = _acumeCost;
+@synthesize wugongName = _wugongName;
 -(id)init
 {
     self = [super init];

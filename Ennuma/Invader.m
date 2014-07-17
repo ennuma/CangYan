@@ -31,7 +31,13 @@
 @synthesize isDefending = _isDefending;
 @synthesize isDead = _isDead;
 @synthesize stamina = _stamina;
-
+@synthesize talent = _talent;
+@synthesize angryRate = _angryRate;
+@synthesize wuxueKnowledge = _wuxueKnowledge;
+@synthesize mainNeiGong = _mainNeiGong;
+@synthesize wugongArr = wugong;
+@synthesize poision = _poision;
+@synthesize bleed = _bleed;
 -(id)init
 {
     self = [super init];
@@ -230,7 +236,9 @@
  
     CGPoint despoint = position;
     CCActionFiniteTime* action = [self buildCCActionMovArrFrom:self.position To:despoint];
-    
+    //TODO tricky part , when to adjust position? may be use callback
+    self.position = despoint;
+    //
     int direction = [self getAttackDir:despoint WithWugong:wugong2];
     
    // [self renderAttackWithWugong:wugong Direction:direction Position:despoint];
@@ -246,7 +254,7 @@
     CCActionSequence* actions = [CCActionSequence actions:action,render,delay,
                                  attackInvaders,callback, nil];
     [_bigIcon runAction:actions];
-    self.position = despoint;
+    
     
     //release invaders
     invadersBeingAttacked = nil;
@@ -270,7 +278,7 @@
     CCLabelTTF* healthbar = (CCLabelTTF*)[self.state getChildByName:@"health" recursively:NO];
     [healthbar setString: [NSString stringWithFormat:@"%i", self.health]];
     
-    if (self.health<0) {
+    if (self.health<=0) {
         self.isDead=true;
     }
     self.isDefending = false;
@@ -821,5 +829,201 @@
     if (_health<=0) {
         _health=1;
     }
+}
+//attack may trigger special effect sometime for certaion wugong
+-(BOOL)triggerSpecialEffectWithProbility:(int) p// Invader:(Invader*) person
+{
+    Invader* person = self;
+	float probility = p;
+    //general equation
+    probility = p+ person.maxhealth*4/(person.health+20)+person.stamina/20;
+    //acume effect
+    p=p+MAX((person.acume/500),20);
+
+	int times=1;
+
+    if ((CCRANDOM_0_1()*120-10)>person.talent){
+        times=2;
+    }
+    for (int i = 0;  i < times; i++) {
+        float bd = CCRANDOM_0_1()*120+10;
+        if (bd<probility) {
+            return true;
+        }
+    }
+    if (CCRANDOM_0_1()*100<=probility) {
+        return true;
+    }else{
+        float luck = 100 - person.talent;
+        probility = probility + person.stamina/400;
+        if (CCRANDOM_0_1()*100<=luck) {
+            if (CCRANDOM_0_1()*100<=probility) {
+                return true;
+            }
+        }
+    }
+	return false;
+
+}
+
+-(int)calculateWugongHurtLifeWithWugong:(Wugong*)wu WithInvader:(Invader*) opponent
+{
+    //武功伤害生命
+    //enemyid 敌人战斗id，
+    //wugong  我方使用武功
+    //返回：伤害点数
+    Invader* pid=self;//WAR.Person[WAR.CurID]["人物编号"];
+    Invader* eid=opponent;//WAR.Person[emenyid]["人物编号"];
+	int dng=0;
+	//local WGLX=JY.Wugong[wugong]["武功类型"]
+    int level = wu.level;
+    //--计算武学常识
+    int mywuxue=_wuxueKnowledge;
+    int emenywuxue=0;
+    for (Invader* al in _allie) {
+        if (!al.isDead) {
+            if (al.wuxueKnowledge>mywuxue) {
+                mywuxue = al.wuxueKnowledge;
+            }
+        }
+    }
+    
+    for (Invader* en in _enemy) {
+        if (!en.isDead) {
+            if (en.wuxueKnowledge>emenywuxue) {
+                mywuxue = en.wuxueKnowledge;
+            }
+        }
+    }
+    // enhance enemy ability
+	if (emenywuxue<50) {
+        emenywuxue = 50;
+    }
+    
+        
+    //    --计算实际使用武功等级
+    while (true) {
+        if (((level+1)/2)*wu.acumeCost > pid.acume){
+            level-=1;
+        }else{
+            break;
+        }
+    }
+    
+    if (level<=0){     //--防止出现左右互博时第一次攻击完毕，第二次攻击没有内力的情况。
+	    level=1;
+    }
+	
+    for (Wugong* eidWugong in eid.wugongArr) {
+        if ([eid triggerSpecialEffectWithProbility:10]) {
+            int damage = eidWugong.damage;
+            if (damage > dng) {
+                dng = damage;
+                //TODO 内功护体
+                CCLOG(@"%@%@",eidWugong.wugongName,@" protect you!");
+            }
+        }
+    }
+
+    
+    int hurt = 0;
+    if (level > 10) {
+        hurt = wu.damage/3;
+        level = 10;
+    }else{
+        hurt = wu.damage/4;
+    }
+	
+    if (false) {
+        //Attack item goes here TODO
+    }
+	
+    int atk = pid.attack;
+    int def = eid.armor;
+	
+    //pair attackadd goes here example: yangguo xiaolongnv
+	//xxxx
+    
+    //pair defadd goes here example : yangguo xiaolongnv
+    //xxxxx
+    
+	atk = atk * ((pid.acume*2+pid.maxacume)/3)/50;
+    hurt = hurt + atk/4;
+	hurt=hurt+(mywuxue-emenywuxue)/2;
+	
+	def=def+((eid.acume*2+eid.maxacume)/3)/40+emenywuxue;
+    
+	//meigong jia li TODO
+    atk=atk+mywuxue+pid.mainNeiGong.damage/10;
+
+	hurt=hurt*atk/(atk+def);
+
+    /** wuqi and fangjv
+	local function myrnd(x)
+	if x<=1 then return 0 end
+        return math.random(x*0.5,x)
+        end
+        
+        if JY.Person[pid]["武器"]>=0 then
+            hurt=hurt+myrnd(JY.Thing[JY.Person[pid]["武器"]]["加攻击力"]);
+    end
+    if JY.Person[pid]["防具"]>=0 then
+        hurt=hurt+myrnd(JY.Thing[JY.Person[pid]["防具"]]["加攻击力"]);
+    end
+    if JY.Person[eid]["武器"]>=0 then
+        hurt=hurt-myrnd(JY.Thing[JY.Person[eid]["武器"]]["加防御力"]);
+    end
+    if JY.Person[eid]["防具"]>=0 then
+        hurt=hurt-myrnd(JY.Thing[JY.Person[eid]["防具"]]["加防御力"]);
+    end
+	**/
+	hurt=hurt-def/8;
+	
+    hurt=hurt-dng/30+pid.stamina/5-eid.stamina/5+eid.bleed/3-pid.bleed/3+eid.poision/2-pid.poision/2;
+
+    if (hurt<0) {
+        hurt = 1;
+    }
+    
+    // --考虑距离因素
+    float offset = ccpDistance(pid.position, eid.position);
+    if (offset<10) {
+        hurt = hurt * (100-(offset-1)*3)/100;
+    }else{
+        hurt = hurt*2/3;
+    }
+   	
+    //bleed effects
+	hurt=hurt*(1-pid.bleed*0.002);
+    hurt=hurt*(1+eid.bleed*0.0015);
+            
+    
+    /**poision
+                        --敌人中毒点数
+                                        local poisonnum=math.modf(level*JY.Wugong[wugong]["敌人中毒点数"]+5*JY.Person[pid]["攻击带毒"]);
+    
+    if 10*JY.Person[eid]["抗毒能力"]< poisonnum and dng==0 and pid~=48 then
+        poisonnum=math.modf(poisonnum/10-JY.Person[eid]["抗毒能力"]-JY.Person[eid]["内力"]/150)
+        if poisonnum<0 then poisonnum=0 end
+            AddPersonAttrib(eid,"中毒程度",myrnd(poisonnum));
+    end
+    
+	WAR.NGHT=0
+	WAR.FLHS4=0
+	
+	if PersonKF(eid,108) then JY.Person[eid]["中毒程度"]=0 end
+        --if PersonKF(eid,100) then JY.Person[eid]["受伤程度"]=0 end
+            
+            if WAR.Person[emenyid][CC.TXWZ2]==nil then WAR.Person[emenyid][CC.TXWZ2]='  ' end
+                if DWPD()==false then
+                    WAR.Person[emenyid][CC.TXDH]=-1
+                    WAR.Person[emenyid][CC.TXWZ1]=nil
+                    WAR.Person[emenyid][CC.TXWZ2]=nil
+                    WAR.Person[emenyid][CC.TXWZ3]=nil
+                    end
+                    
+                    --WAR.Person[emenyid][CC.TXDH]=math.fmod(107,10)+85
+    **/
+    return hurt;
 }
 @end

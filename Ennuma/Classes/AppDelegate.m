@@ -83,7 +83,7 @@
     invader4.maxhealth=210;
     [sc addEntity:invader4 ForTeam:@"blue" AtPos:CGPointMake(18, 18)];
 
-
+    [sc startBattle];
     
     return sc;
 }

@@ -17,6 +17,9 @@
     int _level;
     //the type of range, 1 is point, 2 is line, 3 is blocks around, 4 is chinese char 'mi'
     int _rangeType;
+    
+    int _acumeCost;
+    NSString* _wugongName;
 }
 
 @property int range;
@@ -25,4 +28,6 @@
 @property int bleedIndex;
 @property int rangeType;
 @property int level;
+@property int acumeCost;
+@property NSString* wugongName;
 @end

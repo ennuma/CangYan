@@ -51,6 +51,10 @@
     BOOL _isDead;
     
     int _angryRate;
+    int _talent;
+    int _wuxueKnowledge;
+    
+    Wugong* _mainNeiGong;
 }
 
 @property int strength;
@@ -76,9 +80,14 @@
 @property BOOL isDefending;
 @property BOOL isDead;
 @property int stamina;
+@property int poision;
+@property int bleed;
 
 @property int angryRate;
-
+@property int talent;
+@property int wuxueKnowledge;
+@property Wugong* mainNeiGong;
+@property NSMutableArray* wugongArr;
 -(void)initForBattleWithParent:(CCNode*)parent;
 -(void)initWuGong;
 -(void)initIcon;
