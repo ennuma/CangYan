@@ -274,7 +274,9 @@
 {
     //do things success
     //CCLOG(@"im defending");
-    self.health -= m_wugong.damage;
+    int hurt = [invader calculateWugongHurtLifeWithWugong:m_wugong WithInvader:self];
+    [self say:[NSString stringWithFormat:@"-%i",hurt] WithColor: [CCColor colorWithCcColor3b:ccRED]];
+    self.health -= hurt;
     CCLabelTTF* healthbar = (CCLabelTTF*)[self.state getChildByName:@"health" recursively:NO];
     [healthbar setString: [NSString stringWithFormat:@"%i", self.health]];
     
@@ -741,6 +743,19 @@
     }
     
 }
+
+-(void)say:(NSString*)sentence WithColor:(CCColor*)color{
+    CCLabelTTF* words = [CCLabelTTF labelWithString:sentence fontName:@"Verdana-Bold" fontSize:12];
+    [words setColorRGBA:color];
+    words.position = [self convertToMapCord:self.position];
+    words.position = CGPointMake(words.position.x-words.contentSize.width/2, words.position.y);
+    words.anchorPoint = CGPointMake(0, 0.5);
+    [_map addChild:words z:100];
+    CCActionMoveBy* moveUp = [CCActionMoveBy actionWithDuration:1 position:CGPointMake(0,2*words.contentSize.height)];
+    CCActionCallFunc* delete = [CCActionCallFunc actionWithTarget:words selector:@selector(removeFromParent)];
+    CCActionSequence* actions = [CCActionSequence actions:moveUp, delete, nil];
+    [words runAction:actions];
+}
 #pragma mathfunction
 -(float)getnewmove
 {
@@ -866,16 +881,15 @@
 
 }
 
--(int)calculateWugongHurtLifeWithWugong:(Wugong*)wu WithInvader:(Invader*) opponent
+-(int)calculateWugongHurtLifeWithWugong:(Wugong*)wu WithInvader:(Invader*) beingAttacked
 {
     //武功伤害生命
     //enemyid 敌人战斗id，
     //wugong  我方使用武功
     //返回：伤害点数
-    Invader* pid=self;//WAR.Person[WAR.CurID]["人物编号"];
-    Invader* eid=opponent;//WAR.Person[emenyid]["人物编号"];
+    Invader* pid=self;
+    Invader* eid=beingAttacked;
 	int dng=0;
-	//local WGLX=JY.Wugong[wugong]["武功类型"]
     int level = wu.level;
     //--计算武学常识
     int mywuxue=_wuxueKnowledge;
@@ -896,10 +910,11 @@
         }
     }
     // enhance enemy ability
-	if (emenywuxue<50) {
+	/**
+    if (emenywuxue<50) {
         emenywuxue = 50;
     }
-    
+    **/
         
     //    --计算实际使用武功等级
     while (true) {
@@ -920,20 +935,21 @@
             if (damage > dng) {
                 dng = damage;
                 //TODO 内功护体
-                CCLOG(@"%@%@",eidWugong.wugongName,@" protect you!");
+                NSString* words = [NSString stringWithFormat:@"%@%@",eidWugong.wugongName,@"\nprotect you!" ];
+                [eid say:words WithColor:[CCColor colorWithCcColor3b:ccWHITE]];
             }
         }
     }
 
     
-    int hurt = 0;
+    float hurt = 0;
     if (level > 10) {
         hurt = wu.damage/3;
         level = 10;
     }else{
         hurt = wu.damage/4;
     }
-	
+
     if (false) {
         //Attack item goes here TODO
     }
@@ -949,15 +965,18 @@
     
 	atk = atk * ((pid.acume*2+pid.maxacume)/3)/50;
     hurt = hurt + atk/4;
+
 	hurt=hurt+(mywuxue-emenywuxue)/2;
+    //CCLOG(@"2:%f",hurt);
 	
-	def=def+((eid.acume*2+eid.maxacume)/3)/40+emenywuxue;
+	def=def*((eid.acume*2+eid.maxacume)/3)/40+emenywuxue;
     
 	//meigong jia li TODO
     atk=atk+mywuxue+pid.mainNeiGong.damage/10;
-
-	hurt=hurt*atk/(atk+def);
-
+    
+    if ((atk+def)!=0) {
+        hurt=hurt*atk/(atk+def);
+    }
     /** wuqi and fangjv
 	local function myrnd(x)
 	if x<=1 then return 0 end
@@ -987,6 +1006,7 @@
     
     // --考虑距离因素
     float offset = ccpDistance(pid.position, eid.position);
+    CCLOG(@"%f",offset);
     if (offset<10) {
         hurt = hurt * (100-(offset-1)*3)/100;
     }else{
@@ -1024,6 +1044,7 @@
                     
                     --WAR.Person[emenyid][CC.TXDH]=math.fmod(107,10)+85
     **/
+
     return hurt;
 }
 @end

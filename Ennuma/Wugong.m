@@ -29,6 +29,7 @@
     self.damage = 50;
     self.poisionIndex=0;
     self.bleedIndex=0;
+    _wugongName = @"普通武功";
     //level = 1;
     
     return self;
