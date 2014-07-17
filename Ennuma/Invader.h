@@ -49,6 +49,8 @@
     
     BOOL _isDefending;
     BOOL _isDead;
+    
+    int _angryRate;
 }
 
 @property int strength;
@@ -74,6 +76,8 @@
 @property BOOL isDefending;
 @property BOOL isDead;
 @property int stamina;
+
+@property int angryRate;
 
 -(void)initForBattleWithParent:(CCNode*)parent;
 -(void)initWuGong;

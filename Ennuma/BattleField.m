@@ -31,19 +31,14 @@ CCSprite* bar;
     whateverTeam = [[NSMutableArray alloc] init];
     
     interval = 0.1;
-    
+    tick = 0;
     maxJiQi = 1000;
-    
-    [self schedule:@selector(startJiqi:) interval:0.01];
     
     //Test Purpose
     //sp1 = [CCSprite spriteWithImageNamed:@"Enemy1.png"];
     //sp2 = [CCSprite spriteWithImageNamed:@"Enemy2.png"];
     bar = [CCSprite spriteWithImageNamed:@"hud.png"];
     bar.position = CGPointMake([self contentSize].width/2, [self contentSize].height- [bar contentSize].height);
-    CGPoint spp = CGPointMake([self contentSize].width/2-[bar contentSize].width/2+ [sp1 contentSize].width/2, [self contentSize].height- [bar contentSize].height);
-    sp1.position = spp;
-    sp2.position = spp;
     
     //[self addChild:sp1 z:99];
     //[self addChild:sp2 z:99];
@@ -62,7 +57,12 @@ CCSprite* bar;
     return bf;
 }
 
--(void)addEntity:(Invader *)obj ForTeam:(NSString*)teamtype
+-(void)startBattle
+{
+    [self schedule:@selector(startJiqi:) interval:0.01];
+}
+
+-(void)addEntity:(Invader *)obj ForTeam:(NSString*)teamtype AtPos:(CGPoint)spawnPos
 {
     obj.map = map;
     if ([teamtype isEqualToString:@"red"]) {
@@ -72,7 +72,7 @@ CCSprite* bar;
         //obj.smallIcon = sp1;
         obj.allie = redTeam;
         obj.enemy = blueTeam;
-        [obj initPosition:CGPointMake(1, 1)];
+        [obj initPosition:spawnPos];
     }
     else if ([teamtype isEqualToString:@"blue"]){
         [blueTeam addObject:obj];
@@ -81,7 +81,7 @@ CCSprite* bar;
         //obj.smallIcon = sp2;
         obj.allie = blueTeam;
         obj.enemy = redTeam;
-        [obj initPosition:CGPointMake(19,19)];
+        [obj initPosition:spawnPos];
     }
     
     [obj initForBattleWithParent:self];
@@ -133,12 +133,13 @@ CCSprite* bar;
 {
     current_clock += delta;
     if (current_clock>interval) {
+        tick++;
         [self updateAllObjsJiQi];
         current_clock = current_clock - interval;
     }
 }
 /**
- The objs may do action at the same time.
+ The objs may do action at the same time. fixed
  **/
 static bool isActing = false;
 -(void) updateAllObjsJiQi

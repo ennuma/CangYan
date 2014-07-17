@@ -24,12 +24,12 @@
         
         //Battle
         BattleField* sc = [BattleField scene];
-        [sc addEntity:invader ForTeam:@"red"];
+        //[sc addEntity:invader ForTeam:@"red"];
         
         Invader* invader2 = [[Invader alloc]init];
         invader2.strength=20;
         invader2.jiqispeed = 80;
-        [sc addEntity:invader2 ForTeam:@"blue"];
+        //[sc addEntity:invader2 ForTeam:@"blue"];
         
         [[CCDirector sharedDirector] pushScene: sc];
         

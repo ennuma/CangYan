@@ -64,6 +64,7 @@
     _stamina = 100;
     _poision = 0;
     _bleed = 0;
+    _angryRate = 80;
     
     [self calculateNewJiqiSpeed];
     //variable init
@@ -735,17 +736,17 @@
 #pragma mathfunction
 -(float)getnewmove
 {
-    if (_agile>=160){
-        return 6+(_agile-160)/60;
+    if (_agile>=150){
+        return 7+(_agile-150)/80;
     }
-    else if (_agile>=80){
-        return 4+(_agile-80)/40;
+    else if (_agile>=70){
+        return 5+(_agile-70)/40;
     }
     else if (_agile>=30){
-        return 2+(_agile-30)/25;
+        return 3+(_agile-30)/20;
     }
     else{
-        return	_agile/15;
+        return	_agile/10;
     }
 }
 -(void)calculateNewJiqiSpeed
@@ -756,8 +757,12 @@
     float poisionbleedbuff = [self JiQiBuffpoision:_poision AndBleed:_bleed];
     float staminabuff = [self JiQiBuffStamina:_stamina];
 
-    _jiqispeed = (int)(acumebuff + agilebuff + poisionbleedbuff + staminabuff + basepoint);
-    CCLOG(@"%f",_jiqispeed);
+    int newspeed = (int)((acumebuff + agilebuff + poisionbleedbuff + staminabuff + basepoint)*_angryRate/100);
+    //CCLOG(@"%f",_jiqispeed);
+    //if (_angryRate>=100) { //战意》100 集气翻倍
+    //    newspeed *=2;
+    //}
+    _jiqispeed = newspeed;
 }
 -(float)acumeJiQiBuff:(int)acume :(int) maxacume{
     float x=(acume*2+maxacume)/3.0;

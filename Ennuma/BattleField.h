@@ -22,10 +22,12 @@
     int _width;
     int _height;
     CCTiledMap* map;
+    
+    int tick;
 }
 +(BattleField*)scene;
-
--(void)addEntity:(Invader*) obj ForTeam:(NSString*) teamtype;
+-(void)startBattle;
+-(void)addEntity:(Invader*) obj ForTeam:(NSString*) teamtype AtPos:(CGPoint)spawnPos;
 @property int width;
 @property int height;
 @end
