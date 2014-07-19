@@ -18,8 +18,10 @@
 @synthesize rangeType = _rangeType;
 @synthesize acumeCost = _acumeCost;
 @synthesize wugongName = _wugongName;
-@synthesize wugongType = _wugongType;
-@synthesize qigongValue =_qigongValue;
+@synthesize neigongJiaLi = _neigongJiaLi;
+@synthesize neigongHuTi = _neigongHuTi;
+@synthesize criticalHitBuff = _criticalHitBuff;
+@synthesize multiHitBuff = _multiHitBuff;
 -(id)init
 {
     self = [super init];
@@ -27,19 +29,28 @@
         return nil;
     }
     self.damage = [NSMutableArray array];
-    [self initPoisionAndBleed];
-    [self initRangeAndRangeType];
-    [self initWugongNameAndTypeAndAcumeCost];
-    [self initWugongDamageForEachLevelAndQigongValue];
-    _level = 1;
-    return self;
-}
--(void)initWugongDamageForEachLevelAndQigongValue
-{
+    
     for (int i = 0;  i < 11;  i++) {
         [_damage addObject:[NSNumber numberWithInt:0]];
     }
+    
+    [self initPoisionAndBleed];
+    [self initRangeAndRangeType];
+    [self initWugongNameAndLevelAndAcumeCost];
+    [self initWugongDamageForEachLevelAndQigongValue];
+    
+    return self;
+}
+-(void)initMultiHitAndCriticalHit
+{
+    _multiHitBuff = 0;
+    _criticalHitBuff = 0;
+}
+-(void)initWugongDamageForEachLevelAndQigongValue
+{
+
     //damage for each level
+    /**
     [_damage insertObject:[NSNumber numberWithInt:1000]  atIndex:1];
     [_damage insertObject:[NSNumber numberWithInt:2]  atIndex:2];
     [_damage insertObject:[NSNumber numberWithInt:3]  atIndex:3];
@@ -50,14 +61,15 @@
     [_damage insertObject:[NSNumber numberWithInt:8]  atIndex:8];
     [_damage insertObject:[NSNumber numberWithInt:9]  atIndex:9];
     [_damage insertObject:[NSNumber numberWithInt:10]  atIndex:10];
-    
+    **/
     //qigong value for neigong
-    _qigongValue = 10;
+    _neigongHuTi=0;
+    _neigongJiaLi=0;
 }
 -(void)initRangeAndRangeType
 {
-    _range = 3;
-    _rangeType = 2;
+    _range = 0;
+    _rangeType = 0;
 }
 
 -(void)initPoisionAndBleed
@@ -66,11 +78,41 @@
     _bleedIndex = 0;
 }
 
--(void)initWugongNameAndTypeAndAcumeCost
+-(void)initWugongNameAndLevelAndAcumeCost
 {
     _wugongName = @"普通武功";
-    _wugongType = @"外功";
-    _acumeCost = 50;
+    _level = 1;
+    _acumeCost = 0;
+}
+
+-(bool)isNeiGong
+{
+    return false;
+}
+-(bool)isWaiGong
+{
+    return false;
+}
+-(bool)isJianFa
+{
+    return false;
+}
+-(bool)isDaoFa
+{
+    return false;
+}
+-(bool)isQuanFa
+{
+    return false;
+}
+-(bool)isQimen
+{
+    return false;
+}
+
+-(NSString*)getWugongName
+{
+    return _wugongName;
 }
 
 @end

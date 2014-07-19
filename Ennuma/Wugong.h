@@ -15,14 +15,17 @@
     int _poisionIndex;
     int _bleedIndex;
     int _level;
-    //the type of range, 1 is point, 2 is line, 3 is blocks around, 4 is chinese char 'mi'
+    //the type of range, 1 is point, 2 is line, 3 is blocks around, 4 is chinese char 'mi', 0 is invalid
     int _rangeType;
     
-    NSString* _wugongType;
     int _acumeCost;
     NSString* _wugongName;
     
-    int _qigongValue;
+    int _neigongJiaLi;
+    int _neigongHuTi;
+    
+    int _multiHitBuff;
+    int _criticalHitBuff;
 }
 
 @property int range;
@@ -33,11 +36,21 @@
 @property int level;
 @property int acumeCost;
 @property NSString* wugongName;
-@property NSString* wugongType;
-@property int qigongValue;
+@property int neigongJiaLi;
+@property int neigongHuTi;
+@property int multiHitBuff;
+@property int criticalHitBuff;
 
--(void)initWugongNameAndTypeAndAcumeCost;
+-(void)initWugongNameAndLevelAndAcumeCost;
 -(void)initPoisionAndBleed;
 -(void)initRangeAndRangeType;
 -(void)initWugongDamageForEachLevelAndQigongValue;
+-(void)initMultiHitAndCriticalHit;
+-(bool)isNeiGong;
+-(bool)isWaiGong;
+-(bool)isJianFa;
+-(bool)isDaoFa;
+-(bool)isQuanFa;
+-(bool)isQimen;
+-(NSString*)getWugongName;
 @end

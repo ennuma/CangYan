@@ -250,6 +250,8 @@
 		849655391966B663000C38AA /* HuaShanPai.m in Sources */ = {isa = PBXBuildFile; fileRef = 849655381966B663000C38AA /* HuaShanPai.m */; };
 		8496553C1966B6AE000C38AA /* HuaShanScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8496553B1966B6AE000C38AA /* HuaShanScene.m */; };
 		8496553E1966C93A000C38AA /* bg_menpai.png in Resources */ = {isa = PBXBuildFile; fileRef = 8496553D1966C93A000C38AA /* bg_menpai.png */; };
+		84C36021197AD54300331A2B /* Wugong_SongFengJianFa.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C36020197AD54300331A2B /* Wugong_SongFengJianFa.m */; };
+		84C36024197AD58C00331A2B /* Wugong_LuoHanFuMoGong.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C36023197AD58C00331A2B /* Wugong_LuoHanFuMoGong.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -733,6 +735,10 @@
 		8496553A1966B6AE000C38AA /* HuaShanScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HuaShanScene.h; sourceTree = "<group>"; };
 		8496553B1966B6AE000C38AA /* HuaShanScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HuaShanScene.m; sourceTree = "<group>"; };
 		8496553D1966C93A000C38AA /* bg_menpai.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_menpai.png; path = Resources/bg_menpai.png; sourceTree = "<group>"; };
+		84C3601F197AD54300331A2B /* Wugong_SongFengJianFa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_SongFengJianFa.h; sourceTree = "<group>"; };
+		84C36020197AD54300331A2B /* Wugong_SongFengJianFa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_SongFengJianFa.m; sourceTree = "<group>"; };
+		84C36022197AD58C00331A2B /* Wugong_LuoHanFuMoGong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_LuoHanFuMoGong.h; sourceTree = "<group>"; };
+		84C36023197AD58C00331A2B /* Wugong_LuoHanFuMoGong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_LuoHanFuMoGong.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1623,6 +1629,10 @@
 				84675AAA1962EFD10093F2EF /* WuLinScene.m */,
 				849655341966A9C9000C38AA /* MenPaiScene.h */,
 				849655351966A9C9000C38AA /* MenPaiScene.m */,
+				84C3601F197AD54300331A2B /* Wugong_SongFengJianFa.h */,
+				84C36020197AD54300331A2B /* Wugong_SongFengJianFa.m */,
+				84C36022197AD58C00331A2B /* Wugong_LuoHanFuMoGong.h */,
+				84C36023197AD58C00331A2B /* Wugong_LuoHanFuMoGong.m */,
 				840D11231974620700B19861 /* Wugong.h */,
 				840D11241974620700B19861 /* Wugong.m */,
 				8429176D1967977F00D691D3 /* Invader.h */,
@@ -1897,6 +1907,7 @@
 				84350261195AFA0100503923 /* CCEffectPixellate.m in Sources */,
 				8429176019678ADF00D691D3 /* HengShanScene.m in Sources */,
 				843503FF195AFA0400503923 /* CCBSequenceProperty.m in Sources */,
+				84C36024197AD58C00331A2B /* Wugong_LuoHanFuMoGong.m in Sources */,
 				843502AF195AFA0200503923 /* CCLabelTTF.m in Sources */,
 				843503AE195AFA0400503923 /* ALSource.m in Sources */,
 				843503D1195AFA0400503923 /* OALTools.m in Sources */,
@@ -1931,6 +1942,7 @@
 				843503B9195AFA0400503923 /* OALAudioSession.m in Sources */,
 				8435034A195AFA0300503923 /* CCWindow.m in Sources */,
 				840D11251974620700B19861 /* Wugong.m in Sources */,
+				84C36021197AD54300331A2B /* Wugong_SongFengJianFa.m in Sources */,
 				8435030A195AFA0300503923 /* CCSpriteFrame.m in Sources */,
 				84350336195AFA0300503923 /* CCES2Renderer.m in Sources */,
 				8435028B195AFA0200503923 /* CCActionProgressTimer.m in Sources */,

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "Wugong_SongFengJianFa.h"
+#import "Wugong_LuoHanFuMoGong.h"
 @interface Extension : NSObject
 {
     /**

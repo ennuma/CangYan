@@ -57,10 +57,13 @@
     _bigIcon = [CCSprite spriteWithImageNamed:@"Enemy1.png"];
     _smallIcon = [CCSprite spriteWithImageNamed:@"Enemy1.png"];
 }
+//TODO
 -(void)initWuGong
 {
-    Wugong* basic = [Wugong node];
-    [wugong addObject:basic];
+    Wugong_SongFengJianFa* jianfa = [Wugong_SongFengJianFa node];
+    [wugong addObject:jianfa];
+    Wugong_LuoHanFuMoGong* fumogong =[Wugong_LuoHanFuMoGong node];
+    [wugong addObject:fumogong];
 }
 -(void)initForBattleWithParent:(CCNode *)parent
 {
@@ -218,6 +221,11 @@
     if (val) {
         CGPoint pos = [val CGPointValue];
         [self autoAttack:pos WithWugong:choosedWugong];
+        //minus acume according to acumecost
+        _acume-=choosedWugong.acumeCost;
+        CCLabelTTF* healthbar = (CCLabelTTF*)[self.state getChildByName:@"acume" recursively:NO];
+        [healthbar setString: [NSString stringWithFormat:@"%i", _acume]];
+        
     }else{
         [self autoMove];
     }
@@ -225,8 +233,18 @@
 
 -(Wugong*)autoChooseWugong
 {
+    if ([wugong count]==0) {
+        return nil;
+    }
+    
     int index = CCRANDOM_0_1()*wugong.count;
     Wugong* ret = [wugong objectAtIndex:index];
+    
+    for (Wugong* wg in wugong) {
+        if ([wg isWaiGong]) {
+            ret = wg;
+        }
+    }
     return ret;
 }
 
@@ -942,14 +960,14 @@
     }
 	
     for (Wugong* eidWugong in eid.wugongArr) {
-        if ([eidWugong.wugongType isEqualToString:@"内功"]) {
+        if ([eidWugong isNeiGong]) {
         
         if ([eid triggerSpecialEffectWithProbility:10]) {
-                int damage = eidWugong.qigongValue;
+                int damage = eidWugong.neigongHuTi;
                 if (damage > dng) {
                     dng = damage;
                     //TODO 内功护体
-                    NSString* words = [NSString stringWithFormat:@"%@%@",eidWugong.wugongName,@"\n护体!" ];
+                    NSString* words = [NSString stringWithFormat:@"%@%@",[eidWugong getWugongName],@"\n护体!" ];
                     [eid say:words WithColor:[CCColor colorWithCcColor3b:ccWHITE]];
                 }
             }
@@ -989,7 +1007,7 @@
 	def=def*((eid.acume*2+eid.maxacume)/3)/40+emenywuxue;
     
 	//meigong jia li TODO
-    atk=atk+mywuxue+pid.mainNeiGong.qigongValue/10;
+    atk=atk+mywuxue+pid.mainNeiGong.neigongJiaLi/10;
     
     if ((atk+def)!=0) {
         hurt=hurt*atk/(atk+def);
@@ -1013,13 +1031,11 @@
         hurt=hurt-myrnd(JY.Thing[JY.Person[eid]["防具"]]["加防御力"]);
     end
 	**/
+    CCLOG(@"0:%f",hurt);
 	hurt=hurt-def/8;
-	
+	CCLOG(@"1:%f",hurt);
     hurt=hurt-dng/30+pid.stamina/5-eid.stamina/5+eid.bleed/3-pid.bleed/3+eid.poision/2-pid.poision/2;
 
-    if (hurt<0) {
-        hurt = 1;
-    }
     
     // --考虑距离因素
     float offset = ccpDistance(pid.position, eid.position);
@@ -1032,8 +1048,11 @@
     //bleed effects
 	hurt=hurt*(1-pid.bleed*0.002);
     hurt=hurt*(1+eid.bleed*0.0015);
-            
     
+    if (hurt<0) {
+        hurt = 1;
+    }
+    CCLOG(@"2:%f",hurt);
     /**poision
                         --敌人中毒点数
                                         local poisonnum=math.modf(level*JY.Wugong[wugong]["敌人中毒点数"]+5*JY.Person[pid]["攻击带毒"]);
@@ -1067,7 +1086,7 @@
     //Calculate spdhurt
     int spdhurt = 0;
     if (dng == 0) {//no neigong protect
-        spdhurt += pid.mainNeiGong.qigongValue/8;
+        spdhurt += pid.mainNeiGong.neigongJiaLi/8;
     }
     spdhurt += hurt*0.7;
     [hurtDic setValue:[NSNumber numberWithInt:spdhurt] forKey:@"spdhurt"];

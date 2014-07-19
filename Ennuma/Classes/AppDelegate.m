@@ -53,8 +53,9 @@
     //return [WuLinScene scene];
     
     Invader* invader = [[Invader alloc]init];
-    invader.strength=20;
-    invader.maxacume = 9000;
+    invader.attack=20;
+    invader.armor = 15;
+    invader.maxacume = 4800;
     invader.agile = 380;
     invader.maxhealth = 7000;
     
@@ -63,21 +64,24 @@
     [sc addEntity:invader ForTeam:@"red" AtPos:CGPointMake(1, 1)];
     
     Invader* invader2 = [[Invader alloc]init];
-    invader2.strength=20;
+    invader2.attack=20;
+    invader2.armor = 15;
     invader2.maxacume = 4800;
     invader2.agile=61;
     invader2.maxhealth=2100;
     [sc addEntity:invader2 ForTeam:@"blue" AtPos:CGPointMake(19, 19)];
     
     Invader* invader3 = [[Invader alloc]init];
-    invader3.strength=20;
+    invader3.attack=20;
+    invader3.armor = 15;
     invader3.maxacume = 4800;
     invader3.agile=61;
     invader3.maxhealth=2100;
     [sc addEntity:invader3 ForTeam:@"blue" AtPos:CGPointMake(19, 18)];
     
     Invader* invader4 = [[Invader alloc]init];
-    invader4.strength=20;
+    invader4.attack=20;
+    invader4.armor = 15;
     invader4.maxacume = 4800;
     invader4.agile=61;
     invader4.maxhealth=2100;
