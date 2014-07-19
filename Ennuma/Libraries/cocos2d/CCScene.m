@@ -77,6 +77,10 @@
 
 // -----------------------------------------------------------------
 
+-(void)notifyJiQiChangedForInvader:(id) invader
+{
+
+}
 @end
 
 

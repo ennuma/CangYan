@@ -28,6 +28,7 @@
 +(BattleField*)scene;
 -(void)startBattle;
 -(void)addEntity:(Invader*) obj ForTeam:(NSString*) teamtype AtPos:(CGPoint)spawnPos;
+-(void)notifyJiQiChangedForInvader:(Invader*) invader;
 @property int width;
 @property int height;
 @end

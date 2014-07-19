@@ -7,7 +7,6 @@
 //
 
 #import "BattleField.h"
-#import "Invader.h"
 
 @implementation BattleField
 @synthesize height = _height;
@@ -197,6 +196,16 @@ static bool isActing = false;
     }
     
 }
-
+-(void)notifyJiQiChangedForInvader:(id)invader
+{
+    Invader* obj = (Invader*)invader;
+    float percentage = obj.amountofjiqi/maxJiQi;
+    float newx = bar.contentSize.width*percentage + bar.position.x - bar.contentSize.width/2;
+    CGPoint newpos = CGPointMake(newx, obj.smallIcon.position.y);
+    //newpos = CGPointMake(0, obj.smallIcon.position.y);
+    //The duration for this action may changed TODO
+    CCActionMoveTo* moveTo = [CCActionMoveTo actionWithDuration:0.8 position:newpos];
+    [obj.smallIcon runAction:moveTo];
+}
 
 @end

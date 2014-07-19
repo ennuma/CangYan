@@ -11,23 +11,33 @@
 
 @interface Wugong : CCNode {
     int _range;
-    int _damage;
+    NSMutableArray* _damage; //wugong damage, not applicable to qigong
     int _poisionIndex;
     int _bleedIndex;
     int _level;
     //the type of range, 1 is point, 2 is line, 3 is blocks around, 4 is chinese char 'mi'
     int _rangeType;
     
+    NSString* _wugongType;
     int _acumeCost;
     NSString* _wugongName;
+    
+    int _qigongValue;
 }
 
 @property int range;
-@property int damage;
+@property NSMutableArray* damage;
 @property int poisionIndex;
 @property int bleedIndex;
 @property int rangeType;
 @property int level;
 @property int acumeCost;
 @property NSString* wugongName;
+@property NSString* wugongType;
+@property int qigongValue;
+
+-(void)initWugongNameAndTypeAndAcumeCost;
+-(void)initPoisionAndBleed;
+-(void)initRangeAndRangeType;
+-(void)initWugongDamageForEachLevelAndQigongValue;
 @end

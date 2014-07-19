@@ -43,5 +43,6 @@
 
 /** Initialize the node. */
 - (id)init;
+-(void)notifyJiQiChangedForInvader:(id) invader;
 
 @end

@@ -249,10 +249,11 @@
     
     CCActionCallFunc *attackInvaders = [CCActionCallFuncAttackInvader actionWithTarget:self selector:@selector(attackInvaders:WithWuGong:) Invaders:invadersBeingAttacked Wugong:wugong2];
     
+    //May change later
     CCActionDelay* delay = [CCActionDelay actionWithDuration:1];//play animation after this TODO
-    
-    CCActionSequence* actions = [CCActionSequence actions:action,render,delay,
-                                 attackInvaders,callback, nil];
+    //delay need to put after attackinvaders because this delay is used for Shajiqi effect. smallIcon need this delay time to run animation
+    CCActionSequence* actions = [CCActionSequence actions:action,render,
+                                 attackInvaders, delay, callback, nil];
     [_bigIcon runAction:actions];
     
     
@@ -260,37 +261,49 @@
     invadersBeingAttacked = nil;
 }
 
--(void)attackInvaders:(NSMutableArray *)invaders WithWuGong:(Wugong *)wugong
+-(void)attackInvaders:(NSMutableArray *)invaders WithWuGong:(Wugong *)m_wugong
 {
     for (Invader* inv in invaders) {
         inv.isDefending = TRUE;
-        [inv defendInvader:self WhoUseWuGong:wugong];
+        [inv defendInvader:self WhoUseWuGong:m_wugong];
         while (inv.isDefending) {
             //do nothing, wait
         }
     }
 }
+
 -(void)defendInvader:(Invader *)invader WhoUseWuGong:(Wugong *)m_wugong
 {
     //do things success
     //CCLOG(@"im defending");
-    int hurt = [invader calculateWugongHurtLifeWithWugong:m_wugong WithInvader:self];
+    NSDictionary* hurtDic = [invader calculateWugongHurtLifeWithWugong:m_wugong WithInvader:self];
+    
+    int hurt = [[hurtDic objectForKey:@"hurt"]intValue];
+    int spdhurt = [[hurtDic objectForKey:@"spdhurt"]intValue];
+    
+    //CCLOG(@"%i\n%i",hurt,spdhurt);
+    
+    //int spdhurt = [invader calculateWugongHurtJiQiWithHurt:hurt WithInvader:self];
     [self say:[NSString stringWithFormat:@"-%i",hurt] WithColor: [CCColor colorWithCcColor3b:ccRED]];
     self.health -= hurt;
     CCLabelTTF* healthbar = (CCLabelTTF*)[self.state getChildByName:@"health" recursively:NO];
     [healthbar setString: [NSString stringWithFormat:@"%i", self.health]];
     
+    //shajiqi
+    _amountofjiqi -= spdhurt;
+    
+    [((CCScene*)_map.parent) notifyJiQiChangedForInvader:self];
     if (self.health<=0) {
         self.isDead=true;
     }
     self.isDefending = false;
 }
 
--(NSMutableArray*)invadersBeingAttakedWithWugong:(Wugong*)wugong Direction:(int)dir Position:(NSValue*)val
+-(NSMutableArray*)invadersBeingAttakedWithWugong:(Wugong*)m_wugong Direction:(int)dir Position:(NSValue*)val
 {
     CGPoint pos = [val CGPointValue];
     NSMutableArray* invaders = [[NSMutableArray alloc]init];
-    for (int i = 0 ; i < wugong.range ; i++) {
+    for (int i = 0 ; i < m_wugong.range ; i++) {
         CGPoint attackpos;
         if (dir ==1) {
             attackpos = CGPointMake(pos.x, pos.y+i+1);
@@ -317,13 +330,13 @@
     return invaders;
 }
 
--(void)renderAttackWithWugong:(Wugong*)wugong Direction:(int)dir Position:(NSValue*)val
+-(void)renderAttackWithWugong:(Wugong*)m_wugong Direction:(int)dir Position:(NSValue*)val
 {
     CGPoint pos = [val CGPointValue];
     CCNode* atklayer = [CCNode node];
     atklayer.position = _map.position;
     [_map addChild:atklayer z:1 name:@"attackLayer"];
-    for (int i = 0 ; i < wugong.range ; i++) {
+    for (int i = 0 ; i < m_wugong.range ; i++) {
         CGPoint attackpos;
         CCSprite* colorlayer = [CCSprite spriteWithImageNamed:@"maphud.png"];
         if (dir ==1) {
@@ -349,12 +362,12 @@
     //CCLOG(@"render");
 }
 
--(int)getAttackDir:(CGPoint)pos WithWugong:(Wugong*)wugong
+-(int)getAttackDir:(CGPoint)pos WithWugong:(Wugong*)m_wugong
 {
-    int range = wugong.range;
+    int range = m_wugong.range;
     int maxhit = -999;
     int dir = 0;
-    if (wugong.rangeType==2) {
+    if (m_wugong.rangeType==2) {
         //this is the case attack type is linear
         int currentmaxhit = 0;
         for (int i = 0 ; i<range; i++) {
@@ -425,13 +438,13 @@
     return dir;
 
 }
--(NSValue*)getMaxAttackPosWithWugong:(Wugong*)wugong
+-(NSValue*)getMaxAttackPosWithWugong:(Wugong*)m_wugong
 {
     CGPoint maxpos;
     int maxhit=-999;
     
     for (NSValue* val in reachable) {
-        int hit = [self getMaxAttackForSinglePos: [val CGPointValue] WithWugong:wugong];
+        int hit = [self getMaxAttackForSinglePos: [val CGPointValue] WithWugong:m_wugong];
         if (hit>maxhit) {
             maxpos = [val CGPointValue];
             maxhit = hit;
@@ -443,11 +456,11 @@
     return [NSValue valueWithCGPoint: maxpos];
 }
 
--(int)getMaxAttackForSinglePos:(CGPoint)pos WithWugong:(Wugong*) wugong
+-(int)getMaxAttackForSinglePos:(CGPoint)pos WithWugong:(Wugong*) m_wugong
 {
-    int range = wugong.range;
+    int range = m_wugong.range;
     int maxhit = -999;
-    if (wugong.rangeType==2) {
+    if (m_wugong.rangeType==2) {
         //this is the case attack type is linear
         int currentmaxhit = 0;
         for (int i = 0 ; i<range; i++) {
@@ -534,8 +547,6 @@
         //CCLOG(@"%@",v);
         CGPoint p = [v CGPointValue];
         int dis = abs(p.x - enemyPos.x)+abs(p.y-enemyPos.y);
-        //CCLOG(@"%i",dis);
-        //CCLOG(@"----------");
         if (dis < nearestDis) {
             ret = p;
             nearestDis = dis;
@@ -556,7 +567,6 @@
         next = [reachableLookup objectForKey:previous];
         CGPoint pos = [previous CGPointValue];
         CGPoint convertedPos = [self convertToMapCord:pos];
-                    //CCLOG(@"%@",next);
         CCActionMoveTo* moveTo = [CCActionMoveTo actionWithDuration:0.3 position:convertedPos];
         [motionArr insertObject:moveTo atIndex:0];
         
@@ -881,12 +891,14 @@
 
 }
 
--(int)calculateWugongHurtLifeWithWugong:(Wugong*)wu WithInvader:(Invader*) beingAttacked
+-(NSMutableDictionary*)calculateWugongHurtLifeWithWugong:(Wugong*)wu WithInvader:(Invader*) beingAttacked
 {
     //武功伤害生命
     //enemyid 敌人战斗id，
     //wugong  我方使用武功
     //返回：伤害点数
+    NSMutableDictionary* hurtDic = [[NSMutableDictionary alloc]init];
+    
     Invader* pid=self;
     Invader* eid=beingAttacked;
 	int dng=0;
@@ -930,13 +942,16 @@
     }
 	
     for (Wugong* eidWugong in eid.wugongArr) {
+        if ([eidWugong.wugongType isEqualToString:@"内功"]) {
+        
         if ([eid triggerSpecialEffectWithProbility:10]) {
-            int damage = eidWugong.damage;
-            if (damage > dng) {
-                dng = damage;
-                //TODO 内功护体
-                NSString* words = [NSString stringWithFormat:@"%@%@",eidWugong.wugongName,@"\nprotect you!" ];
-                [eid say:words WithColor:[CCColor colorWithCcColor3b:ccWHITE]];
+                int damage = eidWugong.qigongValue;
+                if (damage > dng) {
+                    dng = damage;
+                    //TODO 内功护体
+                    NSString* words = [NSString stringWithFormat:@"%@%@",eidWugong.wugongName,@"\n护体!" ];
+                    [eid say:words WithColor:[CCColor colorWithCcColor3b:ccWHITE]];
+                }
             }
         }
     }
@@ -944,12 +959,14 @@
     
     float hurt = 0;
     if (level > 10) {
-        hurt = wu.damage/3;
+        hurt = ((float)[[wu.damage objectAtIndex:10]integerValue]) /3.0;
         level = 10;
     }else{
-        hurt = wu.damage/4;
+        hurt = ((float)[[wu.damage objectAtIndex:level]integerValue])/4.0;
     }
-
+    
+    //CCLOG(@"!!!!!HERE:%f",hurt);
+    
     if (false) {
         //Attack item goes here TODO
     }
@@ -972,7 +989,7 @@
 	def=def*((eid.acume*2+eid.maxacume)/3)/40+emenywuxue;
     
 	//meigong jia li TODO
-    atk=atk+mywuxue+pid.mainNeiGong.damage/10;
+    atk=atk+mywuxue+pid.mainNeiGong.qigongValue/10;
     
     if ((atk+def)!=0) {
         hurt=hurt*atk/(atk+def);
@@ -1006,7 +1023,6 @@
     
     // --考虑距离因素
     float offset = ccpDistance(pid.position, eid.position);
-    CCLOG(@"%f",offset);
     if (offset<10) {
         hurt = hurt * (100-(offset-1)*3)/100;
     }else{
@@ -1045,6 +1061,18 @@
                     --WAR.Person[emenyid][CC.TXDH]=math.fmod(107,10)+85
     **/
 
-    return hurt;
+    
+    [hurtDic setValue:[NSNumber numberWithInt:hurt] forKey:@"hurt"];
+    
+    //Calculate spdhurt
+    int spdhurt = 0;
+    if (dng == 0) {//no neigong protect
+        spdhurt += pid.mainNeiGong.qigongValue/8;
+    }
+    spdhurt += hurt*0.7;
+    [hurtDic setValue:[NSNumber numberWithInt:spdhurt] forKey:@"spdhurt"];
+    
+    //calculate poision and other stuff TODO
+    return hurtDic;
 }
 @end

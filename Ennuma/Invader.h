@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "Wugong.h"
+//#import "BattleField.h"
 @interface Invader : NSObject  {
     int _strength;
     int _agile;

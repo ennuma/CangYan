@@ -56,7 +56,7 @@
     invader.strength=20;
     invader.maxacume = 9000;
     invader.agile = 380;
-    invader.maxhealth = 700;
+    invader.maxhealth = 7000;
     
     //Battle
     BattleField* sc = [BattleField scene];
@@ -66,21 +66,21 @@
     invader2.strength=20;
     invader2.maxacume = 4800;
     invader2.agile=61;
-    invader2.maxhealth=210;
+    invader2.maxhealth=2100;
     [sc addEntity:invader2 ForTeam:@"blue" AtPos:CGPointMake(19, 19)];
     
     Invader* invader3 = [[Invader alloc]init];
     invader3.strength=20;
     invader3.maxacume = 4800;
     invader3.agile=61;
-    invader3.maxhealth=210;
+    invader3.maxhealth=2100;
     [sc addEntity:invader3 ForTeam:@"blue" AtPos:CGPointMake(19, 18)];
     
     Invader* invader4 = [[Invader alloc]init];
     invader4.strength=20;
     invader4.maxacume = 4800;
     invader4.agile=61;
-    invader4.maxhealth=210;
+    invader4.maxhealth=2100;
     [sc addEntity:invader4 ForTeam:@"blue" AtPos:CGPointMake(18, 18)];
 
     [sc startBattle];
