@@ -1048,13 +1048,20 @@
         NSString* words = [NSString stringWithFormat:@"%@%@",[awugong getWugongName],@"\n加力!" ];
         [pid say:words WithColor:[CCColor colorWithCcColor3b:ccWHITE]];
     }
+    
+    float wugongDamage =((float)[[wu.damage objectAtIndex:10]integerValue]);
+    for (Wugong* wg in pid.wugongArr) {
+        if ([wg isNeiGong]) {
+            wugongDamage = [wg effectWugongDamage:wugongDamage WithInvader:self WithWugong:wu];
+        }
+    }
 
     float hurt = 0;
     if (level > 10) {
-        hurt = ((float)[[wu.damage objectAtIndex:10]integerValue]) /3.0;
+        hurt = wugongDamage /3.0;
         level = 10;
     }else{
-        hurt = ((float)[[wu.damage objectAtIndex:level]integerValue])/4.0;
+        hurt = wugongDamage/4.0;
     }
     
     //CCLOG(@"!!!!!HERE:%f",hurt);
@@ -1155,17 +1162,40 @@
     **/
 
     if (awugong) {
-        hurt = [awugong effectNeiGongJiaLi:hurt WithInvader:self WithWugong:wu];
+        //内功加力时触发所有武功特效
+        for (Wugong* wg in pid.wugongArr) {
+            if ([wg isNeiGong]) {
+                hurt = [wg effectNeiGongJiaLi:hurt WithInvader:self WithWugong:wu];
+            }
+        }
     }
     
     [hurtDic setValue:[NSNumber numberWithInt:hurt] forKey:@"hurt"];
     
+    ang = ang-dng;
+    if (ang<=0) {
+        dng = dng - ang;
+        ang = 0;
+    }else{
+        dng = 0;
+    }
+    
     //Calculate spdhurt
     int spdhurt = 0;
     if (dng == 0) {//no neigong protect
-        spdhurt += pid.mainNeiGong.neigongJiaLi/8;
+        spdhurt += ang/8;
+
+        int damageConvertToSpdHurt = hurt*0.7;
+        
+        for (Wugong* wg in eid.wugongArr) {
+            if ([wg isNeiGong]) {
+                damageConvertToSpdHurt = [wg effectDamageConvertToSpdHurt:damageConvertToSpdHurt WithInvader:self WithWugong:wu];
+            }
+        }
+
+        spdhurt += damageConvertToSpdHurt;
     }
-    spdhurt += hurt*0.7;
+    
     [hurtDic setValue:[NSNumber numberWithInt:spdhurt] forKey:@"spdhurt"];
     
     int bleedhurt = hurt/8;

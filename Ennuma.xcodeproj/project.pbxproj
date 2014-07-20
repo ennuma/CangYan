@@ -253,6 +253,7 @@
 		84C36021197AD54300331A2B /* Wugong_SongFengJianFa.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C36020197AD54300331A2B /* Wugong_SongFengJianFa.m */; };
 		84C36024197AD58C00331A2B /* Wugong_LuoHanFuMoGong.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C36023197AD58C00331A2B /* Wugong_LuoHanFuMoGong.m */; };
 		84C36027197B34FC00331A2B /* Wugong_LiuMaiShenJian.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C36026197B34FC00331A2B /* Wugong_LiuMaiShenJian.m */; };
+		84C3602A197B87A100331A2B /* Wugong_BaHuangLiuHeWeiWoDuZunGong.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C36029197B87A100331A2B /* Wugong_BaHuangLiuHeWeiWoDuZunGong.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -742,6 +743,8 @@
 		84C36023197AD58C00331A2B /* Wugong_LuoHanFuMoGong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_LuoHanFuMoGong.m; sourceTree = "<group>"; };
 		84C36025197B34FC00331A2B /* Wugong_LiuMaiShenJian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_LiuMaiShenJian.h; sourceTree = "<group>"; };
 		84C36026197B34FC00331A2B /* Wugong_LiuMaiShenJian.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_LiuMaiShenJian.m; sourceTree = "<group>"; };
+		84C36028197B87A100331A2B /* Wugong_BaHuangLiuHeWeiWoDuZunGong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_BaHuangLiuHeWeiWoDuZunGong.h; sourceTree = "<group>"; };
+		84C36029197B87A100331A2B /* Wugong_BaHuangLiuHeWeiWoDuZunGong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_BaHuangLiuHeWeiWoDuZunGong.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1638,6 +1641,8 @@
 				84C36020197AD54300331A2B /* Wugong_SongFengJianFa.m */,
 				84C36022197AD58C00331A2B /* Wugong_LuoHanFuMoGong.h */,
 				84C36023197AD58C00331A2B /* Wugong_LuoHanFuMoGong.m */,
+				84C36028197B87A100331A2B /* Wugong_BaHuangLiuHeWeiWoDuZunGong.h */,
+				84C36029197B87A100331A2B /* Wugong_BaHuangLiuHeWeiWoDuZunGong.m */,
 				840D11231974620700B19861 /* Wugong.h */,
 				840D11241974620700B19861 /* Wugong.m */,
 				8429176D1967977F00D691D3 /* Invader.h */,
@@ -1982,6 +1987,7 @@
 				84350367195AFA0300503923 /* NSAttributedString+CCAdditions.m in Sources */,
 				84350478195AFA0500503923 /* main.m in Sources */,
 				8429176819678C2800D691D3 /* SongShanPai.m in Sources */,
+				84C3602A197B87A100331A2B /* Wugong_BaHuangLiuHeWeiWoDuZunGong.m in Sources */,
 				84350482195AFA0500503923 /* IntroScene.m in Sources */,
 				84350265195AFA0100503923 /* CCEffectStack.m in Sources */,
 			);

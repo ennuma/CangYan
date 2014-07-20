@@ -120,6 +120,7 @@
     return _wugongName;
 }
 
+//effect
 -(void)effectAfterAction:(NSObject*)invader
 {
     
@@ -139,5 +140,12 @@
 {
     return hurt;
 }
-
+-(int)effectWugongDamage:(int)wugongDamage WithInvader:(NSObject *)invader WithWugong:(Wugong *)m_wugong
+{
+    return wugongDamage;
+}
+-(int)effectDefendDamageConvertToSpdHurt:(int)damageConvertToSpdHurt WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong
+{
+    return damageConvertToSpdHurt;
+}
 @end

@@ -13,6 +13,7 @@
 #import "WuLinScene.h"
 #import "BattleField.h"
 
+#import "Wugong_BaHuangLiuHeWeiWoDuZunGong.h"
 #import "Wugong_LiuMaiShenJian.h"
 #import "Wugong_LuoHanFuMoGong.h"
 #import "Wugong_SongFengJianFa.h"
@@ -61,7 +62,7 @@
     //[wugong addObject:fumogong];
     Wugong_LiuMaiShenJian* liumai = [Wugong_LiuMaiShenJian node];
     //[wugong addObject:liumai];
-
+    Wugong_BaHuangLiuHeWeiWoDuZunGong* bahuang = [Wugong_BaHuangLiuHeWeiWoDuZunGong node];
     
     Invader* invader = [[Invader alloc]init];
     invader.attack=20;
@@ -99,6 +100,7 @@
     
     [invader3 learnWugong:jianfa];
     [invader3 learnWugong:fumogong];
+    [invader3 learnWugong:bahuang];
     
     Invader* invader4 = [[Invader alloc]init];
     invader4.attack=20;
