@@ -17,6 +17,8 @@
 #import "Wugong_LiuMaiShenJian.h"
 #import "Wugong_LuoHanFuMoGong.h"
 #import "Wugong_SongFengJianFa.h"
+#import "Wugong_ChunYangWuJiGong.h"
+#import "Wugong_HaMaGong.h"
 @implementation AppDelegate
 
 // 
@@ -63,6 +65,9 @@
     Wugong_LiuMaiShenJian* liumai = [Wugong_LiuMaiShenJian node];
     //[wugong addObject:liumai];
     Wugong_BaHuangLiuHeWeiWoDuZunGong* bahuang = [Wugong_BaHuangLiuHeWeiWoDuZunGong node];
+    Wugong_HaMaGong* hama = [Wugong_HaMaGong node];
+    Wugong_ChunYangWuJiGong* chunyang = [Wugong_ChunYangWuJiGong node];
+    
     
     Invader* invader = [[Invader alloc]init];
     invader.attack=20;
@@ -73,15 +78,16 @@
     
     [invader learnWugong:liumai];
     [invader learnWugong:fumogong];
-    invader.mainNeiGong = fumogong;
-    
+    [invader learnWugong:chunyang];
+    [invader learnWugong:hama];
+    invader.mainNeiGong = hama;
     //Battle
     BattleField* sc = [BattleField scene];
     [sc addEntity:invader ForTeam:@"red" AtPos:CGPointMake(1, 1)];
     
     Invader* invader2 = [[Invader alloc]init];
     invader2.attack=20;
-    invader2.armor = 15;
+    invader2.armor = 150;
     invader2.maxacume = 4800;
     invader2.agile=61;
     invader2.maxhealth=2100;
@@ -92,7 +98,7 @@
     
     Invader* invader3 = [[Invader alloc]init];
     invader3.attack=20;
-    invader3.armor = 15;
+    invader3.armor = 150;
     invader3.maxacume = 4800;
     invader3.agile=61;
     invader3.maxhealth=2100;

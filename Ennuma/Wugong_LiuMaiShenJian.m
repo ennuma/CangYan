@@ -11,10 +11,11 @@
 
 @implementation Wugong_LiuMaiShenJian
 
--(void)initPoisionAndBleed
+-(void)initPoisionAndBleedAndFengXue
 {
     _fengXueIndex=10;
     _bleedIndex=10;
+    _poision=0;
 }
 -(void)initMultiHitAndCriticalHit
 {

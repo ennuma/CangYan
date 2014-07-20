@@ -25,22 +25,10 @@
 @implementation Wugong_BaHuangLiuHeWeiWoDuZunGong
 
 
--(void)initPoisionAndBleed
-{
-    
-}
--(void)initRangeAndRangeType
-{
-    
-}
 -(void)initWugongDamageForEachLevelAndQigongValue
 {
     _neigongHuTi = 1050;
     _neigongJiaLi = 1300;
-}
--(void)initMultiHitAndCriticalHit
-{
-    
 }
 -(void)initWugongNameAndLevelAndAcumeCost
 {
@@ -91,7 +79,7 @@
     }else{
         damageToSpdHurt *= 0.25;
     }
-    CCLOG(@"spdhurt: %i",damageToSpdHurt);
+    //CCLOG(@"spdhurt: %i",damageToSpdHurt);
     return damageToSpdHurt;
 }
 //-(int)effectLifeHurtAfterCalculate:(int)hurt WithInvader:(NSObject*)invader WithWugong:(Wugong *)m_wugong{

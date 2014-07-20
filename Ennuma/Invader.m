@@ -40,6 +40,9 @@
 @synthesize bleed = _bleed;
 @synthesize fengXue = _fengXue;
 @synthesize liuXue = _liuXue;
+@synthesize attackHasPoisionIndex = _attackHasPoisionIndex;
+@synthesize antiPoisionIndex = _antiPoisionIndex;
+@synthesize willingToFight=_willingToFight;
 -(id)init
 {
     self = [super init];
@@ -81,7 +84,8 @@
     _stamina = 100;
     _poision = 0;
     _bleed = 0;
-    _angryRate = 80;
+    _willingToFight = 110;
+    _angryRate = 0;
     _fengXue = 0;
     
     [self calculateNewJiqiSpeed];
@@ -318,27 +322,62 @@
 
     for (Invader* inv in invaders) {
         inv.isDefending = TRUE;
-        [inv defendInvader:self WhoUseWuGong:m_wugong];
+        //neigong jia li
+        int ang=0;
+        Wugong* awugong=nil;
+        Invader* pid = self;
+        for (Wugong* pidWugong in pid.wugongArr) {
+            if ([pidWugong isNeiGong]) {
+                if ([pid triggerSpecialEffectWithProbility:10]) {
+                    int damage = pidWugong.neigongJiaLi;
+                    if (damage > ang) {
+                        ang = damage;
+                        awugong = pidWugong;
+                        //TODO 内功护体
+                    }
+                }
+            }
+        }
+        
+        if (awugong) {
+            NSString* words = [NSString stringWithFormat:@"%@%@",[awugong getWugongName],@"\n加力!" ];
+            [pid say:words WithColor:[CCColor colorWithCcColor3b:ccWHITE]];
+        }
+        
+        [inv defendInvader:self WhoUseWuGong:m_wugong WithAwugong:awugong WithAng:ang];
         while (inv.isDefending) {
             //do nothing, wait
         }
+        
+        //CUSTOMIZE ANGRY RATE TODO
+        _angryRate -= 40;
+        //////////////////////
     }
     //acume cost calculated here
     //since acume affect hurt damage, it need to be calculated after attack
-    _acume=MAX(0,_acume-(m_wugong.level+1)/2*m_wugong.acumeCost);
+    int totalAcumeCost =(m_wugong.level+1)/2*m_wugong.acumeCost;
+    int jiqiRestore = 0;
+    for (Wugong* wg in self.wugongArr) {
+        totalAcumeCost = [wg effectReduceAcumeCost:totalAcumeCost WithInvader:self WithWugong:m_wugong];
+        jiqiRestore = [wg effectRestoreJiQi:jiqiRestore AfterAttackWithInvader:self WithWugong:m_wugong];
+    }
+    _amountofjiqi+=jiqiRestore;
+    _acume=MAX(0,_acume-totalAcumeCost);
+    //CCLOG(@"jiqi: %f",_amountofjiqi);
 }
 
--(void)defendInvader:(Invader *)invader WhoUseWuGong:(Wugong *)m_wugong
+-(void)defendInvader:(Invader *)invader WhoUseWuGong:(Wugong *)m_wugong WithAwugong:(Wugong*)awugong WithAng:(int)ang
 {
     //do things success
     //CCLOG(@"im defending");TODO change ang before defend
-    NSDictionary* hurtDic = [invader calculateWugongHurtLifeWithWugong:m_wugong WithInvader:self];
+    NSDictionary* hurtDic = [invader calculateWugongHurtLifeWithWugong:m_wugong WithInvader:self WithAttakNg:ang WithAWugong:awugong];
     
     int hurt = [[hurtDic objectForKey:@"hurt"]intValue];
     int spdhurt = [[hurtDic objectForKey:@"spdhurt"]intValue];
     int bleedhurt = [[hurtDic objectForKey:@"bleedhurt"]intValue];
     int fengxuehurt = [[hurtDic objectForKey:@"fengxuehurt"]intValue];
     int liuxuehurt = [[hurtDic objectForKey:@"liuxuehurt"]intValue];
+    int poisionhurt = [[hurtDic objectForKey:@"poisionhurt"]intValue];
     //CCLOG(@"%i\n%i",hurt,spdhurt);
     
     //int spdhurt = [invader calculateWugongHurtJiQiWithHurt:hurt WithInvader:self];
@@ -358,10 +397,20 @@
 
     _fengXue = MIN(_fengXue+fengxuehurt, 50);
     _liuXue = MIN(_liuXue + liuxuehurt, 100);
-    
+    _poision = MIN(_poision+poisionhurt, 100);
     if (self.health<=0) {
         self.isDead=true;
     }
+    //CUSTOMIZE HERE ANGRY RATE//////////// TODO
+    int incAngry = 20+hurt/5;
+    
+    for (Wugong* wg in self.wugongArr) {
+        incAngry = [wg effectAngryRateAfterBeingAttacked:incAngry WithInvader:self WithWugong:m_wugong];
+    }
+    CCLOG(@"angry: %i", incAngry);
+    _angryRate+=incAngry;
+    ///////////////////////////////////////
+    
     self.isDefending = false;
 }
 
@@ -856,11 +905,11 @@
     float poisionbleedbuff = [self JiQiBuffpoision:_poision AndBleed:_bleed];
     float staminabuff = [self JiQiBuffStamina:_stamina];
 
-    int newspeed = (int)((acumebuff + agilebuff + poisionbleedbuff + staminabuff + basepoint)*_angryRate/100);
+    int newspeed = (int)((acumebuff + agilebuff + poisionbleedbuff + staminabuff + basepoint)*_willingToFight/100);
     //CCLOG(@"%f",_jiqispeed);
-    //if (_angryRate>=100) { //战意》100 集气翻倍
-    //    newspeed *=2;
-    //}
+    if (_angryRate>=100) { //战意》100 集气翻倍
+        newspeed *=2;
+    }
     _jiqispeed = newspeed;
 }
 -(float)acumeJiQiBuff:(int)acume :(int) maxacume{
@@ -957,7 +1006,7 @@
 
 }
 
--(NSMutableDictionary*)calculateWugongHurtLifeWithWugong:(Wugong*)wu WithInvader:(Invader*) beingAttacked
+-(NSMutableDictionary*)calculateWugongHurtLifeWithWugong:(Wugong*)wu WithInvader:(Invader*) beingAttacked WithAttakNg:(int) ang WithAWugong:(Wugong*) awugong
 {
     //武功伤害生命
     //enemyid 敌人战斗id，
@@ -1023,31 +1072,13 @@
         }
     }
     
-    //neigong jia li
-    int ang=0;
-    Wugong* awugong=nil;
-    for (Wugong* pidWugong in pid.wugongArr) {
-        if ([pidWugong isNeiGong]) {            
-            if ([pid triggerSpecialEffectWithProbility:10]) {
-                int damage = pidWugong.neigongJiaLi;
-                if (damage > ang) {
-                    ang = damage;
-                    awugong = pidWugong;
-                    //TODO 内功护体
-                }
-            }
-        }
-    }
+
     
     if (dwugong) {
         NSString* words = [NSString stringWithFormat:@"%@%@",[dwugong getWugongName],@"\n护体!" ];
         [eid say:words WithColor:[CCColor colorWithCcColor3b:ccWHITE]];
     }
     
-    if (awugong) {
-        NSString* words = [NSString stringWithFormat:@"%@%@",[awugong getWugongName],@"\n加力!" ];
-        [pid say:words WithColor:[CCColor colorWithCcColor3b:ccWHITE]];
-    }
     
     float wugongDamage =((float)[[wu.damage objectAtIndex:10]integerValue]);
     for (Wugong* wg in pid.wugongArr) {
@@ -1160,7 +1191,6 @@
                     
                     --WAR.Person[emenyid][CC.TXDH]=math.fmod(107,10)+85
     **/
-
     if (awugong) {
         //内功加力时触发所有武功特效
         for (Wugong* wg in pid.wugongArr) {
@@ -1192,8 +1222,16 @@
                 damageConvertToSpdHurt = [wg effectDefendDamageConvertToSpdHurt:damageConvertToSpdHurt WithInvader:self WithWugong:wu];
             }
         }
-
         spdhurt += damageConvertToSpdHurt;
+    }
+    
+    if (awugong) {
+            //内功加力时触发所有武功特效
+        for (Wugong* wg in pid.wugongArr) {
+            if ([wg isNeiGong]) {
+                spdhurt = [wg effectNeiGongJiaLiSpdHurt:spdhurt WithInvader:self WithWugong:wu];
+            }
+        }
     }
     
     [hurtDic setValue:[NSNumber numberWithInt:spdhurt] forKey:@"spdhurt"];
@@ -1206,7 +1244,27 @@
 
     int liuxuehurt = MAX(hurt/120.0,0.5)*wu.bleedIndex;
     [hurtDic setValue:[NSNumber numberWithInt:liuxuehurt] forKey:@"liuxuehurt"];
+    
+    int poisionnum = _attackHasPoisionIndex*5 + wu.poision*level;
+    if (10*eid.antiPoisionIndex<poisionnum && dng==0) {
+        poisionnum = poisionnum/10 - eid.antiPoisionIndex - eid.acume/150;
+        if (poisionnum<0) {
+            poisionnum = 0;
+        }
+        poisionnum = poisionnum/2 + CCRANDOM_0_1()*poisionnum/2;
+    }
+    
+    if (awugong) {
+        //内功加力时触发所有武功特效
+        for (Wugong* wg in pid.wugongArr) {
+            if ([wg isNeiGong]) {
+                poisionnum = [wg effectNeiGongJiaLiPoisionHurt:poisionnum WithInvader:self WithWugong:wu];
+            }
+        }
+    }
+    [hurtDic setValue:[NSNumber numberWithInt:poisionnum] forKey:@"poisionhurt"];
 
+    
     //calculate poision and other stuff TODO
     return hurtDic;
 }
@@ -1224,6 +1282,11 @@
         _health -= hurt;
     }
     _amountofjiqi += jiqi;
+    for (Wugong* wg in wugong) {
+        if ([wg isNeiGong]) {
+            [wg effectInUpdateJiQi:self];
+        }
+    }
 }
 
 @end

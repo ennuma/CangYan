@@ -26,6 +26,7 @@
     
     int _multiHitBuff;
     int _criticalHitBuff;
+    int _poision;
 }
 
 @property int range;
@@ -40,9 +41,10 @@
 @property int neigongHuTi;
 @property int multiHitBuff;
 @property int criticalHitBuff;
+@property int poision;
 
 -(void)initWugongNameAndLevelAndAcumeCost;
--(void)initPoisionAndBleed;
+-(void)initPoisionAndBleedAndFengXue;
 -(void)initRangeAndRangeType;
 -(void)initWugongDamageForEachLevelAndQigongValue;
 -(void)initMultiHitAndCriticalHit;
@@ -62,5 +64,9 @@
 -(int)effectWugongDamage:(int)wugongDamage WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(int)effectLifeHurtAfterCalculate:(int)hurt WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(int)effectDefendDamageConvertToSpdHurt:(int)damageToSpdHurt WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
-
+-(int)effectReduceAcumeCost:(int)acumecost WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
+-(int)effectRestoreJiQi:(int)jiqi AfterAttackWithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
+-(int)effectNeiGongJiaLiSpdHurt:(int)attackNg WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
+-(int)effectNeiGongJiaLiPoisionHurt:(int)poisionnum WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
+-(int)effectAngryRateAfterBeingAttacked:(int)angryRate WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 @end

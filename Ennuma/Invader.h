@@ -58,6 +58,11 @@
     int _wuxueKnowledge;
     
     Wugong* _mainNeiGong;
+    
+    int _attackHasPoisionIndex;
+    int _antiPoisionIndex;
+    
+    int _willingToFight;
 }
 
 @property int strength;
@@ -88,11 +93,15 @@
 @property int fengXue;//封穴
 @property int liuXue;
 
+@property int attackHasPoisionIndex;
+@property int antiPoisionIndex;
+
 @property int angryRate;
 @property int talent;
 @property int wuxueKnowledge;
 @property Wugong* mainNeiGong;
 @property NSMutableArray* wugongArr;
+@property int willingToFight;
 -(void)initForBattleWithParent:(CCNode*)parent;
 -(void)initWuGong;
 -(void)initIcon;
@@ -103,7 +112,7 @@
 -(void)endOfAction;
 -(void)initPosition:(CGPoint)pos;
 -(void)attackInvaders:(NSMutableArray*)invaders WithWuGong:(Wugong*) wugong;
--(void)defendInvader:(Invader*) invader WhoUseWuGong:(Wugong*) wugong;
+-(void)defendInvader:(Invader *)invader WhoUseWuGong:(Wugong *)m_wugong WithAwugong:(Wugong*)awugong WithAng:(int)ang;
 -(void)updateJiQi;
 -(void)learnWugong:(Wugong*)m_wugong;
 @end

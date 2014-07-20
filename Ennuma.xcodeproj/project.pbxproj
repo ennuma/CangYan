@@ -254,6 +254,8 @@
 		84C36024197AD58C00331A2B /* Wugong_LuoHanFuMoGong.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C36023197AD58C00331A2B /* Wugong_LuoHanFuMoGong.m */; };
 		84C36027197B34FC00331A2B /* Wugong_LiuMaiShenJian.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C36026197B34FC00331A2B /* Wugong_LiuMaiShenJian.m */; };
 		84C3602A197B87A100331A2B /* Wugong_BaHuangLiuHeWeiWoDuZunGong.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C36029197B87A100331A2B /* Wugong_BaHuangLiuHeWeiWoDuZunGong.m */; };
+		84C3602D197B9CFD00331A2B /* Wugong_ChunYangWuJiGong.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C3602C197B9CFD00331A2B /* Wugong_ChunYangWuJiGong.m */; };
+		84C36030197C14AE00331A2B /* Wugong_HaMaGong.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C3602F197C14AE00331A2B /* Wugong_HaMaGong.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -745,6 +747,10 @@
 		84C36026197B34FC00331A2B /* Wugong_LiuMaiShenJian.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_LiuMaiShenJian.m; sourceTree = "<group>"; };
 		84C36028197B87A100331A2B /* Wugong_BaHuangLiuHeWeiWoDuZunGong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_BaHuangLiuHeWeiWoDuZunGong.h; sourceTree = "<group>"; };
 		84C36029197B87A100331A2B /* Wugong_BaHuangLiuHeWeiWoDuZunGong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_BaHuangLiuHeWeiWoDuZunGong.m; sourceTree = "<group>"; };
+		84C3602B197B9CFD00331A2B /* Wugong_ChunYangWuJiGong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_ChunYangWuJiGong.h; sourceTree = "<group>"; };
+		84C3602C197B9CFD00331A2B /* Wugong_ChunYangWuJiGong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_ChunYangWuJiGong.m; sourceTree = "<group>"; };
+		84C3602E197C14AE00331A2B /* Wugong_HaMaGong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_HaMaGong.h; sourceTree = "<group>"; };
+		84C3602F197C14AE00331A2B /* Wugong_HaMaGong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_HaMaGong.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1643,6 +1649,10 @@
 				84C36023197AD58C00331A2B /* Wugong_LuoHanFuMoGong.m */,
 				84C36028197B87A100331A2B /* Wugong_BaHuangLiuHeWeiWoDuZunGong.h */,
 				84C36029197B87A100331A2B /* Wugong_BaHuangLiuHeWeiWoDuZunGong.m */,
+				84C3602B197B9CFD00331A2B /* Wugong_ChunYangWuJiGong.h */,
+				84C3602C197B9CFD00331A2B /* Wugong_ChunYangWuJiGong.m */,
+				84C3602E197C14AE00331A2B /* Wugong_HaMaGong.h */,
+				84C3602F197C14AE00331A2B /* Wugong_HaMaGong.m */,
 				840D11231974620700B19861 /* Wugong.h */,
 				840D11241974620700B19861 /* Wugong.m */,
 				8429176D1967977F00D691D3 /* Invader.h */,
@@ -1838,6 +1848,7 @@
 				84350318195AFA0300503923 /* CCTexturePVR.m in Sources */,
 				843503F9195AFA0400503923 /* CCBReader.m in Sources */,
 				84350398195AFA0400503923 /* ALBuffer.m in Sources */,
+				84C36030197C14AE00331A2B /* Wugong_HaMaGong.m in Sources */,
 				8435039E195AFA0400503923 /* ALChannelSource.m in Sources */,
 				843503C1195AFA0400503923 /* IOSVersion.m in Sources */,
 				843503A7195AFA0400503923 /* ALListener.m in Sources */,
@@ -1850,6 +1861,7 @@
 				849655391966B663000C38AA /* HuaShanPai.m in Sources */,
 				84350274195AFA0100503923 /* CCCache.m in Sources */,
 				843504C1195C5C9F00503923 /* ComponentSoldierCache.m in Sources */,
+				84C3602D197B9CFD00331A2B /* Wugong_ChunYangWuJiGong.m in Sources */,
 				843503CD195AFA0400503923 /* OALAudioFile.m in Sources */,
 				843502A4195AFA0200503923 /* CCDrawNode.m in Sources */,
 				8435038F195AFA0400503923 /* OALAudioTracks.m in Sources */,

@@ -20,23 +20,13 @@
 
 @implementation Wugong_LuoHanFuMoGong
 
--(void)initPoisionAndBleed
-{
-    
-}
--(void)initRangeAndRangeType
-{
-    
-}
+
 -(void)initWugongDamageForEachLevelAndQigongValue
 {
     _neigongHuTi = 875;
     _neigongJiaLi = 900;
 }
--(void)initMultiHitAndCriticalHit
-{
-    
-}
+
 -(void)initWugongNameAndLevelAndAcumeCost
 {
     _wugongName = @"罗汉伏魔功";
@@ -66,7 +56,10 @@
     NSAssert([invader isKindOfClass:[Invader class] ], @"nsobj is not invader");
     Invader* inv = (Invader*)invader;
     if ([inv.mainNeiGong isWugong:self.wugongName]) {
-        inv.bleed-=1;
+        inv.liuXue-=1;
+        if(inv.liuXue<0){
+            inv.liuXue = 0;
+        }
     }
 }
 
