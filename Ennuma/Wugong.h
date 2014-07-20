@@ -58,7 +58,7 @@
 //effects
 -(void)effectAfterAction:(NSObject*)invader;
 -(void)effectInUpdateJiQi:(NSObject*)invader;
--(int)effectNeiGongJiaLi:(int)attackNg WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
+-(int)effectNeiGongJiaLiHurt:(int)attackNg WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(int)effectWugongDamage:(int)wugongDamage WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(int)effectLifeHurtAfterCalculate:(int)hurt WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(int)effectDefendDamageConvertToSpdHurt:(int)damageToSpdHurt WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;

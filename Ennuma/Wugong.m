@@ -131,7 +131,7 @@
     
 }
 
--(int)effectNeiGongJiaLi:(int)attackNg WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong
+-(int)effectNeiGongJiaLiHurt:(int)attackNg WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong
 {
     return attackNg;
 }

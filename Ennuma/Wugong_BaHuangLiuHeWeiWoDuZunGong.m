@@ -54,7 +54,7 @@
 }
 
 
--(int)effectNeiGongJiaLi:(int)hurt WithInvader:(NSObject*)invader WithWugong:(Wugong *)m_wugong
+-(int)effectNeiGongJiaLiHurt:(int)hurt WithInvader:(NSObject*)invader WithWugong:(Wugong *)m_wugong
 {
     NSAssert([invader isKindOfClass:[Invader class] ], @"nsobj is not invader");
     Invader* inv = (Invader*)invader;

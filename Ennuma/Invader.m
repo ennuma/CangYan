@@ -1165,7 +1165,7 @@
         //内功加力时触发所有武功特效
         for (Wugong* wg in pid.wugongArr) {
             if ([wg isNeiGong]) {
-                hurt = [wg effectNeiGongJiaLi:hurt WithInvader:self WithWugong:wu];
+                hurt = [wg effectNeiGongJiaLiHurt:hurt WithInvader:self WithWugong:wu];
             }
         }
     }
@@ -1189,7 +1189,7 @@
         
         for (Wugong* wg in eid.wugongArr) {
             if ([wg isNeiGong]) {
-                damageConvertToSpdHurt = [wg effectDamageConvertToSpdHurt:damageConvertToSpdHurt WithInvader:self WithWugong:wu];
+                damageConvertToSpdHurt = [wg effectDefendDamageConvertToSpdHurt:damageConvertToSpdHurt WithInvader:self WithWugong:wu];
             }
         }
 
