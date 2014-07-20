@@ -44,6 +44,8 @@
     int _maxhealth;
     int _maxacume;
     int _stamina;
+    int _fengXue;
+    int _liuXue;
     //variables used for caculate movements
     NSMutableSet* reachable;
     NSMutableDictionary* reachableLookup;
@@ -83,6 +85,8 @@
 @property int stamina;
 @property int poision;
 @property int bleed;
+@property int fengXue;//封穴
+@property int liuXue;
 
 @property int angryRate;
 @property int talent;
@@ -100,4 +104,5 @@
 -(void)initPosition:(CGPoint)pos;
 -(void)attackInvaders:(NSMutableArray*)invaders WithWuGong:(Wugong*) wugong;
 -(void)defendInvader:(Invader*) invader WhoUseWuGong:(Wugong*) wugong;
+-(void)updateJiQi;
 @end

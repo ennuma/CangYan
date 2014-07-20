@@ -12,7 +12,7 @@
 @implementation Wugong_SongFengJianFa
 -(void)initPoisionAndBleed
 {
-    _poisionIndex=0;
+    _fengXueIndex=0;
     _bleedIndex=5;
 }
 -(void)initMultiHitAndCriticalHit

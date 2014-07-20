@@ -252,6 +252,7 @@
 		8496553E1966C93A000C38AA /* bg_menpai.png in Resources */ = {isa = PBXBuildFile; fileRef = 8496553D1966C93A000C38AA /* bg_menpai.png */; };
 		84C36021197AD54300331A2B /* Wugong_SongFengJianFa.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C36020197AD54300331A2B /* Wugong_SongFengJianFa.m */; };
 		84C36024197AD58C00331A2B /* Wugong_LuoHanFuMoGong.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C36023197AD58C00331A2B /* Wugong_LuoHanFuMoGong.m */; };
+		84C36027197B34FC00331A2B /* Wugong_LiuMaiShenJian.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C36026197B34FC00331A2B /* Wugong_LiuMaiShenJian.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -739,6 +740,8 @@
 		84C36020197AD54300331A2B /* Wugong_SongFengJianFa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_SongFengJianFa.m; sourceTree = "<group>"; };
 		84C36022197AD58C00331A2B /* Wugong_LuoHanFuMoGong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_LuoHanFuMoGong.h; sourceTree = "<group>"; };
 		84C36023197AD58C00331A2B /* Wugong_LuoHanFuMoGong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_LuoHanFuMoGong.m; sourceTree = "<group>"; };
+		84C36025197B34FC00331A2B /* Wugong_LiuMaiShenJian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_LiuMaiShenJian.h; sourceTree = "<group>"; };
+		84C36026197B34FC00331A2B /* Wugong_LiuMaiShenJian.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_LiuMaiShenJian.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1629,6 +1632,8 @@
 				84675AAA1962EFD10093F2EF /* WuLinScene.m */,
 				849655341966A9C9000C38AA /* MenPaiScene.h */,
 				849655351966A9C9000C38AA /* MenPaiScene.m */,
+				84C36025197B34FC00331A2B /* Wugong_LiuMaiShenJian.h */,
+				84C36026197B34FC00331A2B /* Wugong_LiuMaiShenJian.m */,
 				84C3601F197AD54300331A2B /* Wugong_SongFengJianFa.h */,
 				84C36020197AD54300331A2B /* Wugong_SongFengJianFa.m */,
 				84C36022197AD58C00331A2B /* Wugong_LuoHanFuMoGong.h */,
@@ -1844,6 +1849,7 @@
 				843502A4195AFA0200503923 /* CCDrawNode.m in Sources */,
 				8435038F195AFA0400503923 /* OALAudioTracks.m in Sources */,
 				8435025B195AFA0000503923 /* CCEffectColor.m in Sources */,
+				84C36027197B34FC00331A2B /* Wugong_LiuMaiShenJian.m in Sources */,
 				84350255195AFA0000503923 /* CCEffect.m in Sources */,
 				843503F3195AFA0400503923 /* CCBAnimationManager.m in Sources */,
 				84350361195AFA0300503923 /* CCVertex.m in Sources */,

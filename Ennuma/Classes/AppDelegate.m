@@ -55,7 +55,7 @@
     Invader* invader = [[Invader alloc]init];
     invader.attack=20;
     invader.armor = 15;
-    invader.maxacume = 4800;
+    invader.maxacume = 6000;
     invader.agile = 380;
     invader.maxhealth = 7000;
     

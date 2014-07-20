@@ -175,7 +175,7 @@ static bool isActing = false;
 -(void) updateJiQi: (Invader*) obj
 {
     
-    obj.amountofjiqi+=obj.jiqispeed;
+    [obj updateJiQi];
     
     float percentage = obj.amountofjiqi/maxJiQi;
     float newx = bar.contentSize.width*percentage + bar.position.x - bar.contentSize.width/2;
@@ -194,6 +194,8 @@ static bool isActing = false;
         //CCLOG(@"action");
         //Action Begins Here
     }
+    
+    
     
 }
 -(void)notifyJiQiChangedForInvader:(id)invader

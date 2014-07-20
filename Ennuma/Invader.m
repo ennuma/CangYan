@@ -38,6 +38,8 @@
 @synthesize wugongArr = wugong;
 @synthesize poision = _poision;
 @synthesize bleed = _bleed;
+@synthesize fengXue = _fengXue;
+@synthesize liuXue = _liuXue;
 -(id)init
 {
     self = [super init];
@@ -60,10 +62,12 @@
 //TODO
 -(void)initWuGong
 {
-    Wugong_SongFengJianFa* jianfa = [Wugong_SongFengJianFa node];
-    [wugong addObject:jianfa];
+    //Wugong_SongFengJianFa* jianfa = [Wugong_SongFengJianFa node];
+    //[wugong addObject:jianfa];
     Wugong_LuoHanFuMoGong* fumogong =[Wugong_LuoHanFuMoGong node];
     [wugong addObject:fumogong];
+    Wugong_LiuMaiShenJian* liumai = [Wugong_LiuMaiShenJian node];
+    [wugong addObject:liumai];
 }
 -(void)initForBattleWithParent:(CCNode *)parent
 {
@@ -74,6 +78,7 @@
     _poision = 0;
     _bleed = 0;
     _angryRate = 80;
+    _fengXue = 0;
     
     [self calculateNewJiqiSpeed];
     //variable init
@@ -112,6 +117,10 @@
     CCLabelTTF* bleed = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"bleed: %i",_bleed] fontName:@"Verdana-Bold" fontSize:18.0f];
     [_state addChild:bleed z:0 name:@"bleed"];
     bleed.position = CGPointMake(_state.contentSize.width/2, poision.position.y - 64);
+    
+    CCLabelTTF* fengXue = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"fengXue: %i",_bleed] fontName:@"Verdana-Bold" fontSize:18.0f];
+    [_state addChild:fengXue z:0 name:@"fengXue"];
+    fengXue.position = CGPointMake(_state.contentSize.width/2, bleed.position.y - 64);
     
     _state.visible=NO;
     
@@ -172,6 +181,19 @@
     _state.visible = NO;
     //[self addChild:_smallIcon];
 }
+-(void)updateState
+{
+    CCLabelTTF* healthbar = (CCLabelTTF*)[self.state getChildByName:@"health" recursively:NO];
+    [healthbar setString: [NSString stringWithFormat:@"health: %i", self.health]];
+    CCLabelTTF* acume = (CCLabelTTF*)[self.state getChildByName:@"acume" recursively:NO];
+    [acume setString: [NSString stringWithFormat:@"acume: %i", self.acume]];
+    CCLabelTTF* poision = (CCLabelTTF*)[self.state getChildByName:@"poision" recursively:NO];
+    [poision setString: [NSString stringWithFormat:@"poision: %i", self.poision]];
+    CCLabelTTF* bleed = (CCLabelTTF*)[self.state getChildByName:@"bleed" recursively:NO];
+    [bleed setString: [NSString stringWithFormat:@"bleed: %i", self.bleed]];
+    CCLabelTTF* fengxue = (CCLabelTTF*)[self.state getChildByName:@"fengXue" recursively:NO];
+    [fengxue setString: [NSString stringWithFormat:@"fengXue: %i", self.fengXue]];
+}
 -(void)prepareForAction
 {
     int movenum = [self getnewmove]- ((float)_poision)/50.0 - ((float)_bleed)/60.0 + ((float)_health)/70.0 -1.0;
@@ -183,8 +205,9 @@
     //CCLOG(@"%@",reachable);
     [self renderReachable];
     
-    //set statehud visible to yes
+    //set statehud visible to yes and update
     _state.visible = YES;
+    [self updateState];
 }
 -(bool)enemyAlive
 {
@@ -222,7 +245,7 @@
         CGPoint pos = [val CGPointValue];
         [self autoAttack:pos WithWugong:choosedWugong];
         //minus acume according to acumecost
-        _acume-=choosedWugong.acumeCost;
+        //_acume-=choosedWugong.acumeCost;
         CCLabelTTF* healthbar = (CCLabelTTF*)[self.state getChildByName:@"acume" recursively:NO];
         [healthbar setString: [NSString stringWithFormat:@"%i", _acume]];
         
@@ -281,6 +304,7 @@
 
 -(void)attackInvaders:(NSMutableArray *)invaders WithWuGong:(Wugong *)m_wugong
 {
+
     for (Invader* inv in invaders) {
         inv.isDefending = TRUE;
         [inv defendInvader:self WhoUseWuGong:m_wugong];
@@ -288,6 +312,9 @@
             //do nothing, wait
         }
     }
+    //acume cost calculated here
+    //since acume affect hurt damage, it need to be calculated after attack
+    _acume=MAX(0,_acume-(m_wugong.level+1)/2*m_wugong.acumeCost);
 }
 
 -(void)defendInvader:(Invader *)invader WhoUseWuGong:(Wugong *)m_wugong
@@ -298,19 +325,29 @@
     
     int hurt = [[hurtDic objectForKey:@"hurt"]intValue];
     int spdhurt = [[hurtDic objectForKey:@"spdhurt"]intValue];
-    
+    int bleedhurt = [[hurtDic objectForKey:@"bleedhurt"]intValue];
+    int fengxuehurt = [[hurtDic objectForKey:@"fengxuehurt"]intValue];
+    int liuxuehurt = [[hurtDic objectForKey:@"liuxuehurt"]intValue];
     //CCLOG(@"%i\n%i",hurt,spdhurt);
     
     //int spdhurt = [invader calculateWugongHurtJiQiWithHurt:hurt WithInvader:self];
     [self say:[NSString stringWithFormat:@"-%i",hurt] WithColor: [CCColor colorWithCcColor3b:ccRED]];
+    
     self.health -= hurt;
     CCLabelTTF* healthbar = (CCLabelTTF*)[self.state getChildByName:@"health" recursively:NO];
     [healthbar setString: [NSString stringWithFormat:@"%i", self.health]];
     
-    //shajiqi
-    _amountofjiqi -= spdhurt;
-    
+    //shajiqi TODO set minimum and maximum
+    _amountofjiqi = MAX(_amountofjiqi-spdhurt, -500);
     [((CCScene*)_map.parent) notifyJiQiChangedForInvader:self];
+    
+    _bleed = MIN(_bleed+bleedhurt, 100);
+    CCLabelTTF* bleed = (CCLabelTTF*)[self.state getChildByName:@"bleed" recursively:NO];
+    [bleed setString: [NSString stringWithFormat:@"%i", _bleed]];
+
+    _fengXue = MIN(_fengXue+fengxuehurt, 50);
+    _liuXue = MIN(_liuXue + liuxuehurt, 100);
+    
     if (self.health<=0) {
         self.isDead=true;
     }
@@ -1031,9 +1068,9 @@
         hurt=hurt-myrnd(JY.Thing[JY.Person[eid]["防具"]]["加防御力"]);
     end
 	**/
-    CCLOG(@"0:%f",hurt);
+    //CCLOG(@"0:%f",hurt);
 	hurt=hurt-def/8;
-	CCLOG(@"1:%f",hurt);
+	//CCLOG(@"1:%f",hurt);
     hurt=hurt-dng/30+pid.stamina/5-eid.stamina/5+eid.bleed/3-pid.bleed/3+eid.poision/2-pid.poision/2;
 
     
@@ -1052,7 +1089,7 @@
     if (hurt<0) {
         hurt = 1;
     }
-    CCLOG(@"2:%f",hurt);
+    //CCLOG(@"2:%f",hurt);
     /**poision
                         --敌人中毒点数
                                         local poisonnum=math.modf(level*JY.Wugong[wugong]["敌人中毒点数"]+5*JY.Person[pid]["攻击带毒"]);
@@ -1091,7 +1128,32 @@
     spdhurt += hurt*0.7;
     [hurtDic setValue:[NSNumber numberWithInt:spdhurt] forKey:@"spdhurt"];
     
+    int bleedhurt = hurt/8;
+    [hurtDic setValue:[NSNumber numberWithInt:bleedhurt] forKey:@"bleedhurt"];
+    
+    int fengxuehurt = MAX(hurt/120.0,0.5)*wu.fengXueIndex;
+    [hurtDic setValue:[NSNumber numberWithInt:fengxuehurt] forKey:@"fengxuehurt"];
+
+    int liuxuehurt = MAX(hurt/120.0,0.5)*wu.bleedIndex;
+    [hurtDic setValue:[NSNumber numberWithInt:liuxuehurt] forKey:@"liuxuehurt"];
+
     //calculate poision and other stuff TODO
     return hurtDic;
 }
+-(void)updateJiQi
+{
+    [self calculateNewJiqiSpeed];
+    int jiqi = _jiqispeed;
+    if (_fengXue>0) {
+        _fengXue-=1;
+        jiqi = 0;
+    }
+    if (_liuXue>0) {
+        _liuXue-=1;
+        int hurt = CCRANDOM_0_1()*4*_bleed/100+1;
+        _health -= hurt;
+    }
+    _amountofjiqi += jiqi;
+}
+
 @end

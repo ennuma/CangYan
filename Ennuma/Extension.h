@@ -10,6 +10,7 @@
 #import "cocos2d.h"
 #import "Wugong_SongFengJianFa.h"
 #import "Wugong_LuoHanFuMoGong.h"
+#import "Wugong_LiuMaiShenJian.h"
 @interface Extension : NSObject
 {
     /**

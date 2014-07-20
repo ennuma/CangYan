@@ -12,7 +12,7 @@
 @implementation Wugong
 @synthesize range = _range;
 @synthesize damage = _damage;
-@synthesize poisionIndex = _poisionIndex;
+@synthesize fengXueIndex = _fengXueIndex;
 @synthesize bleedIndex = _bleedIndex;
 @synthesize level = _level;
 @synthesize rangeType = _rangeType;
@@ -74,7 +74,7 @@
 
 -(void)initPoisionAndBleed
 {
-    _poisionIndex = 0;
+    _fengXueIndex = 0;
     _bleedIndex = 0;
 }
 
