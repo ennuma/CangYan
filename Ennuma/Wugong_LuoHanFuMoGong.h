@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "Wugong.h"
+#import "Invader.h"
 @interface Wugong_LuoHanFuMoGong : Wugong {
     
 }

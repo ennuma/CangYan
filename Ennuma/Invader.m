@@ -64,10 +64,14 @@
 {
     //Wugong_SongFengJianFa* jianfa = [Wugong_SongFengJianFa node];
     //[wugong addObject:jianfa];
-    Wugong_LuoHanFuMoGong* fumogong =[Wugong_LuoHanFuMoGong node];
-    [wugong addObject:fumogong];
-    Wugong_LiuMaiShenJian* liumai = [Wugong_LiuMaiShenJian node];
-    [wugong addObject:liumai];
+    //Wugong_LuoHanFuMoGong* fumogong =[Wugong_LuoHanFuMoGong node];
+    //[wugong addObject:fumogong];
+    //Wugong_LiuMaiShenJian* liumai = [Wugong_LiuMaiShenJian node];
+    //[wugong addObject:liumai];
+}
+-(void)learnWugong:(Wugong*)m_wugong
+{
+    [wugong addObject:m_wugong];
 }
 -(void)initForBattleWithParent:(CCNode *)parent
 {
@@ -166,13 +170,20 @@
     
     //[self endOfAction];
 }
-
+-(void)effectAfterAction
+{
+    for (Wugong* myWugong in wugong) {
+        [myWugong effectAfterAction:self];
+    }
+}
 -(void)endOfAction
 {
     
     [self clearReachableRender];
     
     [self calculatePoisionAndBleed];
+    
+    [self effectAfterAction];
     //CCLOG(@"endofAct");
     [_smallIcon.parent schedule:@selector(startJiqi:) interval:0.02];
     //CCLOG(@"end of action");
@@ -320,7 +331,7 @@
 -(void)defendInvader:(Invader *)invader WhoUseWuGong:(Wugong *)m_wugong
 {
     //do things success
-    //CCLOG(@"im defending");
+    //CCLOG(@"im defending");TODO change ang before defend
     NSDictionary* hurtDic = [invader calculateWugongHurtLifeWithWugong:m_wugong WithInvader:self];
     
     int hurt = [[hurtDic objectForKey:@"hurt"]intValue];
@@ -956,7 +967,6 @@
     
     Invader* pid=self;
     Invader* eid=beingAttacked;
-	int dng=0;
     int level = wu.level;
     //--计算武学常识
     int mywuxue=_wuxueKnowledge;
@@ -995,7 +1005,10 @@
     if (level<=0){     //--防止出现左右互博时第一次攻击完毕，第二次攻击没有内力的情况。
 	    level=1;
     }
-	
+    
+    //neigong hu ti
+    int dng=0;
+    Wugong* dwugong=nil;
     for (Wugong* eidWugong in eid.wugongArr) {
         if ([eidWugong isNeiGong]) {
         
@@ -1003,15 +1016,39 @@
                 int damage = eidWugong.neigongHuTi;
                 if (damage > dng) {
                     dng = damage;
+                    dwugong = eidWugong;
                     //TODO 内功护体
-                    NSString* words = [NSString stringWithFormat:@"%@%@",[eidWugong getWugongName],@"\n护体!" ];
-                    [eid say:words WithColor:[CCColor colorWithCcColor3b:ccWHITE]];
                 }
             }
         }
     }
-
     
+    //neigong jia li
+    int ang=0;
+    Wugong* awugong=nil;
+    for (Wugong* pidWugong in pid.wugongArr) {
+        if ([pidWugong isNeiGong]) {            
+            if ([pid triggerSpecialEffectWithProbility:10]) {
+                int damage = pidWugong.neigongJiaLi;
+                if (damage > ang) {
+                    ang = damage;
+                    awugong = pidWugong;
+                    //TODO 内功护体
+                }
+            }
+        }
+    }
+    
+    if (dwugong) {
+        NSString* words = [NSString stringWithFormat:@"%@%@",[dwugong getWugongName],@"\n护体!" ];
+        [eid say:words WithColor:[CCColor colorWithCcColor3b:ccWHITE]];
+    }
+    
+    if (awugong) {
+        NSString* words = [NSString stringWithFormat:@"%@%@",[awugong getWugongName],@"\n加力!" ];
+        [pid say:words WithColor:[CCColor colorWithCcColor3b:ccWHITE]];
+    }
+
     float hurt = 0;
     if (level > 10) {
         hurt = ((float)[[wu.damage objectAtIndex:10]integerValue]) /3.0;
@@ -1117,6 +1154,9 @@
                     --WAR.Person[emenyid][CC.TXDH]=math.fmod(107,10)+85
     **/
 
+    if (awugong) {
+        hurt = [awugong effectNeiGongJiaLi:hurt WithInvader:self WithWugong:wu];
+    }
     
     [hurtDic setValue:[NSNumber numberWithInt:hurt] forKey:@"hurt"];
     

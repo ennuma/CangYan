@@ -12,6 +12,10 @@
 #import "HelloWorldScene.h"
 #import "WuLinScene.h"
 #import "BattleField.h"
+
+#import "Wugong_LiuMaiShenJian.h"
+#import "Wugong_LuoHanFuMoGong.h"
+#import "Wugong_SongFengJianFa.h"
 @implementation AppDelegate
 
 // 
@@ -51,6 +55,13 @@
 {
 	// This method should return the very first scene to be run when your app starts.
     //return [WuLinScene scene];
+    Wugong_SongFengJianFa* jianfa = [Wugong_SongFengJianFa node];
+    //[wugong addObject:jianfa];
+    Wugong_LuoHanFuMoGong* fumogong =[Wugong_LuoHanFuMoGong node];
+    //[wugong addObject:fumogong];
+    Wugong_LiuMaiShenJian* liumai = [Wugong_LiuMaiShenJian node];
+    //[wugong addObject:liumai];
+
     
     Invader* invader = [[Invader alloc]init];
     invader.attack=20;
@@ -58,6 +69,10 @@
     invader.maxacume = 6000;
     invader.agile = 380;
     invader.maxhealth = 7000;
+    
+    [invader learnWugong:liumai];
+    [invader learnWugong:fumogong];
+    invader.mainNeiGong = fumogong;
     
     //Battle
     BattleField* sc = [BattleField scene];
@@ -71,6 +86,9 @@
     invader2.maxhealth=2100;
     [sc addEntity:invader2 ForTeam:@"blue" AtPos:CGPointMake(19, 19)];
     
+    [invader2 learnWugong:jianfa];
+    [invader2 learnWugong:fumogong];
+    
     Invader* invader3 = [[Invader alloc]init];
     invader3.attack=20;
     invader3.armor = 15;
@@ -79,6 +97,9 @@
     invader3.maxhealth=2100;
     [sc addEntity:invader3 ForTeam:@"blue" AtPos:CGPointMake(19, 18)];
     
+    [invader3 learnWugong:jianfa];
+    [invader3 learnWugong:fumogong];
+    
     Invader* invader4 = [[Invader alloc]init];
     invader4.attack=20;
     invader4.armor = 15;
@@ -86,6 +107,9 @@
     invader4.agile=61;
     invader4.maxhealth=2100;
     [sc addEntity:invader4 ForTeam:@"blue" AtPos:CGPointMake(18, 18)];
+    
+    [invader4 learnWugong:jianfa];
+    [invader4 learnWugong:fumogong];
 
     [sc startBattle];
     

@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-#import "Wugong_SongFengJianFa.h"
-#import "Wugong_LuoHanFuMoGong.h"
-#import "Wugong_LiuMaiShenJian.h"
+//#import "Wugong_SongFengJianFa.h"
+//#import "Wugong_LuoHanFuMoGong.h"
+//#import "Wugong_LiuMaiShenJian.h"
+#import "Wugong.h"
 @interface Extension : NSObject
 {
     /**

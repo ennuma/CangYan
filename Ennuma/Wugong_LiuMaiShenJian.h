@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 #import "Wugong.h"
 @interface Wugong_LiuMaiShenJian : Wugong {
-    
+
 }
 
 @end

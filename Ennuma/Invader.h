@@ -105,4 +105,5 @@
 -(void)attackInvaders:(NSMutableArray*)invaders WithWuGong:(Wugong*) wugong;
 -(void)defendInvader:(Invader*) invader WhoUseWuGong:(Wugong*) wugong;
 -(void)updateJiQi;
+-(void)learnWugong:(Wugong*)m_wugong;
 @end
