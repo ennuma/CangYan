@@ -355,7 +355,11 @@
     //爆击效果
     if ([self triggerBaojiEffectWithProbility:baojiProb]) {//ZZY
         rate *= (100+m_wugong.criticalHitBuff)/100;
-        rate *= 1.5;
+        int baojiEffect = 1.5;
+        for (Wugong* wg in self.wugongArr) {
+            baojiEffect = [wg effectBaojiEffect:baojiEffect WithInvader:self WithWugong:m_wugong];
+        }
+        rate *= baojiEffect;
     }
     
     _isLianji = false;
@@ -427,6 +431,7 @@
     int fengxuehurt = [[hurtDic objectForKey:@"fengxuehurt"]intValue];
     int liuxuehurt = [[hurtDic objectForKey:@"liuxuehurt"]intValue];
     int poisionhurt = [[hurtDic objectForKey:@"poisionhurt"]intValue];
+    int angryhurt = [[hurtDic objectForKey:@"angryhurt"]intValue];
     //CCLOG(@"%i\n%i",hurt,spdhurt);
     _kuihuayixing = false;
     for (Wugong* wg in self.wugongArr) {
@@ -485,6 +490,7 @@
     }
     //CCLOG(@"angry: %i", incAngry);
     _angryRate+=incAngry;
+    _angryRate -= angryhurt;
     ///////////////////////////////////////
     if (awugong) {
         for (Wugong* wg in invader.wugongArr) {
@@ -1399,13 +1405,26 @@
     }
     
     [hurtDic setValue:[NSNumber numberWithInt:spdhurt] forKey:@"spdhurt"];
-    
+    //内伤
     int bleedhurt = hurt/8;
+    if (dwugong) {
+        //内功加力时触发所有武功特效
+        for (Wugong* wg in eid.wugongArr) {
+            if ([wg isNeiGong]) {
+                bleedhurt = [wg effectNeiGongHuTiBleedHurt:bleedhurt WithInvader:self WithWugong:wu];
+            }
+        }
+    }
     [hurtDic setValue:[NSNumber numberWithInt:bleedhurt] forKey:@"bleedhurt"];
-    
+    //封穴
     int fengxuehurt = MAX(hurt/120.0,0.5)*wu.fengXueIndex;
+    for (Wugong* wg in eid.wugongArr) {
+        if ([wg isNeiGong]) {
+            fengxuehurt = [wg effectDefendFengXue:fengxuehurt WithInvader:self WithWugong:wu];
+        }
+    }
     [hurtDic setValue:[NSNumber numberWithInt:fengxuehurt] forKey:@"fengxuehurt"];
-
+    //流血
     int liuxuehurt = MAX(hurt/120.0,0.5)*wu.bleedIndex;
     [hurtDic setValue:[NSNumber numberWithInt:liuxuehurt] forKey:@"liuxuehurt"];
     
@@ -1429,6 +1448,16 @@
     [hurtDic setValue:[NSNumber numberWithInt:poisionnum] forKey:@"poisionhurt"];
 
     
+    int angryhurt = 0;
+    if (awugong) {
+        //内功加力时触发所有武功特效
+        for (Wugong* wg in pid.wugongArr) {
+            if ([wg isNeiGong]) {
+                angryhurt = [wg effectNeiGongJiaLiAngryHurt:poisionnum WithInvader:self WithWugong:wu];
+            }
+        }
+    }
+    [hurtDic setValue:[NSNumber numberWithInt:angryhurt] forKey:@"angryhurt"];
     //calculate poision and other stuff TODO
     return hurtDic;
 }

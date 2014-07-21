@@ -141,6 +141,10 @@
 -(int)effectNeiGongJiaLiSpdHurt:(int)spdhurt WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong{
     return spdhurt;
 }
+-(int)effectNeiGongJiaLiPoisionHurt:(int)angry WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
+{
+    return angry;
+}
 -(int)effectLifeHurtAfterCalculate:(int)hurt WithAtk:(NSObject*)atk WithWugong:(Wugong*) m_wugong
 {
     return hurt;
@@ -164,7 +168,7 @@
 {
     return jiqi;
 }
--(int)effectNeiGongJiaLiPoisionHurt:(int)poisionnum WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong
+-(int)effectNeiGongJiaLiAngryHurt:(int)poisionnum WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong
 {
     return poisionnum;
 }
@@ -191,5 +195,17 @@
 -(void)effectSpecialEffectDefWithAtk:(NSObject*)atk WithDef:(NSObject*)def WithWugong:(Wugong*) m_wugong
 {
     
+}
+-(int)effectBaojiEffect:(int)effect WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong
+{
+    return effect;
+}
+-(int)effectDefendFengXue:(int)fengxue WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong
+{
+    return fengxue;
+}
+-(int)effectNeiGongHuTiBleedHurt:(int)bleed WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong
+{
+    return bleed;
 }
 @end

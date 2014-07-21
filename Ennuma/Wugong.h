@@ -67,14 +67,19 @@
 -(int)effectLifeHurtAfterCalculate:(int)hurt WithDef:(NSObject*)def WithWugong:(Wugong*) m_wugong;
 
 -(int)effectDefendDamageConvertToSpdHurt:(int)damageToSpdHurt WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
+-(int)effectDefendFengXue:(int)fengxue WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(int)effectReduceAcumeCost:(int)acumecost WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(int)effectRestoreJiQi:(int)jiqi AfterAttackWithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(int)effectNeiGongJiaLiSpdHurt:(int)spdhurt WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(int)effectNeiGongJiaLiPoisionHurt:(int)poisionnum WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
+-(int)effectNeiGongJiaLiAngryHurt:(int)angry WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(int)effectAngryRateAfterBeingAttacked:(int)angryRate WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(int)effectBaojiRate:(int)baojirate WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(float)effectWillingToFight:(float)willingToFight WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(float)effectStamina:(float)stamina WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(void)effectSpecialEffectAtkWithAtk:(NSObject*)atk WithDef:(NSObject*)def WithWugong:(Wugong*) m_wugong;
 -(void)effectSpecialEffectDefWithAtk:(NSObject*)atk WithDef:(NSObject*)def WithWugong:(Wugong*) m_wugong;
+-(int)effectBaojiEffect:(int)effect WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
+
+-(int)effectNeiGongHuTiBleedHurt:(int)bleed WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 @end
