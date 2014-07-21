@@ -51,6 +51,8 @@
     NSMutableDictionary* reachableLookup;
     
     BOOL _isDefending;
+    BOOL _isLianji;
+    
     BOOL _isDead;
     
     int _angryRate;
@@ -122,7 +124,7 @@
 -(void)endOfAction;
 -(void)initPosition:(CGPoint)pos;
 -(void)attackInvaders:(NSMutableArray*)invaders WithWuGong:(Wugong*) wugong;
--(void)defendInvader:(Invader *)invader WhoUseWuGong:(Wugong *)m_wugong WithAwugong:(Wugong*)awugong WithAng:(int)ang WithRate:(float)rate;
+-(void)defendInvader:(Invader *)invader WhoUseWuGong:(Wugong *)m_wugong WithAwugong:(Wugong*)awugong WithAng:(int)ang WithRate:(float)rate IsLianji:(bool)lianji;
 -(void)updateJiQi;
 -(void)learnWugong:(Wugong*)m_wugong;
 @end

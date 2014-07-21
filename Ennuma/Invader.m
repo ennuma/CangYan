@@ -352,19 +352,36 @@
     //CCLOG(@"%i",baojiProb);
     //爆击效果
     if ([self triggerBaojiEffectWithProbility:baojiProb]) {//ZZY
-        rate = 1.5;
+        rate *= (100+m_wugong.criticalHitBuff)/100;
+        rate *= 1.5;
     }
     
-    
+    _isLianji = false;
     for (Invader* inv in invaders) {
-        inv.isDefending = TRUE;
         //neigong jia li
-        
-        [inv defendInvader:self WhoUseWuGong:m_wugong WithAwugong:awugong WithAng:ang WithRate:rate];
-        while (inv.isDefending) {
-            //do nothing, wait
-        }
+        [inv defendInvader:self WhoUseWuGong:m_wugong WithAwugong:awugong WithAng:ang WithRate:rate IsLianji:false];
     }
+
+    //TODO LIANJI
+    /**
+    if ([self triggerLiansuoEffectWithProbility:100]) {
+        //insert effect
+        [self show:[NSString stringWithFormat:@"%@ 连击！！", m_wugong.wugongName]WithColor:[CCColor colorWithCcColor3b:ccRED]];
+    
+        for (Invader* inv in invaders) {
+            inv.isDefending = TRUE;
+            //neigong jia li
+            [inv defendInvader:self WhoUseWuGong:m_wugong WithAwugong:awugong WithAng:ang WithRate:rate IsLianji:true];
+            while (inv.isDefending) {
+                //do nothing, wait
+            }
+        }
+    }**/
+    
+    //for (Invader* inv in invaders) {
+    //    [((CCScene*)_map.parent) notifyJiQiChangedForInvader:inv];
+    //}
+    
     //acume cost calculated here
     //since acume affect hurt damage, it need to be calculated after attack
     int totalAcumeCost =(m_wugong.level+1)/2*m_wugong.acumeCost;
@@ -383,7 +400,7 @@
     //////////////////////
 }
 
--(void)defendInvader:(Invader *)invader WhoUseWuGong:(Wugong *)m_wugong WithAwugong:(Wugong*)awugong WithAng:(int)ang WithRate:(float)rate
+-(void)defendInvader:(Invader *)invader WhoUseWuGong:(Wugong *)m_wugong WithAwugong:(Wugong*)awugong WithAng:(int)ang WithRate:(float)rate IsLianji:(bool)lianji
 {
     //do things success
     //CCLOG(@"im defending");TODO change ang before defend
@@ -398,15 +415,17 @@
     //CCLOG(@"%i\n%i",hurt,spdhurt);
     
     //int spdhurt = [invader calculateWugongHurtJiQiWithHurt:hurt WithInvader:self];
+    hurt*=_willingToFight/100;
     hurt = hurt *rate;
     for (Wugong* wg in self.wugongArr) {
-        hurt = [wg effectLifeHurtAfterCalculate:hurt WithInvader:self WithWugong:m_wugong];
+        hurt = [wg effectLifeHurtAfterCalculate:hurt WithAtk:invader WithDef:self WithWugong:m_wugong];
     }
     [self say:[NSString stringWithFormat:@"-%i",hurt] WithColor: [CCColor colorWithCcColor3b:ccRED]];
     self.health -= hurt;
     CCLabelTTF* healthbar = (CCLabelTTF*)[self.state getChildByName:@"health" recursively:NO];
     [healthbar setString: [NSString stringWithFormat:@"%i", self.health]];
     
+
     //shajiqi TODO set minimum and maximum
     _amountofjiqi = MAX(_amountofjiqi-spdhurt, -500);
     [((CCScene*)_map.parent) notifyJiQiChangedForInvader:self];
@@ -901,6 +920,31 @@
     CCActionSequence* actions = [CCActionSequence actions:moveUp, delete, nil];
     [words runAction:actions];
 }
+/**-(void)show:(NSString*)sentence WithColor:(CCColor*)color{
+    CCLabelTTF* words = [CCLabelTTF labelWithString:sentence fontName:@"Verdana-Bold" fontSize:20];
+    [words setColorRGBA:color];
+    words.position = [self convertToMapCord:CGPointMake(10, 10)];
+    words.position = CGPointMake(words.position.x-words.contentSize.width/2, words.position.y);
+    words.anchorPoint = CGPointMake(0, 0.5);
+    CCScene* effectScene = [CCScene node];
+    [effectScene addChild:words z:100 name:@"lianjiEffect"];
+
+    
+    CCActionMoveBy* moveUp = [CCActionMoveBy actionWithDuration:1 position:CGPointMake(0,0)];
+    //CCActionCallFunc* toggle = [CCActionCallFunc actionWithTarget:self selector:@selector(toggleVisible)];
+    CCActionCallFunc* delete = [CCActionCallFunc actionWithTarget:words selector:@selector(removeFromParent)];
+    CCActionSequence* actions = [CCActionSequence actions:moveUp,delete, nil];
+    [words runAction:actions];
+    
+
+}**/
+-(void)toggleVisible
+{
+
+    //CCLOG(@"waiting %i", _isShowing);
+
+}
+
 #pragma mathfunction
 -(float)getnewmove
 {
@@ -990,6 +1034,29 @@
         _health=1;
     }
 }
+-(BOOL)triggerLiansuoEffectWithProbility:(int)p
+{
+    Invader* person = self;
+	float probility = p;
+    //general equation
+    probility = p+ person.agile/8;
+    //acume effect
+    //CCLOG(@"pro: %f",probility);
+    probility=probility+MIN((person.acume/500),20);
+    probility *= person.willingToFight/100;
+    if (CCRANDOM_0_1()*100<=probility) {
+        return true;
+    }else{
+        float luck = person.talent;
+        probility = probility + person.acume/400;
+        if (CCRANDOM_0_1()*100<=luck) {
+            if (CCRANDOM_0_1()*100<=probility) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
 -(BOOL)triggerBaojiEffectWithProbility:(int)p
 {
     Invader* person = self;
@@ -1005,6 +1072,7 @@
     }else{
         return false;
     }
+
 }
 //attack may trigger special effect sometime for certaion wugong
 -(BOOL)triggerSpecialEffectWithProbility:(int) p// Invader:(Invader*) person

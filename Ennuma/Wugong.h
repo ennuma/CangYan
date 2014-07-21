@@ -62,7 +62,8 @@
 -(void)effectInUpdateJiQi:(NSObject*)invader;
 -(int)effectNeiGongJiaLiHurt:(int)hurt WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(int)effectWugongDamage:(int)wugongDamage WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
--(int)effectLifeHurtAfterCalculate:(int)hurt WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
+
+-(int)effectLifeHurtAfterCalculate:(int)hurt WithAtk:(NSObject*)atk WithDef:(NSObject*)def WithWugong:(Wugong*) m_wugong;
 -(int)effectDefendDamageConvertToSpdHurt:(int)damageToSpdHurt WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(int)effectReduceAcumeCost:(int)acumecost WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(int)effectRestoreJiQi:(int)jiqi AfterAttackWithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;

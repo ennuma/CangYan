@@ -1881,4 +1881,11 @@ CGAffineTransformMakeRigid(CGPoint translate, CGFloat radians)
 	}
 }
 
+
+//CUSTOMIZE
+-(void)toggleVisible
+{
+    self.visible = !self.visible;
+}
+
 @end

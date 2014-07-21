@@ -141,7 +141,7 @@
 -(int)effectNeiGongJiaLiSpdHurt:(int)spdhurt WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong{
     return spdhurt;
 }
--(int)effectLifeHurtAfterCalculate:(int)hurt WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong
+-(int)effectLifeHurtAfterCalculate:(int)hurt WithAtk:(NSObject*)atk WithDef:(NSObject*)def WithWugong:(Wugong*) m_wugong
 {
     return hurt;
 }

@@ -84,10 +84,10 @@
     
     return attackNg;
 }
--(int)effectLifeHurtAfterCalculate:(int)hurt WithInvader:(NSObject *)invader WithWugong:(Wugong *)m_wugong
+-(int)effectLifeHurtAfterCalculate:(int)hurt WithAtk:(NSObject *)atk WithDef:(NSObject *)def WithWugong:(Wugong *)m_wugong
 {
-    NSAssert([invader isKindOfClass:[Invader class] ], @"nsobj is not invader");
-    Invader* inv = (Invader*)invader;
+    NSAssert([def isKindOfClass:[Invader class] ], @"nsobj is not invader");
+    Invader* inv = (Invader*)def;
     
     if ([inv.mainNeiGong isWugong:self.wugongName]) {
         hurt = hurt*0.7;

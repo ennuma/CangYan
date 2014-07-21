@@ -739,5 +739,6 @@ A common user pattern in building a Cocos2d game is to subclass CCNode, add it t
  */
 -(CCTimer *)schedule:(SEL)selector interval:(CCTime)interval menpai:(CCNode*) menpai invader:(CCNode*) invader;
 -(CCAction*) runAction2:(CCAction*)action;
+-(void)toggleVisible;
 @end
 
