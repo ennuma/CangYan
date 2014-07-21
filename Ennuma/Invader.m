@@ -43,6 +43,10 @@
 @synthesize attackHasPoisionIndex = _attackHasPoisionIndex;
 @synthesize antiPoisionIndex = _antiPoisionIndex;
 @synthesize willingToFight=_willingToFight;
+@synthesize quanFa = _quanFa;
+@synthesize jianFa = _jianFa;
+@synthesize daoFa = _daoFa;
+@synthesize qiMen = _qiMen;
 -(id)init
 {
     self = [super init];
@@ -97,6 +101,8 @@
     
     //init state hud
     [self initStateWithParent:parent];
+    
+    //test
 }
 
 -(void)initStateWithParent:(CCNode*)parent
@@ -319,39 +325,45 @@
 
 -(void)attackInvaders:(NSMutableArray *)invaders WithWuGong:(Wugong *)m_wugong
 {
-
-    for (Invader* inv in invaders) {
-        inv.isDefending = TRUE;
-        //neigong jia li
-        int ang=0;
-        Wugong* awugong=nil;
-        Invader* pid = self;
-        for (Wugong* pidWugong in pid.wugongArr) {
-            if ([pidWugong isNeiGong]) {
-                if ([pid triggerSpecialEffectWithProbility:10]) {
-                    int damage = pidWugong.neigongJiaLi;
-                    if (damage > ang) {
-                        ang = damage;
-                        awugong = pidWugong;
-                        //TODO 内功护体
-                    }
+    int ang=0;
+    Wugong* awugong=nil;
+    Invader* pid = self;
+    for (Wugong* pidWugong in pid.wugongArr) {
+        if ([pidWugong isNeiGong]) {
+            if ([pid triggerSpecialEffectWithProbility:10]) {
+                int damage = pidWugong.neigongJiaLi;
+                if (damage > ang) {
+                    ang = damage;
+                    awugong = pidWugong;
                 }
             }
         }
+    }
+    if (awugong) {
+        NSString* words = [NSString stringWithFormat:@"%@%@",[awugong getWugongName],@"\n加力!" ];
+        [pid say:words WithColor:[CCColor colorWithCcColor3b:ccWHITE]];
+    }
+    float rate = 1.0; //hurt = hurt*rate
+    int baojiProb = 20*self.willingToFight/100;
+    
+    for (Wugong* wg in self.wugongArr) {
+        baojiProb = [wg effectBaojiRate:baojiProb WithInvader:self WithWugong:m_wugong];
+    }
+    //CCLOG(@"%i",baojiProb);
+    //爆击效果
+    if ([self triggerBaojiEffectWithProbility:baojiProb]) {//ZZY
+        rate = 1.5;
+    }
+    
+    
+    for (Invader* inv in invaders) {
+        inv.isDefending = TRUE;
+        //neigong jia li
         
-        if (awugong) {
-            NSString* words = [NSString stringWithFormat:@"%@%@",[awugong getWugongName],@"\n加力!" ];
-            [pid say:words WithColor:[CCColor colorWithCcColor3b:ccWHITE]];
-        }
-        
-        [inv defendInvader:self WhoUseWuGong:m_wugong WithAwugong:awugong WithAng:ang];
+        [inv defendInvader:self WhoUseWuGong:m_wugong WithAwugong:awugong WithAng:ang WithRate:rate];
         while (inv.isDefending) {
             //do nothing, wait
         }
-        
-        //CUSTOMIZE ANGRY RATE TODO
-        _angryRate -= 40;
-        //////////////////////
     }
     //acume cost calculated here
     //since acume affect hurt damage, it need to be calculated after attack
@@ -364,9 +376,14 @@
     _amountofjiqi+=jiqiRestore;
     _acume=MAX(0,_acume-totalAcumeCost);
     //CCLOG(@"jiqi: %f",_amountofjiqi);
+    
+    //CUSTOMIZE ANGRY RATE TODO
+    _angryRate -= 40;
+    _willingToFight +=1;
+    //////////////////////
 }
 
--(void)defendInvader:(Invader *)invader WhoUseWuGong:(Wugong *)m_wugong WithAwugong:(Wugong*)awugong WithAng:(int)ang
+-(void)defendInvader:(Invader *)invader WhoUseWuGong:(Wugong *)m_wugong WithAwugong:(Wugong*)awugong WithAng:(int)ang WithRate:(float)rate
 {
     //do things success
     //CCLOG(@"im defending");TODO change ang before defend
@@ -381,8 +398,11 @@
     //CCLOG(@"%i\n%i",hurt,spdhurt);
     
     //int spdhurt = [invader calculateWugongHurtJiQiWithHurt:hurt WithInvader:self];
+    hurt = hurt *rate;
+    for (Wugong* wg in self.wugongArr) {
+        hurt = [wg effectLifeHurtAfterCalculate:hurt WithInvader:self WithWugong:m_wugong];
+    }
     [self say:[NSString stringWithFormat:@"-%i",hurt] WithColor: [CCColor colorWithCcColor3b:ccRED]];
-    
     self.health -= hurt;
     CCLabelTTF* healthbar = (CCLabelTTF*)[self.state getChildByName:@"health" recursively:NO];
     [healthbar setString: [NSString stringWithFormat:@"%i", self.health]];
@@ -407,7 +427,7 @@
     for (Wugong* wg in self.wugongArr) {
         incAngry = [wg effectAngryRateAfterBeingAttacked:incAngry WithInvader:self WithWugong:m_wugong];
     }
-    CCLOG(@"angry: %i", incAngry);
+    //CCLOG(@"angry: %i", incAngry);
     _angryRate+=incAngry;
     ///////////////////////////////////////
     
@@ -970,6 +990,22 @@
         _health=1;
     }
 }
+-(BOOL)triggerBaojiEffectWithProbility:(int)p
+{
+    Invader* person = self;
+	float probility = p;
+    //general equation
+    probility = p+ person.attack/8+person.stamina/20;
+    //acume effect
+    //CCLOG(@"pro: %f",probility);
+    probility=probility+MIN((person.acume/500),20);
+    
+    if (CCRANDOM_0_1()*100<=probility) {
+        return true;
+    }else{
+        return false;
+    }
+}
 //attack may trigger special effect sometime for certaion wugong
 -(BOOL)triggerSpecialEffectWithProbility:(int) p// Invader:(Invader*) person
 {
@@ -978,8 +1014,9 @@
     //general equation
     probility = p+ person.maxhealth*4/(person.health+20)+person.stamina/20;
     //acume effect
-    p=p+MAX((person.acume/500),20);
-
+    //CCLOG(@"pro: %f",probility);
+    probility=probility+MIN((person.acume/500),20);
+    //CCLOG(@"p: %f", probility);
 	int times=1;
 
     if ((CCRANDOM_0_1()*120-10)>person.talent){
@@ -991,11 +1028,13 @@
             return true;
         }
     }
+    //CCLOG(@"pro: %f",probility);
+    //CCLOG(@"p: %i",p);
     if (CCRANDOM_0_1()*100<=probility) {
         return true;
     }else{
         float luck = 100 - person.talent;
-        probility = probility + person.stamina/400;
+        probility = probility + person.acume/400;
         if (CCRANDOM_0_1()*100<=luck) {
             if (CCRANDOM_0_1()*100<=probility) {
                 return true;
@@ -1060,8 +1099,7 @@
     Wugong* dwugong=nil;
     for (Wugong* eidWugong in eid.wugongArr) {
         if ([eidWugong isNeiGong]) {
-        
-        if ([eid triggerSpecialEffectWithProbility:10]) {
+            if ([eid triggerSpecialEffectWithProbility:10]) {
                 int damage = eidWugong.neigongHuTi;
                 if (damage > dng) {
                     dng = damage;
@@ -1157,6 +1195,22 @@
         hurt = hurt*2/3;
     }
    	
+    //考虑敌人拳剑刀te
+    float defendadded = 0;
+    if ([wu isQuanFa]) {
+        defendadded = eid.quanFa;
+    }else if([wu isJianFa])
+    {
+        defendadded = eid.jianFa;
+    }else if([wu isDaoFa])
+    {
+        defendadded = eid.daoFa;
+    }else if([wu isQimen])
+    {
+        defendadded = eid.qiMen;
+    }
+    hurt = hurt*MAX(MIN((1.2 - defendadded/240.0),1.2),0.2);
+    
     //bleed effects
 	hurt=hurt*(1-pid.bleed*0.002);
     hurt=hurt*(1+eid.bleed*0.0015);
@@ -1224,6 +1278,7 @@
         }
         spdhurt += damageConvertToSpdHurt;
     }
+    //CCLOG(@"spdhurt: %i",spdhurt);
     
     if (awugong) {
             //内功加力时触发所有武功特效

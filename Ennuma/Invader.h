@@ -63,6 +63,11 @@
     int _antiPoisionIndex;
     
     int _willingToFight;
+    
+    int _quanFa;
+    int _jianFa;
+    int _daoFa;
+    int _qiMen;
 }
 
 @property int strength;
@@ -102,6 +107,11 @@
 @property Wugong* mainNeiGong;
 @property NSMutableArray* wugongArr;
 @property int willingToFight;
+@property int quanFa;
+@property int jianFa;
+@property int daoFa;
+@property int qiMen;
+
 -(void)initForBattleWithParent:(CCNode*)parent;
 -(void)initWuGong;
 -(void)initIcon;
@@ -112,7 +122,7 @@
 -(void)endOfAction;
 -(void)initPosition:(CGPoint)pos;
 -(void)attackInvaders:(NSMutableArray*)invaders WithWuGong:(Wugong*) wugong;
--(void)defendInvader:(Invader *)invader WhoUseWuGong:(Wugong *)m_wugong WithAwugong:(Wugong*)awugong WithAng:(int)ang;
+-(void)defendInvader:(Invader *)invader WhoUseWuGong:(Wugong *)m_wugong WithAwugong:(Wugong*)awugong WithAng:(int)ang WithRate:(float)rate;
 -(void)updateJiQi;
 -(void)learnWugong:(Wugong*)m_wugong;
 @end

@@ -168,4 +168,8 @@
 {
     return angryRate;
 }
+-(int)effectBaojiRate:(int)baojirate WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong
+{
+    return baojirate;
+}
 @end
