@@ -99,7 +99,7 @@
     _isDead=false;
     _isDefending=false;
     //self.runningInActiveScene = YES;
-    [parent addChild:_bigIcon];
+    [parent addChild:_bigIcon z:0];
     
     //init state hud
     [self initStateWithParent:parent];
@@ -454,6 +454,10 @@
         [self say:[NSString stringWithFormat:@"葵\n花\n移\n形!"] WithColor: [CCColor colorWithCcColor3b:ccRED]];
         hurt = hurt/3;
     }
+    //if not blind ,hurt at least 1
+    if (hurt<0) {
+        hurt = 1;
+    }
     if (invader.blind) {
         hurt = 0;
     }
@@ -469,15 +473,32 @@
     
 
     //shajiqi TODO set minimum and maximum
+    if (spdhurt<0) {
+        spdhurt = 0;
+    }
     _amountofjiqi = MAX(_amountofjiqi-spdhurt, -500);
     [((CCScene*)_map.parent) notifyJiQiChangedForInvader:self];
     
+    if (bleedhurt<0) {
+        bleedhurt = 0;
+    }
     _bleed = MIN(_bleed+bleedhurt, 100);
     CCLabelTTF* bleed = (CCLabelTTF*)[self.state getChildByName:@"bleed" recursively:NO];
     [bleed setString: [NSString stringWithFormat:@"%i", _bleed]];
-
+    
+    if (fengxuehurt<0) {
+        fengxuehurt = 0;
+    }
     _fengXue = MIN(_fengXue+fengxuehurt, 50);
+    
+    if (liuxuehurt <0) {
+        liuxuehurt = 0;
+    }
     _liuXue = MIN(_liuXue + liuxuehurt, 100);
+    
+    if (poisionhurt < 0) {
+        poisionhurt = 0;
+    }
     _poision = MIN(_poision+poisionhurt, 100);
     if (self.health<=0) {
         self.isDead=true;
@@ -961,7 +982,7 @@
     words.position = [self convertToMapCord:self.position];
     words.position = CGPointMake(words.position.x-words.contentSize.width/2, words.position.y);
     words.anchorPoint = CGPointMake(0, 0.5);
-    [_map addChild:words z:100];
+    [_map.parent addChild:words z:100];
     CCActionMoveBy* moveUp = [CCActionMoveBy actionWithDuration:1 position:CGPointMake(0,2*words.contentSize.height)];
     CCActionCallFunc* delete = [CCActionCallFunc actionWithTarget:words selector:@selector(removeFromParent)];
     CCActionSequence* actions = [CCActionSequence actions:moveUp, delete, nil];
@@ -1330,9 +1351,6 @@
 	hurt=hurt*(1-pid.bleed*0.002);
     hurt=hurt*(1+eid.bleed*0.0015);
     
-    if (hurt<0) {
-        hurt = 1;
-    }
     //CCLOG(@"2:%f",hurt);
     /**poision
                         --敌人中毒点数
@@ -1368,7 +1386,7 @@
             }
         }
     }
-    
+ 
     [hurtDic setValue:[NSNumber numberWithInt:hurt] forKey:@"hurt"];
     
     ang = ang-dng;

@@ -135,4 +135,5 @@
 -(void)defendInvader:(Invader *)invader WhoUseWuGong:(Wugong *)m_wugong WithAwugong:(Wugong*)awugong WithAng:(int)ang WithRate:(float)rate IsLianji:(bool)lianji;
 -(void)updateJiQi;
 -(void)learnWugong:(Wugong*)m_wugong;
+-(void)say:(NSString*)sentence WithColor:(CCColor*)color;
 @end

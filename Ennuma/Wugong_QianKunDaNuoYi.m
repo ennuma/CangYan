@@ -10,10 +10,10 @@
  加力威力：1050-1150
  护体威力：1200-1400
  一般特效：
- 受到攻击时50%几率将所受伤害之30%反弹给一名敌人//TODO
+ 受到攻击时50%几率将所受伤害之30%反弹给一名敌人 不至死
  自身所受伤害减15%
  主功体特效：
- 受到攻击时80%几率将所受伤害之30%反弹给一名敌人//TODO
+ 受到攻击时80%几率将所受伤害之30%反弹给一名敌人
  自身所受伤害减30%
  功体护体时内伤增加值将为原值的三分之一
  [逆转乾坤：集气值小于-300时再受到杀气攻击//TODO
@@ -56,8 +56,45 @@
     NSAssert([def isKindOfClass:[Invader class] ], @"nsobj is not invader");
     Invader* inv = (Invader*)def;
     if ([inv.mainNeiGong isWugong:self.wugongName]) {
+        if (CCRANDOM_0_1()*100<=80) {
+            int dechurt = hurt*0.3;
+            hurt = hurt - dechurt;
+            if ([inv.enemy count]>0){
+                int count = 0;
+                for (Invader* en in inv.enemy) {
+                    if (!en.isDead) {
+                        count ++;
+                    }
+                }
+                Invader* enemy = [inv.enemy objectAtIndex:CCRANDOM_0_1()*count];
+                enemy.health -= dechurt;
+                if(enemy.health<=0){
+                    enemy.health=1;
+                }
+                [enemy say:[NSString stringWithFormat:@"乾坤大挪移：-%i",dechurt] WithColor: [CCColor colorWithCcColor3b:ccRED]];
+            }
+        }
         hurt = hurt*0.85;
     }else{
+        if (CCRANDOM_0_1()*100<=50) {
+            int dechurt = hurt*0.3;
+            hurt = hurt - dechurt;
+            if ([inv.enemy count]>0){
+                int count = 0;
+                for (Invader* en in inv.enemy) {
+                    if (!en.isDead) {
+                        count ++;
+                    }
+                }
+                Invader* enemy = [inv.enemy objectAtIndex:CCRANDOM_0_1()*count];
+                enemy.health -= dechurt;
+                if(enemy.health<=0){
+                    enemy.health=1;
+                }
+                [enemy say:[NSString stringWithFormat:@"乾坤大挪移：-%i",dechurt] WithColor: [CCColor colorWithCcColor3b:ccRED]];
+            }
+        }
+
         hurt = hurt*0.7;
     }
     return hurt;
