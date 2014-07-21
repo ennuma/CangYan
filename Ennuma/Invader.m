@@ -47,6 +47,8 @@
 @synthesize jianFa = _jianFa;
 @synthesize daoFa = _daoFa;
 @synthesize qiMen = _qiMen;
+@synthesize blind = _blind;
+@synthesize kuiHuaYixing = _kuihuayixing;
 -(id)init
 {
     self = [super init];
@@ -349,7 +351,7 @@
     for (Wugong* wg in self.wugongArr) {
         baojiProb = [wg effectBaojiRate:baojiProb WithInvader:self WithWugong:m_wugong];
     }
-    //CCLOG(@"%i",baojiProb);
+    //CCLOG(@"%i",_blind);
     //爆击效果
     if ([self triggerBaojiEffectWithProbility:baojiProb]) {//ZZY
         rate *= (100+m_wugong.criticalHitBuff)/100;
@@ -396,8 +398,21 @@
     
     //CUSTOMIZE ANGRY RATE TODO
     _angryRate -= 40;
-    _willingToFight +=1;
+    
+    float incWilling = 1.0;
+    for (Wugong* wg in self.wugongArr) {
+        incWilling = [wg effectWillingToFight:incWilling WithInvader:self WithWugong:m_wugong];
+    }
+    _willingToFight = MIN(_willingToFight+incWilling,130);
     //////////////////////
+    //stamina dec
+    float staminadec = 6;
+    for (Wugong* wg in self.wugongArr) {
+        incWilling = [wg effectWillingToFight:incWilling WithInvader:self WithWugong:m_wugong];
+    }
+    _stamina = MAX(_stamina - staminadec, 0);
+    //reset blind
+    _blind = false;
 }
 
 -(void)defendInvader:(Invader *)invader WhoUseWuGong:(Wugong *)m_wugong WithAwugong:(Wugong*)awugong WithAng:(int)ang WithRate:(float)rate IsLianji:(bool)lianji
@@ -413,14 +428,36 @@
     int liuxuehurt = [[hurtDic objectForKey:@"liuxuehurt"]intValue];
     int poisionhurt = [[hurtDic objectForKey:@"poisionhurt"]intValue];
     //CCLOG(@"%i\n%i",hurt,spdhurt);
+    _kuihuayixing = false;
+    for (Wugong* wg in self.wugongArr) {
+        [wg effectSpecialEffectDefWithAtk:invader WithDef:self WithWugong:m_wugong];
+    }
     
     //int spdhurt = [invader calculateWugongHurtJiQiWithHurt:hurt WithInvader:self];
     hurt*=_willingToFight/100;
     hurt = hurt *rate;
+    //def wugong
     for (Wugong* wg in self.wugongArr) {
-        hurt = [wg effectLifeHurtAfterCalculate:hurt WithAtk:invader WithDef:self WithWugong:m_wugong];
+        hurt = [wg effectLifeHurtAfterCalculate:hurt WithDef:self WithWugong:m_wugong];
     }
-    [self say:[NSString stringWithFormat:@"-%i",hurt] WithColor: [CCColor colorWithCcColor3b:ccRED]];
+    //atk wugong
+    for (Wugong* wg in invader.wugongArr) {
+        hurt = [wg effectLifeHurtAfterCalculate:hurt WithAtk:invader WithWugong:m_wugong];
+    }
+    //
+    if (_kuihuayixing) {
+        [self say:[NSString stringWithFormat:@"葵\n花\n移\n形!"] WithColor: [CCColor colorWithCcColor3b:ccRED]];
+        hurt = hurt/3;
+    }
+    if (invader.blind) {
+        hurt = 0;
+    }
+    if (hurt!=0) {
+        [self say:[NSString stringWithFormat:@"-%i",hurt] WithColor: [CCColor colorWithCcColor3b:ccRED]];
+    }else{
+        [self say:[NSString stringWithFormat:@"miss!"] WithColor: [CCColor colorWithCcColor3b:ccRED]];
+    }
+
     self.health -= hurt;
     CCLabelTTF* healthbar = (CCLabelTTF*)[self.state getChildByName:@"health" recursively:NO];
     [healthbar setString: [NSString stringWithFormat:@"%i", self.health]];
@@ -449,7 +486,11 @@
     //CCLOG(@"angry: %i", incAngry);
     _angryRate+=incAngry;
     ///////////////////////////////////////
-    
+    if (awugong) {
+        for (Wugong* wg in invader.wugongArr) {
+            [wg effectSpecialEffectAtkWithAtk:invader WithDef:self WithWugong:m_wugong];
+        }
+    }
     self.isDefending = false;
 }
 

@@ -141,7 +141,11 @@
 -(int)effectNeiGongJiaLiSpdHurt:(int)spdhurt WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong{
     return spdhurt;
 }
--(int)effectLifeHurtAfterCalculate:(int)hurt WithAtk:(NSObject*)atk WithDef:(NSObject*)def WithWugong:(Wugong*) m_wugong
+-(int)effectLifeHurtAfterCalculate:(int)hurt WithAtk:(NSObject*)atk WithWugong:(Wugong*) m_wugong
+{
+    return hurt;
+}
+-(int)effectLifeHurtAfterCalculate:(int)hurt WithDef:(NSObject*)def WithWugong:(Wugong*) m_wugong
 {
     return hurt;
 }
@@ -171,5 +175,21 @@
 -(int)effectBaojiRate:(int)baojirate WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong
 {
     return baojirate;
+}
+-(float)effectWillingToFight:(float)willingToFight WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong
+{
+    return willingToFight;
+}
+-(float)effectStamina:(float)stamina WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong
+{
+    return stamina;
+}
+-(void)effectSpecialEffectAtkWithAtk:(NSObject*)atk WithDef:(NSObject*)def WithWugong:(Wugong*) m_wugong
+{
+
+}
+-(void)effectSpecialEffectDefWithAtk:(NSObject*)atk WithDef:(NSObject*)def WithWugong:(Wugong*) m_wugong
+{
+    
 }
 @end

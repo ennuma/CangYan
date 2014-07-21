@@ -64,12 +64,17 @@
     int _attackHasPoisionIndex;
     int _antiPoisionIndex;
     
-    int _willingToFight;
+    float _willingToFight;
     
     int _quanFa;
     int _jianFa;
     int _daoFa;
     int _qiMen;
+    
+    
+    //buff zhuang tai
+    bool _blind;
+    bool _kuihuayixing;
 }
 
 @property int strength;
@@ -108,12 +113,15 @@
 @property int wuxueKnowledge;
 @property Wugong* mainNeiGong;
 @property NSMutableArray* wugongArr;
-@property int willingToFight;
+@property float willingToFight;
 @property int quanFa;
 @property int jianFa;
 @property int daoFa;
 @property int qiMen;
 
+//buff
+@property bool blind;
+@property bool kuiHuaYixing; //葵花移xing
 -(void)initForBattleWithParent:(CCNode*)parent;
 -(void)initWuGong;
 -(void)initIcon;

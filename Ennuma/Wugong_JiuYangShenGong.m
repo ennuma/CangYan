@@ -84,7 +84,7 @@
     
     return attackNg;
 }
--(int)effectLifeHurtAfterCalculate:(int)hurt WithAtk:(NSObject *)atk WithDef:(NSObject *)def WithWugong:(Wugong *)m_wugong
+-(int)effectLifeHurtAfterCalculate:(int)hurt WithDef:(NSObject *)def WithWugong:(Wugong *)m_wugong
 {
     NSAssert([def isKindOfClass:[Invader class] ], @"nsobj is not invader");
     Invader* inv = (Invader*)def;
