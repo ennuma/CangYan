@@ -251,6 +251,14 @@
 		84675AB21962F3850093F2EF /* MenPai.m in Sources */ = {isa = PBXBuildFile; fileRef = 84675AB11962F3850093F2EF /* MenPai.m */; };
 		846E4404197DE2D70081318F /* Wugong_ShengHuoShenGong.m in Sources */ = {isa = PBXBuildFile; fileRef = 846E4403197DE2D70081318F /* Wugong_ShengHuoShenGong.m */; };
 		846E4407197DE53E0081318F /* Wugong_TaiXuanShenGong.m in Sources */ = {isa = PBXBuildFile; fileRef = 846E4406197DE53E0081318F /* Wugong_TaiXuanShenGong.m */; };
+		846FE1C7197EE6B40035448F /* Wugong_ZiXiaShenGong.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FE1C6197EE6B40035448F /* Wugong_ZiXiaShenGong.m */; };
+		846FE1CA197EE9980035448F /* Wugong_LeiZhenJianFa.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FE1C9197EE9980035448F /* Wugong_LeiZhenJianFa.m */; };
+		846FE1CD197EEA4C0035448F /* Wugong_SanFenJianFa.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FE1CC197EEA4C0035448F /* Wugong_SanFenJianFa.m */; };
+		846FE1D0197EEB6D0035448F /* Wugong_XueShanJianFa.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FE1CF197EEB6D0035448F /* Wugong_XueShanJianFa.m */; };
+		846FE1D3197EEC410035448F /* Wugong_TaiYueSanQingFeng.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FE1D2197EEC410035448F /* Wugong_TaiYueSanQingFeng.m */; };
+		846FE1D7197EED8C0035448F /* Wugong_WanHuaJianFa.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FE1D6197EED8C0035448F /* Wugong_WanHuaJianFa.m */; };
+		846FE1DA197EEDF80035448F /* Wugong_TaiShanShiBaPan.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FE1D9197EEDF80035448F /* Wugong_TaiShanShiBaPan.m */; };
+		846FE1DD197EEE5E0035448F /* Wugong_YunWuJianFa.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FE1DC197EEE5E0035448F /* Wugong_YunWuJianFa.m */; };
 		8489582919717F0D00A9766B /* maphud.png in Resources */ = {isa = PBXBuildFile; fileRef = 8489582819717F0D00A9766B /* maphud.png */; };
 		849655361966A9C9000C38AA /* MenPaiScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 849655351966A9C9000C38AA /* MenPaiScene.m */; };
 		849655391966B663000C38AA /* HuaShanPai.m in Sources */ = {isa = PBXBuildFile; fileRef = 849655381966B663000C38AA /* HuaShanPai.m */; };
@@ -757,6 +765,22 @@
 		846E4403197DE2D70081318F /* Wugong_ShengHuoShenGong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_ShengHuoShenGong.m; sourceTree = "<group>"; };
 		846E4405197DE53E0081318F /* Wugong_TaiXuanShenGong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_TaiXuanShenGong.h; sourceTree = "<group>"; };
 		846E4406197DE53E0081318F /* Wugong_TaiXuanShenGong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_TaiXuanShenGong.m; sourceTree = "<group>"; };
+		846FE1C5197EE6B40035448F /* Wugong_ZiXiaShenGong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_ZiXiaShenGong.h; sourceTree = "<group>"; };
+		846FE1C6197EE6B40035448F /* Wugong_ZiXiaShenGong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_ZiXiaShenGong.m; sourceTree = "<group>"; };
+		846FE1C8197EE9980035448F /* Wugong_LeiZhenJianFa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_LeiZhenJianFa.h; sourceTree = "<group>"; };
+		846FE1C9197EE9980035448F /* Wugong_LeiZhenJianFa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_LeiZhenJianFa.m; sourceTree = "<group>"; };
+		846FE1CB197EEA4C0035448F /* Wugong_SanFenJianFa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_SanFenJianFa.h; sourceTree = "<group>"; };
+		846FE1CC197EEA4C0035448F /* Wugong_SanFenJianFa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_SanFenJianFa.m; sourceTree = "<group>"; };
+		846FE1CE197EEB6D0035448F /* Wugong_XueShanJianFa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_XueShanJianFa.h; sourceTree = "<group>"; };
+		846FE1CF197EEB6D0035448F /* Wugong_XueShanJianFa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_XueShanJianFa.m; sourceTree = "<group>"; };
+		846FE1D1197EEC410035448F /* Wugong_TaiYueSanQingFeng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_TaiYueSanQingFeng.h; sourceTree = "<group>"; };
+		846FE1D2197EEC410035448F /* Wugong_TaiYueSanQingFeng.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_TaiYueSanQingFeng.m; sourceTree = "<group>"; };
+		846FE1D5197EED8C0035448F /* Wugong_WanHuaJianFa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_WanHuaJianFa.h; sourceTree = "<group>"; };
+		846FE1D6197EED8C0035448F /* Wugong_WanHuaJianFa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_WanHuaJianFa.m; sourceTree = "<group>"; };
+		846FE1D8197EEDF80035448F /* Wugong_TaiShanShiBaPan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_TaiShanShiBaPan.h; sourceTree = "<group>"; };
+		846FE1D9197EEDF80035448F /* Wugong_TaiShanShiBaPan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_TaiShanShiBaPan.m; sourceTree = "<group>"; };
+		846FE1DB197EEE5E0035448F /* Wugong_YunWuJianFa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_YunWuJianFa.h; sourceTree = "<group>"; };
+		846FE1DC197EEE5E0035448F /* Wugong_YunWuJianFa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_YunWuJianFa.m; sourceTree = "<group>"; };
 		8489582819717F0D00A9766B /* maphud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = maphud.png; path = Resources/maphud.png; sourceTree = "<group>"; };
 		849655341966A9C9000C38AA /* MenPaiScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenPaiScene.h; sourceTree = "<group>"; };
 		849655351966A9C9000C38AA /* MenPaiScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenPaiScene.m; sourceTree = "<group>"; };
@@ -1750,6 +1774,31 @@
 			name = FirstTry;
 			sourceTree = "<group>";
 		};
+		846FE1D4197EECD90035448F /* jianfa */ = {
+			isa = PBXGroup;
+			children = (
+				84C36025197B34FC00331A2B /* Wugong_LiuMaiShenJian.h */,
+				84C36026197B34FC00331A2B /* Wugong_LiuMaiShenJian.m */,
+				84C3601F197AD54300331A2B /* Wugong_SongFengJianFa.h */,
+				84C36020197AD54300331A2B /* Wugong_SongFengJianFa.m */,
+				846FE1C8197EE9980035448F /* Wugong_LeiZhenJianFa.h */,
+				846FE1C9197EE9980035448F /* Wugong_LeiZhenJianFa.m */,
+				846FE1CB197EEA4C0035448F /* Wugong_SanFenJianFa.h */,
+				846FE1CC197EEA4C0035448F /* Wugong_SanFenJianFa.m */,
+				846FE1CE197EEB6D0035448F /* Wugong_XueShanJianFa.h */,
+				846FE1CF197EEB6D0035448F /* Wugong_XueShanJianFa.m */,
+				846FE1D1197EEC410035448F /* Wugong_TaiYueSanQingFeng.h */,
+				846FE1D2197EEC410035448F /* Wugong_TaiYueSanQingFeng.m */,
+				846FE1D5197EED8C0035448F /* Wugong_WanHuaJianFa.h */,
+				846FE1D6197EED8C0035448F /* Wugong_WanHuaJianFa.m */,
+				846FE1D8197EEDF80035448F /* Wugong_TaiShanShiBaPan.h */,
+				846FE1D9197EEDF80035448F /* Wugong_TaiShanShiBaPan.m */,
+				846FE1DB197EEE5E0035448F /* Wugong_YunWuJianFa.h */,
+				846FE1DC197EEE5E0035448F /* Wugong_YunWuJianFa.m */,
+			);
+			name = jianfa;
+			sourceTree = "<group>";
+		};
 		84C36037197D62B400331A2B /* WuGong */ = {
 			isa = PBXGroup;
 			children = (
@@ -1762,10 +1811,7 @@
 		84C36038197D62DF00331A2B /* WaiGong */ = {
 			isa = PBXGroup;
 			children = (
-				84C36025197B34FC00331A2B /* Wugong_LiuMaiShenJian.h */,
-				84C36026197B34FC00331A2B /* Wugong_LiuMaiShenJian.m */,
-				84C3601F197AD54300331A2B /* Wugong_SongFengJianFa.h */,
-				84C36020197AD54300331A2B /* Wugong_SongFengJianFa.m */,
+				846FE1D4197EECD90035448F /* jianfa */,
 			);
 			name = WaiGong;
 			sourceTree = "<group>";
@@ -1809,6 +1855,8 @@
 				845CA59F197EDD16008E61E4 /* Wugong_XiaoWuXiangGong.m */,
 				845CA5A1197EE234008E61E4 /* Wugong_YiJingShenGong.h */,
 				845CA5A2197EE234008E61E4 /* Wugong_YiJingShenGong.m */,
+				846FE1C5197EE6B40035448F /* Wugong_ZiXiaShenGong.h */,
+				846FE1C6197EE6B40035448F /* Wugong_ZiXiaShenGong.m */,
 			);
 			name = NeiGong;
 			sourceTree = "<group>";
@@ -1972,6 +2020,7 @@
 				84B823A8197DBA4D00E57294 /* Wugong_QianKunDaNuoYi.m in Sources */,
 				8435033D195AFA0300503923 /* UITouch+CC.m in Sources */,
 				843503D7195AFA0400503923 /* CCButton.m in Sources */,
+				846FE1DA197EEDF80035448F /* Wugong_TaiShanShiBaPan.m in Sources */,
 				843502C9195AFA0200503923 /* CCParallaxNode.m in Sources */,
 				845B51BC195E5BDD00A6098D /* GameScene.m in Sources */,
 				8435035C195AFA0300503923 /* ccUtils.c in Sources */,
@@ -2002,6 +2051,7 @@
 				8435026C195AFA0100503923 /* CCRenderer.m in Sources */,
 				84350301195AFA0300503923 /* CCSprite.m in Sources */,
 				84350389195AFA0400503923 /* OALAudioTrack.m in Sources */,
+				846FE1C7197EE6B40035448F /* Wugong_ZiXiaShenGong.m in Sources */,
 				843503CA195AFA0400503923 /* NSMutableDictionary+WeakReferences.m in Sources */,
 				84350288195AFA0200503923 /* CCActionManager.m in Sources */,
 				843502EA195AFA0300503923 /* CCProgressNode.m in Sources */,
@@ -2019,9 +2069,11 @@
 				8435035A195AFA0300503923 /* CCProfiling.m in Sources */,
 				843503BC195AFA0400503923 /* OALSuspendHandler.m in Sources */,
 				843504B6195BF8A900503923 /* ComponentHeroBody.m in Sources */,
+				846FE1D0197EEB6D0035448F /* Wugong_XueShanJianFa.m in Sources */,
 				843503EA195AFA0400503923 /* CCTextField.m in Sources */,
 				843502C2195AFA0200503923 /* CCNode.m in Sources */,
 				84350402195AFA0400503923 /* CCBLocalizationManager.m in Sources */,
+				846FE1CA197EE9980035448F /* Wugong_LeiZhenJianFa.m in Sources */,
 				846E4407197DE53E0081318F /* Wugong_TaiXuanShenGong.m in Sources */,
 				843502E0195AFA0200503923 /* CCPhysicsJoint.m in Sources */,
 				84350315195AFA0300503923 /* CCTextureCache.m in Sources */,
@@ -2049,8 +2101,10 @@
 				8435027B195AFA0100503923 /* CCActionCatmullRom.m in Sources */,
 				843504C8195D161B00503923 /* Soldier.m in Sources */,
 				84675AAB1962EFD10093F2EF /* WuLinScene.m in Sources */,
+				846FE1D3197EEC410035448F /* Wugong_TaiYueSanQingFeng.m in Sources */,
 				8435030D195AFA0300503923 /* CCSpriteFrameCache.m in Sources */,
 				84350298195AFA0200503923 /* CCClippingNode.m in Sources */,
+				846FE1D7197EED8C0035448F /* Wugong_WanHuaJianFa.m in Sources */,
 				843504C4195C5E1D00503923 /* SoldierCache.m in Sources */,
 				843503C3195AFA0400503923 /* mach_timing.c in Sources */,
 				843502FD195AFA0300503923 /* CCScheduler.m in Sources */,
@@ -2104,7 +2158,9 @@
 				84C36036197CF13100331A2B /* Wugong_JiuYangShenGong.m in Sources */,
 				845CA5A0197EDD16008E61E4 /* Wugong_XiaoWuXiangGong.m in Sources */,
 				843502CD195AFA0200503923 /* CCParticleBatchNode.m in Sources */,
+				846FE1DD197EEE5E0035448F /* Wugong_YunWuJianFa.m in Sources */,
 				84350367195AFA0300503923 /* NSAttributedString+CCAdditions.m in Sources */,
+				846FE1CD197EEA4C0035448F /* Wugong_SanFenJianFa.m in Sources */,
 				84350478195AFA0500503923 /* main.m in Sources */,
 				8429176819678C2800D691D3 /* SongShanPai.m in Sources */,
 				84C3602A197B87A100331A2B /* Wugong_BaHuangLiuHeWeiWoDuZunGong.m in Sources */,
