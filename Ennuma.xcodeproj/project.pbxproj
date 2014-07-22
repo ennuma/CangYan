@@ -245,6 +245,8 @@
 		84675AAE1962F0940093F2EF /* bg_map.png in Resources */ = {isa = PBXBuildFile; fileRef = 84675AAC1962F0940093F2EF /* bg_map.png */; };
 		84675AAF1962F0940093F2EF /* menpai.png in Resources */ = {isa = PBXBuildFile; fileRef = 84675AAD1962F0940093F2EF /* menpai.png */; };
 		84675AB21962F3850093F2EF /* MenPai.m in Sources */ = {isa = PBXBuildFile; fileRef = 84675AB11962F3850093F2EF /* MenPai.m */; };
+		846E4404197DE2D70081318F /* Wugong_ShengHuoShenGong.m in Sources */ = {isa = PBXBuildFile; fileRef = 846E4403197DE2D70081318F /* Wugong_ShengHuoShenGong.m */; };
+		846E4407197DE53E0081318F /* Wugong_TaiXuanShenGong.m in Sources */ = {isa = PBXBuildFile; fileRef = 846E4406197DE53E0081318F /* Wugong_TaiXuanShenGong.m */; };
 		8489582919717F0D00A9766B /* maphud.png in Resources */ = {isa = PBXBuildFile; fileRef = 8489582819717F0D00A9766B /* maphud.png */; };
 		849655361966A9C9000C38AA /* MenPaiScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 849655351966A9C9000C38AA /* MenPaiScene.m */; };
 		849655391966B663000C38AA /* HuaShanPai.m in Sources */ = {isa = PBXBuildFile; fileRef = 849655381966B663000C38AA /* HuaShanPai.m */; };
@@ -739,6 +741,10 @@
 		84675AAD1962F0940093F2EF /* menpai.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menpai.png; path = Resources/menpai.png; sourceTree = "<group>"; };
 		84675AB01962F3850093F2EF /* MenPai.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenPai.h; sourceTree = "<group>"; };
 		84675AB11962F3850093F2EF /* MenPai.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenPai.m; sourceTree = "<group>"; };
+		846E4402197DE2D70081318F /* Wugong_ShengHuoShenGong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_ShengHuoShenGong.h; sourceTree = "<group>"; };
+		846E4403197DE2D70081318F /* Wugong_ShengHuoShenGong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_ShengHuoShenGong.m; sourceTree = "<group>"; };
+		846E4405197DE53E0081318F /* Wugong_TaiXuanShenGong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_TaiXuanShenGong.h; sourceTree = "<group>"; };
+		846E4406197DE53E0081318F /* Wugong_TaiXuanShenGong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_TaiXuanShenGong.m; sourceTree = "<group>"; };
 		8489582819717F0D00A9766B /* maphud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = maphud.png; path = Resources/maphud.png; sourceTree = "<group>"; };
 		849655341966A9C9000C38AA /* MenPaiScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenPaiScene.h; sourceTree = "<group>"; };
 		849655351966A9C9000C38AA /* MenPaiScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenPaiScene.m; sourceTree = "<group>"; };
@@ -1779,6 +1785,10 @@
 				84B823A7197DBA4D00E57294 /* Wugong_QianKunDaNuoYi.m */,
 				84B823A9197DC42900E57294 /* Wugong_ShenZhaoGong.h */,
 				84B823AA197DC42900E57294 /* Wugong_ShenZhaoGong.m */,
+				846E4402197DE2D70081318F /* Wugong_ShengHuoShenGong.h */,
+				846E4403197DE2D70081318F /* Wugong_ShengHuoShenGong.m */,
+				846E4405197DE53E0081318F /* Wugong_TaiXuanShenGong.h */,
+				846E4406197DE53E0081318F /* Wugong_TaiXuanShenGong.m */,
 			);
 			name = NeiGong;
 			sourceTree = "<group>";
@@ -1992,6 +2002,7 @@
 				843503EA195AFA0400503923 /* CCTextField.m in Sources */,
 				843502C2195AFA0200503923 /* CCNode.m in Sources */,
 				84350402195AFA0400503923 /* CCBLocalizationManager.m in Sources */,
+				846E4407197DE53E0081318F /* Wugong_TaiXuanShenGong.m in Sources */,
 				843502E0195AFA0200503923 /* CCPhysicsJoint.m in Sources */,
 				84350315195AFA0300503923 /* CCTextureCache.m in Sources */,
 				84350259195AFA0000503923 /* CCEffectContrast.m in Sources */,
@@ -2063,6 +2074,7 @@
 				84350292195AFA0200503923 /* CCAnimation.m in Sources */,
 				843503DE195AFA0400503923 /* CCControlTextureFactory.m in Sources */,
 				84350382195AFA0300503923 /* OALAudioActions.m in Sources */,
+				846E4404197DE2D70081318F /* Wugong_ShengHuoShenGong.m in Sources */,
 				8435047C195AFA0500503923 /* AppDelegate.m in Sources */,
 				84350333195AFA0300503923 /* CCDirectorIOS.m in Sources */,
 				84C36033197CD5BC00331A2B /* Wugong_HunYuanGong.m in Sources */,

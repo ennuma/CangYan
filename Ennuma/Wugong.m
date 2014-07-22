@@ -211,4 +211,8 @@
 -(int)effectRevive:(int)health WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong{
     return health;
 }
+-(int)effectInitAmountJiqi:(int)jiqi WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong
+{
+    return jiqi;
+}
 @end

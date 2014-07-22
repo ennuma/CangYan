@@ -10,11 +10,11 @@
  加力威力：800--900
  护体威力：950--1100
  一般特效：
- 败退时几率复活（第一次几率为100%，之后几率为5%）//TODO
+ 败退时几率复活（第一次几率为100%，之后几率为5%）
  生命内力体力增加最大值的一半
  当前集气增加500 消除全异常状态
  主功体特效：
- 败退时几率复活（第一次几率为100%，之后几率为10%）//TODO
+ 败退时几率复活（第一次几率为100%，之后几率为10%）
  生命内力体力变为最大值
  当前集气变为MAX 消除全异常状态
  主功体加成武功：
@@ -113,10 +113,8 @@
             inv.fengXue = 0;
             inv.liuXue = 0;
             inv.blind = false;
-            inv.amountofjiqi += 500;
-            if (inv.amountofjiqi>1000) {
-                inv.amountofjiqi=1000;
-            }
+            inv.amountofjiqi = 500;
+
             inv.life++;
         }else if(inv.life==1){
             if (CCRANDOM_0_1()*100<=5) {
@@ -128,10 +126,7 @@
                 inv.fengXue = 0;
                 inv.liuXue = 0;
                 inv.blind = false;
-                inv.amountofjiqi += 500;
-                if (inv.amountofjiqi>1000) {
-                    inv.amountofjiqi=1000;
-                }
+                inv.amountofjiqi = 500;
 
                 inv.life++;
             }

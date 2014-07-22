@@ -83,4 +83,5 @@
 
 -(int)effectNeiGongHuTiBleedHurt:(int)bleed WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(int)effectRevive:(int)health WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
+-(int)effectInitAmountJiqi:(int)jiqi WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 @end

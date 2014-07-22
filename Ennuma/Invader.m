@@ -1075,7 +1075,13 @@
 }
 -(int)initAmountOfJiqi
 {
-    return _agile*1.5;
+    int amount =  _agile*1.5;
+    //武功可能提升初试集气
+    for (Wugong* wg in wugong) {
+        amount = [wg effectInitAmountJiqi:amount WithInvader:self WithWugong:wg];
+    }
+
+    return MIN(amount,1000);
 }
 -(float)JiQiBuffpoision:(float)poision AndBleed:(float)bleed{
     return -poision/25.0-bleed/10.0;

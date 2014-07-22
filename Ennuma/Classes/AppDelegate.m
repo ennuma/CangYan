@@ -117,7 +117,7 @@
     
     Invader* invader4 = [[Invader alloc]init];
     invader4.attack=20;
-    invader4.armor = 15;
+    invader4.armor = 1;
     invader4.maxacume = 4800;
     invader4.agile=61;
     invader4.maxhealth=2100;
@@ -126,6 +126,7 @@
     [invader4 learnWugong:jianfa];
     [invader4 learnWugong:fumogong];
     [invader4 learnWugong:shenzhao];
+    //invader4.mainNeiGong = shenzhao;
     [sc startBattle];
     
     return sc;
