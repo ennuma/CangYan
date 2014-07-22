@@ -69,6 +69,76 @@
     }
     return hurt;
 }
+-(int)effectRevive:(int)health WithInvader:(NSObject *)invader WithWugong:(Wugong *)m_wugong
+{
+    NSAssert([invader isKindOfClass:[Invader class] ], @"nsobj is not invader");
+    Invader* inv = (Invader*)invader;
+    
+    if ([inv.mainNeiGong isWugong:self.wugongName]) {
+        if (inv.life==0) {
+            inv.health = inv.maxhealth;
+            inv.acume = inv.maxacume;
+            inv.stamina = 100;
+            inv.poision = 0;
+            inv.bleed = 0;
+            inv.fengXue = 0;
+            inv.liuXue = 0;
+            inv.blind = false;
+            inv.amountofjiqi = 1000;
+            
+            inv.life++;
+        }else if(inv.life==1){
+            if (CCRANDOM_0_1()*100<=10) {
+                inv.health = inv.maxhealth;
+                inv.acume = inv.maxacume;
+                inv.stamina = 100;
+                inv.poision = 0;
+                inv.bleed = 0;
+                inv.fengXue = 0;
+                inv.liuXue = 0;
+                inv.blind = false;
+                inv.amountofjiqi = 1000;
+                inv.life++;
+            }
+        }
+        
+    }else{
+        if (inv.life==0) {
 
+            inv.health = inv.maxhealth/2;
+            inv.acume = MIN(inv.maxacume/2+inv.acume, inv.maxacume);
+            inv.stamina = MIN(inv.stamina+50,100);
+            inv.poision = 0;
+            inv.bleed = 0;
+            inv.fengXue = 0;
+            inv.liuXue = 0;
+            inv.blind = false;
+            inv.amountofjiqi += 500;
+            if (inv.amountofjiqi>1000) {
+                inv.amountofjiqi=1000;
+            }
+            inv.life++;
+        }else if(inv.life==1){
+            if (CCRANDOM_0_1()*100<=5) {
+                inv.health = inv.maxhealth/2;
+                inv.acume = MIN(inv.maxacume/2+inv.acume, inv.maxacume);
+                inv.stamina = MIN(inv.stamina+50,100);
+                inv.poision = 0;
+                inv.bleed = 0;
+                inv.fengXue = 0;
+                inv.liuXue = 0;
+                inv.blind = false;
+                inv.amountofjiqi += 500;
+                if (inv.amountofjiqi>1000) {
+                    inv.amountofjiqi=1000;
+                }
+
+                inv.life++;
+            }
+        }
+
+    }
+    return inv.health;
+}
 
 @end

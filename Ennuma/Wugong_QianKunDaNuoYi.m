@@ -61,16 +61,22 @@
             hurt = hurt - dechurt;
             if ([inv.enemy count]>0){
                 int count = 0;
+                NSMutableArray* buffer = [NSMutableArray array];
                 for (Invader* en in inv.enemy) {
                     if (!en.isDead) {
                         count ++;
+                        [buffer addObject:en];
                     }
                 }
-                Invader* enemy = [inv.enemy objectAtIndex:CCRANDOM_0_1()*count];
+                Invader* enemy = [buffer objectAtIndex:CCRANDOM_0_1()*count];
+                if(dechurt<=0){
+                    dechurt = 1;
+                }
                 enemy.health -= dechurt;
                 if(enemy.health<=0){
                     enemy.health=1;
                 }
+
                 [enemy say:[NSString stringWithFormat:@"乾坤大挪移：-%i",dechurt] WithColor: [CCColor colorWithCcColor3b:ccRED]];
             }
         }

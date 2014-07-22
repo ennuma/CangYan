@@ -22,6 +22,7 @@
 #import "Wugong_HunYuanGong.h"
 #import "Wugong_KuiHuaShenGong.h"
 #import "Wugong_QianKunDaNuoYi.h"
+#import "Wugong_ShenZhaoGong.h"
 @implementation AppDelegate
 
 // 
@@ -73,6 +74,8 @@
     Wugong_HunYuanGong* hunyuan = [Wugong_HunYuanGong node];
     Wugong_KuiHuaShenGong* kuihua = [Wugong_KuiHuaShenGong node];
     Wugong_QianKunDaNuoYi* qiankun = [Wugong_QianKunDaNuoYi node];
+    Wugong_ShenZhaoGong* shenzhao = [Wugong_ShenZhaoGong node];
+
     Invader* invader = [[Invader alloc]init];
     invader.attack=20;
     invader.armor = 15;
@@ -92,7 +95,7 @@
     
     Invader* invader2 = [[Invader alloc]init];
     invader2.attack=20;
-    invader2.armor = 150;
+    invader2.armor = 1;
     invader2.maxacume = 4800;
     invader2.agile=61;
     invader2.maxhealth=2100;
@@ -103,7 +106,7 @@
     
     Invader* invader3 = [[Invader alloc]init];
     invader3.attack=20;
-    invader3.armor = 150;
+    invader3.armor = 1;
     invader3.maxacume = 4800;
     invader3.agile=61;
     invader3.maxhealth=2100;
@@ -122,7 +125,7 @@
     
     [invader4 learnWugong:jianfa];
     [invader4 learnWugong:fumogong];
-
+    [invader4 learnWugong:shenzhao];
     [sc startBattle];
     
     return sc;

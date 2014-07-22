@@ -208,4 +208,7 @@
 {
     return bleed;
 }
+-(int)effectRevive:(int)health WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong{
+    return health;
+}
 @end

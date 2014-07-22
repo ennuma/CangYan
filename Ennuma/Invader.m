@@ -49,6 +49,7 @@
 @synthesize qiMen = _qiMen;
 @synthesize blind = _blind;
 @synthesize kuiHuaYixing = _kuihuayixing;
+@synthesize life = _life;
 -(id)init
 {
     self = [super init];
@@ -98,6 +99,7 @@
     //variable init
     _isDead=false;
     _isDefending=false;
+    _life = 0;
     //self.runningInActiveScene = YES;
     [parent addChild:_bigIcon z:0];
     
@@ -501,7 +503,15 @@
     }
     _poision = MIN(_poision+poisionhurt, 100);
     if (self.health<=0) {
-        self.isDead=true;
+        for (Wugong* wg in self.wugongArr) {
+            _health = [wg effectRevive:_health WithInvader:self WithWugong:m_wugong];
+        }
+        if (self.health<=0) {
+            self.isDead=true;
+        }else{
+            [self say:[NSString stringWithFormat:@"复活！!"] WithColor: [CCColor colorWithCcColor3b:ccBLUE]];
+
+        }
     }
     //CUSTOMIZE HERE ANGRY RATE//////////// TODO
     int incAngry = 20+hurt/5;

@@ -75,6 +75,7 @@
     //buff zhuang tai
     bool _blind;
     bool _kuihuayixing;
+    int _life;
 }
 
 @property int strength;
@@ -122,6 +123,7 @@
 //buff
 @property bool blind;
 @property bool kuiHuaYixing; //葵花移xing
+@property int life;//神照功复活命
 -(void)initForBattleWithParent:(CCNode*)parent;
 -(void)initWuGong;
 -(void)initIcon;
