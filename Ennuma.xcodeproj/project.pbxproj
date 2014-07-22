@@ -238,6 +238,7 @@
 		843504CD195DB42900503923 /* Hero.m in Sources */ = {isa = PBXBuildFile; fileRef = 843504CC195DB42800503923 /* Hero.m */; };
 		843504D0195E44FC00503923 /* MessageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 843504CF195E44FC00503923 /* MessageCache.m */; };
 		843504D3195E5A4400503923 /* TiledMap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 843504D2195E5A4400503923 /* TiledMap.tmx */; };
+		84558DA2197ECE9100CD4107 /* Wugong_ShiZiHou.m in Sources */ = {isa = PBXBuildFile; fileRef = 84558DA1197ECE9100CD4107 /* Wugong_ShiZiHou.m */; };
 		845B51BC195E5BDD00A6098D /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 845B51BB195E5BDD00A6098D /* GameScene.m */; };
 		845B51BF195EC73200A6098D /* EnemyCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 845B51BE195EC73200A6098D /* EnemyCache.m */; };
 		845B51C2195EC7E500A6098D /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 845B51C1195EC7E500A6098D /* Enemy.m */; };
@@ -730,6 +731,8 @@
 		843504CE195E44FC00503923 /* MessageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCache.h; sourceTree = "<group>"; };
 		843504CF195E44FC00503923 /* MessageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCache.m; sourceTree = "<group>"; };
 		843504D2195E5A4400503923 /* TiledMap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TiledMap.tmx; sourceTree = "<group>"; };
+		84558DA0197ECE9100CD4107 /* Wugong_ShiZiHou.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_ShiZiHou.h; sourceTree = "<group>"; };
+		84558DA1197ECE9100CD4107 /* Wugong_ShiZiHou.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_ShiZiHou.m; sourceTree = "<group>"; };
 		845B51BB195E5BDD00A6098D /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		845B51BD195EC73200A6098D /* EnemyCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyCache.h; sourceTree = "<group>"; };
 		845B51BE195EC73200A6098D /* EnemyCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyCache.m; sourceTree = "<group>"; };
@@ -1789,6 +1792,8 @@
 				846E4403197DE2D70081318F /* Wugong_ShengHuoShenGong.m */,
 				846E4405197DE53E0081318F /* Wugong_TaiXuanShenGong.h */,
 				846E4406197DE53E0081318F /* Wugong_TaiXuanShenGong.m */,
+				84558DA0197ECE9100CD4107 /* Wugong_ShiZiHou.h */,
+				84558DA1197ECE9100CD4107 /* Wugong_ShiZiHou.m */,
 			);
 			name = NeiGong;
 			sourceTree = "<group>";
@@ -2072,6 +2077,7 @@
 				8429176B19678C3F00D691D3 /* SongShanScene.m in Sources */,
 				84350270195AFA0100503923 /* CCShader.m in Sources */,
 				84350292195AFA0200503923 /* CCAnimation.m in Sources */,
+				84558DA2197ECE9100CD4107 /* Wugong_ShiZiHou.m in Sources */,
 				843503DE195AFA0400503923 /* CCControlTextureFactory.m in Sources */,
 				84350382195AFA0300503923 /* OALAudioActions.m in Sources */,
 				846E4404197DE2D70081318F /* Wugong_ShengHuoShenGong.m in Sources */,

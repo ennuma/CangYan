@@ -201,12 +201,10 @@ static NSObject* isActing = nil;
 }
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    CCLOG(@"here");
-    if (isActing) {
-        CCLOG(@"here");
-        [self removeChildByName:@"show"];
-        [((Invader*)isActing) endShow];
+    if ([self getChildByName:@"show" recursively:NO]!=nil) {
+         [self removeChildByName:@"show"];
     }
+    [self resumeAction];
 }
 -(void)notifyJiQiChangedForInvader:(id)invader
 {
@@ -220,4 +218,17 @@ static NSObject* isActing = nil;
     [obj.smallIcon runAction:moveTo];
 }
 
+-(void)pauseAction
+{
+    if (isActing) {
+        [((Invader*)isActing).bigIcon setPaused:YES];
+    }
+}
+
+-(void)resumeAction
+{
+    if (isActing) {
+        [((Invader*)isActing).bigIcon setPaused:NO];
+    }
+}
 @end

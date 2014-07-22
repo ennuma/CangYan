@@ -215,4 +215,8 @@
 {
     return jiqi;
 }
+-(void)effectSpecialEffectScopeWithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong
+{
+
+}
 @end

@@ -364,10 +364,15 @@
         rate *= baojiEffect;
     }
     
+    for (Wugong* wg in self.wugongArr) {
+        [wg effectSpecialEffectScopeWithInvader:self WithWugong:m_wugong];
+    }
+    
     _isLianji = false;
     for (Invader* inv in invaders) {
         //neigong jia li
         [inv defendInvader:self WhoUseWuGong:m_wugong WithAwugong:awugong WithAng:ang WithRate:rate IsLianji:false];
+        [((CCScene*)_map.parent) notifyJiQiChangedForInvader:inv];
     }
 
     //TODO LIANJI
@@ -411,7 +416,7 @@
     //stamina dec
     float staminadec = 6;
     for (Wugong* wg in self.wugongArr) {
-        incWilling = [wg effectWillingToFight:incWilling WithInvader:self WithWugong:m_wugong];
+        staminadec = [wg effectStamina:staminadec WithInvader:self WithWugong:m_wugong];
     }
     _stamina = MAX(_stamina - staminadec, 0);
     //reset blind
@@ -476,7 +481,6 @@
         spdhurt = 0;
     }
     _amountofjiqi = MAX(_amountofjiqi-spdhurt, -500);
-    [((CCScene*)_map.parent) notifyJiQiChangedForInvader:self];
     
     if (bleedhurt<0) {
         bleedhurt = 0;
@@ -1004,11 +1008,9 @@
     //CCScene* effectScene = [CCScene node];
     [_map.parent addChild:words z:100 name:@"show"];
     //_bigIcon.paused  = YES;
-    [_bigIcon setPaused:YES];
+    [_map.parent pauseAction];
     
     CCActionMoveBy* moveUp = [CCActionMoveBy actionWithDuration:1 position:CGPointMake(0,0)];
-    //CCActionCallFunc* toggle = [CCActionCallFunc actionWithTarget:self selector:@selector(toggleVisible)];
-    //CCActionCallFunc* delete = [CCActionCallFunc actionWithTarget:words selector:@selector(removeFromParent)];
     CCActionSequence* actions = [CCActionSequence actions:moveUp, nil];
     [words runAction:actions];
     
@@ -1018,7 +1020,6 @@
 {
     [_bigIcon setPaused:NO];
     //CCLOG(@"waiting %i", _isShowing);
-
 }
 
 #pragma mathfunction
