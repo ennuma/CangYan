@@ -47,7 +47,8 @@ CCSprite* bar;
     [self addChild:map z:-99];
     _width = map.mapSize.width;
     _height = map.mapSize.height;
-        
+    
+    [self setUserInteractionEnabled:YES];
     return self;
 }
 +(BattleField*)scene
@@ -86,7 +87,7 @@ CCSprite* bar;
     [obj initForBattleWithParent:self];
     [whateverTeam addObject:obj];
     //CGPoint spp = CGPointMake([self contentSize].width/2-[bar contentSize].width/2+ [sp1 contentSize].width/2, [self contentSize].height- [bar contentSize].height);
-    
+
     //test
     //obj.smallIcon.position = spp;
     float percentage = obj.amountofjiqi/maxJiQi;
@@ -140,10 +141,10 @@ CCSprite* bar;
 /**
  The objs may do action at the same time. fixed
  **/
-static bool isActing = false;
+static NSObject* isActing = nil;
 -(void) updateAllObjsJiQi
 {
-    isActing = false;
+    isActing = nil;
     //advise arrange element by jiqispeed
     /**
      sorted version of doaction. only the fastest one will act and put others to waitlist
@@ -186,7 +187,7 @@ static bool isActing = false;
         if (!isActing) {
             [self unschedule:@selector(startJiqi:)];
             [obj doAction];
-            isActing=true;
+            isActing=obj;
             obj.amountofjiqi = obj.amountofjiqi - maxJiQi;
         }else{
             obj.amountofjiqi = maxJiQi-1;
@@ -197,6 +198,15 @@ static bool isActing = false;
     
     
     
+}
+-(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    CCLOG(@"here");
+    if (isActing) {
+        CCLOG(@"here");
+        [self removeChildByName:@"show"];
+        [((Invader*)isActing) endShow];
+    }
 }
 -(void)notifyJiQiChangedForInvader:(id)invader
 {

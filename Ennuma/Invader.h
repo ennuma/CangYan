@@ -138,4 +138,5 @@
 -(void)updateJiQi;
 -(void)learnWugong:(Wugong*)m_wugong;
 -(void)say:(NSString*)sentence WithColor:(CCColor*)color;
+-(void)endShow;
 @end

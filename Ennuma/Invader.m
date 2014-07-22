@@ -386,9 +386,6 @@
         }
     }**/
     
-    //for (Invader* inv in invaders) {
-    //    [((CCScene*)_map.parent) notifyJiQiChangedForInvader:inv];
-    //}
     
     //acume cost calculated here
     //since acume affect hurt damage, it need to be calculated after attack
@@ -509,7 +506,7 @@
         if (self.health<=0) {
             self.isDead=true;
         }else{
-            [self say:[NSString stringWithFormat:@"复活！!"] WithColor: [CCColor colorWithCcColor3b:ccBLUE]];
+            [invader show:[NSString stringWithFormat:@"复活！!"] WithColor: [CCColor colorWithCcColor3b:ccBLUE]];
 
         }
     }
@@ -998,27 +995,28 @@
     CCActionSequence* actions = [CCActionSequence actions:moveUp, delete, nil];
     [words runAction:actions];
 }
-/**-(void)show:(NSString*)sentence WithColor:(CCColor*)color{
+-(void)show:(NSString*)sentence WithColor:(CCColor*)color{
     CCLabelTTF* words = [CCLabelTTF labelWithString:sentence fontName:@"Verdana-Bold" fontSize:20];
     [words setColorRGBA:color];
     words.position = [self convertToMapCord:CGPointMake(10, 10)];
     words.position = CGPointMake(words.position.x-words.contentSize.width/2, words.position.y);
     words.anchorPoint = CGPointMake(0, 0.5);
-    CCScene* effectScene = [CCScene node];
-    [effectScene addChild:words z:100 name:@"lianjiEffect"];
-
+    //CCScene* effectScene = [CCScene node];
+    [_map.parent addChild:words z:100 name:@"show"];
+    //_bigIcon.paused  = YES;
+    [_bigIcon setPaused:YES];
     
     CCActionMoveBy* moveUp = [CCActionMoveBy actionWithDuration:1 position:CGPointMake(0,0)];
     //CCActionCallFunc* toggle = [CCActionCallFunc actionWithTarget:self selector:@selector(toggleVisible)];
-    CCActionCallFunc* delete = [CCActionCallFunc actionWithTarget:words selector:@selector(removeFromParent)];
-    CCActionSequence* actions = [CCActionSequence actions:moveUp,delete, nil];
+    //CCActionCallFunc* delete = [CCActionCallFunc actionWithTarget:words selector:@selector(removeFromParent)];
+    CCActionSequence* actions = [CCActionSequence actions:moveUp, nil];
     [words runAction:actions];
     
 
-}**/
--(void)toggleVisible
+}
+-(void)endShow
 {
-
+    [_bigIcon setPaused:NO];
     //CCLOG(@"waiting %i", _isShowing);
 
 }
