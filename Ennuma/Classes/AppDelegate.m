@@ -23,6 +23,7 @@
 #import "Wugong_KuiHuaShenGong.h"
 #import "Wugong_QianKunDaNuoYi.h"
 #import "Wugong_ShenZhaoGong.h"
+#import "Wugong_ShiZiHou.h"
 @implementation AppDelegate
 
 // 
@@ -75,9 +76,10 @@
     Wugong_KuiHuaShenGong* kuihua = [Wugong_KuiHuaShenGong node];
     Wugong_QianKunDaNuoYi* qiankun = [Wugong_QianKunDaNuoYi node];
     Wugong_ShenZhaoGong* shenzhao = [Wugong_ShenZhaoGong node];
-
+    Wugong_ShiZiHou* shizi = [Wugong_ShiZiHou node];
+    
     Invader* invader = [[Invader alloc]init];
-    invader.attack=20;
+    invader.attack=1;
     invader.armor = 15;
     invader.maxacume = 6000;
     invader.agile = 380;
@@ -87,8 +89,8 @@
     //[invader learnWugong:fumogong];
     //[invader learnWugong:chunyang];
     [invader learnWugong:hama];
-    [invader learnWugong:qiankun];
-    invader.mainNeiGong = qiankun;
+    [invader learnWugong:shizi];
+    invader.mainNeiGong = shizi;
     //Battle
     BattleField* sc = [BattleField scene];
     [sc addEntity:invader ForTeam:@"red" AtPos:CGPointMake(10, 10)];

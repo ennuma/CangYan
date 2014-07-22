@@ -67,31 +67,39 @@
     int scope = 0;
     int prob = 0;
     if ([inv.mainNeiGong isWugong:self.wugongName]) {
+        scope = 8;
+        prob = 75;
+        if (CCRANDOM_0_1()*100<=prob) {
+            for (Invader* en in inv.enemy) {
+                if (en.isDead) {
+                    continue;
+                }
+                if ((abs(en.position.x-inv.position.x)+abs(en.position.y-inv.position.y))<=scope) {
+                    int spdhurt =  ((inv.acume*2+inv.maxacume)/3 - en.acume/2)/50 + inv.willingToFight-100+30;
+                    en.amountofjiqi -= spdhurt;
+                    int acumecost = MIN(500, inv.acume/10);
+                    inv.acume-=acumecost;
+                    [en say:@"狮子吼好可怕!" WithColor:[CCColor colorWithCcColor3b:ccGREEN]];
+                }
+            }
+        }
+
+    }else{
         scope = 5;
         prob = 30;
         if (CCRANDOM_0_1()*100<=prob) {
             for (Invader* en in inv.enemy) {
+                if (en.isDead) {
+                    continue;
+                }
                 if ((abs(en.position.x-inv.position.x)+abs(en.position.y-inv.position.y))<=scope) {
                     int spdhurt =  ((inv.acume*2+inv.maxacume)/3 - en.acume/2)/50 + inv.willingToFight-100;
                     en.amountofjiqi -= spdhurt;
                     int acumecost = MIN(500, inv.acume/10);
                     inv.acume-=acumecost;
+                    [en say:@"狮子吼好可怕!" WithColor:[CCColor colorWithCcColor3b:ccGREEN]];
                 }
             }
-        }
-    }else{
-        scope = 8;
-        prob = 75;
-        if (CCRANDOM_0_1()*100<=prob) {
-
-        for (Invader* en in inv.enemy) {
-            if ((abs(en.position.x-inv.position.x)+abs(en.position.y-inv.position.y))<=scope) {
-                int spdhurt =  ((inv.acume*2+inv.maxacume)/3 - en.acume/2)/50 + inv.willingToFight-100+30;
-                en.amountofjiqi -= spdhurt;
-                int acumecost = MIN(500, inv.acume/10);
-                inv.acume-=acumecost;
-            }
-        }
         }
     }
     

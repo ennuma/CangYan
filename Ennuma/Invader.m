@@ -372,6 +372,12 @@
     for (Invader* inv in invaders) {
         //neigong jia li
         [inv defendInvader:self WhoUseWuGong:m_wugong WithAwugong:awugong WithAng:ang WithRate:rate IsLianji:false];
+    }
+    //small icon update
+    for (Invader* inv in _enemy) {
+        if (inv.isDead) {
+            continue;
+        }
         [((CCScene*)_map.parent) notifyJiQiChangedForInvader:inv];
     }
 
