@@ -60,6 +60,7 @@
     wugong = [[NSMutableArray alloc]init];
     reachable = [[NSMutableSet alloc]init];
     reachableLookup =[[NSMutableDictionary alloc]init];
+    actions = [[NSMutableArray alloc]init];
     [self initWuGong];
     [self initIcon];
     return self;
@@ -258,11 +259,139 @@
      **/
     //TODO may pause forever
     //check if there is any enemy alive
+    [actions removeAllObjects];
     if (![self enemyAlive]||self.isDead) {
         [self endOfAction];
         return;
     }
+    CCActionCallFunc* callback = [CCActionCallFunc actionWithTarget:self selector:@selector(endOfAction)];
+
+    [self war_AutoFight];
+    int flag = [self war_Think];
+    if (flag==0) {
+        [self autoEscape];
+        [self autoRest];
+    }else if(flag ==1)
+    {
+        [self war_AutoFight];
+    }else{
+        //not do yet , heal or something
+    }
     
+    //run actions
+    [actions addObject:callback];
+    CCActionSequence* seq = [CCActionSequence actionWithArray:actions];
+    [_bigIcon runAction:seq];
+    
+    for (Wugong* wg in self.wugongArr) {
+        [wg effectRestoreAfterActionWithInvader:self];
+    }
+}
+
+/**能否吃药增加参数
+ flag=2 生命，3内力；4体力  6 解毒**/ //TODO
+-(int)war_ThinkDrug:(int)index
+{
+    return -1;
+}
+-(int)war_ThinkHeal
+{
+    return 0;
+}
+/**
+ 0 rest， 1 fight，2 item health， 3 item acume 4 item stamina， 5 heal 6 item poision
+ **/
+-(int)war_Think
+{
+    int r = -1;
+    //rest
+    if (_stamina<10) {
+        r = [self war_ThinkDrug:4];
+        if (r>=0) {
+            return r;
+        }else{
+            return 0;
+        }
+    }
+    //health
+    if (_health<20 || _bleed>50) {
+        r = [self war_ThinkDrug:2];
+        if (r>=0) {
+            return r;
+        }
+    }
+    
+    //heal
+    float rate = 0;
+    if (_health<_maxhealth/5) {
+        rate = 90;
+    }
+    else if(_health < _maxhealth/4){
+        rate = 70;
+    }
+    else if(_health < _maxhealth/3){
+        rate = 50;
+    }
+    else if(_health < _maxhealth/2){
+        rate = 25;
+    }
+    if (CCRANDOM_0_1()*100<rate) {
+        r = [self war_ThinkDrug:2];
+    }
+    if (r>=0) {
+        return r;
+    }else{
+        r = [self war_ThinkHeal];
+    }
+    if (r>=0) {
+        return r;
+    }
+    
+    //acume
+    rate=0;
+    if (_acume<_maxacume/5) {
+        rate = 75;
+    }
+    else if(_acume < _maxacume/4){
+        rate = 50;
+    }
+    if (CCRANDOM_0_1()*100<rate) {
+        r = [self war_ThinkDrug:3];
+    }
+    if (r>=0) {
+        return r;
+    }
+
+    
+    rate=0;
+    if (_poision>75) {
+        rate = 60;
+    }
+    else if(_poision > 50){
+        rate = 30;
+    }
+    if (CCRANDOM_0_1()*100<rate) {
+        r = [self war_ThinkDrug:6];
+    }
+    if (r>=0) {
+        return r;
+    }
+    
+    
+    /**local minNeili=War_GetMinNeiLi(pid);     --所有武功的最小内力
+    
+    if JY.Person[pid]["内力"]>=minNeili then
+        r=1;
+    else
+        r=0;
+    end
+    
+    return r;
+    end**/
+    return 1;
+}
+-(void)war_AutoFight
+{
     //try attack fitst, if fails than choose to move
     Wugong* choosedWugong = [self autoChooseWugong];
     NSValue* val =[self getMaxAttackPosWithWugong:choosedWugong];
@@ -276,10 +405,7 @@
         
     }else{
         [self autoMove];
-    }
-    
-    for (Wugong* wg in self.wugongArr) {
-        [wg effectRestoreAfterActionWithInvader:self];
+        [self autoRest];
     }
 }
 
@@ -322,15 +448,35 @@
     //May change later
     CCActionDelay* delay = [CCActionDelay actionWithDuration:1];//play animation after this TODO
     //delay need to put after attackinvaders because this delay is used for Shajiqi effect. smallIcon need this delay time to run animation
-    CCActionSequence* actions = [CCActionSequence actions:action,render,
-                                 attackInvaders, delay, callback, nil];
-    [_bigIcon runAction:actions];
+    //CCActionSequence* actions = [CCActionSequence actions:action,render,
+    //                             attackInvaders, delay, callback, nil];
+    [actions addObject:action];
+    [actions addObject:render];
+    [actions addObject:attackInvaders];
+    [actions addObject:delay];
+    //[_bigIcon runAction:actions];
     
     
     //release invaders
     invadersBeingAttacked = nil;
 }
-
+-(void)rest
+{
+    if (_isDead) {
+        return;
+    }
+    float percentage = _stamina/100.0 -_bleed/50.0 - _poision/50.0 + 4 + CCRANDOM_0_1()*4;
+    percentage = percentage/120.0;
+    _stamina += 3+CCRANDOM_0_1()*4;
+    _health = MIN(_maxhealth, _health+3+_maxhealth*percentage);
+    _acume = MIN(_maxacume, _acume+3+_maxacume*percentage);
+}
+-(void)autoRest
+{
+    [self rest];
+    CCActionDelay* delay = [CCActionDelay actionWithDuration:1];
+    [actions addObject:delay];
+}
 -(void)attackInvaders:(NSMutableArray *)invaders WithWuGong:(Wugong *)m_wugong
 {
     int ang=0;
@@ -776,12 +922,44 @@
     Invader* nearestEnemy = [self getNearestEnemy];
     CGPoint despoint = [self getDesPoint:nearestEnemy.position];
     CCActionFiniteTime* action = [self buildCCActionMovArrFrom:self.position To:despoint];
-    CCActionSequence* actions = [CCActionSequence actions:action, callback, nil];
-    [_bigIcon runAction:actions];
+    [actions addObject:action];
+    //CCActionSequence* actions = [CCActionSequence actions:action, callback, nil];
+    //[_bigIcon runAction:actions];
     self.position = despoint;
+    [self rest];
 
 }
-
+-(void)autoEscape
+{
+    CCActionCallFunc* callback = [CCActionCallFunc actionWithTarget:self selector:@selector(endOfAction)];
+    CGPoint despoint = [self getSafePoint];
+    CCActionFiniteTime* action = [self buildCCActionMovArrFrom:self.position To:despoint];
+    [actions addObject:action];
+    //CCActionSequence* actions = [CCActionSequence actions:action, callback, nil];
+    //[_bigIcon runAction:actions];
+    self.position = despoint;
+}
+-(CGPoint)getSafePoint
+{
+    int steps = -99;
+    CGPoint ret = self.position;
+    for (NSValue* v in reachable) {
+        CGPoint p = [v CGPointValue];
+        int minstep = 0;
+        for (Invader* em in _enemy) {
+            int temp = abs(em.position.x-p.x)+abs(em.position.y-p.y);
+            if (temp<minstep) {
+                minstep = temp;
+            }
+        }
+        if (minstep>steps) {
+            steps = minstep;
+            ret = [v CGPointValue];
+        }
+    }
+    
+    return ret;
+}
 -(CGPoint)getDesPoint:(CGPoint) enemyPos
 {
     CGPoint ret;

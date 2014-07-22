@@ -76,6 +76,8 @@
     bool _blind;
     bool _kuihuayixing;
     int _life;
+    
+    NSMutableArray* actions;
 }
 
 @property int strength;
