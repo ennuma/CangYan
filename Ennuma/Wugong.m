@@ -219,4 +219,15 @@
 {
 
 }
+-(int)effectNeiGongJiaLiFengXueHurt:(int)fengxue WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong
+{
+    return fengxue;
+}
+-(int)effectDefendPoision:(int)poision WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong{
+    return poision;
+}
+-(void)effectRestoreAfterActionWithInvader:(NSObject*)invader
+{
+    
+}
 @end

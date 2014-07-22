@@ -277,6 +277,10 @@
     }else{
         [self autoMove];
     }
+    
+    for (Wugong* wg in self.wugongArr) {
+        [wg effectRestoreAfterActionWithInvader:self];
+    }
 }
 
 -(Wugong*)autoChooseWugong
@@ -1457,6 +1461,14 @@
     [hurtDic setValue:[NSNumber numberWithInt:bleedhurt] forKey:@"bleedhurt"];
     //封穴
     int fengxuehurt = MAX(hurt/120.0,0.5)*wu.fengXueIndex;
+    if (awugong) {
+        //内功加力时触发所有武功特效
+        for (Wugong* wg in pid.wugongArr) {
+            if ([wg isNeiGong]) {
+                fengxuehurt = [wg effectNeiGongJiaLiFengXueHurt:fengxuehurt WithInvader:self WithWugong:wu];
+            }
+        }
+    }
     for (Wugong* wg in eid.wugongArr) {
         if ([wg isNeiGong]) {
             fengxuehurt = [wg effectDefendFengXue:fengxuehurt WithInvader:self WithWugong:wu];
@@ -1484,6 +1496,12 @@
             }
         }
     }
+    for (Wugong* wg in eid.wugongArr) {
+        if ([wg isNeiGong]) {
+            poisionnum = [wg effectDefendPoision:poisionnum WithInvader:self WithWugong:wu];
+        }
+    }
+
     [hurtDic setValue:[NSNumber numberWithInt:poisionnum] forKey:@"poisionhurt"];
 
     

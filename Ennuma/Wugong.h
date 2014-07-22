@@ -73,6 +73,7 @@
 -(int)effectNeiGongJiaLiSpdHurt:(int)spdhurt WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(int)effectNeiGongJiaLiPoisionHurt:(int)poisionnum WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(int)effectNeiGongJiaLiAngryHurt:(int)angry WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
+-(int)effectNeiGongJiaLiFengXueHurt:(int)fengxue WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(int)effectAngryRateAfterBeingAttacked:(int)angryRate WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(int)effectBaojiRate:(int)baojirate WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(float)effectWillingToFight:(float)willingToFight WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
@@ -85,4 +86,6 @@
 -(int)effectRevive:(int)health WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(int)effectInitAmountJiqi:(int)jiqi WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(void)effectSpecialEffectScopeWithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
+-(int)effectDefendPoision:(int)poision WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
+-(void)effectRestoreAfterActionWithInvader:(NSObject*)invader;
 @end

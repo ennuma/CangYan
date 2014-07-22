@@ -242,6 +242,9 @@
 		845B51BC195E5BDD00A6098D /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 845B51BB195E5BDD00A6098D /* GameScene.m */; };
 		845B51BF195EC73200A6098D /* EnemyCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 845B51BE195EC73200A6098D /* EnemyCache.m */; };
 		845B51C2195EC7E500A6098D /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 845B51C1195EC7E500A6098D /* Enemy.m */; };
+		845CA59D197ED914008E61E4 /* Wugong_XianTianGong.m in Sources */ = {isa = PBXBuildFile; fileRef = 845CA59C197ED914008E61E4 /* Wugong_XianTianGong.m */; };
+		845CA5A0197EDD16008E61E4 /* Wugong_XiaoWuXiangGong.m in Sources */ = {isa = PBXBuildFile; fileRef = 845CA59F197EDD16008E61E4 /* Wugong_XiaoWuXiangGong.m */; };
+		845CA5A3197EE234008E61E4 /* Wugong_YiJingShenGong.m in Sources */ = {isa = PBXBuildFile; fileRef = 845CA5A2197EE234008E61E4 /* Wugong_YiJingShenGong.m */; };
 		84675AAB1962EFD10093F2EF /* WuLinScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 84675AAA1962EFD10093F2EF /* WuLinScene.m */; };
 		84675AAE1962F0940093F2EF /* bg_map.png in Resources */ = {isa = PBXBuildFile; fileRef = 84675AAC1962F0940093F2EF /* bg_map.png */; };
 		84675AAF1962F0940093F2EF /* menpai.png in Resources */ = {isa = PBXBuildFile; fileRef = 84675AAD1962F0940093F2EF /* menpai.png */; };
@@ -738,6 +741,12 @@
 		845B51BE195EC73200A6098D /* EnemyCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyCache.m; sourceTree = "<group>"; };
 		845B51C0195EC7E500A6098D /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
 		845B51C1195EC7E500A6098D /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enemy.m; sourceTree = "<group>"; };
+		845CA59B197ED914008E61E4 /* Wugong_XianTianGong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_XianTianGong.h; sourceTree = "<group>"; };
+		845CA59C197ED914008E61E4 /* Wugong_XianTianGong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_XianTianGong.m; sourceTree = "<group>"; };
+		845CA59E197EDD16008E61E4 /* Wugong_XiaoWuXiangGong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_XiaoWuXiangGong.h; sourceTree = "<group>"; };
+		845CA59F197EDD16008E61E4 /* Wugong_XiaoWuXiangGong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_XiaoWuXiangGong.m; sourceTree = "<group>"; };
+		845CA5A1197EE234008E61E4 /* Wugong_YiJingShenGong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_YiJingShenGong.h; sourceTree = "<group>"; };
+		845CA5A2197EE234008E61E4 /* Wugong_YiJingShenGong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_YiJingShenGong.m; sourceTree = "<group>"; };
 		84675AA91962EFD10093F2EF /* WuLinScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WuLinScene.h; path = ../WuLinScene.h; sourceTree = "<group>"; };
 		84675AAA1962EFD10093F2EF /* WuLinScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WuLinScene.m; path = ../WuLinScene.m; sourceTree = "<group>"; };
 		84675AAC1962F0940093F2EF /* bg_map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_map.png; path = Resources/bg_map.png; sourceTree = "<group>"; };
@@ -1794,6 +1803,12 @@
 				846E4406197DE53E0081318F /* Wugong_TaiXuanShenGong.m */,
 				84558DA0197ECE9100CD4107 /* Wugong_ShiZiHou.h */,
 				84558DA1197ECE9100CD4107 /* Wugong_ShiZiHou.m */,
+				845CA59B197ED914008E61E4 /* Wugong_XianTianGong.h */,
+				845CA59C197ED914008E61E4 /* Wugong_XianTianGong.m */,
+				845CA59E197EDD16008E61E4 /* Wugong_XiaoWuXiangGong.h */,
+				845CA59F197EDD16008E61E4 /* Wugong_XiaoWuXiangGong.m */,
+				845CA5A1197EE234008E61E4 /* Wugong_YiJingShenGong.h */,
+				845CA5A2197EE234008E61E4 /* Wugong_YiJingShenGong.m */,
 			);
 			name = NeiGong;
 			sourceTree = "<group>";
@@ -2054,6 +2069,7 @@
 				84C36021197AD54300331A2B /* Wugong_SongFengJianFa.m in Sources */,
 				8435030A195AFA0300503923 /* CCSpriteFrame.m in Sources */,
 				84350336195AFA0300503923 /* CCES2Renderer.m in Sources */,
+				845CA59D197ED914008E61E4 /* Wugong_XianTianGong.m in Sources */,
 				8435028B195AFA0200503923 /* CCActionProgressTimer.m in Sources */,
 				8496553C1966B6AE000C38AA /* HuaShanScene.m in Sources */,
 				8435036E195AFA0300503923 /* TGAlib.m in Sources */,
@@ -2062,6 +2078,7 @@
 				84350284195AFA0200503923 /* CCActionInterval.m in Sources */,
 				843502B2195AFA0200503923 /* CCNodeColor.m in Sources */,
 				845B51BF195EC73200A6098D /* EnemyCache.m in Sources */,
+				845CA5A3197EE234008E61E4 /* Wugong_YiJingShenGong.m in Sources */,
 				84350340195AFA0300503923 /* CCAppDelegate.m in Sources */,
 				843502A0195AFA0200503923 /* CCDirector.m in Sources */,
 				8435027E195AFA0100503923 /* CCActionEase.m in Sources */,
@@ -2085,6 +2102,7 @@
 				84350333195AFA0300503923 /* CCDirectorIOS.m in Sources */,
 				84C36033197CD5BC00331A2B /* Wugong_HunYuanGong.m in Sources */,
 				84C36036197CF13100331A2B /* Wugong_JiuYangShenGong.m in Sources */,
+				845CA5A0197EDD16008E61E4 /* Wugong_XiaoWuXiangGong.m in Sources */,
 				843502CD195AFA0200503923 /* CCParticleBatchNode.m in Sources */,
 				84350367195AFA0300503923 /* NSAttributedString+CCAdditions.m in Sources */,
 				84350478195AFA0500503923 /* main.m in Sources */,
