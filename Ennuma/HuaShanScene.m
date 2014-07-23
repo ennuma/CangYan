@@ -18,7 +18,7 @@
     if (CGRectContainsPoint([sp boundingBox], pos)) {
         HuaShanPai* huashan = menpai;
         Invader* invader = [[Invader alloc]init];
-        invader.strength=20;
+        invader.attack=20;
         [huashan scheduleInvader:invader InvadeMenPai:[huashan.neighbours objectAtIndex:0]];
     }else{
         [[[CCDirector sharedDirector]runningScene] removeChildByName:@"menpai" cleanup:YES];

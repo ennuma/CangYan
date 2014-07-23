@@ -260,6 +260,10 @@
 		846FE1DA197EEDF80035448F /* Wugong_TaiShanShiBaPan.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FE1D9197EEDF80035448F /* Wugong_TaiShanShiBaPan.m */; };
 		846FE1DD197EEE5E0035448F /* Wugong_YunWuJianFa.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FE1DC197EEE5E0035448F /* Wugong_YunWuJianFa.m */; };
 		846FE1E0197EF7160035448F /* Wugong_WanYueGuiZong.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FE1DF197EF7160035448F /* Wugong_WanYueGuiZong.m */; };
+		846FE1E3197F1D1D0035448F /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FE1E2197F1D1D0035448F /* Place.m */; };
+		846FE1E6197F29170035448F /* CanYan.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FE1E5197F29170035448F /* CanYan.m */; };
+		846FE1E9197F2C620035448F /* Entity.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FE1E8197F2C620035448F /* Entity.m */; };
+		846FE1EC197F2EB40035448F /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FE1EB197F2EB40035448F /* Item.m */; };
 		8489582919717F0D00A9766B /* maphud.png in Resources */ = {isa = PBXBuildFile; fileRef = 8489582819717F0D00A9766B /* maphud.png */; };
 		849655361966A9C9000C38AA /* MenPaiScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 849655351966A9C9000C38AA /* MenPaiScene.m */; };
 		849655391966B663000C38AA /* HuaShanPai.m in Sources */ = {isa = PBXBuildFile; fileRef = 849655381966B663000C38AA /* HuaShanPai.m */; };
@@ -784,6 +788,14 @@
 		846FE1DC197EEE5E0035448F /* Wugong_YunWuJianFa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_YunWuJianFa.m; sourceTree = "<group>"; };
 		846FE1DE197EF7160035448F /* Wugong_WanYueGuiZong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_WanYueGuiZong.h; sourceTree = "<group>"; };
 		846FE1DF197EF7160035448F /* Wugong_WanYueGuiZong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_WanYueGuiZong.m; sourceTree = "<group>"; };
+		846FE1E1197F1D1D0035448F /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
+		846FE1E2197F1D1D0035448F /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
+		846FE1E4197F29170035448F /* CanYan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanYan.h; sourceTree = "<group>"; };
+		846FE1E5197F29170035448F /* CanYan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanYan.m; sourceTree = "<group>"; };
+		846FE1E7197F2C620035448F /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
+		846FE1E8197F2C620035448F /* Entity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entity.m; sourceTree = "<group>"; };
+		846FE1EA197F2EB40035448F /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		846FE1EB197F2EB40035448F /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		8489582819717F0D00A9766B /* maphud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = maphud.png; path = Resources/maphud.png; sourceTree = "<group>"; };
 		849655341966A9C9000C38AA /* MenPaiScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenPaiScene.h; sourceTree = "<group>"; };
 		849655351966A9C9000C38AA /* MenPaiScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenPaiScene.m; sourceTree = "<group>"; };
@@ -1717,6 +1729,14 @@
 				8429176E1967977F00D691D3 /* Invader.m */,
 				84675AB01962F3850093F2EF /* MenPai.h */,
 				84675AB11962F3850093F2EF /* MenPai.m */,
+				846FE1E1197F1D1D0035448F /* Place.h */,
+				846FE1E2197F1D1D0035448F /* Place.m */,
+				846FE1E7197F2C620035448F /* Entity.h */,
+				846FE1E8197F2C620035448F /* Entity.m */,
+				846FE1E4197F29170035448F /* CanYan.h */,
+				846FE1E5197F29170035448F /* CanYan.m */,
+				846FE1EA197F2EB40035448F /* Item.h */,
+				846FE1EB197F2EB40035448F /* Item.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1990,6 +2010,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				846FE1E9197F2C620035448F /* Entity.m in Sources */,
 				843503E1195AFA0400503923 /* CCScrollView.m in Sources */,
 				8435037C195AFA0300503923 /* OALAction.m in Sources */,
 				84350318195AFA0300503923 /* CCTexturePVR.m in Sources */,
@@ -2019,6 +2040,7 @@
 				843503F3195AFA0400503923 /* CCBAnimationManager.m in Sources */,
 				84350361195AFA0300503923 /* CCVertex.m in Sources */,
 				8435047F195AFA0500503923 /* HelloWorldScene.m in Sources */,
+				846FE1E6197F29170035448F /* CanYan.m in Sources */,
 				84350295195AFA0200503923 /* CCAnimationCache.m in Sources */,
 				8435034F195AFA0300503923 /* base64.c in Sources */,
 				843502D8195AFA0200503923 /* CCParticleSystemBase.m in Sources */,
@@ -2114,6 +2136,7 @@
 				843503C3195AFA0400503923 /* mach_timing.c in Sources */,
 				843502FD195AFA0300503923 /* CCScheduler.m in Sources */,
 				8435031B195AFA0300503923 /* CCTiledMap.m in Sources */,
+				846FE1EC197F2EB40035448F /* Item.m in Sources */,
 				8435025D195AFA0000503923 /* CCEffectColorPulse.m in Sources */,
 				843502F3195AFA0300503923 /* CCResponder.m in Sources */,
 				843504B3195BF65300503923 /* Player.m in Sources */,
@@ -2128,6 +2151,7 @@
 				84C36021197AD54300331A2B /* Wugong_SongFengJianFa.m in Sources */,
 				8435030A195AFA0300503923 /* CCSpriteFrame.m in Sources */,
 				84350336195AFA0300503923 /* CCES2Renderer.m in Sources */,
+				846FE1E3197F1D1D0035448F /* Place.m in Sources */,
 				845CA59D197ED914008E61E4 /* Wugong_XianTianGong.m in Sources */,
 				8435028B195AFA0200503923 /* CCActionProgressTimer.m in Sources */,
 				8496553C1966B6AE000C38AA /* HuaShanScene.m in Sources */,

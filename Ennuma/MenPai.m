@@ -76,7 +76,7 @@
 
 -(void)defendInvader:(Invader *)invader
 {
-    _population -= invader.strength;
+    _population -= invader.attack;
     if (_population<0) {
         [self unscheduleAllSelectors];
         _controlByPlayer = YES;

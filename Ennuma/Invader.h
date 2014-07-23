@@ -11,9 +11,9 @@
 #import "Extension.h"
 //#import "BattleField.h"
 @interface Invader : NSObject  {
-    int _strength;
+    //int _strength;
     int _agile;
-    int _wisdom;
+    //int _wisdom;
     int _attack;
     int _armor;
     
@@ -80,9 +80,9 @@
     NSMutableArray* actions;
 }
 
-@property int strength;
+//@property int strength;
 @property int agile;
-@property int wisdom;
+//@property int wisdom;
 @property int attack;
 @property int armor;
 @property float jiqispeed;

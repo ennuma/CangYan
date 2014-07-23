@@ -9,9 +9,9 @@
 #import "Invader.h"
 
 @implementation Invader
-@synthesize strength = _strength;
+//@synthesize strength = _strength;
 @synthesize agile =_agile;
-@synthesize wisdom = _wisdom;
+//@synthesize wisdom = _wisdom;
 @synthesize attack = _attack;
 @synthesize armor = _armor;
 @synthesize jiqispeed = _jiqispeed;
@@ -266,8 +266,9 @@
     }
     CCActionCallFunc* callback = [CCActionCallFunc actionWithTarget:self selector:@selector(endOfAction)];
 
-    [self war_AutoFight];
+    //[self war_AutoFight];
     int flag = [self war_Think];
+    //CCLOG(@"%i",flag);
     if (flag==0) {
         [self autoEscape];
         [self autoRest];
@@ -296,7 +297,7 @@
 }
 -(int)war_ThinkHeal
 {
-    return 0;
+    return -1;
 }
 /**
  0 rest， 1 fight，2 item health， 3 item acume 4 item stamina， 5 heal 6 item poision
@@ -337,15 +338,17 @@
     }
     if (CCRANDOM_0_1()*100<rate) {
         r = [self war_ThinkDrug:2];
+        if (r>=0) {
+            return r;
+        }else{
+            r = [self war_ThinkHeal];
+            if (r>=0) {
+                return r;
+            }
+        }
+
     }
-    if (r>=0) {
-        return r;
-    }else{
-        r = [self war_ThinkHeal];
-    }
-    if (r>=0) {
-        return r;
-    }
+    
     
     //acume
     rate=0;
@@ -357,10 +360,11 @@
     }
     if (CCRANDOM_0_1()*100<rate) {
         r = [self war_ThinkDrug:3];
+        if (r>=0) {
+            return r;
+        }
     }
-    if (r>=0) {
-        return r;
-    }
+
 
     
     rate=0;
@@ -372,10 +376,11 @@
     }
     if (CCRANDOM_0_1()*100<rate) {
         r = [self war_ThinkDrug:6];
+        if (r>=0) {
+            return r;
+        }
     }
-    if (r>=0) {
-        return r;
-    }
+
     
     
     /**local minNeili=War_GetMinNeiLi(pid);     --所有武功的最小内力
@@ -941,11 +946,11 @@
 }
 -(CGPoint)getSafePoint
 {
-    int steps = -99;
+    int steps = -999;
     CGPoint ret = self.position;
     for (NSValue* v in reachable) {
         CGPoint p = [v CGPointValue];
-        int minstep = 0;
+        int minstep = 999;
         for (Invader* em in _enemy) {
             int temp = abs(em.position.x-p.x)+abs(em.position.y-p.y);
             if (temp<minstep) {

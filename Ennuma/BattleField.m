@@ -49,6 +49,7 @@ CCSprite* bar;
     _height = map.mapSize.height;
     
     [self setUserInteractionEnabled:YES];
+    
     return self;
 }
 +(BattleField*)scene
