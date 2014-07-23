@@ -12,10 +12,10 @@
 #import "Item.h"
 #import "Invader.h";
 @interface Entity : CCNode {
-    //大头像 小头像
+    //大头像 小头像 状态栏头像
     CCSprite* _bigIcon;
     CCSprite* _smallIcon;
-    
+    CCSprite* _statusIcon;
     //人名 性别 绰号
     NSString* _entityName;
     NSString* _entityMale;
@@ -83,6 +83,7 @@
 }
 @property CCSprite* bigIcon;
 @property CCSprite* smallIcon;
+@property CCSprite* statusIcon;
 @property NSString* entityName;
 @property NSString* entityMale;
 @property NSString* wuLinName;

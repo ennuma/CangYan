@@ -12,6 +12,7 @@
 @implementation Entity
 @synthesize bigIcon = _bigIcon;
 @synthesize smallIcon = _smallIcon;
+@synthesize statusIcon = _statusIcon;
 @synthesize entityName = _entityName;
 @synthesize entityMale = _entityMale;
 @synthesize wuLinName = _wuLinName;
@@ -58,9 +59,46 @@
     ret.jianFa = _jianfa;
     ret.daoFa = _daofa;
     ret.qiMen = _qimen;
-}
--(void)updateStatusFromInvaderForm:(Invader *)invader
-{
+    ret.antiPoisionIndex = _antipoision;
+    ret.attackHasPoisionIndex = _poision;//may be to much
+    ret.wuxueKnowledge = _wugongchangshi;
+    ret.talent = _talent;
+    NSMutableArray* retwugong = [[NSMutableArray alloc] init];
+    for (Wugong* wg in _wugong) {
+        [retwugong addObject:wg];
+    }
+    for (Wugong* wg in _specialBuff) { //add buff
+        [retwugong addObject:wg];
+    }
+    if ([_entityMale isEqualToString:@"不男不女"]) {
+        ret.taijian=true;
+    }
+    
+    
+    //头像
+    ret.bigIcon = [CCSprite spriteWithTexture:[_bigIcon texture]];
+    ret.smallIcon = [CCSprite spriteWithTexture:[_smallIcon texture]];
+    ret.headIcon = [CCSprite spriteWithTexture:[_statusIcon texture]];
 
+    return ret;
+}
+-(void)updateStatusFromInvaderForm:(Invader *)ret
+{
+    _atk = ret.attack;
+    _def = ret.armor;
+    _agile = ret.agile;
+    _poision = ret.poision;
+    _health = ret.health = _health;
+    _maxhealth = ret.maxhealth;
+    _acume = ret.acume = _acume;
+    _maxacume = ret.maxacume;
+    _quanfa = ret.quanFa;
+    _jianfa = ret.jianFa;
+    _daofa = ret.daoFa;
+    _qimen = ret.qiMen;
+    _antipoision = ret.antiPoisionIndex;
+    _poision = ret.attackHasPoisionIndex;//may be too much
+    _wugongchangshi = ret.wuxueKnowledge;
+    _talent = ret.talent;
 }
 @end

@@ -1469,9 +1469,9 @@
     
     float wugongDamage =((float)[[wu.damage objectAtIndex:10]integerValue]);
     for (Wugong* wg in pid.wugongArr) {
-        if ([wg isNeiGong]) {
+       // if ([wg isNeiGong]) {
             wugongDamage = [wg effectWugongDamage:wugongDamage WithInvader:self WithWugong:wu];
-        }
+       // }
     }
 
     float hurt = 0;
@@ -1594,9 +1594,9 @@
     if (awugong) {
         //内功加力时触发所有武功特效
         for (Wugong* wg in pid.wugongArr) {
-            if ([wg isNeiGong]) {
+            //if ([wg isNeiGong]) {
                 hurt = [wg effectNeiGongJiaLiHurt:hurt WithInvader:self WithWugong:wu];
-            }
+           // }
         }
     }
  
@@ -1618,9 +1618,9 @@
         int damageConvertToSpdHurt = hurt*0.7;
         
         for (Wugong* wg in eid.wugongArr) {
-            if ([wg isNeiGong]) {
+            //if ([wg isNeiGong]) {
                 damageConvertToSpdHurt = [wg effectDefendDamageConvertToSpdHurt:damageConvertToSpdHurt WithInvader:self WithWugong:wu];
-            }
+            //}
         }
         spdhurt += damageConvertToSpdHurt;
     }
@@ -1629,9 +1629,9 @@
     if (awugong) {
             //内功加力时触发所有武功特效
         for (Wugong* wg in pid.wugongArr) {
-            if ([wg isNeiGong]) {
+           // if ([wg isNeiGong]) {
                 spdhurt = [wg effectNeiGongJiaLiSpdHurt:spdhurt WithInvader:self WithWugong:wu];
-            }
+           // }
         }
     }
     
@@ -1641,9 +1641,9 @@
     if (dwugong) {
         //内功加力时触发所有武功特效
         for (Wugong* wg in eid.wugongArr) {
-            if ([wg isNeiGong]) {
+           // if ([wg isNeiGong]) {
                 bleedhurt = [wg effectNeiGongHuTiBleedHurt:bleedhurt WithInvader:self WithWugong:wu];
-            }
+           // }
         }
     }
     [hurtDic setValue:[NSNumber numberWithInt:bleedhurt] forKey:@"bleedhurt"];
@@ -1652,15 +1652,15 @@
     if (awugong) {
         //内功加力时触发所有武功特效
         for (Wugong* wg in pid.wugongArr) {
-            if ([wg isNeiGong]) {
+           // if ([wg isNeiGong]) {
                 fengxuehurt = [wg effectNeiGongJiaLiFengXueHurt:fengxuehurt WithInvader:self WithWugong:wu];
-            }
+           // }
         }
     }
     for (Wugong* wg in eid.wugongArr) {
-        if ([wg isNeiGong]) {
+       // if ([wg isNeiGong]) {
             fengxuehurt = [wg effectDefendFengXue:fengxuehurt WithInvader:self WithWugong:wu];
-        }
+       // }
     }
     [hurtDic setValue:[NSNumber numberWithInt:fengxuehurt] forKey:@"fengxuehurt"];
     //流血
@@ -1679,15 +1679,15 @@
     if (awugong) {
         //内功加力时触发所有武功特效
         for (Wugong* wg in pid.wugongArr) {
-            if ([wg isNeiGong]) {
+           // if ([wg isNeiGong]) {
                 poisionnum = [wg effectNeiGongJiaLiPoisionHurt:poisionnum WithInvader:self WithWugong:wu];
-            }
+           // }
         }
     }
     for (Wugong* wg in eid.wugongArr) {
-        if ([wg isNeiGong]) {
+       // if ([wg isNeiGong]) {
             poisionnum = [wg effectDefendPoision:poisionnum WithInvader:self WithWugong:wu];
-        }
+       // }
     }
 
     [hurtDic setValue:[NSNumber numberWithInt:poisionnum] forKey:@"poisionhurt"];
@@ -1697,9 +1697,9 @@
     if (awugong) {
         //内功加力时触发所有武功特效
         for (Wugong* wg in pid.wugongArr) {
-            if ([wg isNeiGong]) {
+           // if ([wg isNeiGong]) {
                 angryhurt = [wg effectNeiGongJiaLiAngryHurt:poisionnum WithInvader:self WithWugong:wu];
-            }
+           // }
         }
     }
     [hurtDic setValue:[NSNumber numberWithInt:angryhurt] forKey:@"angryhurt"];
@@ -1721,9 +1721,9 @@
     }
     _amountofjiqi += jiqi;
     for (Wugong* wg in wugong) {
-        if ([wg isNeiGong]) {
+       // if ([wg isNeiGong]) {
             [wg effectInUpdateJiQi:self];
-        }
+       // }
     }
 }
 

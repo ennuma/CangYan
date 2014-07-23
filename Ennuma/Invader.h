@@ -73,7 +73,7 @@
     int _heal;
     
     //buff zhuang tai
-    bool _taijian
+    bool _taijian;
     bool _blind;
     bool _kuihuayixing;
     int _life;
