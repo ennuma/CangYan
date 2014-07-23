@@ -254,6 +254,7 @@
 		846876E819803E26009FDA85 /* bottombar.png in Resources */ = {isa = PBXBuildFile; fileRef = 846876E719803E26009FDA85 /* bottombar.png */; };
 		846876EB198047EA009FDA85 /* Place_XinShouCun.m in Sources */ = {isa = PBXBuildFile; fileRef = 846876EA198047EA009FDA85 /* Place_XinShouCun.m */; };
 		846876ED1980491F009FDA85 /* Place_XinShouChun.png in Resources */ = {isa = PBXBuildFile; fileRef = 846876EC1980491F009FDA85 /* Place_XinShouChun.png */; };
+		846876F019806140009FDA85 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 846876EF19806140009FDA85 /* Event.m */; };
 		846E4404197DE2D70081318F /* Wugong_ShengHuoShenGong.m in Sources */ = {isa = PBXBuildFile; fileRef = 846E4403197DE2D70081318F /* Wugong_ShengHuoShenGong.m */; };
 		846E4407197DE53E0081318F /* Wugong_TaiXuanShenGong.m in Sources */ = {isa = PBXBuildFile; fileRef = 846E4406197DE53E0081318F /* Wugong_TaiXuanShenGong.m */; };
 		846FE1C7197EE6B40035448F /* Wugong_ZiXiaShenGong.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FE1C6197EE6B40035448F /* Wugong_ZiXiaShenGong.m */; };
@@ -777,6 +778,8 @@
 		846876E9198047EA009FDA85 /* Place_XinShouCun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place_XinShouCun.h; sourceTree = "<group>"; };
 		846876EA198047EA009FDA85 /* Place_XinShouCun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place_XinShouCun.m; sourceTree = "<group>"; };
 		846876EC1980491F009FDA85 /* Place_XinShouChun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Place_XinShouChun.png; path = Resources/Place_XinShouChun.png; sourceTree = "<group>"; };
+		846876EE1980613F009FDA85 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		846876EF19806140009FDA85 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		846E4402197DE2D70081318F /* Wugong_ShengHuoShenGong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_ShengHuoShenGong.h; sourceTree = "<group>"; };
 		846E4403197DE2D70081318F /* Wugong_ShengHuoShenGong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_ShengHuoShenGong.m; sourceTree = "<group>"; };
 		846E4405197DE53E0081318F /* Wugong_TaiXuanShenGong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_TaiXuanShenGong.h; sourceTree = "<group>"; };
@@ -1754,6 +1757,8 @@
 				846FE1EB197F2EB40035448F /* Item.m */,
 				846876E9198047EA009FDA85 /* Place_XinShouCun.h */,
 				846876EA198047EA009FDA85 /* Place_XinShouCun.m */,
+				846876EE1980613F009FDA85 /* Event.h */,
+				846876EF19806140009FDA85 /* Event.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2171,6 +2176,7 @@
 				840D11251974620700B19861 /* Wugong.m in Sources */,
 				84C36021197AD54300331A2B /* Wugong_SongFengJianFa.m in Sources */,
 				8435030A195AFA0300503923 /* CCSpriteFrame.m in Sources */,
+				846876F019806140009FDA85 /* Event.m in Sources */,
 				84350336195AFA0300503923 /* CCES2Renderer.m in Sources */,
 				846FE1E3197F1D1D0035448F /* Place.m in Sources */,
 				845CA59D197ED914008E61E4 /* Wugong_XianTianGong.m in Sources */,

@@ -7,7 +7,7 @@
 //
 
 #import "Entity.h"
-
+#import "CangYan.h"
 
 @implementation Entity
 @synthesize bigIcon = _bigIcon;
@@ -101,5 +101,16 @@
     _poision = ret.attackHasPoisionIndex;//may be too much
     _wugongchangshi = ret.wuxueKnowledge;
     _talent = ret.talent;
+}
+-(void)say:(NSString*)sentence
+{
+    CangYan* cangYan = [CangYan sharedScene];
+    [cangYan removeChildByName:@"say"];
+    CCNode* bottom = [cangYan getChildByName:@"bottombar" recursively:NO];
+    [bottom removeAllChildren];
+    
+    CCLabelTTF* labelDay = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@ 说: %@",_entityName,sentence] fontName:@"Verdana-Bold" fontSize:15];
+    [cangYan addChild:labelDay z:0 name:@"say"];
+    labelDay.position = CGPointMake(bottom.contentSize.width/2*bottom.scaleX,bottom.contentSize.height/2*bottom.scaleY);
 }
 @end

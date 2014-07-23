@@ -28,10 +28,10 @@
 {
 
 }
--(void)enterPlaceOnDay:(int)day
+-(bool)enterPlaceOnDay:(int)day
 {
     _day = day;
-    [self meetEvents];
+    return [self meetEvents];
 }
 -(void)setBackGroundSprite:(CCSprite *)bg
 {
@@ -41,7 +41,11 @@
 {
     return _day;
 }
--(void)meetEvents
+-(bool)meetEvents
+{
+
+}
+-(void)proceed
 {
 
 }

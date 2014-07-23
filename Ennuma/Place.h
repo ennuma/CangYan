@@ -8,22 +8,24 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-
+#import "Event.h"
 @interface Place : CCNode {
     CCTiledMap* _map;
     CCSprite* _bg;
     int _day;
     NSMutableArray* _nextPlaces;
     bool _canLeave;
+    Event* event;
 }
 @property CCTiledMap* map;
 @property int day;
 @property CCSprite* bg;
 @property NSMutableArray* nextPlaces;
 @property bool canLeave;
--(void)enterPlaceOnDay:(int)day;
+-(bool)enterPlaceOnDay:(int)day;
 -(void)setBackGroundSprite:(CCSprite*)bg;
 -(int)leavePlaceOnDay;
--(void)meetEvents;
+-(bool)meetEvents;
 -(void)preparePlace;
+-(void)proceed;
 @end

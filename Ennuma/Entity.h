@@ -127,4 +127,5 @@
 @property NSMutableArray* teammates;
 -(Invader*)transformToInvaderForm;
 -(void)updateStatusFromInvaderForm:(Invader*)invader;
+-(void)say:(NSString*)sentence;
 @end

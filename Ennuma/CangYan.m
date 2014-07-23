@@ -94,17 +94,28 @@ static CangYan* sharedScene;
 -(void)enterPlace
 {
     //CCSprite* place = _place.bg;
-    
+    [self setBackGroundForPlace:_place];
+    inEvent = [_place enterPlaceOnDay:_day];
+    inPlace = true;
+}
+-(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    if (inEvent) {
+        _place
+    }
+}
+
+-(void)setBackGroundForPlace:(Place*)place
+{
     CGSize winSize = [[CCDirector sharedDirector] viewSize];
-    CCSprite* topbar = [self getChildByName:@"topbar" recursively:NO];
-    CCSprite* bottombar = [self getChildByName:@"bottombar" recursively:NO];
-    CCSprite* leftbar = [self getChildByName:@"leftbar" recursively:NO];
+    CCNode* topbar = [self getChildByName:@"topbar" recursively:NO];
+    CCNode* bottombar = [self getChildByName:@"bottombar" recursively:NO];
+    CCNode* leftbar = [self getChildByName:@"leftbar" recursively:NO];
     
     CCSprite* main = _place.bg;
     [main setScaleX:(winSize.width-leftbar.contentSize.width*leftbar.scaleX)/main.contentSize.width];
     [main setScaleY:(winSize.height-topbar.contentSize.height*topbar.scaleY-bottombar.contentSize.height*bottombar.scaleY)/main.contentSize.height];
     main.position = CGPointMake(main.contentSize.width*main.scaleX/2+leftbar.contentSize.width*leftbar.scaleX, main.contentSize.height*main.scaleY/2+bottombar.contentSize.height*bottombar.scaleY);
     [self addChild:main z:0 name:@"main"];
-
 }
 @end

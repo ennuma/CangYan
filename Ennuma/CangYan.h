@@ -15,6 +15,7 @@
     Entity* _player;
     Place* _place;
     bool inPlace;
+    bool inEvent;
 }
 @property int day;
 @property Entity* player;

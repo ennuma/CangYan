@@ -7,15 +7,27 @@
 //
 
 #import "Place_XinShouCun.h"
-
-
+#import "CangYan.h"
+#import "Event.h";
 @implementation Place_XinShouCun
--(void)meetEvents
+-(bool)meetEvents
 {
+    CangYan* cangYan = [CangYan sharedScene];
+
+    if ( _day==1 ) {
+        event = [Event node];
+        [event proceed];
+        return true;
+    }
     
+    return false;
 }
 -(void)preparePlace
 {
     _bg = [CCSprite spriteWithImageNamed:@"Place_XinShouChun.png"];
+}
+-(void)proceed
+{
+    [event proceed];
 }
 @end
