@@ -21,6 +21,7 @@
     if (!self) {
         return nil;
     }
+    _nextPlaces = [[NSMutableArray alloc]init];
     [self preparePlace];
     return self;
 }
@@ -43,10 +44,10 @@
 }
 -(bool)meetEvents
 {
-
+    return NO;
 }
--(void)proceed
+-(bool)proceed
 {
-
+    return NO;
 }
 @end

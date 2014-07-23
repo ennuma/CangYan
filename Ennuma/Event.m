@@ -9,7 +9,9 @@
 #import "Event.h"
 #import "CangYan.h"
 #import "BattleField.h";
+
 @implementation Event
+@synthesize done = finish;
 -(void)proceed
 {
     CangYan* cangYan = [CangYan sharedScene];
@@ -94,7 +96,14 @@
             [invader4 learnWugong:shenzhao];
             //invader4.mainNeiGong = shenzhao;
             [sc startBattle];
-        [[CCDirector sharedDirector]pushScene:sc];
+            [[CCDirector sharedDirector]pushScene:sc];
+            [liumang say:@"好疼"];
+    }
+    else if(stage == 4){
+        [liumang say:@"好疼!!!!"];
+    }
+    else{
+        finish = YES;
     }
 }
 

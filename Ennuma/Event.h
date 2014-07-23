@@ -11,6 +11,8 @@
 
 @interface Event : CCNode {
     int stage;
+    bool finish;
 }
 -(void)proceed;
+@property bool done;
 @end

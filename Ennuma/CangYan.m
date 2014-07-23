@@ -91,6 +91,27 @@ static CangYan* sharedScene;
     if (!inPlace) {
         [self enterPlace];
         inPlace = true;
+    }else{
+        if (_place.canLeave) {
+            //leave
+            [self removeChildByName:@"say"];
+           
+            CCLayoutBox *layoutBox = [[CCLayoutBox alloc] init];
+            layoutBox.anchorPoint = ccp(0.5, 0.5);
+            for(Place* next in _place.nextPlaces){
+                CCLabelTTF* button = [CCLabelTTF labelWithString:@"button" fontName:@"Verdana-Bold" fontSize:40];
+                [button addChild:next z:0 name:@"place"];
+                [layoutBox addChild:button];
+                test = button;
+            }
+            layoutBox.spacing = 10.f;
+            layoutBox.direction = CCLayoutBoxDirectionHorizontal;
+            [layoutBox layout];
+            CCNode* bottom = [self getChildByName:@"bottombar" recursively:NO];
+            layoutBox.position = CGPointMake(bottom.contentSize.width/2*bottom.scaleX,bottom.contentSize.height/2*bottom.scaleY);
+            [self addChild:layoutBox];
+        }
+        _place.canLeave = false;
     }
 }
 -(void)enterPlace
@@ -103,7 +124,14 @@ static CangYan* sharedScene;
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     if (inEvent) {
-        [_place proceed];
+        inEvent = [_place proceed];
+    }else{
+        CGPoint pos = [touch locationInNode:self];
+        if(CGRectContainsPoint([test boundingBox],pos))
+        {
+            _place = (Place*)[test getChildByName:@"place" recursively:NO];
+            inPlace = false;
+        }
     }
 }
 

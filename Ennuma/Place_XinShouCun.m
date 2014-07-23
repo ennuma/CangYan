@@ -25,9 +25,16 @@
 -(void)preparePlace
 {
     _bg = [CCSprite spriteWithImageNamed:@"Place_XinShouChun.png"];
+    [_nextPlaces addObject:self];
 }
--(void)proceed
+-(bool)proceed
 {
     [event proceed];
+    if(event.done==YES)
+    {
+        _canLeave = YES;
+        return NO;
+    }
+    return YES;
 }
 @end

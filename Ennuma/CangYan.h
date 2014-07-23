@@ -16,6 +16,8 @@
     Place* _place;
     bool inPlace;
     bool inEvent;
+    
+    CCNode* test;
 }
 @property int day;
 @property Entity* player;

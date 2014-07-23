@@ -27,5 +27,5 @@
 -(int)leavePlaceOnDay;
 -(bool)meetEvents;
 -(void)preparePlace;
--(void)proceed;
+-(bool)proceed;
 @end

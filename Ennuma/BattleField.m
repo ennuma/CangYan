@@ -107,11 +107,18 @@ CCSprite* bar;
     //CCLOG(@"update");
     if ([self checkEndBattle]) {
         CCLOG(@"END BATTLE");
-        self.paused = YES;
+        //self.paused = YES;
         //TODO
         //battle ends here, its time to change scene or pop scene
+        CCActionDelay* delay = [CCActionDelay actionWithDuration:2];
+        CCActionCallFunc* pop = [CCActionCallFunc actionWithTarget:self selector:@selector(pop)];
+        CCActionSequence* seq = [CCActionSequence actions:delay,pop, nil];
+        [self runAction:seq];
     }
-    
+}
+-(void)pop
+{
+    [[CCDirector sharedDirector]popScene];
 }
 -(bool)checkEndBattle
 {
