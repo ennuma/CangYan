@@ -13,9 +13,25 @@
 @synthesize day = _day;
 @synthesize bg = _bg;
 @synthesize map = _map;
+@synthesize nextPlaces = _nextPlaces;
+@synthesize canLeave = _canLeave;
+-(id)init
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+    [self preparePlace];
+    return self;
+}
+-(void)preparePlace
+{
+
+}
 -(void)enterPlaceOnDay:(int)day
 {
     _day = day;
+    [self meetEvents];
 }
 -(void)setBackGroundSprite:(CCSprite *)bg
 {
@@ -24,5 +40,9 @@
 -(int)leavePlaceOnDay
 {
     return _day;
+}
+-(void)meetEvents
+{
+
 }
 @end

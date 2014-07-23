@@ -12,6 +12,7 @@
 //#import "Wugong_LuoHanFuMoGong.h"
 //#import "Wugong_LiuMaiShenJian.h"
 #import "Wugong.h"
+#import "Place_XinShouCun.h"
 @interface Extension : NSObject
 {
     /**

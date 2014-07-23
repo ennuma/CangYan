@@ -252,6 +252,8 @@
 		846876E419803337009FDA85 /* topbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 846876E319803337009FDA85 /* topbar.png */; };
 		846876E6198038A0009FDA85 /* leftbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 846876E5198038A0009FDA85 /* leftbar.png */; };
 		846876E819803E26009FDA85 /* bottombar.png in Resources */ = {isa = PBXBuildFile; fileRef = 846876E719803E26009FDA85 /* bottombar.png */; };
+		846876EB198047EA009FDA85 /* Place_XinShouCun.m in Sources */ = {isa = PBXBuildFile; fileRef = 846876EA198047EA009FDA85 /* Place_XinShouCun.m */; };
+		846876ED1980491F009FDA85 /* Place_XinShouChun.png in Resources */ = {isa = PBXBuildFile; fileRef = 846876EC1980491F009FDA85 /* Place_XinShouChun.png */; };
 		846E4404197DE2D70081318F /* Wugong_ShengHuoShenGong.m in Sources */ = {isa = PBXBuildFile; fileRef = 846E4403197DE2D70081318F /* Wugong_ShengHuoShenGong.m */; };
 		846E4407197DE53E0081318F /* Wugong_TaiXuanShenGong.m in Sources */ = {isa = PBXBuildFile; fileRef = 846E4406197DE53E0081318F /* Wugong_TaiXuanShenGong.m */; };
 		846FE1C7197EE6B40035448F /* Wugong_ZiXiaShenGong.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FE1C6197EE6B40035448F /* Wugong_ZiXiaShenGong.m */; };
@@ -772,6 +774,9 @@
 		846876E319803337009FDA85 /* topbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = topbar.png; path = Resources/topbar.png; sourceTree = "<group>"; };
 		846876E5198038A0009FDA85 /* leftbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leftbar.png; path = Resources/leftbar.png; sourceTree = "<group>"; };
 		846876E719803E26009FDA85 /* bottombar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bottombar.png; path = Resources/bottombar.png; sourceTree = "<group>"; };
+		846876E9198047EA009FDA85 /* Place_XinShouCun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place_XinShouCun.h; sourceTree = "<group>"; };
+		846876EA198047EA009FDA85 /* Place_XinShouCun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place_XinShouCun.m; sourceTree = "<group>"; };
+		846876EC1980491F009FDA85 /* Place_XinShouChun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Place_XinShouChun.png; path = Resources/Place_XinShouChun.png; sourceTree = "<group>"; };
 		846E4402197DE2D70081318F /* Wugong_ShengHuoShenGong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_ShengHuoShenGong.h; sourceTree = "<group>"; };
 		846E4403197DE2D70081318F /* Wugong_ShengHuoShenGong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_ShengHuoShenGong.m; sourceTree = "<group>"; };
 		846E4405197DE53E0081318F /* Wugong_TaiXuanShenGong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_TaiXuanShenGong.h; sourceTree = "<group>"; };
@@ -954,6 +959,7 @@
 		8435021B195AF9FF00503923 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				846876EC1980491F009FDA85 /* Place_XinShouChun.png */,
 				846876E719803E26009FDA85 /* bottombar.png */,
 				846876E5198038A0009FDA85 /* leftbar.png */,
 				846876E319803337009FDA85 /* topbar.png */,
@@ -1746,6 +1752,8 @@
 				846FE1E5197F29170035448F /* CangYan.m */,
 				846FE1EA197F2EB40035448F /* Item.h */,
 				846FE1EB197F2EB40035448F /* Item.m */,
+				846876E9198047EA009FDA85 /* Place_XinShouCun.h */,
+				846876EA198047EA009FDA85 /* Place_XinShouCun.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2011,6 +2019,7 @@
 				8435022E195AF9FF00503923 /* Icon-76.png in Resources */,
 				84350243195AFA0000503923 /* iTunesArtwork@2x in Resources */,
 				846876E6198038A0009FDA85 /* leftbar.png in Resources */,
+				846876ED1980491F009FDA85 /* Place_XinShouChun.png in Resources */,
 				843504A7195BF42700503923 /* myTile.tmx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2184,6 +2193,7 @@
 				843502AC195AFA0200503923 /* CCLabelBMFont.m in Sources */,
 				849655361966A9C9000C38AA /* MenPaiScene.m in Sources */,
 				8435039B195AFA0400503923 /* ALCaptureDevice.m in Sources */,
+				846876EB198047EA009FDA85 /* Place_XinShouCun.m in Sources */,
 				8435031F195AFA0300503923 /* CCTiledMapLayer.m in Sources */,
 				84350267195AFA0100503923 /* CCEffectTexture.m in Sources */,
 				84350356195AFA0300503923 /* CCColor.m in Sources */,

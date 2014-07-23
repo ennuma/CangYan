@@ -13,11 +13,17 @@
     CCTiledMap* _map;
     CCSprite* _bg;
     int _day;
+    NSMutableArray* _nextPlaces;
+    bool _canLeave;
 }
 @property CCTiledMap* map;
 @property int day;
 @property CCSprite* bg;
+@property NSMutableArray* nextPlaces;
+@property bool canLeave;
 -(void)enterPlaceOnDay:(int)day;
 -(void)setBackGroundSprite:(CCSprite*)bg;
 -(int)leavePlaceOnDay;
+-(void)meetEvents;
+-(void)preparePlace;
 @end

@@ -9,13 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "Entity.h"
-
+#import "Extension.h"
 @interface CangYan : CCScene {
     int _day;
     Entity* _player;
+    Place* _place;
+    bool inPlace;
 }
 @property int day;
 @property Entity* player;
+@property Place* place;
 +(CangYan*)scene;
 +(CangYan*)sharedScene;
 @end
