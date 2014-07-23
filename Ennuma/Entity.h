@@ -120,7 +120,7 @@
 @property int health;
 @property int acume;
 @property int maxhealth;
-@property int maxacume
+@property int maxacume;
 -(Invader*)transformToInvaderForm;
 -(void)updateStatusFromInvaderForm:(Invader*)invader;
 @end
