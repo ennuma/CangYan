@@ -12,6 +12,7 @@
 #import "HelloWorldScene.h"
 #import "WuLinScene.h"
 #import "BattleField.h"
+#import "CangYan.h";
 
 #import "Wugong_BaHuangLiuHeWeiWoDuZunGong.h"
 #import "Wugong_LiuMaiShenJian.h"
@@ -130,8 +131,9 @@
     [invader4 learnWugong:shenzhao];
     //invader4.mainNeiGong = shenzhao;
     [sc startBattle];
-    
-    return sc;
+
+    CangYan* sc2 = [CangYan scene];
+    return sc2;
 }
 
 @end

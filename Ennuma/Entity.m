@@ -44,6 +44,7 @@
 @synthesize heal = _heal;
 @synthesize wugongchangshi = _wugongchangshi;
 @synthesize relationship = _relationShip;
+@synthesize teammates = _teammates;
 -(Invader*)transformToInvaderForm
 {
     Invader* ret = [[Invader alloc]init];

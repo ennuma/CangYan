@@ -80,6 +80,9 @@
     int _acume;
     int _maxhealth;
     int _maxacume;
+    
+    //teammates
+    NSMutableArray* _teammates;
 }
 @property CCSprite* bigIcon;
 @property CCSprite* smallIcon;
@@ -121,6 +124,7 @@
 @property int acume;
 @property int maxhealth;
 @property int maxacume;
+@property NSMutableArray* teammates;
 -(Invader*)transformToInvaderForm;
 -(void)updateStatusFromInvaderForm:(Invader*)invader;
 @end
