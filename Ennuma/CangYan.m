@@ -23,7 +23,7 @@ static CangYan* sharedScene;
     }
     
     inPlace = false;
-    
+    [self setUserInteractionEnabled:YES];
     return self;
 }
 +(CangYan*)scene
@@ -78,6 +78,8 @@ static CangYan* sharedScene;
         _player.atk=5;
         _player.def = 5;
         _player.agile = 5;
+        _player.maxhealth = 60;
+        _player.maxacume = 50;
         
         //init place
         Place_XinShouCun* xinshoucun = [Place_XinShouCun node];
@@ -101,7 +103,7 @@ static CangYan* sharedScene;
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     if (inEvent) {
-        _place
+        [_place proceed];
     }
 }
 

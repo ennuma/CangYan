@@ -8,7 +8,7 @@
 
 #import "Place_XinShouCun.h"
 #import "CangYan.h"
-#import "Event.h";
+#import "Event.h"
 @implementation Place_XinShouCun
 -(bool)meetEvents
 {
