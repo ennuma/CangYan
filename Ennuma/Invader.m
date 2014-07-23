@@ -50,6 +50,8 @@
 @synthesize blind = _blind;
 @synthesize kuiHuaYixing = _kuihuayixing;
 @synthesize life = _life;
+@synthesize taijian = _taijian;
+@synthesize heal = _heal;
 -(id)init
 {
     self = [super init];
@@ -1269,6 +1271,9 @@
 {
     int amount =  _agile*1.5;
     //武功可能提升初试集气
+    if (_taijian) {
+        amount -= 200;
+    }
     for (Wugong* wg in wugong) {
         amount = [wg effectInitAmountJiqi:amount WithInvader:self WithWugong:wg];
     }

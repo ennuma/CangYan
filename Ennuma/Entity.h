@@ -10,6 +10,7 @@
 #import "cocos2d.h"
 #import "Wugong.h"
 #import "Item.h"
+#import "Invader.h";
 @interface Entity : CCNode {
     //大头像 小头像
     CCSprite* _bigIcon;
@@ -74,15 +75,51 @@
     int _daode;
     int _shengwang;
     
+    //health and other stuff
+    int _health;
+    int _acume;
+    int _maxhealth;
+    int _maxacume;
 }
 @property CCSprite* bigIcon;
 @property CCSprite* smallIcon;
 @property NSString* entityName;
 @property NSString* entityMale;
-@property NSString* WuLinName;
+@property NSString* wuLinName;
 @property NSDictionary* relationship;
 @property NSMutableArray* wugong;
 @property NSMutableArray* specialBuff;
 @property NSMutableArray* weapons;
-
+@property NSMutableArray* armors;
+@property Wugong* mainNeigong;
+@property Item* usingWeapon;
+@property Item* usingArmor;
+@property Item* usingTool;
+@property int atk;
+@property int def;
+@property int agile;
+@property int quanfa;
+@property int jianfa;
+@property int daofa;
+@property int qimen;
+@property int poision;
+@property int antipoision;
+@property int heal;
+@property int wine;
+@property int tea;
+@property int cook;
+@property int talent;
+@property int wugongchangshi;
+@property int daode;
+@property int shengwang;
+@property int qin;
+@property int qi;
+@property int shu;
+@property int hua;
+@property int health;
+@property int acume;
+@property int maxhealth;
+@property int maxacume
+-(Invader*)transformToInvaderForm;
+-(void)updateStatusFromInvaderForm:(Invader*)invader;
 @end

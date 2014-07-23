@@ -70,9 +70,10 @@
     int _jianFa;
     int _daoFa;
     int _qiMen;
-    
+    int _heal;
     
     //buff zhuang tai
+    bool _taijian
     bool _blind;
     bool _kuihuayixing;
     int _life;
@@ -121,8 +122,10 @@
 @property int jianFa;
 @property int daoFa;
 @property int qiMen;
+@property int heal;
 
 //buff
+@property bool taijian; //太监
 @property bool blind;
 @property bool kuiHuaYixing; //葵花移xing
 @property int life;//神照功复活命
