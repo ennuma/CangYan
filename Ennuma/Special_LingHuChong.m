@@ -25,7 +25,6 @@
 {
     NSAssert([def isKindOfClass:[Invader class] ], @"nsobj is not invader");
     Invader* inv = (Invader*)def;
-
     hurt*=0.8;
     [inv say:@"破剑式减伤" WithColor:[CCColor colorWithCcColor3b:ccGREEN]];
     return hurt;

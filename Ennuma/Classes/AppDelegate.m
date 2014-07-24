@@ -129,7 +129,7 @@
     [invader4 learnWugong:jianfa];
     [invader4 learnWugong:fumogong];
     [invader4 learnWugong:shenzhao];
-    //invader4.mainNeiGong = shenzhao;
+    invader4.mainNeiGong = shenzhao;
     //[sc startBattle];
 
     CangYan* sc2 = [CangYan scene];

@@ -35,6 +35,12 @@
         [cangYan.player say:@"这位少侠，我也来帮忙！"];
     }else if(stage==6){
         BattleField* sc = [BattleField scene];
+        int count = 0;
+        for(Entity* teammate in cangYan.player.teammates)
+        {
+            count++;
+            [sc addEntity:[teammate transformToInvaderForm] ForTeam:@"red" AtPos:CGPointMake(12,2+count)];
+        }
         [sc addEntity:[cangYan.player transformToInvaderForm] ForTeam:@"red" AtPos:CGPointMake(12, 12)];
         [sc addEntity:[linghu transformToInvaderForm] ForTeam:@"red" AtPos:CGPointMake(14, 15)];
         [sc addEntity:[dizi transformToInvaderForm] ForTeam:@"blue" AtPos:CGPointMake(19, 18)];
@@ -45,6 +51,16 @@
         [sc startBattle];
         [[CCDirector sharedDirector]pushScene:sc];
         [xiaoer say:@"多谢"];
+        bool flag = false;
+        for (Entity* t in cangYan.player.teammates) {
+            if ([t.entityName isEqualToString:@"令狐冲"]) {
+                flag = true;
+            }
+        }
+        if (!flag) {
+            [cangYan.player.teammates addObject:linghu];
+            CCLOG(@"令狐冲加入");
+        }
     }else{
         finish = YES;
     }
