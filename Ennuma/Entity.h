@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 #import "Wugong.h"
 #import "Item.h"
-#import "Invader.h";
+#import "Invader.h"
 @interface Entity : CCNode {
     //大头像 小头像 状态栏头像
     CCSprite* _bigIcon;
@@ -128,4 +128,7 @@
 -(Invader*)transformToInvaderForm;
 -(void)updateStatusFromInvaderForm:(Invader*)invader;
 -(void)say:(NSString*)sentence;
+-(void)learnWugong:(Wugong*)wugong;
+-(void)learnSpecial:(Wugong*)wugong;
+-(void)initEntity;
 @end

@@ -1,21 +1,20 @@
 //
-//  Place_XinShouCun.m
+//  Place_TianNingSi.m
 //  Ennuma
 //
-//  Created by ennuma on 14-7-23.
+//  Created by ennuma on 14-7-24.
 //  Copyright 2014年 ennuma. All rights reserved.
 //
 
-#import "Place_XinShouCun.h"
+#import "Place_TianNingSi.h"
 #import "CangYan.h"
 #import "Event.h"
 #import "Place_HeLuoKeZhan.h"
-#import "Place_FuWeiBiaoJv.h"
-@implementation Place_XinShouCun
+@implementation Place_TianNingSi
 -(bool)meetEvents
 {
     CangYan* cangYan = [CangYan sharedScene];
-
+    
     if ( _day==1 ) {
         event = [Event node];
         [event proceed];
@@ -28,17 +27,15 @@
 {
     NSMutableArray* ret = [[NSMutableArray alloc]init];
     Place_HeLuoKeZhan* one = [Place_HeLuoKeZhan node];
-    Place_FuWeiBiaoJv* two = [Place_FuWeiBiaoJv node];
     [ret addObject:one];
-    [ret addObject:two];
     return ret;
 }
 -(void)preparePlace
 {
     _bg = [CCSprite spriteWithImageNamed:@"Place_XinShouChun.png"];
-    _placeName = @"新手村";
+    _placeName = @"天宁寺";
     
-
+    
 }
 
 @end

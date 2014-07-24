@@ -77,7 +77,7 @@ static CangYan* sharedScene;
         _player.wuLinName = @"少侠";
         _player.atk=5;
         _player.def = 5;
-        _player.agile = 5;
+        _player.agile = 65;
         _player.maxhealth = 60;
         _player.maxacume = 50;
         Wugong_SongFengJianFa *songfeng = [Wugong_SongFengJianFa node];

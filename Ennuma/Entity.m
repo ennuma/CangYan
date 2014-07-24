@@ -59,7 +59,12 @@
     _armors = [[NSMutableArray alloc]init];
     _teammates = [[NSMutableArray alloc]init];
     _relationShip = [[NSMutableDictionary alloc]init];
+    [self initEntity];
     return self;
+}
+-(void)initEntity
+{
+
 }
 -(Invader*)transformToInvaderForm
 {
@@ -130,5 +135,16 @@
     CCLabelTTF* labelDay = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%@ 说: %@",_entityName,sentence] fontName:@"Verdana-Bold" fontSize:15];
     [cangYan addChild:labelDay z:0 name:@"say"];
     labelDay.position = CGPointMake(bottom.contentSize.width/2*bottom.scaleX,bottom.contentSize.height/2*bottom.scaleY);
+}
+
+-(void)learnWugong:(Wugong *)wugong
+{
+    if ([_wugong count]<10) {
+        [_wugong addObject:wugong];
+    }
+}
+-(void)learnSpecial:(Wugong *)wugong
+{
+    [_specialBuff addObject:wugong];
 }
 @end

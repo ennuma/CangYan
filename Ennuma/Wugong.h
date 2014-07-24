@@ -88,4 +88,5 @@
 -(void)effectSpecialEffectScopeWithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(int)effectDefendPoision:(int)poision WithInvader:(NSObject*)invader WithWugong:(Wugong*) m_wugong;
 -(void)effectRestoreAfterActionWithInvader:(NSObject*)invader;
+-(int)effectMoveNumberBeforeAction:(int)movenum WithInvader:(NSObject*)invader;
 @end

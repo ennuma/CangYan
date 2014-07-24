@@ -228,6 +228,9 @@
     if (movenum<1) {
         movenum = 1;
     }
+    for (Wugong* wg in wugong) {
+        movenum = [wg effectMoveNumberBeforeAction:movenum WithInvader:self];
+    }
     [self buildReachable:movenum];
     //CCLOG(@"%i",movenum);
     //CCLOG(@"%@",reachable);
@@ -674,6 +677,7 @@
         }
         if (self.health<=0) {
             self.isDead=true;
+            [_bigIcon removeFromParent];//delete bigicon
         }else{
             [invader show:[NSString stringWithFormat:@"复活！!"] WithColor: [CCColor colorWithCcColor3b:ccBLUE]];
 

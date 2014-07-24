@@ -8,7 +8,7 @@
 
 #import "Event.h"
 #import "CangYan.h"
-#import "BattleField.h";
+#import "BattleField.h"
 
 @implementation Event
 @synthesize done = finish;

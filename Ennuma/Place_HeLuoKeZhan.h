@@ -1,8 +1,8 @@
 //
-//  Place_XinShouCun.h
+//  Place_HeLuoKeZhan.h
 //  Ennuma
 //
-//  Created by ennuma on 14-7-23.
+//  Created by ennuma on 14-7-24.
 //  Copyright 2014年 ennuma. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 #import "Place.h"
 
-@interface Place_XinShouCun : Place {
+@interface Place_HeLuoKeZhan : Place {
     
 }
 

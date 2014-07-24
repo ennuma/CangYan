@@ -60,6 +60,7 @@ CCSprite* bar;
 
 -(void)startBattle
 {
+    isExiting = false;
     [self schedule:@selector(startJiqi:) interval:0.01];
 }
 
@@ -106,14 +107,17 @@ CCSprite* bar;
 -(void)update:(CCTime)delta{
     //CCLOG(@"update");
     if ([self checkEndBattle]) {
-        CCLOG(@"END BATTLE");
-        //self.paused = YES;
-        //TODO
-        //battle ends here, its time to change scene or pop scene
-        CCActionDelay* delay = [CCActionDelay actionWithDuration:2];
-        CCActionCallFunc* pop = [CCActionCallFunc actionWithTarget:self selector:@selector(pop)];
-        CCActionSequence* seq = [CCActionSequence actions:delay,pop, nil];
-        [self runAction:seq];
+        if (!isExiting) {
+            CCLOG(@"END BATTLE");
+            //self.paused = YES;
+            //TODO
+            //battle ends here, its time to change scene or pop scene
+            CCActionDelay* delay = [CCActionDelay actionWithDuration:2];
+            CCActionCallFunc* pop = [CCActionCallFunc actionWithTarget:self selector:@selector(pop)];
+            CCActionSequence* seq = [CCActionSequence actions:delay,pop, nil];
+            isExiting = true;
+            [self runAction:seq];
+        }
     }
 }
 -(void)pop

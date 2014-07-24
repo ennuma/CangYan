@@ -239,6 +239,16 @@
 		843504D0195E44FC00503923 /* MessageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 843504CF195E44FC00503923 /* MessageCache.m */; };
 		843504D3195E5A4400503923 /* TiledMap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 843504D2195E5A4400503923 /* TiledMap.tmx */; };
 		84558DA2197ECE9100CD4107 /* Wugong_ShiZiHou.m in Sources */ = {isa = PBXBuildFile; fileRef = 84558DA1197ECE9100CD4107 /* Wugong_ShiZiHou.m */; };
+		8458BB27198163D900BE8360 /* Special_JianShenYiXiao.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458BB26198163D900BE8360 /* Special_JianShenYiXiao.m */; };
+		8458BB2B19816E1A00BE8360 /* Place_HeLuoKeZhan.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458BB2A19816E1A00BE8360 /* Place_HeLuoKeZhan.m */; };
+		8458BB2E19816E6C00BE8360 /* Place_FuWeiBiaoJv.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458BB2D19816E6C00BE8360 /* Place_FuWeiBiaoJv.m */; };
+		8458BB31198184AF00BE8360 /* Place_TianNingSi.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458BB30198184AF00BE8360 /* Place_TianNingSi.m */; };
+		8458BB34198184E700BE8360 /* Place_MeiZhuang.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458BB33198184E700BE8360 /* Place_MeiZhuang.m */; };
+		8458BB37198184F500BE8360 /* Place_YanZiWu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458BB36198184F500BE8360 /* Place_YanZiWu.m */; };
+		8458BB3B19819B1800BE8360 /* Event_LingHuVSQingCheng.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458BB3A19819B1800BE8360 /* Event_LingHuVSQingCheng.m */; };
+		8458BB3F19819B9A00BE8360 /* Entity_LingHuChong.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458BB3E19819B9A00BE8360 /* Entity_LingHuChong.m */; };
+		8458BB4219819D6B00BE8360 /* Special_LingHuChong.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458BB4119819D6B00BE8360 /* Special_LingHuChong.m */; };
+		8458BB461981A03000BE8360 /* Entity_QingChengDiZi.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458BB451981A03000BE8360 /* Entity_QingChengDiZi.m */; };
 		845B51BC195E5BDD00A6098D /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 845B51BB195E5BDD00A6098D /* GameScene.m */; };
 		845B51BF195EC73200A6098D /* EnemyCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 845B51BE195EC73200A6098D /* EnemyCache.m */; };
 		845B51C2195EC7E500A6098D /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 845B51C1195EC7E500A6098D /* Enemy.m */; };
@@ -755,6 +765,26 @@
 		843504D2195E5A4400503923 /* TiledMap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TiledMap.tmx; sourceTree = "<group>"; };
 		84558DA0197ECE9100CD4107 /* Wugong_ShiZiHou.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong_ShiZiHou.h; sourceTree = "<group>"; };
 		84558DA1197ECE9100CD4107 /* Wugong_ShiZiHou.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wugong_ShiZiHou.m; sourceTree = "<group>"; };
+		8458BB25198163D900BE8360 /* Special_JianShenYiXiao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Special_JianShenYiXiao.h; sourceTree = "<group>"; };
+		8458BB26198163D900BE8360 /* Special_JianShenYiXiao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Special_JianShenYiXiao.m; sourceTree = "<group>"; };
+		8458BB2919816E1A00BE8360 /* Place_HeLuoKeZhan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place_HeLuoKeZhan.h; sourceTree = "<group>"; };
+		8458BB2A19816E1A00BE8360 /* Place_HeLuoKeZhan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place_HeLuoKeZhan.m; sourceTree = "<group>"; };
+		8458BB2C19816E6C00BE8360 /* Place_FuWeiBiaoJv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place_FuWeiBiaoJv.h; sourceTree = "<group>"; };
+		8458BB2D19816E6C00BE8360 /* Place_FuWeiBiaoJv.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place_FuWeiBiaoJv.m; sourceTree = "<group>"; };
+		8458BB2F198184AF00BE8360 /* Place_TianNingSi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place_TianNingSi.h; sourceTree = "<group>"; };
+		8458BB30198184AF00BE8360 /* Place_TianNingSi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place_TianNingSi.m; sourceTree = "<group>"; };
+		8458BB32198184E700BE8360 /* Place_MeiZhuang.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place_MeiZhuang.h; sourceTree = "<group>"; };
+		8458BB33198184E700BE8360 /* Place_MeiZhuang.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place_MeiZhuang.m; sourceTree = "<group>"; };
+		8458BB35198184F500BE8360 /* Place_YanZiWu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place_YanZiWu.h; sourceTree = "<group>"; };
+		8458BB36198184F500BE8360 /* Place_YanZiWu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place_YanZiWu.m; sourceTree = "<group>"; };
+		8458BB3919819B1800BE8360 /* Event_LingHuVSQingCheng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event_LingHuVSQingCheng.h; sourceTree = "<group>"; };
+		8458BB3A19819B1800BE8360 /* Event_LingHuVSQingCheng.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event_LingHuVSQingCheng.m; sourceTree = "<group>"; };
+		8458BB3D19819B9A00BE8360 /* Entity_LingHuChong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity_LingHuChong.h; sourceTree = "<group>"; };
+		8458BB3E19819B9A00BE8360 /* Entity_LingHuChong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entity_LingHuChong.m; sourceTree = "<group>"; };
+		8458BB4019819D6B00BE8360 /* Special_LingHuChong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Special_LingHuChong.h; sourceTree = "<group>"; };
+		8458BB4119819D6B00BE8360 /* Special_LingHuChong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Special_LingHuChong.m; sourceTree = "<group>"; };
+		8458BB441981A03000BE8360 /* Entity_QingChengDiZi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity_QingChengDiZi.h; sourceTree = "<group>"; };
+		8458BB451981A03000BE8360 /* Entity_QingChengDiZi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entity_QingChengDiZi.m; sourceTree = "<group>"; };
 		845B51BB195E5BDD00A6098D /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		845B51BD195EC73200A6098D /* EnemyCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyCache.h; sourceTree = "<group>"; };
 		845B51BE195EC73200A6098D /* EnemyCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnemyCache.m; sourceTree = "<group>"; };
@@ -1733,6 +1763,8 @@
 				843504C5195C619300503923 /* Component */,
 				8429175D1967898200D691D3 /* MenPai */,
 				84C36037197D62B400331A2B /* WuGong */,
+				8458BB2819816DF200BE8360 /* Place */,
+				8458BB3C19819B7000BE8360 /* Entity */,
 				84350480195AFA0500503923 /* IntroScene.h */,
 				84350481195AFA0500503923 /* IntroScene.m */,
 				84065EB3196AA5A800858A91 /* BattleField.h */,
@@ -1755,8 +1787,6 @@
 				846FE1E5197F29170035448F /* CangYan.m */,
 				846FE1EA197F2EB40035448F /* Item.h */,
 				846FE1EB197F2EB40035448F /* Item.m */,
-				846876E9198047EA009FDA85 /* Place_XinShouCun.h */,
-				846876EA198047EA009FDA85 /* Place_XinShouCun.m */,
 				846876EE1980613F009FDA85 /* Event.h */,
 				846876EF19806140009FDA85 /* Event.m */,
 			);
@@ -1796,6 +1826,57 @@
 				843504B8195BFA8D00503923 /* Extension.m */,
 			);
 			name = "Helper ";
+			sourceTree = "<group>";
+		};
+		8458BB24198163BF00BE8360 /* Special */ = {
+			isa = PBXGroup;
+			children = (
+				8458BB25198163D900BE8360 /* Special_JianShenYiXiao.h */,
+				8458BB26198163D900BE8360 /* Special_JianShenYiXiao.m */,
+				8458BB4019819D6B00BE8360 /* Special_LingHuChong.h */,
+				8458BB4119819D6B00BE8360 /* Special_LingHuChong.m */,
+			);
+			name = Special;
+			sourceTree = "<group>";
+		};
+		8458BB2819816DF200BE8360 /* Place */ = {
+			isa = PBXGroup;
+			children = (
+				8458BB3819819AEF00BE8360 /* HeLuoKeZhan */,
+				846876E9198047EA009FDA85 /* Place_XinShouCun.h */,
+				846876EA198047EA009FDA85 /* Place_XinShouCun.m */,
+				8458BB2C19816E6C00BE8360 /* Place_FuWeiBiaoJv.h */,
+				8458BB2D19816E6C00BE8360 /* Place_FuWeiBiaoJv.m */,
+				8458BB2F198184AF00BE8360 /* Place_TianNingSi.h */,
+				8458BB30198184AF00BE8360 /* Place_TianNingSi.m */,
+				8458BB32198184E700BE8360 /* Place_MeiZhuang.h */,
+				8458BB33198184E700BE8360 /* Place_MeiZhuang.m */,
+				8458BB35198184F500BE8360 /* Place_YanZiWu.h */,
+				8458BB36198184F500BE8360 /* Place_YanZiWu.m */,
+			);
+			name = Place;
+			sourceTree = "<group>";
+		};
+		8458BB3819819AEF00BE8360 /* HeLuoKeZhan */ = {
+			isa = PBXGroup;
+			children = (
+				8458BB2919816E1A00BE8360 /* Place_HeLuoKeZhan.h */,
+				8458BB2A19816E1A00BE8360 /* Place_HeLuoKeZhan.m */,
+				8458BB3919819B1800BE8360 /* Event_LingHuVSQingCheng.h */,
+				8458BB3A19819B1800BE8360 /* Event_LingHuVSQingCheng.m */,
+			);
+			name = HeLuoKeZhan;
+			sourceTree = "<group>";
+		};
+		8458BB3C19819B7000BE8360 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				8458BB3D19819B9A00BE8360 /* Entity_LingHuChong.h */,
+				8458BB3E19819B9A00BE8360 /* Entity_LingHuChong.m */,
+				8458BB441981A03000BE8360 /* Entity_QingChengDiZi.h */,
+				8458BB451981A03000BE8360 /* Entity_QingChengDiZi.m */,
+			);
+			name = Entity;
 			sourceTree = "<group>";
 		};
 		84675AA81962EF9B0093F2EF /* FirstTry */ = {
@@ -1849,6 +1930,7 @@
 		84C36037197D62B400331A2B /* WuGong */ = {
 			isa = PBXGroup;
 			children = (
+				8458BB24198163BF00BE8360 /* Special */,
 				84C36039197D62EC00331A2B /* NeiGong */,
 				84C36038197D62DF00331A2B /* WaiGong */,
 			);
@@ -2038,6 +2120,7 @@
 			files = (
 				846FE1E9197F2C620035448F /* Entity.m in Sources */,
 				843503E1195AFA0400503923 /* CCScrollView.m in Sources */,
+				8458BB2E19816E6C00BE8360 /* Place_FuWeiBiaoJv.m in Sources */,
 				8435037C195AFA0300503923 /* OALAction.m in Sources */,
 				84350318195AFA0300503923 /* CCTexturePVR.m in Sources */,
 				843503F9195AFA0400503923 /* CCBReader.m in Sources */,
@@ -2061,6 +2144,7 @@
 				843502A4195AFA0200503923 /* CCDrawNode.m in Sources */,
 				8435038F195AFA0400503923 /* OALAudioTracks.m in Sources */,
 				8435025B195AFA0000503923 /* CCEffectColor.m in Sources */,
+				8458BB3B19819B1800BE8360 /* Event_LingHuVSQingCheng.m in Sources */,
 				84C36027197B34FC00331A2B /* Wugong_LiuMaiShenJian.m in Sources */,
 				84350255195AFA0000503923 /* CCEffect.m in Sources */,
 				843503F3195AFA0400503923 /* CCBAnimationManager.m in Sources */,
@@ -2081,6 +2165,7 @@
 				84350312195AFA0300503923 /* CCTexture.m in Sources */,
 				84350364195AFA0300503923 /* CGPointExtension.m in Sources */,
 				8435028E195AFA0200503923 /* CCActionTween.m in Sources */,
+				8458BB27198163D900BE8360 /* Special_JianShenYiXiao.m in Sources */,
 				843503F0195AFA0400503923 /* CCAnimationManager.m in Sources */,
 				8429176319678B5600D691D3 /* HengShanPai.m in Sources */,
 				843502C5195AFA0200503923 /* CCNode+Debug.m in Sources */,
@@ -2114,6 +2199,7 @@
 				8435037F195AFA0300503923 /* OALActionManager.m in Sources */,
 				843502E3195AFA0300503923 /* CCPhysicsNode.m in Sources */,
 				84350385195AFA0400503923 /* OALUtilityActions.m in Sources */,
+				8458BB3F19819B9A00BE8360 /* Entity_LingHuChong.m in Sources */,
 				843502BD195AFA0200503923 /* CCMotionStreak.m in Sources */,
 				843503C7195AFA0400503923 /* NSMutableArray+WeakReferences.m in Sources */,
 				843503B5195AFA0400503923 /* OpenALManager.m in Sources */,
@@ -2167,6 +2253,8 @@
 				843502F3195AFA0300503923 /* CCResponder.m in Sources */,
 				843504B3195BF65300503923 /* Player.m in Sources */,
 				84675AB21962F3850093F2EF /* MenPai.m in Sources */,
+				8458BB4219819D6B00BE8360 /* Special_LingHuChong.m in Sources */,
+				8458BB31198184AF00BE8360 /* Place_TianNingSi.m in Sources */,
 				845B51C2195EC7E500A6098D /* Enemy.m in Sources */,
 				843502EF195AFA0300503923 /* CCRenderTexture.m in Sources */,
 				843504BE195C519D00503923 /* ComponentAttackRange.m in Sources */,
@@ -2186,12 +2274,14 @@
 				8429176F1967977F00D691D3 /* Invader.m in Sources */,
 				84350281195AFA0100503923 /* CCActionInstant.m in Sources */,
 				84350284195AFA0200503923 /* CCActionInterval.m in Sources */,
+				8458BB34198184E700BE8360 /* Place_MeiZhuang.m in Sources */,
 				846FE1E0197EF7160035448F /* Wugong_WanYueGuiZong.m in Sources */,
 				843502B2195AFA0200503923 /* CCNodeColor.m in Sources */,
 				845B51BF195EC73200A6098D /* EnemyCache.m in Sources */,
 				845CA5A3197EE234008E61E4 /* Wugong_YiJingShenGong.m in Sources */,
 				84350340195AFA0300503923 /* CCAppDelegate.m in Sources */,
 				843502A0195AFA0200503923 /* CCDirector.m in Sources */,
+				8458BB461981A03000BE8360 /* Entity_QingChengDiZi.m in Sources */,
 				8435027E195AFA0100503923 /* CCActionEase.m in Sources */,
 				8435025F195AFA0000503923 /* CCEffectGlow.m in Sources */,
 				843503AB195AFA0400503923 /* ALSoundSourcePool.m in Sources */,
@@ -2205,6 +2295,7 @@
 				84350356195AFA0300503923 /* CCColor.m in Sources */,
 				8429176B19678C3F00D691D3 /* SongShanScene.m in Sources */,
 				84350270195AFA0100503923 /* CCShader.m in Sources */,
+				8458BB2B19816E1A00BE8360 /* Place_HeLuoKeZhan.m in Sources */,
 				84350292195AFA0200503923 /* CCAnimation.m in Sources */,
 				84558DA2197ECE9100CD4107 /* Wugong_ShiZiHou.m in Sources */,
 				843503DE195AFA0400503923 /* CCControlTextureFactory.m in Sources */,
@@ -2212,6 +2303,7 @@
 				846E4404197DE2D70081318F /* Wugong_ShengHuoShenGong.m in Sources */,
 				8435047C195AFA0500503923 /* AppDelegate.m in Sources */,
 				84350333195AFA0300503923 /* CCDirectorIOS.m in Sources */,
+				8458BB37198184F500BE8360 /* Place_YanZiWu.m in Sources */,
 				84C36033197CD5BC00331A2B /* Wugong_HunYuanGong.m in Sources */,
 				84C36036197CF13100331A2B /* Wugong_JiuYangShenGong.m in Sources */,
 				845CA5A0197EDD16008E61E4 /* Wugong_XiaoWuXiangGong.m in Sources */,

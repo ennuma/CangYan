@@ -54,6 +54,16 @@
 }
 -(bool)proceed
 {
-    return NO;
+    if (event) {
+        [event proceed];
+        if(event.done==YES)
+        {
+            _canLeave = YES;
+            return NO;
+        }
+        return YES;
+    }else{
+        return NO;
+    }
 }
 @end

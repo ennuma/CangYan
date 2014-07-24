@@ -24,6 +24,7 @@
     CCTiledMap* map;
     
     int tick;
+    bool isExiting;
 }
 +(BattleField*)scene;
 -(void)startBattle;

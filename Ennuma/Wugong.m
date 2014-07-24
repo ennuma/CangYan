@@ -230,4 +230,8 @@
 {
     
 }
+-(int)effectMoveNumberBeforeAction:(int)movenum WithInvader:(NSObject*)invader
+{
+    return movenum;
+}
 @end
