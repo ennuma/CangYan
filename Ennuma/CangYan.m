@@ -80,7 +80,8 @@ static CangYan* sharedScene;
         _player.agile = 5;
         _player.maxhealth = 60;
         _player.maxacume = 50;
-        
+        Wugong_SongFengJianFa *songfeng = [Wugong_SongFengJianFa node];
+        [_player.wugong addObject:songfeng];
         //init place
         Place_XinShouCun* xinshoucun = [Place_XinShouCun node];
         _place = xinshoucun;
@@ -98,18 +99,18 @@ static CangYan* sharedScene;
            
             CCLayoutBox *layoutBox = [[CCLayoutBox alloc] init];
             layoutBox.anchorPoint = ccp(0.5, 0.5);
-            for(Place* next in _place.nextPlaces){
-                CCLabelTTF* button = [CCLabelTTF labelWithString:@"button" fontName:@"Verdana-Bold" fontSize:40];
-                [button addChild:next z:0 name:@"place"];
-                [layoutBox addChild:button];
-                test = button;
+            for(Place* next in [_place getNextPlaces]){
+                [next removeFromParent];
+                CCLabelTTF* label = [CCLabelTTF labelWithString:next.placeName fontName:@"Verdana-Bold" fontSize:40];
+                [label addChild:next z:0 name:@"CY_place"];
+                [layoutBox addChild:label];
             }
             layoutBox.spacing = 10.f;
             layoutBox.direction = CCLayoutBoxDirectionHorizontal;
             [layoutBox layout];
             CCNode* bottom = [self getChildByName:@"bottombar" recursively:NO];
             layoutBox.position = CGPointMake(bottom.contentSize.width/2*bottom.scaleX,bottom.contentSize.height/2*bottom.scaleY);
-            [self addChild:layoutBox];
+            [self addChild:layoutBox z:0 name:@"CY_places"];
         }
         _place.canLeave = false;
     }
@@ -127,14 +128,31 @@ static CangYan* sharedScene;
         inEvent = [_place proceed];
     }else{
         CGPoint pos = [touch locationInNode:self];
-        if(CGRectContainsPoint([test boundingBox],pos))
-        {
-            _place = (Place*)[test getChildByName:@"place" recursively:NO];
-            inPlace = false;
+        CCNode* places = [self getChildByName:@"CY_places" recursively:NO];
+        for (CCNode* m_place in [places children] ) {
+            CGRect box =[m_place boundingBox];
+            CGPoint worldPoint = [m_place convertToWorldSpace:CGPointZero];
+            box.origin = worldPoint;
+            //box.origin = CGPointMake(box.origin.x + places.position.x-box.size., box.origin.y + places.position.y);
+            if(CGRectContainsPoint(box,pos))
+            {
+                CCLOG(@"1");
+                Place* place = (Place*)[m_place getChildByName:@"CY_place" recursively:NO];
+                [self changePlace:place];
+                [self removeChildByName:@"CY_places"];
+            }
+            //CCLOG(@"%f,%f", box.origin.x, box.origin.y);
         }
     }
 }
-
+-(void)changePlace:(Place*)place
+{
+    _day = [_place leavePlaceOnDay];
+    [self removeChildByName:@"CY_main"];
+    [self removeChildByName:@"CY_places"];
+    _place = place;
+    inPlace = false;
+}
 -(void)setBackGroundForPlace:(Place*)place
 {
     CGSize winSize = [[CCDirector sharedDirector] viewSize];
@@ -146,6 +164,6 @@ static CangYan* sharedScene;
     [main setScaleX:(winSize.width-leftbar.contentSize.width*leftbar.scaleX)/main.contentSize.width];
     [main setScaleY:(winSize.height-topbar.contentSize.height*topbar.scaleY-bottombar.contentSize.height*bottombar.scaleY)/main.contentSize.height];
     main.position = CGPointMake(main.contentSize.width*main.scaleX/2+leftbar.contentSize.width*leftbar.scaleX, main.contentSize.height*main.scaleY/2+bottombar.contentSize.height*bottombar.scaleY);
-    [self addChild:main z:0 name:@"main"];
+    [self addChild:main z:0 name:@"CY_main"];
 }
 @end

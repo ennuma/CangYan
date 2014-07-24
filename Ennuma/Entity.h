@@ -23,7 +23,7 @@
     
     //人际关系
     //String(entityName) -> int(relationship point)
-    NSDictionary* _relationShip;
+    NSMutableDictionary* _relationShip;
     
     //WugongArr(Wugong)
     NSMutableArray* _wugong;
@@ -90,7 +90,7 @@
 @property NSString* entityName;
 @property NSString* entityMale;
 @property NSString* wuLinName;
-@property NSDictionary* relationship;
+@property NSMutableDictionary* relationship;
 @property NSMutableArray* wugong;
 @property NSMutableArray* specialBuff;
 @property NSMutableArray* weapons;

@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ennuma/Invader.m"
-            timestampString = "427830675.38072"
+            timestampString = "427857882.365382"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "917"
-            endingLineNumber = "917"
+            startingLineNumber = "919"
+            endingLineNumber = "919"
             landmarkName = "-getMaxAttackForSinglePos:WithWugong:"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ennuma/Invader.m"
-            timestampString = "427830675.38072"
+            timestampString = "427857882.365382"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "551"
-            endingLineNumber = "551"
+            startingLineNumber = "553"
+            endingLineNumber = "553"
             landmarkName = "-attackInvaders:WithWuGong:"
             landmarkType = "5">
          </BreakpointContent>

@@ -401,6 +401,7 @@
 {
     //try attack fitst, if fails than choose to move
     Wugong* choosedWugong = [self autoChooseWugong];
+    CCLOG(@"%@",choosedWugong.wugongName);
     NSValue* val =[self getMaxAttackPosWithWugong:choosedWugong];
     if (val) {
         CGPoint pos = [val CGPointValue];
@@ -419,6 +420,7 @@
 -(Wugong*)autoChooseWugong
 {
     if ([wugong count]==0) {
+        //CCLOG(@"return nil");
         return nil;
     }
     

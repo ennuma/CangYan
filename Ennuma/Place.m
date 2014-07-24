@@ -13,17 +13,22 @@
 @synthesize day = _day;
 @synthesize bg = _bg;
 @synthesize map = _map;
-@synthesize nextPlaces = _nextPlaces;
+//@synthesize nextPlaces = _nextPlaces;
 @synthesize canLeave = _canLeave;
+@synthesize placeName = _placeName;
 -(id)init
 {
     self = [super init];
     if (!self) {
         return nil;
     }
-    _nextPlaces = [[NSMutableArray alloc]init];
+   // _nextPlaces = [[NSMutableArray alloc]init];
     [self preparePlace];
     return self;
+}
+-(NSMutableArray*)getNextPlaces
+{
+    return nil;
 }
 -(void)preparePlace
 {
@@ -40,6 +45,7 @@
 }
 -(int)leavePlaceOnDay
 {
+    //[self removeFromParent];
     return _day;
 }
 -(bool)meetEvents

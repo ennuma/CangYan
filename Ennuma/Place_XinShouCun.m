@@ -22,10 +22,24 @@
     
     return false;
 }
+-(NSMutableArray*)getNextPlaces
+{
+    NSMutableArray* ret = [[NSMutableArray alloc]init];
+    Place_XinShouCun* one = [Place_XinShouCun node];
+    Place_XinShouCun* two = [Place_XinShouCun node];
+    [ret addObject:one];
+    [ret addObject:two];
+    return ret;
+}
 -(void)preparePlace
 {
     _bg = [CCSprite spriteWithImageNamed:@"Place_XinShouChun.png"];
-    [_nextPlaces addObject:self];
+    _placeName = @"新手村";
+    
+    //Place_XinShouCun* one = [Place_XinShouCun node];
+    //Place_XinShouCun* two = [Place_XinShouCun node];
+    //[_nextPlaces addObject:self];
+    //[_nextPlaces addObject:two];
 }
 -(bool)proceed
 {

@@ -45,6 +45,22 @@
 @synthesize wugongchangshi = _wugongchangshi;
 @synthesize relationship = _relationShip;
 @synthesize teammates = _teammates;
+@synthesize wugong = _wugong;
+
+-(id)init
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+    _wugong = [[NSMutableArray alloc]init];
+    _specialBuff = [[NSMutableArray alloc]init];
+    _weapons = [[NSMutableArray alloc]init];
+    _armors = [[NSMutableArray alloc]init];
+    _teammates = [[NSMutableArray alloc]init];
+    _relationShip = [[NSMutableDictionary alloc]init];
+    return self;
+}
 -(Invader*)transformToInvaderForm
 {
     Invader* ret = [[Invader alloc]init];
@@ -65,21 +81,23 @@
     ret.wuxueKnowledge = _wugongchangshi;
     ret.talent = _talent;
     NSMutableArray* retwugong = [[NSMutableArray alloc] init];
+    //CCLOG(@"%i",[_wugong count]);
     for (Wugong* wg in _wugong) {
         [retwugong addObject:wg];
     }
     for (Wugong* wg in _specialBuff) { //add buff
         [retwugong addObject:wg];
     }
+    ret.wugongArr = retwugong;
     if ([_entityMale isEqualToString:@"不男不女"]) {
         ret.taijian=true;
     }
     
     
     //头像
-    ret.bigIcon = [CCSprite spriteWithTexture:[_bigIcon texture]];
-    ret.smallIcon = [CCSprite spriteWithTexture:[_smallIcon texture]];
-    ret.headIcon = [CCSprite spriteWithTexture:[_statusIcon texture]];
+    //ret.bigIcon = [CCSprite spriteWithTexture:[_bigIcon texture]];
+    //ret.smallIcon = [CCSprite spriteWithTexture:[_smallIcon texture]];
+    //ret.headIcon = [CCSprite spriteWithTexture:[_statusIcon texture]];
 
     return ret;
 }
