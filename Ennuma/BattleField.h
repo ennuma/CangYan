@@ -28,6 +28,8 @@
     
     bool waitForMove;
     bool waitForAttack;
+    bool waitForChooseWugong;
+    Wugong* choosedWugong;
 }
 +(BattleField*)scene;
 -(void)startBattle;

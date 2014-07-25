@@ -81,9 +81,12 @@
     NSMutableArray* actions;
     
     bool _isPlayer;
+    
+    NSMutableSet* attackable;
 }
 @property bool isPlayer;
 @property NSSet* reachableSet;
+@property NSSet* attackableSet;
 //@property int strength;
 @property int agile;
 //@property int wisdom;
@@ -148,4 +151,6 @@
 -(void)say:(NSString*)sentence WithColor:(CCColor*)color;
 -(void)endShow;
 -(void)moveTo:(CGPoint)des;
+-(void)chooseWugong:(Wugong*)wugong;
+-(void)attackWithWugong:(Wugong*)wugong2 Direction:(int)direction;
 @end

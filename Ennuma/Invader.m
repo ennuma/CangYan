@@ -54,6 +54,7 @@
 @synthesize taijian = _taijian;
 @synthesize heal = _heal;
 @synthesize isPlayer = _isPlayer;
+@synthesize attackableSet = attackable;
 -(id)init
 {
     self = [super init];
@@ -65,6 +66,7 @@
     reachable = [[NSMutableSet alloc]init];
     reachableLookup =[[NSMutableDictionary alloc]init];
     actions = [[NSMutableArray alloc]init];
+    attackable = [[NSMutableSet alloc]init];
     [self initWuGong];
     [self initIcon];
     return self;
@@ -237,7 +239,7 @@
     //CCLOG(@"%i",movenum);
     //CCLOG(@"%@",reachable);
     [self renderReachable];
-    
+    [attackable removeAllObjects];
     //set statehud visible to yes and update
     _state.visible = YES;
     [self updateState];
@@ -422,6 +424,11 @@
 {
     [_map.parent waitForMove];
 }
+-(void)waitForChooseWugong
+{
+    //[_map.parent showWugongMenu];
+    [_map.parent waitForChooseWugong];
+}
 -(void)waitForAttack
 {
     [_map.parent waitForAttack];
@@ -430,9 +437,14 @@
 {
     CCActionFiniteTime* action = [self buildCCActionMovArrFrom:self.position To:despoint];
     self.position = despoint;
-    CCActionCallFunc* callback = [CCActionCallFunc actionWithTarget:self selector:@selector(waitForAttack)];
+    CCActionCallFunc* callback = [CCActionCallFunc actionWithTarget:self selector:@selector(waitForChooseWugong)];
     CCActionSequence* seq = [CCActionSequence actions:action,callback, nil];
     [_bigIcon runAction:seq];
+}
+-(void)chooseWugong:(Wugong*)wugong
+{
+    [self renderAttackWithWugong:wugong Direction:0 Position: [NSValue valueWithCGPoint:self.position]];
+    [self waitForAttack];
 }
 -(void)war_AutoFight
 {
@@ -471,7 +483,21 @@
     }
     return ret;
 }
+-(void)attackWithWugong:(Wugong*)wugong2 Direction:(int)direction
+{
+    CCActionCallFunc* callback = [CCActionCallFunc actionWithTarget:self selector:@selector(endOfAction)];
+    NSMutableArray* invadersBeingAttacked = [self invadersBeingAttakedWithWugong:wugong2 Direction:direction Position:[NSValue valueWithCGPoint:self.position]];
+    
+    CCActionCallFunc *attackInvaders = [CCActionCallFuncAttackInvader actionWithTarget:self selector:@selector(attackInvaders:WithWuGong:) Invaders:invadersBeingAttacked Wugong:wugong2];
+    
+    //May change later
+    CCActionDelay* delay = [CCActionDelay actionWithDuration:1];//play animation after this TODO
+    
+    CCActionSequence* seq = [CCActionSequence actions:attackInvaders,delay,callback, nil];
+    [_bigIcon runAction:seq];
+    invadersBeingAttacked = nil;
 
+}
 -(void)autoAttack:(CGPoint)position WithWugong:(Wugong*)wugong2
 {
     CCActionCallFunc* callback = [CCActionCallFunc actionWithTarget:self selector:@selector(endOfAction)];
@@ -773,26 +799,94 @@
     atklayer.position = _map.position;
     [_map addChild:atklayer z:1 name:@"attackLayer"];
     for (int i = 0 ; i < m_wugong.range ; i++) {
-        CGPoint attackpos;
-        CCSprite* colorlayer = [CCSprite spriteWithImageNamed:@"maphud.png"];
-        if (dir ==1) {
+        if (dir==0) {
+            CGPoint attackpos;
+            CCSprite* colorlayer = [CCSprite spriteWithImageNamed:@"maphud.png"];
             attackpos = CGPointMake(pos.x, pos.y+i+1);
+            colorlayer.opacity = 0.8;
+            colorlayer.position = [self convertToMapCord:attackpos] ;
+            //colorlayer.anchorPoint = CGPointMake(-0.5, 0.5);
+            [colorlayer setContentSize: [ _map tileSize]];
+            [attackable addObject:colorlayer];
+            [atklayer addChild:colorlayer z:10];
+            
+            CGPoint attackpos2;
+            CCSprite* colorlayer2 = [CCSprite spriteWithImageNamed:@"maphud.png"];
+            attackpos2 = CGPointMake(pos.x, pos.y-i-1);
+            colorlayer2.opacity = 0.8;
+            colorlayer2.position = [self convertToMapCord:attackpos2] ;
+            //colorlayer.anchorPoint = CGPointMake(-0.5, 0.5);
+            [colorlayer2 setContentSize: [ _map tileSize]];
+            [attackable addObject:colorlayer2];
+            [atklayer addChild:colorlayer2 z:10];
+            
+            CGPoint attackpos3;
+            CCSprite* colorlayer3 = [CCSprite spriteWithImageNamed:@"maphud.png"];
+            attackpos3 = CGPointMake(pos.x-i-1, pos.y);
+            colorlayer3.opacity = 0.8;
+            colorlayer3.position = [self convertToMapCord:attackpos3] ;
+            //colorlayer.anchorPoint = CGPointMake(-0.5, 0.5);
+            [colorlayer3 setContentSize: [ _map tileSize]];
+            [attackable addObject:colorlayer3];
+            [atklayer addChild:colorlayer3 z:10];
+
+
+            CGPoint attackpos4;
+            CCSprite* colorlayer4 = [CCSprite spriteWithImageNamed:@"maphud.png"];
+            attackpos4 = CGPointMake(pos.x+i+1, pos.y);
+            colorlayer4.opacity = 0.8;
+            colorlayer4.position = [self convertToMapCord:attackpos4] ;
+            //colorlayer.anchorPoint = CGPointMake(-0.5, 0.5);
+            [colorlayer4 setContentSize: [ _map tileSize]];
+            [attackable addObject:colorlayer4];
+            [atklayer addChild:colorlayer4 z:10];
+
+        }
+        if (dir ==1) {
+            CGPoint attackpos;
+            CCSprite* colorlayer = [CCSprite spriteWithImageNamed:@"maphud.png"];
+            attackpos = CGPointMake(pos.x, pos.y+i+1);
+            colorlayer.opacity = 0.8;
+            colorlayer.position = [self convertToMapCord:attackpos] ;
+            //colorlayer.anchorPoint = CGPointMake(-0.5, 0.5);
+            [colorlayer setContentSize: [ _map tileSize]];
+            [attackable addObject:colorlayer];
+            [atklayer addChild:colorlayer z:10];
         }
         if (dir==2) {
+            CGPoint attackpos;
+            CCSprite* colorlayer = [CCSprite spriteWithImageNamed:@"maphud.png"];
             attackpos = CGPointMake(pos.x, pos.y-i-1);
+            colorlayer.opacity = 0.8;
+            colorlayer.position = [self convertToMapCord:attackpos] ;
+            //colorlayer.anchorPoint = CGPointMake(-0.5, 0.5);
+            [colorlayer setContentSize: [ _map tileSize]];
+            [attackable addObject:colorlayer];
+            [atklayer addChild:colorlayer z:10];
         }
         if (dir==3) {
+            CGPoint attackpos;
+            CCSprite* colorlayer = [CCSprite spriteWithImageNamed:@"maphud.png"];
             attackpos = CGPointMake(pos.x-i-1, pos.y);
+            colorlayer.opacity = 0.8;
+            colorlayer.position = [self convertToMapCord:attackpos] ;
+            //colorlayer.anchorPoint = CGPointMake(-0.5, 0.5);
+            [colorlayer setContentSize: [ _map tileSize]];
+            [attackable addObject:colorlayer];
+            [atklayer addChild:colorlayer z:10];
         }
         if (dir==4) {
+            CGPoint attackpos;
+            CCSprite* colorlayer = [CCSprite spriteWithImageNamed:@"maphud.png"];
             attackpos = CGPointMake(pos.x+i+1, pos.y);
+            colorlayer.opacity = 0.8;
+            colorlayer.position = [self convertToMapCord:attackpos] ;
+            //colorlayer.anchorPoint = CGPointMake(-0.5, 0.5);
+            [colorlayer setContentSize: [ _map tileSize]];
+            [attackable addObject:colorlayer];
+            [atklayer addChild:colorlayer z:10];
         }
-        colorlayer.opacity = 0.8;
-        colorlayer.position = [self convertToMapCord:attackpos] ;
-        //colorlayer.anchorPoint = CGPointMake(-0.5, 0.5);
-        [colorlayer setContentSize: [ _map tileSize]];
-
-        [atklayer addChild:colorlayer z:10];
+        
     }
     
     //CCLOG(@"render");

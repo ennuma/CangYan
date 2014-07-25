@@ -111,6 +111,30 @@ CCSprite* bar;
 {
     waitForAttack = true;
 }
+-(void)waitForChooseWugong
+{
+    [self showWugongMenu];
+    waitForChooseWugong = true;
+}
+-(void)showWugongMenu
+{
+    Invader* inv = (Invader*)isActing;
+    CCNode* menu = [CCNode node];
+    int count = 0;
+    for (Wugong* wg in inv.wugongArr)
+    {
+        CCLabelTTF* label = [CCLabelTTF labelWithString:wg.wugongName fontName:@"Verdana-Bold" fontSize:18.0f];
+        [label addChild:wg z:0 name:@"wugong"];
+        label.position = CGPointMake(self.contentSize.width/2, self.contentSize.height/2+100*count);
+        [menu addChild:label];
+        count++;
+    }
+    [self addChild:menu z:0 name:@"wugongmenu"];
+}
+-(void)hiddenWugongMenu
+{
+    [self removeChildByName:@"wugongmenu"];
+}
 -(void)update:(CCTime)delta{
     //CCLOG(@"update");
     if ([self checkEndBattle]) {
@@ -144,6 +168,54 @@ CCSprite* bar;
         if ([inv.reachableSet containsObject:[NSValue valueWithCGPoint:convertedpos]]) {
             [inv moveTo:convertedpos];
             waitForMove = false;
+        }
+        return;
+    }
+    if (waitForChooseWugong) {
+        CCNode* menu = [self getChildByName:@"wugongmenu" recursively:NO];
+        for (CCNode* wg in menu.children) {
+            if (CGRectContainsPoint(wg.boundingBox, [touch locationInNode:self])) {
+                Wugong* wgnode = (Wugong*)[wg getChildByName:@"wugong" recursively:NO];
+                CCLOG(wgnode.wugongName);
+                Invader* inv = (Invader*)isActing;
+                [inv chooseWugong:wgnode];
+                choosedWugong = wgnode;
+                [self hiddenWugongMenu];
+                waitForChooseWugong = false;
+            }
+        }
+        return;
+    }
+    if (waitForAttack) {
+        CCLOG(@"atk");
+        //CCNode* node = [map getChildByName:@"attackLayer" recursively:NO];
+        //NSAssert(node!=nil, @"attackLayer is nil");
+        Invader* inv = (Invader*)isActing;
+        for (CCNode* atpos in inv.attackableSet) {
+            CGRect box = atpos.boundingBox;
+            CGPoint worldPoint = [atpos convertToWorldSpace:CGPointZero];
+            box.origin = worldPoint;
+            //CCLOG(@"boxorignin: %f,%f.",box.origin.x,box.origin.y);
+            //CCLOG(@"box: %f,%f.",box.size.width,box.size.height);
+            if (CGRectContainsPoint(box, [touch locationInNode:self])) {
+                int direction = 0;
+                CGPoint mappos = [self tileCoordForPosition:atpos.position];
+                CCLOG(@"attack at : %f,%f",mappos.x,mappos.y);
+                if(mappos.y>inv.position.y){
+                    direction = 1;
+                }
+                if (mappos.y < inv.position.y) {
+                    direction = 2;
+                }
+                if (mappos.x < inv.position.x) {
+                    direction = 3;
+                }
+                if (mappos.x > inv.position.x) {
+                    direction = 4;
+                }
+                [inv attackWithWugong:choosedWugong Direction:direction];
+                waitForAttack = false;
+            }
         }
         return;
     }
