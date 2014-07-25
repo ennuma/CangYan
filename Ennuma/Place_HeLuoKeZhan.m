@@ -15,14 +15,18 @@
 #import "Place_MeiZhuang.h"
 #import "Event_LingHuVSQingCheng.h"
 @implementation Place_HeLuoKeZhan
+static int event_linghuvsqingcheng = 0;
 -(bool)meetEvents
 {
     CangYan* cangYan = [CangYan sharedScene];
     
     if ( _day==1 ) {
-        event = [Event_LingHuVSQingCheng node];
-        [event proceed];
-        return true;
+        if (event_linghuvsqingcheng==0) {
+            event = [Event_LingHuVSQingCheng node];
+            [event proceed];
+            event_linghuvsqingcheng = 1;
+            return true;
+        }
     }
     
     return false;

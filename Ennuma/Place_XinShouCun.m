@@ -12,14 +12,18 @@
 #import "Place_HeLuoKeZhan.h"
 #import "Place_FuWeiBiaoJv.h"
 @implementation Place_XinShouCun
+static int event_basictype = 0;
 -(bool)meetEvents
 {
     CangYan* cangYan = [CangYan sharedScene];
 
     if ( _day==1 ) {
-        event = [Event node];
-        [event proceed];
-        return true;
+        if (event_basictype==0) {
+            event = [Event node];
+            [event proceed];
+            event_basictype = 1;
+            return true;
+        }
     }
     
     return false;

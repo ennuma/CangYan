@@ -79,8 +79,10 @@
     int _life;
     
     NSMutableArray* actions;
+    
+    bool _isPlayer;
 }
-
+@property bool isPlayer;
 //@property int strength;
 @property int agile;
 //@property int wisdom;
@@ -144,4 +146,5 @@
 -(void)learnWugong:(Wugong*)m_wugong;
 -(void)say:(NSString*)sentence WithColor:(CCColor*)color;
 -(void)endShow;
+-(void)moveTo:(CGPoint)des;
 @end

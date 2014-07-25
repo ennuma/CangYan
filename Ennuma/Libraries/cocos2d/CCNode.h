@@ -741,5 +741,7 @@ A common user pattern in building a Cocos2d game is to subclass CCNode, add it t
 -(CCAction*) runAction2:(CCAction*)action;
 -(void)pauseAction;
 -(void)resumeAction;
+-(void)waitForMove;
+-(void)waitForAttack;
 @end
 

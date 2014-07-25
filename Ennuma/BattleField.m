@@ -103,7 +103,10 @@ CCSprite* bar;
     redTeam = nil;
     blueTeam = nil;
 }
-
+-(void)waitForMove
+{
+    waitForMove = true;
+}
 -(void)update:(CCTime)delta{
     //CCLOG(@"update");
     if ([self checkEndBattle]) {
@@ -119,6 +122,31 @@ CCSprite* bar;
             [self runAction:seq];
         }
     }
+}
+-(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    if ([self getChildByName:@"show" recursively:NO]!=nil) {
+        [self removeChildByName:@"show"];
+        [self resumeAction];
+        return;
+    }
+
+    if (waitForMove) {
+        CCLOG(@"wait for move");
+        CGPoint realpos = [touch locationInNode:map];
+        CGPoint convertedpos = [self tileCoordForPosition:realpos];
+        CCLOG(@"%f,%f",convertedpos.x,convertedpos.y);
+        Invader* inv = (Invader*)isActing;
+        [inv moveTo:convertedpos];
+        waitForMove = false;
+        return;
+    }
+}
+-(CGPoint) tileCoordForPosition:(CGPoint) position
+{
+    int x = position.x / map.tileSize.width;
+    int y = ((map.mapSize.height * map.tileSize.height) - position.y) / map.tileSize.height;
+    return CGPointMake(x, y);
 }
 -(void)pop
 {
@@ -211,13 +239,7 @@ static NSObject* isActing = nil;
     
     
 }
--(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
-{
-    if ([self getChildByName:@"show" recursively:NO]!=nil) {
-         [self removeChildByName:@"show"];
-    }
-    [self resumeAction];
-}
+
 -(void)notifyJiQiChangedForInvader:(id)invader
 {
     Invader* obj = (Invader*)invader;

@@ -52,6 +52,7 @@
 @synthesize life = _life;
 @synthesize taijian = _taijian;
 @synthesize heal = _heal;
+@synthesize isPlayer = _isPlayer;
 -(id)init
 {
     self = [super init];
@@ -269,6 +270,9 @@
         [self endOfAction];
         return;
     }
+    if (_isPlayer) {
+        [self waitForMove];
+    }else{
     CCActionCallFunc* callback = [CCActionCallFunc actionWithTarget:self selector:@selector(endOfAction)];
 
     //[self war_AutoFight];
@@ -288,7 +292,7 @@
     [actions addObject:callback];
     CCActionSequence* seq = [CCActionSequence actionWithArray:actions];
     [_bigIcon runAction:seq];
-    
+    }
     for (Wugong* wg in self.wugongArr) {
         [wg effectRestoreAfterActionWithInvader:self];
     }
@@ -399,6 +403,35 @@
     return r;
     end**/
     return 1;
+}
+-(void)manul_Fight
+{
+    /**
+    CCNode* menu = [CCNode node];
+    CCLabelTTF* fight = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"fight"] fontName:@"Verdana-Bold" fontSize:18.0f];
+    fight.position = CGPointMake(300, 400);
+    CCLabelTTF* move = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"move"] fontName:@"Verdana-Bold" fontSize:18.0f];
+    move.position = CGPointMake(300, 500);
+    [menu addChild:move z:0 name:@"move"];
+    [menu addChild:fight z:0 name:@"fight"];
+    [_map.parent addChild:menu z:0 name:@"menu"];
+     **/
+}
+-(void)waitForMove
+{
+    [_map.parent waitForMove];
+}
+-(void)waitForAttack
+{
+    [_map.parent waitForAttack];
+}
+-(void)moveTo:(CGPoint)despoint
+{
+    CCActionFiniteTime* action = [self buildCCActionMovArrFrom:self.position To:despoint];
+    self.position = despoint;
+    CCActionCallFunc* callback = [CCActionCallFunc actionWithTarget:self selector:@selector(waitForAttack)];
+    CCActionSequence* seq = [CCActionSequence actions:action,callback, nil];
+    [_bigIcon runAction:seq];
 }
 -(void)war_AutoFight
 {

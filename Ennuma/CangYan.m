@@ -80,6 +80,7 @@ static CangYan* sharedScene;
         _player.agile = 65;
         _player.maxhealth = 60;
         _player.maxacume = 50;
+        _player.isPlayer = true;
         Wugong_SongFengJianFa *songfeng = [Wugong_SongFengJianFa node];
         [_player.wugong addObject:songfeng];
         //init place
@@ -120,6 +121,9 @@ static CangYan* sharedScene;
     //CCSprite* place = _place.bg;
     [self setBackGroundForPlace:_place];
     inEvent = [_place enterPlaceOnDay:_day];
+    if (!inEvent) {
+        _place.canLeave = true;
+    }
     inPlace = true;
 }
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event

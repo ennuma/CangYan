@@ -83,7 +83,9 @@
     
     //teammates
     NSMutableArray* _teammates;
+    bool _isPlayer;
 }
+@property bool isPlayer;
 @property CCSprite* bigIcon;
 @property CCSprite* smallIcon;
 @property CCSprite* statusIcon;

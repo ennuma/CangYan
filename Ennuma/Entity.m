@@ -46,7 +46,7 @@
 @synthesize relationship = _relationShip;
 @synthesize teammates = _teammates;
 @synthesize wugong = _wugong;
-
+@synthesize isPlayer = _isPlayer;
 -(id)init
 {
     self = [super init];
@@ -85,6 +85,7 @@
     ret.attackHasPoisionIndex = _poision;//may be to much
     ret.wuxueKnowledge = _wugongchangshi;
     ret.talent = _talent;
+    ret.isPlayer = _isPlayer;
     NSMutableArray* retwugong = [[NSMutableArray alloc] init];
     //CCLOG(@"%i",[_wugong count]);
     for (Wugong* wg in _wugong) {

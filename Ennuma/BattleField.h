@@ -25,6 +25,8 @@
     
     int tick;
     bool isExiting;
+    
+    bool waitForMove;
 }
 +(BattleField*)scene;
 -(void)startBattle;
@@ -32,6 +34,7 @@
 -(void)notifyJiQiChangedForInvader:(Invader*) invader;
 -(void)pauseAction;
 -(void)resumeAction;
+//-(void)waitForMove;
 @property int width;
 @property int height;
 @end
