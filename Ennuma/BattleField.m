@@ -107,6 +107,10 @@ CCSprite* bar;
 {
     waitForMove = true;
 }
+-(void)waitForAttack
+{
+    waitForAttack = true;
+}
 -(void)update:(CCTime)delta{
     //CCLOG(@"update");
     if ([self checkEndBattle]) {
@@ -137,8 +141,10 @@ CCSprite* bar;
         CGPoint convertedpos = [self tileCoordForPosition:realpos];
         CCLOG(@"%f,%f",convertedpos.x,convertedpos.y);
         Invader* inv = (Invader*)isActing;
-        [inv moveTo:convertedpos];
-        waitForMove = false;
+        if ([inv.reachableSet containsObject:[NSValue valueWithCGPoint:convertedpos]]) {
+            [inv moveTo:convertedpos];
+            waitForMove = false;
+        }
         return;
     }
 }

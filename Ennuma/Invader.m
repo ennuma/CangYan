@@ -10,6 +10,7 @@
 
 @implementation Invader
 //@synthesize strength = _strength;
+@synthesize reachableSet = reachable;
 @synthesize agile =_agile;
 //@synthesize wisdom = _wisdom;
 @synthesize attack = _attack;

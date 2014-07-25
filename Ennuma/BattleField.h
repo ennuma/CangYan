@@ -27,6 +27,7 @@
     bool isExiting;
     
     bool waitForMove;
+    bool waitForAttack;
 }
 +(BattleField*)scene;
 -(void)startBattle;

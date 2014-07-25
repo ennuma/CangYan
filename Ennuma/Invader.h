@@ -83,6 +83,7 @@
     bool _isPlayer;
 }
 @property bool isPlayer;
+@property NSSet* reachableSet;
 //@property int strength;
 @property int agile;
 //@property int wisdom;
