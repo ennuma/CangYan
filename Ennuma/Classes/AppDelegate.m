@@ -12,8 +12,8 @@
 #import "HelloWorldScene.h"
 #import "WuLinScene.h"
 #import "BattleField.h"
-#import "CangYan.h";
-
+#import "CangYan.h"
+#import "IntroScene.h"
 #import "Wugong_BaHuangLiuHeWeiWoDuZunGong.h"
 #import "Wugong_LiuMaiShenJian.h"
 #import "Wugong_LuoHanFuMoGong.h"
@@ -133,7 +133,8 @@
     //[sc startBattle];
 
     CangYan* sc2 = [CangYan scene];
-    return sc2;
+    IntroScene* intro = [IntroScene scene];
+    return intro;
 }
 
 @end

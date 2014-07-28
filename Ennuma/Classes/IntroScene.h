@@ -20,12 +20,20 @@
  *
  */
 @interface IntroScene : CCScene
-
+{
+    CGRect xuanzheng;
+    CGRect hougong;
+    CGRect baixiyuan;
+    CGRect wudaochang;
+    int day;
+    int time; //1 morning, 2 afternoon, 3 night, 4 sleeptime
+}
 
 // -----------------------------------------------------------------------
 
 + (IntroScene *)scene;
++(IntroScene*)sharedScene;
 - (id)init;
-
+-(void)passPhase;
 // -----------------------------------------------------------------------
 @end

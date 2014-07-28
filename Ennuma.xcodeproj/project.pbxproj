@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CCBD5691985CC4C00F7BD43 /* huanggong.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CCBD5681985CC4C00F7BD43 /* huanggong.png */; };
+		0CCBD56D1985D39E00F7BD43 /* XuanZheng.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD56C1985D39E00F7BD43 /* XuanZheng.m */; };
+		0CCBD5701985D7A500F7BD43 /* HouGong.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD56F1985D7A500F7BD43 /* HouGong.m */; };
+		0CCBD5731985DC6B00F7BD43 /* HuangDi.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5721985DC6B00F7BD43 /* HuangDi.m */; };
+		0CCBD5761985ECED00F7BD43 /* FeiZi.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5751985ECED00F7BD43 /* FeiZi.m */; };
+		0CCBD5791985EE0000F7BD43 /* RandomFeiZiGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5781985EE0000F7BD43 /* RandomFeiZiGenerator.m */; };
+		0CCBD57B1986C85400F7BD43 /* popup.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CCBD57A1986C85400F7BD43 /* popup.png */; };
 		84065EB5196AA5A800858A91 /* BattleField.m in Sources */ = {isa = PBXBuildFile; fileRef = 84065EB4196AA5A800858A91 /* BattleField.m */; };
 		840D112119744BE400B19861 /* headIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 840D111F19744BE400B19861 /* headIcon.png */; };
 		840D112219744BE400B19861 /* stateHud.png in Resources */ = {isa = PBXBuildFile; fileRef = 840D112019744BE400B19861 /* stateHud.png */; };
@@ -312,6 +319,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0CCBD5681985CC4C00F7BD43 /* huanggong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = huanggong.png; path = ../../Documents/huanggong.png; sourceTree = "<group>"; };
+		0CCBD56B1985D39E00F7BD43 /* XuanZheng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XuanZheng.h; path = Ennuma/XuanZheng.h; sourceTree = "<group>"; };
+		0CCBD56C1985D39E00F7BD43 /* XuanZheng.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XuanZheng.m; path = Ennuma/XuanZheng.m; sourceTree = "<group>"; };
+		0CCBD56E1985D7A500F7BD43 /* HouGong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HouGong.h; path = Ennuma/HouGong.h; sourceTree = "<group>"; };
+		0CCBD56F1985D7A500F7BD43 /* HouGong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HouGong.m; path = Ennuma/HouGong.m; sourceTree = "<group>"; };
+		0CCBD5711985DC6B00F7BD43 /* HuangDi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HuangDi.h; path = Ennuma/HuangDi.h; sourceTree = "<group>"; };
+		0CCBD5721985DC6B00F7BD43 /* HuangDi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HuangDi.m; path = Ennuma/HuangDi.m; sourceTree = "<group>"; };
+		0CCBD5741985ECED00F7BD43 /* FeiZi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeiZi.h; path = Ennuma/FeiZi.h; sourceTree = "<group>"; };
+		0CCBD5751985ECED00F7BD43 /* FeiZi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeiZi.m; path = Ennuma/FeiZi.m; sourceTree = "<group>"; };
+		0CCBD5771985EE0000F7BD43 /* RandomFeiZiGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomFeiZiGenerator.h; sourceTree = "<group>"; };
+		0CCBD5781985EE0000F7BD43 /* RandomFeiZiGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomFeiZiGenerator.m; sourceTree = "<group>"; };
+		0CCBD57A1986C85400F7BD43 /* popup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = popup.png; path = ../../Documents/popup.png; sourceTree = "<group>"; };
 		84065EB3196AA5A800858A91 /* BattleField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleField.h; sourceTree = "<group>"; };
 		84065EB4196AA5A800858A91 /* BattleField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BattleField.m; sourceTree = "<group>"; };
 		840D111F19744BE400B19861 /* headIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = headIcon.png; path = Resources/headIcon.png; sourceTree = "<group>"; };
@@ -725,8 +744,8 @@
 		8435047B195AFA0500503923 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
 		8435047D195AFA0500503923 /* HelloWorldScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HelloWorldScene.h; path = Classes/HelloWorldScene.h; sourceTree = "<group>"; };
 		8435047E195AFA0500503923 /* HelloWorldScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HelloWorldScene.m; path = Classes/HelloWorldScene.m; sourceTree = "<group>"; };
-		84350480195AFA0500503923 /* IntroScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IntroScene.h; path = Classes/IntroScene.h; sourceTree = "<group>"; };
-		84350481195AFA0500503923 /* IntroScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = IntroScene.m; path = Classes/IntroScene.m; sourceTree = "<group>"; };
+		84350480195AFA0500503923 /* IntroScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IntroScene.h; path = Ennuma/Classes/IntroScene.h; sourceTree = "<group>"; };
+		84350481195AFA0500503923 /* IntroScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = IntroScene.m; path = Ennuma/Classes/IntroScene.m; sourceTree = "<group>"; };
 		8435048B195AFA6900503923 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		8435048E195BF18400503923 /* newton.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = newton.plist; sourceTree = "<group>"; };
 		8435048F195BF18400503923 /* newton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newton.png; sourceTree = "<group>"; };
@@ -900,6 +919,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0CCBD56A1985D35100F7BD43 /* Huangdi */ = {
+			isa = PBXGroup;
+			children = (
+				84350480195AFA0500503923 /* IntroScene.h */,
+				84350481195AFA0500503923 /* IntroScene.m */,
+				0CCBD56B1985D39E00F7BD43 /* XuanZheng.h */,
+				0CCBD56C1985D39E00F7BD43 /* XuanZheng.m */,
+				0CCBD56E1985D7A500F7BD43 /* HouGong.h */,
+				0CCBD56F1985D7A500F7BD43 /* HouGong.m */,
+				0CCBD5711985DC6B00F7BD43 /* HuangDi.h */,
+				0CCBD5721985DC6B00F7BD43 /* HuangDi.m */,
+				0CCBD5741985ECED00F7BD43 /* FeiZi.h */,
+				0CCBD5751985ECED00F7BD43 /* FeiZi.m */,
+				0CCBD5771985EE0000F7BD43 /* RandomFeiZiGenerator.h */,
+				0CCBD5781985EE0000F7BD43 /* RandomFeiZiGenerator.m */,
+			);
+			name = Huangdi;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		8429175D1967898200D691D3 /* MenPai */ = {
 			isa = PBXGroup;
 			children = (
@@ -992,6 +1031,8 @@
 		8435021B195AF9FF00503923 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0CCBD57A1986C85400F7BD43 /* popup.png */,
+				0CCBD5681985CC4C00F7BD43 /* huanggong.png */,
 				846876EC1980491F009FDA85 /* Place_XinShouChun.png */,
 				846876E719803E26009FDA85 /* bottombar.png */,
 				846876E5198038A0009FDA85 /* leftbar.png */,
@@ -1763,10 +1804,9 @@
 				843504C5195C619300503923 /* Component */,
 				8429175D1967898200D691D3 /* MenPai */,
 				84C36037197D62B400331A2B /* WuGong */,
+				0CCBD56A1985D35100F7BD43 /* Huangdi */,
 				8458BB2819816DF200BE8360 /* Place */,
 				8458BB3C19819B7000BE8360 /* Entity */,
-				84350480195AFA0500503923 /* IntroScene.h */,
-				84350481195AFA0500503923 /* IntroScene.m */,
 				84065EB3196AA5A800858A91 /* BattleField.h */,
 				84065EB4196AA5A800858A91 /* BattleField.m */,
 				84675AA91962EFD10093F2EF /* WuLinScene.h */,
@@ -2062,6 +2102,7 @@
 				843504A0195BF42700503923 /* Hero.png in Resources */,
 				843504A9195BF42700503923 /* Player.png in Resources */,
 				8435021F195AF9FF00503923 /* Default@2x.png in Resources */,
+				0CCBD57B1986C85400F7BD43 /* popup.png in Resources */,
 				84350232195AF9FF00503923 /* Icon-120.png in Resources */,
 				84350228195AF9FF00503923 /* Icon@2x.png in Resources */,
 				843504A4195BF42700503923 /* hit.caf in Resources */,
@@ -2094,6 +2135,7 @@
 				84675AAE1962F0940093F2EF /* bg_map.png in Resources */,
 				84350376195AFA0300503923 /* LICENSE_cocos2d.txt in Resources */,
 				846876E819803E26009FDA85 /* bottombar.png in Resources */,
+				0CCBD5691985CC4C00F7BD43 /* huanggong.png in Resources */,
 				84350221195AF9FF00503923 /* Default-568h@2x.png in Resources */,
 				84350241195AFA0000503923 /* iTunesArtwork in Resources */,
 				843504A3195BF42700503923 /* Range.png in Resources */,
@@ -2237,6 +2279,8 @@
 				8435029C195AFA0200503923 /* CCConfiguration.m in Sources */,
 				84065EB5196AA5A800858A91 /* BattleField.m in Sources */,
 				843503A1195AFA0400503923 /* ALContext.m in Sources */,
+				0CCBD5761985ECED00F7BD43 /* FeiZi.m in Sources */,
+				0CCBD5731985DC6B00F7BD43 /* HuangDi.m in Sources */,
 				8435027B195AFA0100503923 /* CCActionCatmullRom.m in Sources */,
 				843504C8195D161B00503923 /* Soldier.m in Sources */,
 				84675AAB1962EFD10093F2EF /* WuLinScene.m in Sources */,
@@ -2280,6 +2324,7 @@
 				845B51BF195EC73200A6098D /* EnemyCache.m in Sources */,
 				845CA5A3197EE234008E61E4 /* Wugong_YiJingShenGong.m in Sources */,
 				84350340195AFA0300503923 /* CCAppDelegate.m in Sources */,
+				0CCBD56D1985D39E00F7BD43 /* XuanZheng.m in Sources */,
 				843502A0195AFA0200503923 /* CCDirector.m in Sources */,
 				8458BB461981A03000BE8360 /* Entity_QingChengDiZi.m in Sources */,
 				8435027E195AFA0100503923 /* CCActionEase.m in Sources */,
@@ -2288,6 +2333,8 @@
 				843503F6195AFA0400503923 /* CCBKeyframe.m in Sources */,
 				843502AC195AFA0200503923 /* CCLabelBMFont.m in Sources */,
 				849655361966A9C9000C38AA /* MenPaiScene.m in Sources */,
+				0CCBD5701985D7A500F7BD43 /* HouGong.m in Sources */,
+				0CCBD5791985EE0000F7BD43 /* RandomFeiZiGenerator.m in Sources */,
 				8435039B195AFA0400503923 /* ALCaptureDevice.m in Sources */,
 				846876EB198047EA009FDA85 /* Place_XinShouCun.m in Sources */,
 				8435031F195AFA0300503923 /* CCTiledMapLayer.m in Sources */,
