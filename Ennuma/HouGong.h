@@ -11,7 +11,7 @@
 #import "FeiZi.h"
 @interface HouGong : CCScene
 {
-    CCLabelTTF* huanghou;
+    FeiZi* huanghou;
     int hougongSize;
     NSMutableDictionary* hougongDic;
     int stage;

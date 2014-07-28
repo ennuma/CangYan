@@ -76,6 +76,10 @@ static HouGong* sharedHouGong;
     [hougongDic setObject:feizi2 forKey:@"淑妃"];
     [hougongDic setObject:feizi3 forKey:@"德妃"];
     [hougongDic setObject:feizi4 forKey:@"贤妃"];
+    
+    huanghou = [FeiZi node];
+    huanghou.feiziname = @"我是皇后";
+    huanghou.meili = 80;
 }
 -(void)onEnter
 {
@@ -84,28 +88,28 @@ static HouGong* sharedHouGong;
 -(void)refreshHouGong
 {
     CCLOG(@"refresh");
-    huanghou = [CCLabelTTF labelWithString:@"我是皇后" fontName:@"Verdana-Bold" fontSize:10];
-    huanghou.position = CGPointMake(self.contentSize.width/2, self.contentSize.height-30);
+    CCLabelTTF* huanghoulabel = [CCLabelTTF labelWithString:huanghou.feiziname fontName:@"Verdana-Bold" fontSize:10];
+    huanghoulabel.position = CGPointMake(self.contentSize.width/2, self.contentSize.height-30);
     [self removeChildByName:@"皇后"];
-    [self addChild:huanghou z:0 name:@"皇后"];
+    [self addChild:huanghoulabel z:0 name:@"皇后"];
     
     CCLabelTTF* guifei = [CCLabelTTF labelWithString:((FeiZi*)[hougongDic objectForKey:@"贵妃"]).feiziname fontName:@"Verdana-Bold" fontSize:10];
-    guifei.position = CGPointMake(self.contentSize.width/8, huanghou.position.y-50);
+    guifei.position = CGPointMake(self.contentSize.width/8, huanghoulabel.position.y-50);
     [self removeChildByName:@"贵妃"];
     [self addChild:guifei z:0 name:@"贵妃"];
     
     CCLabelTTF* shufei = [CCLabelTTF labelWithString:((FeiZi*)[hougongDic objectForKey:@"淑妃"]).feiziname fontName:@"Verdana-Bold" fontSize:10];
-    shufei.position = CGPointMake(self.contentSize.width/8*3, huanghou.position.y-50);
+    shufei.position = CGPointMake(self.contentSize.width/8*3, huanghoulabel.position.y-50);
     [self removeChildByName:@"淑妃"];
     [self addChild:shufei z:0 name:@"淑妃"];
     
     CCLabelTTF* defei = [CCLabelTTF labelWithString:((FeiZi*)[hougongDic objectForKey:@"德妃"]).feiziname fontName:@"Verdana-Bold" fontSize:10];
-    defei.position = CGPointMake(self.contentSize.width/8*5, huanghou.position.y-50);
+    defei.position = CGPointMake(self.contentSize.width/8*5, huanghoulabel.position.y-50);
     [self removeChildByName:@"德妃"];
     [self addChild:defei z:0 name:@"德妃"];
     
     CCLabelTTF* xianfei = [CCLabelTTF labelWithString:((FeiZi*)[hougongDic objectForKey:@"贤妃"]).feiziname fontName:@"Verdana-Bold" fontSize:10];
-    xianfei.position = CGPointMake(self.contentSize.width/8*7, huanghou.position.y-50);
+    xianfei.position = CGPointMake(self.contentSize.width/8*7, huanghoulabel.position.y-50);
     [self removeChildByName:@"贤妃"];
     [self addChild:xianfei z:0 name:@"贤妃"];
     
@@ -147,6 +151,17 @@ static HouGong* sharedHouGong;
 -(void)suibian
 {
     //create an array and generate random index of that array to mimic the effect of suijishiqin
+    NSMutableArray* randomArr = [[NSMutableArray alloc] init];
+    for (FeiZi* m_feizi in hougongDic.allValues) {
+        //CCLOG(@"%@",m_feizi.feiziname);
+        if (![m_feizi.feiziname isEqualToString:@"无"]) {
+            [randomArr addObject:m_feizi];
+        }
+    }
+    [randomArr addObject:huanghou];
+    shiqin = [randomArr objectAtIndex:CCRANDOM_0_1()*randomArr.count];
+    //CCLOG(@"%@",shiqin.feiziname);
+    [self shiqin];
 }
 -(void)fengfeizi
 {
@@ -170,6 +185,9 @@ static HouGong* sharedHouGong;
                 {
                     [self suibian];
                     CCLOG(@"suibian");
+                    [[IntroScene sharedScene] passPhase];
+                    [[CCDirector sharedDirector] popScene];
+
                 }
                 else if([feizi.name isEqualToString:@"安排宫女"])
                 {
