@@ -13,6 +13,7 @@
 #import "XuanZheng.h"
 #import "HouGong.h"
 #import "HuangDi.h"
+#import "GuoJia.h"
 // -----------------------------------------------------------------------
 #pragma mark - IntroScene
 // -----------------------------------------------------------------------
@@ -126,6 +127,7 @@ static IntroScene* sharedScene;
 -(void)onEnter
 {
     CCLOG(@"day: %i, time: %i", day, time);
+    [GuoJia sharedGuoJia];
     [super onEnter];
 }
 // -----------------------------------------------------------------------

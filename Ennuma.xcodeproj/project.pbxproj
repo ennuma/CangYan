@@ -14,6 +14,12 @@
 		0CCBD5761985ECED00F7BD43 /* FeiZi.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5751985ECED00F7BD43 /* FeiZi.m */; };
 		0CCBD5791985EE0000F7BD43 /* RandomFeiZiGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5781985EE0000F7BD43 /* RandomFeiZiGenerator.m */; };
 		0CCBD57B1986C85400F7BD43 /* popup.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CCBD57A1986C85400F7BD43 /* popup.png */; };
+		0CCBD57D1986ED0A00F7BD43 /* xuanzheng.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CCBD57C1986ED0A00F7BD43 /* xuanzheng.png */; };
+		0CCBD5801986F6FD00F7BD43 /* GuoJia.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD57F1986F6FD00F7BD43 /* GuoJia.m */; };
+		0CCBD5841987001400F7BD43 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CCBD5831987001400F7BD43 /* data.json */; };
+		0CCBD5871987056600F7BD43 /* GuanYuan.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5861987056600F7BD43 /* GuanYuan.m */; };
+		0CCBD58A1987070C00F7BD43 /* RandomGuanYuanGenerater.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5891987070C00F7BD43 /* RandomGuanYuanGenerater.m */; };
+		0CCBD58D198708B600F7BD43 /* RandomNameGenerater.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD58C198708B600F7BD43 /* RandomNameGenerater.m */; };
 		84065EB5196AA5A800858A91 /* BattleField.m in Sources */ = {isa = PBXBuildFile; fileRef = 84065EB4196AA5A800858A91 /* BattleField.m */; };
 		840D112119744BE400B19861 /* headIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 840D111F19744BE400B19861 /* headIcon.png */; };
 		840D112219744BE400B19861 /* stateHud.png in Resources */ = {isa = PBXBuildFile; fileRef = 840D112019744BE400B19861 /* stateHud.png */; };
@@ -331,6 +337,16 @@
 		0CCBD5771985EE0000F7BD43 /* RandomFeiZiGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomFeiZiGenerator.h; sourceTree = "<group>"; };
 		0CCBD5781985EE0000F7BD43 /* RandomFeiZiGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomFeiZiGenerator.m; sourceTree = "<group>"; };
 		0CCBD57A1986C85400F7BD43 /* popup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = popup.png; path = ../../Documents/popup.png; sourceTree = "<group>"; };
+		0CCBD57C1986ED0A00F7BD43 /* xuanzheng.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = xuanzheng.png; path = ../../Documents/xuanzheng.png; sourceTree = "<group>"; };
+		0CCBD57E1986F6FD00F7BD43 /* GuoJia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GuoJia.h; path = Ennuma/GuoJia.h; sourceTree = "<group>"; };
+		0CCBD57F1986F6FD00F7BD43 /* GuoJia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GuoJia.m; path = Ennuma/GuoJia.m; sourceTree = "<group>"; };
+		0CCBD5831987001400F7BD43 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = data.json; path = Resources/data.json; sourceTree = "<group>"; };
+		0CCBD5851987056600F7BD43 /* GuanYuan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GuanYuan.h; path = Ennuma/GuanYuan.h; sourceTree = "<group>"; };
+		0CCBD5861987056600F7BD43 /* GuanYuan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GuanYuan.m; path = Ennuma/GuanYuan.m; sourceTree = "<group>"; };
+		0CCBD5881987070C00F7BD43 /* RandomGuanYuanGenerater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RandomGuanYuanGenerater.h; path = Ennuma/RandomGuanYuanGenerater.h; sourceTree = "<group>"; };
+		0CCBD5891987070C00F7BD43 /* RandomGuanYuanGenerater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RandomGuanYuanGenerater.m; path = Ennuma/RandomGuanYuanGenerater.m; sourceTree = "<group>"; };
+		0CCBD58B198708B600F7BD43 /* RandomNameGenerater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RandomNameGenerater.h; path = Ennuma/RandomNameGenerater.h; sourceTree = "<group>"; };
+		0CCBD58C198708B600F7BD43 /* RandomNameGenerater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RandomNameGenerater.m; path = Ennuma/RandomNameGenerater.m; sourceTree = "<group>"; };
 		84065EB3196AA5A800858A91 /* BattleField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleField.h; sourceTree = "<group>"; };
 		84065EB4196AA5A800858A91 /* BattleField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BattleField.m; sourceTree = "<group>"; };
 		840D111F19744BE400B19861 /* headIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = headIcon.png; path = Resources/headIcon.png; sourceTree = "<group>"; };
@@ -934,6 +950,14 @@
 				0CCBD5751985ECED00F7BD43 /* FeiZi.m */,
 				0CCBD5771985EE0000F7BD43 /* RandomFeiZiGenerator.h */,
 				0CCBD5781985EE0000F7BD43 /* RandomFeiZiGenerator.m */,
+				0CCBD57E1986F6FD00F7BD43 /* GuoJia.h */,
+				0CCBD57F1986F6FD00F7BD43 /* GuoJia.m */,
+				0CCBD5851987056600F7BD43 /* GuanYuan.h */,
+				0CCBD5861987056600F7BD43 /* GuanYuan.m */,
+				0CCBD5881987070C00F7BD43 /* RandomGuanYuanGenerater.h */,
+				0CCBD5891987070C00F7BD43 /* RandomGuanYuanGenerater.m */,
+				0CCBD58B198708B600F7BD43 /* RandomNameGenerater.h */,
+				0CCBD58C198708B600F7BD43 /* RandomNameGenerater.m */,
 			);
 			name = Huangdi;
 			path = ..;
@@ -1031,6 +1055,8 @@
 		8435021B195AF9FF00503923 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0CCBD5831987001400F7BD43 /* data.json */,
+				0CCBD57C1986ED0A00F7BD43 /* xuanzheng.png */,
 				0CCBD57A1986C85400F7BD43 /* popup.png */,
 				0CCBD5681985CC4C00F7BD43 /* huanggong.png */,
 				846876EC1980491F009FDA85 /* Place_XinShouChun.png */,
@@ -2107,6 +2133,7 @@
 				84350228195AF9FF00503923 /* Icon@2x.png in Resources */,
 				843504A4195BF42700503923 /* hit.caf in Resources */,
 				846876E419803337009FDA85 /* topbar.png in Resources */,
+				0CCBD57D1986ED0A00F7BD43 /* xuanzheng.png in Resources */,
 				8435023A195AFA0000503923 /* Icon-Small@2x.png in Resources */,
 				8489582919717F0D00A9766B /* maphud.png in Resources */,
 				8435022C195AF9FF00503923 /* Icon-72@2x.png in Resources */,
@@ -2140,6 +2167,7 @@
 				84350241195AFA0000503923 /* iTunesArtwork in Resources */,
 				843504A3195BF42700503923 /* Range.png in Resources */,
 				84350490195BF18400503923 /* newton.plist in Resources */,
+				0CCBD5841987001400F7BD43 /* data.json in Resources */,
 				840D112119744BE400B19861 /* headIcon.png in Resources */,
 				8435023C195AFA0000503923 /* Icon-Spotlight-iOS7.png in Resources */,
 				843504AC195BF4B700503923 /* hud.png in Resources */,
@@ -2184,6 +2212,7 @@
 				84C3602D197B9CFD00331A2B /* Wugong_ChunYangWuJiGong.m in Sources */,
 				843503CD195AFA0400503923 /* OALAudioFile.m in Sources */,
 				843502A4195AFA0200503923 /* CCDrawNode.m in Sources */,
+				0CCBD58A1987070C00F7BD43 /* RandomGuanYuanGenerater.m in Sources */,
 				8435038F195AFA0400503923 /* OALAudioTracks.m in Sources */,
 				8435025B195AFA0000503923 /* CCEffectColor.m in Sources */,
 				8458BB3B19819B1800BE8360 /* Event_LingHuVSQingCheng.m in Sources */,
@@ -2218,6 +2247,7 @@
 				84B823A5197DB49100E57294 /* Wugong_NiYunZhenJing.m in Sources */,
 				843503A4195AFA0400503923 /* ALDevice.m in Sources */,
 				8435036A195AFA0300503923 /* NSThread+performBlock.m in Sources */,
+				0CCBD5801986F6FD00F7BD43 /* GuoJia.m in Sources */,
 				84350307195AFA0300503923 /* CCSpriteBatchNode.m in Sources */,
 				84350257195AFA0000503923 /* CCEffectBrightness.m in Sources */,
 				8435038C195AFA0400503923 /* OALAudioTrackNotifications.m in Sources */,
@@ -2273,6 +2303,7 @@
 				843504D0195E44FC00503923 /* MessageCache.m in Sources */,
 				84350344195AFA0300503923 /* CCDirectorMac.m in Sources */,
 				843503DA195AFA0400503923 /* CCControl.m in Sources */,
+				0CCBD5871987056600F7BD43 /* GuanYuan.m in Sources */,
 				843504B9195BFA8D00503923 /* Extension.m in Sources */,
 				843502D4195AFA0200503923 /* CCParticleSystem.m in Sources */,
 				843502D0195AFA0200503923 /* CCParticleExamples.m in Sources */,
@@ -2342,6 +2373,7 @@
 				84350356195AFA0300503923 /* CCColor.m in Sources */,
 				8429176B19678C3F00D691D3 /* SongShanScene.m in Sources */,
 				84350270195AFA0100503923 /* CCShader.m in Sources */,
+				0CCBD58D198708B600F7BD43 /* RandomNameGenerater.m in Sources */,
 				8458BB2B19816E1A00BE8360 /* Place_HeLuoKeZhan.m in Sources */,
 				84350292195AFA0200503923 /* CCAnimation.m in Sources */,
 				84558DA2197ECE9100CD4107 /* Wugong_ShiZiHou.m in Sources */,

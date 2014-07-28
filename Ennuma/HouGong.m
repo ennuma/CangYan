@@ -136,6 +136,7 @@ static HouGong* sharedHouGong;
 -(void)shiqin
 {
     int inctili = shiqin.meili*3-88;
+    inctili = MAX(10, inctili);
     [HuangDi sharedHuangDi].tili = MIN([HuangDi sharedHuangDi].maxtili,[HuangDi sharedHuangDi].tili+inctili);
     
     int inckuaile = 20;

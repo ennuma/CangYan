@@ -11,6 +11,19 @@
 @interface XuanZheng : CCScene
 {
     CCSprite* exit;
+    CGRect officier;
+    CGRect people;
+    CGRect custom;
+    CGRect war;
+    CGRect prison;
+    CGRect build;
+    
+    CCLayoutBox* officierLayout;
+    CCLayoutBox* peopleLayout;
+    CCLayoutBox* customLayout;
+    CCLayoutBox* warLayout;
+    CCLayoutBox* prisonLayout;
+    CCLayoutBox* buildLayout;
 }
 +(CCScene*)scene;
 @end

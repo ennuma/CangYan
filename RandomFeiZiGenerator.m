@@ -7,7 +7,7 @@
 //
 
 #import "RandomFeiZiGenerator.h"
-
+#import "RandomNameGenerater.h"
 @implementation RandomFeiZiGenerator
 static RandomFeiZiGenerator* sharedGenerator;
 +(RandomFeiZiGenerator*)sharedRandomFeiZiGenerator
@@ -15,13 +15,13 @@ static RandomFeiZiGenerator* sharedGenerator;
     if (sharedGenerator) {
         return sharedGenerator;
     }
-    
-    return [[self alloc] init];
+    sharedGenerator = [[self alloc] init];
+    return sharedGenerator;
 }
 -(FeiZi*)generateFeiZi
 {
     FeiZi* ret = [FeiZi node];
-    ret.feiziname = @"随机生成";
+    ret.feiziname = [[RandomNameGenerater sharedRandomNameGenerator]generateName:@"女"];
     ret.jieshao = @"无";
     ret.beijing = @"无";
     ret.meili = 30+CCRANDOM_0_1()*70-20;
