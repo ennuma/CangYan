@@ -34,5 +34,17 @@
     self.guanzhi = @"无";
     return self;
 }
++(GuanYuan*)initFromDictionary:(NSDictionary *)dic
+{
+    GuanYuan* ret = [[self alloc] init];
+    ret.guanyuanname = [dic objectForKey:@"姓名"];
+    ret.qinglian =[((NSNumber*)[dic objectForKey:@"清廉"]) intValue];
+    ret.wuli = [((NSNumber*)[dic objectForKey:@"武力"]) intValue];
+    ret.zhihui = [((NSNumber*)[dic objectForKey:@"智慧"]) intValue];
+    ret.zhongcheng =[((NSNumber*)[dic objectForKey:@"忠诚"]) intValue];
+    ret.age = [((NSNumber*)[dic objectForKey:@"年龄"]) intValue];
+    return ret;
 
+
+}
 @end

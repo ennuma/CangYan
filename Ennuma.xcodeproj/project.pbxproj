@@ -20,6 +20,9 @@
 		0CCBD5871987056600F7BD43 /* GuanYuan.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5861987056600F7BD43 /* GuanYuan.m */; };
 		0CCBD58A1987070C00F7BD43 /* RandomGuanYuanGenerater.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5891987070C00F7BD43 /* RandomGuanYuanGenerater.m */; };
 		0CCBD58D198708B600F7BD43 /* RandomNameGenerater.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD58C198708B600F7BD43 /* RandomNameGenerater.m */; };
+		0CCBD58F1989772C00F7BD43 /* kaoshi.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CCBD58E1989772C00F7BD43 /* kaoshi.png */; };
+		0CCBD5921989904B00F7BD43 /* highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CCBD5901989904B00F7BD43 /* highlighted.png */; };
+		0CCBD5931989904B00F7BD43 /* selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CCBD5911989904B00F7BD43 /* selected.png */; };
 		84065EB5196AA5A800858A91 /* BattleField.m in Sources */ = {isa = PBXBuildFile; fileRef = 84065EB4196AA5A800858A91 /* BattleField.m */; };
 		840D112119744BE400B19861 /* headIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 840D111F19744BE400B19861 /* headIcon.png */; };
 		840D112219744BE400B19861 /* stateHud.png in Resources */ = {isa = PBXBuildFile; fileRef = 840D112019744BE400B19861 /* stateHud.png */; };
@@ -347,6 +350,9 @@
 		0CCBD5891987070C00F7BD43 /* RandomGuanYuanGenerater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RandomGuanYuanGenerater.m; path = Ennuma/RandomGuanYuanGenerater.m; sourceTree = "<group>"; };
 		0CCBD58B198708B600F7BD43 /* RandomNameGenerater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RandomNameGenerater.h; path = Ennuma/RandomNameGenerater.h; sourceTree = "<group>"; };
 		0CCBD58C198708B600F7BD43 /* RandomNameGenerater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RandomNameGenerater.m; path = Ennuma/RandomNameGenerater.m; sourceTree = "<group>"; };
+		0CCBD58E1989772C00F7BD43 /* kaoshi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kaoshi.png; path = ../../Documents/kaoshi.png; sourceTree = "<group>"; };
+		0CCBD5901989904B00F7BD43 /* highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highlighted.png; path = ../../Documents/highlighted.png; sourceTree = "<group>"; };
+		0CCBD5911989904B00F7BD43 /* selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = selected.png; path = ../../Documents/selected.png; sourceTree = "<group>"; };
 		84065EB3196AA5A800858A91 /* BattleField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleField.h; sourceTree = "<group>"; };
 		84065EB4196AA5A800858A91 /* BattleField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BattleField.m; sourceTree = "<group>"; };
 		840D111F19744BE400B19861 /* headIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = headIcon.png; path = Resources/headIcon.png; sourceTree = "<group>"; };
@@ -1055,6 +1061,9 @@
 		8435021B195AF9FF00503923 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0CCBD5901989904B00F7BD43 /* highlighted.png */,
+				0CCBD5911989904B00F7BD43 /* selected.png */,
+				0CCBD58E1989772C00F7BD43 /* kaoshi.png */,
 				0CCBD5831987001400F7BD43 /* data.json */,
 				0CCBD57C1986ED0A00F7BD43 /* xuanzheng.png */,
 				0CCBD57A1986C85400F7BD43 /* popup.png */,
@@ -2154,7 +2163,9 @@
 				843504AD195BF4B700503923 /* tmw_desert_spacing.png in Resources */,
 				84350238195AFA0000503923 /* Icon-Small.png in Resources */,
 				84350236195AF9FF00503923 /* Icon-Small-50.png in Resources */,
+				0CCBD5931989904B00F7BD43 /* selected.png in Resources */,
 				84350474195AFA0500503923 /* LICENSE_Chipmunk.txt in Resources */,
+				0CCBD58F1989772C00F7BD43 /* kaoshi.png in Resources */,
 				8435022A195AF9FF00503923 /* Icon-72.png in Resources */,
 				8435049F195BF42700503923 /* Enemy2.png in Resources */,
 				84350406195AFA0400503923 /* LICENSE_CCBReader.txt in Resources */,
@@ -2174,6 +2185,7 @@
 				84350230195AF9FF00503923 /* Icon-76@2x.png in Resources */,
 				8435023E195AFA0000503923 /* Icon-Spotlight-iOS7@2x.png in Resources */,
 				8435022E195AF9FF00503923 /* Icon-76.png in Resources */,
+				0CCBD5921989904B00F7BD43 /* highlighted.png in Resources */,
 				84350243195AFA0000503923 /* iTunesArtwork@2x in Resources */,
 				846876E6198038A0009FDA85 /* leftbar.png in Resources */,
 				846876ED1980491F009FDA85 /* Place_XinShouChun.png in Resources */,

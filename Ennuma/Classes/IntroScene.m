@@ -82,8 +82,9 @@ static IntroScene* sharedScene;
 {
     int marginleft = 50;
     int margintop = 50;
-    int paddingbetween = 50;
+    int paddingbetween = 20;
     HuangDi* m_huangdi = [HuangDi sharedHuangDi];
+    GuoJia* guojia = [GuoJia sharedGuoJia];
     CCLabelTTF *label1 = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"年龄： %i", m_huangdi.nianling] fontName:@"Chalkduster" fontSize:10.0f];
     label1.position = CGPointMake(self.contentSize.width-marginleft, self.contentSize.height-margintop);
     [self removeChildByName:@"nianling"];
@@ -113,6 +114,11 @@ static IntroScene* sharedScene;
     label6.position = CGPointMake(self.contentSize.width-marginleft, label5.position.y-paddingbetween);
     [self removeChildByName:@"zhili"];
     [self addChild:label6 z:0 name:@"zhili"];
+    
+    CCLabelTTF *label7 = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"国库： %i万", [guojia getGuoKu]/10000] fontName:@"Chalkduster" fontSize:10.0f];
+    label7.position = CGPointMake(self.contentSize.width-marginleft, label6.position.y-paddingbetween);
+    [self removeChildByName:@"guoku"];
+    [self addChild:label7 z:0 name:@"guoku"];
 }
 -(void)passPhase
 {
@@ -127,7 +133,8 @@ static IntroScene* sharedScene;
 -(void)onEnter
 {
     CCLOG(@"day: %i, time: %i", day, time);
-    [GuoJia sharedGuoJia];
+    //[GuoJia sharedGuoJia];
+    
     [super onEnter];
 }
 // -----------------------------------------------------------------------

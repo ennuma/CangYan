@@ -9,6 +9,8 @@
 #import "XuanZheng.h"
 #import "IntroScene.h"
 #import "HuangDi.h"
+#import "RandomGuanYuanGenerater.h"
+#import "GuoJia.h"
 @implementation XuanZheng
 -(id)init
 {
@@ -16,6 +18,8 @@
     if (!self) {
         return nil;
     }
+    
+    kaoshiDic = [[NSMutableDictionary alloc] init];
     
     exit = [CCSprite spriteWithImageNamed:@"Hero.png"];
     exit.position = CGPointMake(exit.contentSize.width/2, exit.contentSize.height/2);
@@ -33,9 +37,12 @@
     build = CGRectMake(412, 35, 487-412, 92-35);
     
     CCButton* kaikekaoshi = [CCButton buttonWithTitle:@"开科考试"];
+    [kaikekaoshi setTarget:self selector:@selector(kaikekaoshi)];
     CCButton* diaohuanguanyuan = [CCButton buttonWithTitle:@"调换官员"];
+    [diaohuanguanyuan setTarget: self selector:@selector(diaohuanguanyuan)];
     CCButton* fengjue = [CCButton buttonWithTitle:@"封爵"];
     CCButton* qinglixianguan = [CCButton buttonWithTitle:@"清理闲官"];
+    [qinglixianguan setTarget:self selector:@selector(qinglixianguan)];
     CCButton* gedifangzhen = [CCButton buttonWithTitle:@"各地方针"];
     officierLayout = [[CCLayoutBox alloc]init];
     officierLayout.anchorPoint = ccp(0.5, 0.5);
@@ -142,6 +149,260 @@
     
     [self setUserInteractionEnabled:YES];
     return self;
+}
+-(void)finishqinglixianguan
+{
+    [self setUserInteractionEnabled:YES];
+    [self removeChildByName:@"qingli"];
+}
+-(void)qinglixianguan
+{
+    CCLOG(@"qinglixianguan");
+    //NSDictionary* guanyuanDic = [[GuoJia sharedGuoJia] getGuanYuanDic];
+    NSMutableArray* arr = [[GuoJia sharedGuoJia] getXianGuan];
+
+    CCLayoutBox* kaoshiLayout = [[CCLayoutBox alloc]init];
+    CCButton* confirm = [CCButton buttonWithTitle:@"确定"];
+    [confirm setTarget:self selector:@selector(finishqinglixianguan)];
+    [kaoshiLayout addChild:confirm];
+    
+    CCLayoutBox* hori = [[CCLayoutBox alloc]init];
+    CCButton* nameButton = [CCButton buttonWithTitle:@"人名"];
+    nameButton.preferredSize = CGSizeMake(40, 20);
+    
+    CCButton* wuli = [CCButton buttonWithTitle:[NSString stringWithFormat:@"武力"]];
+    wuli.preferredSize = CGSizeMake(40, 20);
+    CCButton* zhihui = [CCButton buttonWithTitle:[NSString stringWithFormat:@"智慧"]];
+    zhihui.preferredSize = CGSizeMake(40, 20);
+    CCButton* qinglian = [CCButton buttonWithTitle:[NSString stringWithFormat:@"清廉"]];
+    qinglian.preferredSize = CGSizeMake(40, 20);
+    [hori addChild:nameButton];
+    [hori addChild:wuli];
+    [hori addChild:zhihui];
+    [hori addChild:qinglian];
+    hori.spacing = 5;
+    hori.direction = CCLayoutBoxDirectionHorizontal;
+    [hori layout];
+    
+    for (int i = 0; i<arr.count; i++) {
+        CCLayoutBox* hori = [[CCLayoutBox alloc]init];
+        GuanYuan* gy = [arr objectAtIndex:i];
+        CCButton* nameButton = [CCButton buttonWithTitle:gy.guanyuanname spriteFrame:[CCSpriteFrame frameWithImageNamed:@"maphud.png"] highlightedSpriteFrame:[CCSpriteFrame frameWithImageNamed:@"highlighted.png"] disabledSpriteFrame:[CCSpriteFrame frameWithImageNamed:@"selected.png"]];
+        
+        [nameButton setTarget:nameButton selector:@selector(toggleSelected)];
+        //add to dictionary
+        [nameButton addChild:gy z:0 name:@"guanyuan"];
+        [kaoshiDic setObject:nameButton forKey:gy.guanyuanname];
+        //
+        nameButton.preferredSize = CGSizeMake(40, 20);
+        CCButton* wuli = [CCButton buttonWithTitle:[NSString stringWithFormat:@"%i",gy.wuli]];
+        wuli.preferredSize = CGSizeMake(40, 20);
+        CCButton* zhihui = [CCButton buttonWithTitle:[NSString stringWithFormat:@"%i",gy.zhihui]];
+        zhihui.preferredSize = CGSizeMake(40, 20);
+        CCButton* qinglian = [CCButton buttonWithTitle:[NSString stringWithFormat:@"%i",gy.qinglian]];
+        qinglian.preferredSize = CGSizeMake(40, 20);
+        
+        [hori addChild:nameButton];
+        [hori addChild:wuli];
+        [hori addChild:zhihui];
+        [hori addChild:qinglian];
+        hori.spacing = 5;
+        hori.direction = CCLayoutBoxDirectionHorizontal;
+        [hori layout];
+        [kaoshiLayout addChild:hori];
+    }
+    
+    [kaoshiLayout addChild:hori];
+    
+    kaoshiLayout.spacing = 5;
+    kaoshiLayout.direction = CCLayoutBoxDirectionVertical;
+    [kaoshiLayout layout];
+    kaoshiLayout.position = ccp(20,self.contentSize.height-kaoshiLayout.contentSize.height);
+    
+    CCSprite* sprite = [CCSprite spriteWithImageNamed:@"kaoshi.png"];
+    sprite.position = ccp(self.contentSize.width/2, self.contentSize.height/2);
+    [sprite addChild:kaoshiLayout];
+    [self addChild:sprite z:1 name:@"qingli"];
+}
+-(void)finishdiaohuan
+{
+    CCLOG(@"finishdiaohuan");
+    [self setUserInteractionEnabled:YES];
+    [self removeChildByName:@"diaohuan"];
+}
+-(void)diaohuanguanyuan
+{
+    [self setUserInteractionEnabled:NO];
+    CCLOG(@"diaohuanguanyuan");
+    NSDictionary* guanzhi = [[GuoJia sharedGuoJia]getGuanZhiDic];
+    CCLOG(@"%@",guanzhi);
+    NSDictionary* guanyuan = [[GuoJia sharedGuoJia]getGuanYuanDic];
+    CCLayoutBox* kaoshiLayout = [[CCLayoutBox alloc]init];
+    CCButton* confirm = [CCButton buttonWithTitle:@"确定"];
+    [confirm setTarget:self selector:@selector(finishdiaohuan)];
+    [kaoshiLayout addChild:confirm];
+
+    CCLayoutBox* hori = [[CCLayoutBox alloc]init];
+    CCButton* guanzhiButton = [CCButton buttonWithTitle:@"官职"];
+    CCButton* nameButton = [CCButton buttonWithTitle:@"人名"];
+    nameButton.preferredSize = CGSizeMake(40, 20);
+    CCButton* wuli = [CCButton buttonWithTitle:[NSString stringWithFormat:@"武力"]];
+    wuli.preferredSize = CGSizeMake(40, 20);
+    CCButton* zhihui = [CCButton buttonWithTitle:[NSString stringWithFormat:@"智慧"]];
+    zhihui.preferredSize = CGSizeMake(40, 20);
+    CCButton* qinglian = [CCButton buttonWithTitle:[NSString stringWithFormat:@"清廉"]];
+    qinglian.preferredSize = CGSizeMake(40, 20);
+    [hori addChild:guanzhiButton];
+    [hori addChild:nameButton];
+    [hori addChild:wuli];
+    [hori addChild:zhihui];
+    [hori addChild:qinglian];
+    hori.spacing = 5;
+    hori.direction = CCLayoutBoxDirectionHorizontal;
+    [hori layout];
+    
+    
+    for (NSString* key in guanzhi.keyEnumerator) {
+        CCLayoutBox* hori = [[CCLayoutBox alloc]init];
+        NSDictionary* guanzhidic = [guanzhi objectForKey:key];
+        NSString* name = [guanzhidic objectForKey:@"官员"];
+        NSDictionary* guanyuandic = [guanyuan objectForKey:name];
+        GuanYuan* gy = [GuanYuan initFromDictionary:guanyuandic];
+        
+        CCButton* guanzhiButton = [CCButton buttonWithTitle:gy.guanyuanname spriteFrame:[CCSpriteFrame frameWithImageNamed:@"maphud.png"] highlightedSpriteFrame:[CCSpriteFrame frameWithImageNamed:@"highlighted.png"] disabledSpriteFrame:[CCSpriteFrame frameWithImageNamed:@"selected.png"]];
+        
+        [guanzhiButton setTarget:guanzhiButton selector:@selector(toggleSelected)];
+        CCButton* nameButton = [CCButton buttonWithTitle:gy.guanyuanname];
+        nameButton.preferredSize = CGSizeMake(40, 20);
+        CCButton* wuli = [CCButton buttonWithTitle:[NSString stringWithFormat:@"%i",gy.wuli]];
+        wuli.preferredSize = CGSizeMake(40, 20);
+        CCButton* zhihui = [CCButton buttonWithTitle:[NSString stringWithFormat:@"%i",gy.zhihui]];
+        zhihui.preferredSize = CGSizeMake(40, 20);
+        CCButton* qinglian = [CCButton buttonWithTitle:[NSString stringWithFormat:@"%i",gy.qinglian]];
+        qinglian.preferredSize = CGSizeMake(40, 20);
+        
+        [hori addChild:guanzhiButton];
+        [hori addChild:nameButton];
+        [hori addChild:wuli];
+        [hori addChild:zhihui];
+        [hori addChild:qinglian];
+        hori.spacing = 5;
+        hori.direction = CCLayoutBoxDirectionHorizontal;
+        [hori layout];
+        [kaoshiLayout addChild:hori];
+
+    }
+    
+    [kaoshiLayout addChild:hori];
+    
+    kaoshiLayout.spacing = 5;
+    kaoshiLayout.direction = CCLayoutBoxDirectionVertical;
+    [kaoshiLayout layout];
+    kaoshiLayout.position = ccp(0,self.contentSize.height-kaoshiLayout.contentSize.height);
+    
+    CCSprite* sprite = [CCSprite spriteWithImageNamed:@"kaoshi.png"];
+    sprite.position = ccp(self.contentSize.width/2, self.contentSize.height/2);
+    [sprite addChild:kaoshiLayout];
+    [self addChild:sprite z:1 name:@"diaohuan"];
+
+}
+
+-(void)finishkaoshi
+{
+    finishKaoShi = true;
+    for (NSString* key in kaoshiDic.keyEnumerator) {
+        CCButton* button = (CCButton*)[kaoshiDic objectForKey:key];
+        if (button.selected == true) {
+            GuanYuan* gy = (GuanYuan*)[button getChildByName:@"guanyuan" recursively:NO];
+            [[GuoJia sharedGuoJia]addGuanYuan:gy];
+        }
+    }
+    [self setUserInteractionEnabled:YES];
+    [self removeChildByName:@"kaoshi"];
+    CCLOG(@"%@", [[GuoJia sharedGuoJia]getGuanYuanDic]);
+}
+-(void)kaikekaoshi
+{
+    
+    if (finishKaoShi) {
+        CCLOG(@"finish kaoshi");
+        return;
+    }
+    [kaoshiDic removeAllObjects];
+    [self setUserInteractionEnabled:NO];
+    CCLOG(@"kaoshi");
+    RandomGuanYuanGenerater* rg = [RandomGuanYuanGenerater sharedRandomGuanYuanGenerator];
+    NSDictionary* guanyuanDic = [[GuoJia sharedGuoJia] getGuanYuanDic];
+    NSMutableArray* arr = [[NSMutableArray alloc]init];
+    while (arr.count<10) {
+        GuanYuan* gy = [rg generateGuanYuan];
+        if ([[[guanyuanDic keyEnumerator]allObjects]containsObject:gy.guanyuanname]) {
+            continue;
+        }
+        [arr addObject:gy];
+    }
+    CCLayoutBox* kaoshiLayout = [[CCLayoutBox alloc]init];
+    CCButton* confirm = [CCButton buttonWithTitle:@"确定"];
+    [confirm setTarget:self selector:@selector(finishkaoshi)];
+    [kaoshiLayout addChild:confirm];
+    
+    CCLayoutBox* hori = [[CCLayoutBox alloc]init];
+    CCButton* nameButton = [CCButton buttonWithTitle:@"人名"];
+    nameButton.preferredSize = CGSizeMake(40, 20);
+    
+    CCButton* wuli = [CCButton buttonWithTitle:[NSString stringWithFormat:@"武力"]];
+    wuli.preferredSize = CGSizeMake(40, 20);
+    CCButton* zhihui = [CCButton buttonWithTitle:[NSString stringWithFormat:@"智慧"]];
+    zhihui.preferredSize = CGSizeMake(40, 20);
+    CCButton* qinglian = [CCButton buttonWithTitle:[NSString stringWithFormat:@"清廉"]];
+    qinglian.preferredSize = CGSizeMake(40, 20);
+    [hori addChild:nameButton];
+    [hori addChild:wuli];
+    [hori addChild:zhihui];
+    [hori addChild:qinglian];
+    hori.spacing = 5;
+    hori.direction = CCLayoutBoxDirectionHorizontal;
+    [hori layout];
+
+    for (int i = 0; i<10; i++) {
+        CCLayoutBox* hori = [[CCLayoutBox alloc]init];
+        GuanYuan* gy = [arr objectAtIndex:i];
+        CCButton* nameButton = [CCButton buttonWithTitle:gy.guanyuanname spriteFrame:[CCSpriteFrame frameWithImageNamed:@"maphud.png"] highlightedSpriteFrame:[CCSpriteFrame frameWithImageNamed:@"highlighted.png"] disabledSpriteFrame:[CCSpriteFrame frameWithImageNamed:@"selected.png"]];
+        
+        [nameButton setTarget:nameButton selector:@selector(toggleSelected)];
+        //add to dictionary
+        [nameButton addChild:gy z:0 name:@"guanyuan"];
+        [kaoshiDic setObject:nameButton forKey:gy.guanyuanname];
+        //
+        nameButton.preferredSize = CGSizeMake(40, 20);
+        CCButton* wuli = [CCButton buttonWithTitle:[NSString stringWithFormat:@"%i",gy.wuli]];
+        wuli.preferredSize = CGSizeMake(40, 20);
+        CCButton* zhihui = [CCButton buttonWithTitle:[NSString stringWithFormat:@"%i",gy.zhihui]];
+        zhihui.preferredSize = CGSizeMake(40, 20);
+        CCButton* qinglian = [CCButton buttonWithTitle:[NSString stringWithFormat:@"%i",gy.qinglian]];
+        qinglian.preferredSize = CGSizeMake(40, 20);
+        
+        [hori addChild:nameButton];
+        [hori addChild:wuli];
+        [hori addChild:zhihui];
+        [hori addChild:qinglian];
+        hori.spacing = 5;
+        hori.direction = CCLayoutBoxDirectionHorizontal;
+        [hori layout];
+        [kaoshiLayout addChild:hori];
+    }
+    
+    [kaoshiLayout addChild:hori];
+    
+    kaoshiLayout.spacing = 5;
+    kaoshiLayout.direction = CCLayoutBoxDirectionVertical;
+    [kaoshiLayout layout];
+    kaoshiLayout.position = ccp(20,self.contentSize.height-kaoshiLayout.contentSize.height);
+    
+    CCSprite* sprite = [CCSprite spriteWithImageNamed:@"kaoshi.png"];
+    sprite.position = ccp(self.contentSize.width/2, self.contentSize.height/2);
+    [sprite addChild:kaoshiLayout];
+    [self addChild:sprite z:1 name:@"kaoshi"];
 }
 +(CCScene*)scene
 {

@@ -18,7 +18,7 @@ static RandomGuanYuanGenerater* sharedGenerator;
     sharedGenerator = [[self alloc] init];
     return sharedGenerator;
 }
--(GuanYuan*)generateGuanyuan
+-(GuanYuan*)generateGuanYuan
 {
     GuanYuan* ret = [GuanYuan node];
     ret.guanyuanname = [[RandomNameGenerater sharedRandomNameGenerator]generateName:@"男"];

@@ -29,5 +29,5 @@
 @property NSString* juewei;
 @property NSString* guanyuanname;
 @property int age;
-
++(GuanYuan*)initFromDictionary:(NSDictionary*)dic;
 @end

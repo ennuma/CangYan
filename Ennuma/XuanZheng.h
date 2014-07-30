@@ -24,6 +24,10 @@
     CCLayoutBox* warLayout;
     CCLayoutBox* prisonLayout;
     CCLayoutBox* buildLayout;
+    
+    NSMutableDictionary* kaoshiDic;
+    
+    bool finishKaoShi;
 }
 +(CCScene*)scene;
 @end

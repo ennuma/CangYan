@@ -234,4 +234,6 @@
  */
 - (CCSpriteFrame*) backgroundSpriteFrameForState:(CCControlState)state;
 
+-(void)toggleSelected;
+
 @end

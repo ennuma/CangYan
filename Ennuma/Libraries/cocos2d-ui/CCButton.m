@@ -534,5 +534,9 @@
     
     return NULL;
 }
+-(void)toggleSelected
+{
+    self.selected = !self.selected;
+}
 
 @end
