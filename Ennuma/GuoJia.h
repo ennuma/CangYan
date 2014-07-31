@@ -20,5 +20,6 @@
 -(NSDictionary*)getGuanYuanDic;
 -(int)getGuoKu;
 -(void)addGuanYuan:(GuanYuan*)gy;
+-(void)deleteGuanYuan:(GuanYuan*)gy;
 -(NSMutableArray*)getXianGuan;
 @end

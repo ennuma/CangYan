@@ -90,6 +90,12 @@ static GuoJia* sharedGuoJia;
     }
     return ret;
 }
+-(void)deleteGuanYuan:(GuanYuan*)gy
+{
+     NSMutableDictionary* guanyuan = [[guojiaDic objectForKey:@"官员"]mutableCopy];
+    [guanyuan removeObjectForKey:gy.guanyuanname];
+    [guojiaDic setObject:guanyuan forKey:@"官员"];
+}
 -(bool)hasGuanZhi:(NSString*)guanyuanName
 {
     for (NSString* key in [[self getGuanZhiDic]allKeys]) {

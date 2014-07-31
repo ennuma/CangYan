@@ -26,6 +26,7 @@
     CCLayoutBox* buildLayout;
     
     NSMutableDictionary* kaoshiDic;
+    NSMutableDictionary* xianguanDic;
     
     bool finishKaoShi;
 }

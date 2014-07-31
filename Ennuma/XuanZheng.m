@@ -20,6 +20,7 @@
     }
     
     kaoshiDic = [[NSMutableDictionary alloc] init];
+    xianguanDic = [[NSMutableDictionary alloc] init];
     
     exit = [CCSprite spriteWithImageNamed:@"Hero.png"];
     exit.position = CGPointMake(exit.contentSize.width/2, exit.contentSize.height/2);
@@ -152,12 +153,21 @@
 }
 -(void)finishqinglixianguan
 {
+    for (NSString* key in kaoshiDic.keyEnumerator) {
+        CCButton* button = (CCButton*)[xianguanDic objectForKey:key];
+        if (button.selected == true) {
+            GuanYuan* gy = (GuanYuan*)[button getChildByName:@"guanyuan" recursively:NO];
+            [[GuoJia sharedGuoJia]deleteGuanYuan:gy];
+        }
+    }
+
     [self setUserInteractionEnabled:YES];
     [self removeChildByName:@"qingli"];
 }
 -(void)qinglixianguan
 {
     CCLOG(@"qinglixianguan");
+    [xianguanDic removeAllObjects];
     //NSDictionary* guanyuanDic = [[GuoJia sharedGuoJia] getGuanYuanDic];
     NSMutableArray* arr = [[GuoJia sharedGuoJia] getXianGuan];
 
@@ -192,7 +202,7 @@
         [nameButton setTarget:nameButton selector:@selector(toggleSelected)];
         //add to dictionary
         [nameButton addChild:gy z:0 name:@"guanyuan"];
-        [kaoshiDic setObject:nameButton forKey:gy.guanyuanname];
+        [xianguanDic setObject:nameButton forKey:gy.guanyuanname];
         //
         nameButton.preferredSize = CGSizeMake(40, 20);
         CCButton* wuli = [CCButton buttonWithTitle:[NSString stringWithFormat:@"%i",gy.wuli]];
@@ -267,7 +277,14 @@
         NSDictionary* guanzhidic = [guanzhi objectForKey:key];
         NSString* name = [guanzhidic objectForKey:@"官员"];
         NSDictionary* guanyuandic = [guanyuan objectForKey:name];
-        GuanYuan* gy = [GuanYuan initFromDictionary:guanyuandic];
+        GuanYuan* gy;
+        
+        if (guanyuandic) {
+            gy = [GuanYuan initFromDictionary:guanyuandic];
+        }else{
+            gy = [GuanYuan node];
+            //gy.guanyuanname = @"无";
+        }
         
         CCButton* guanzhiButton = [CCButton buttonWithTitle:gy.guanyuanname spriteFrame:[CCSpriteFrame frameWithImageNamed:@"maphud.png"] highlightedSpriteFrame:[CCSpriteFrame frameWithImageNamed:@"highlighted.png"] disabledSpriteFrame:[CCSpriteFrame frameWithImageNamed:@"selected.png"]];
         
