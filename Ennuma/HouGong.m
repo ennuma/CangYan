@@ -84,6 +84,7 @@ static HouGong* sharedHouGong;
 -(void)onEnter
 {
     stage = 1;
+    [super onEnter];
 }
 -(void)refreshHouGong
 {
