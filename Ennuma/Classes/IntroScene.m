@@ -14,6 +14,8 @@
 #import "HouGong.h"
 #import "HuangDi.h"
 #import "GuoJia.h"
+#import "DifangBuilding.h"
+#import "WuqiPurchase.h"
 // -----------------------------------------------------------------------
 #pragma mark - IntroScene
 // -----------------------------------------------------------------------
@@ -128,6 +130,11 @@ static IntroScene* sharedScene;
         day++;
     }
     [self refreshHuangDi];
+    
+    
+    //reset everything like building records
+    [[DifangBuilding sharedDifangBuilding] resetBuildingRecords];
+    [[WuqiPurchase sharedWuqiPurchase]resetPurchaseRequest];
 }
 
 -(void)onEnter
@@ -151,8 +158,8 @@ static IntroScene* sharedScene;
     }
     else if(CGRectContainsPoint(hougong, touchpos))
     {
-        CCScene* hougong = [HouGong sharedScene];
-        [[CCDirector sharedDirector] pushScene:hougong];
+        CCScene* hougongScene = [HouGong sharedScene];
+        [[CCDirector sharedDirector] pushScene:hougongScene];
         CCLOG(@"hougong");
     }
     else if(CGRectContainsPoint(baixiyuan, touchpos))

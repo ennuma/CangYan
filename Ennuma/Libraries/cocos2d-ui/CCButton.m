@@ -538,5 +538,8 @@
 {
     self.selected = !self.selected;
 }
-
+-(void)printButtonName
+{
+    CCLOG(self.name);
+}
 @end

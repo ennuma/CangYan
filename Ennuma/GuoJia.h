@@ -22,4 +22,7 @@
 -(void)addGuanYuan:(GuanYuan*)gy;
 -(void)deleteGuanYuan:(GuanYuan*)gy;
 -(NSMutableArray*)getXianGuan;
+-(void)buildBuilding:(NSString*)buildingName AtCity:(NSString*) cityName;
+-(void)changeMoney:(int)delta;
+-(void)changeWuqi:(int)delta;
 @end

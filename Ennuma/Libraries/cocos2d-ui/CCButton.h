@@ -235,5 +235,5 @@
 - (CCSpriteFrame*) backgroundSpriteFrameForState:(CCControlState)state;
 
 -(void)toggleSelected;
-
+-(void)printButtonName;
 @end

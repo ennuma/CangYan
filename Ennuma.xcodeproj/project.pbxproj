@@ -23,6 +23,8 @@
 		0CCBD58F1989772C00F7BD43 /* kaoshi.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CCBD58E1989772C00F7BD43 /* kaoshi.png */; };
 		0CCBD5921989904B00F7BD43 /* highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CCBD5901989904B00F7BD43 /* highlighted.png */; };
 		0CCBD5931989904B00F7BD43 /* selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CCBD5911989904B00F7BD43 /* selected.png */; };
+		0CCBD596198AAF9300F7BD43 /* DifangBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD595198AAF9300F7BD43 /* DifangBuilding.m */; };
+		0CCBD599198AFE5900F7BD43 /* WuqiPurchase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD598198AFE5900F7BD43 /* WuqiPurchase.m */; };
 		84065EB5196AA5A800858A91 /* BattleField.m in Sources */ = {isa = PBXBuildFile; fileRef = 84065EB4196AA5A800858A91 /* BattleField.m */; };
 		840D112119744BE400B19861 /* headIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 840D111F19744BE400B19861 /* headIcon.png */; };
 		840D112219744BE400B19861 /* stateHud.png in Resources */ = {isa = PBXBuildFile; fileRef = 840D112019744BE400B19861 /* stateHud.png */; };
@@ -353,6 +355,10 @@
 		0CCBD58E1989772C00F7BD43 /* kaoshi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kaoshi.png; path = ../../Documents/kaoshi.png; sourceTree = "<group>"; };
 		0CCBD5901989904B00F7BD43 /* highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highlighted.png; path = ../../Documents/highlighted.png; sourceTree = "<group>"; };
 		0CCBD5911989904B00F7BD43 /* selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = selected.png; path = ../../Documents/selected.png; sourceTree = "<group>"; };
+		0CCBD594198AAF9300F7BD43 /* DifangBuilding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DifangBuilding.h; path = Ennuma/DifangBuilding.h; sourceTree = "<group>"; };
+		0CCBD595198AAF9300F7BD43 /* DifangBuilding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DifangBuilding.m; path = Ennuma/DifangBuilding.m; sourceTree = "<group>"; };
+		0CCBD597198AFE5900F7BD43 /* WuqiPurchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WuqiPurchase.h; path = Ennuma/WuqiPurchase.h; sourceTree = "<group>"; };
+		0CCBD598198AFE5900F7BD43 /* WuqiPurchase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WuqiPurchase.m; path = Ennuma/WuqiPurchase.m; sourceTree = "<group>"; };
 		84065EB3196AA5A800858A91 /* BattleField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleField.h; sourceTree = "<group>"; };
 		84065EB4196AA5A800858A91 /* BattleField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BattleField.m; sourceTree = "<group>"; };
 		840D111F19744BE400B19861 /* headIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = headIcon.png; path = Resources/headIcon.png; sourceTree = "<group>"; };
@@ -964,6 +970,10 @@
 				0CCBD5891987070C00F7BD43 /* RandomGuanYuanGenerater.m */,
 				0CCBD58B198708B600F7BD43 /* RandomNameGenerater.h */,
 				0CCBD58C198708B600F7BD43 /* RandomNameGenerater.m */,
+				0CCBD594198AAF9300F7BD43 /* DifangBuilding.h */,
+				0CCBD595198AAF9300F7BD43 /* DifangBuilding.m */,
+				0CCBD597198AFE5900F7BD43 /* WuqiPurchase.h */,
+				0CCBD598198AFE5900F7BD43 /* WuqiPurchase.m */,
 			);
 			name = Huangdi;
 			path = ..;
@@ -2234,6 +2244,7 @@
 				84350361195AFA0300503923 /* CCVertex.m in Sources */,
 				8435047F195AFA0500503923 /* HelloWorldScene.m in Sources */,
 				846FE1E6197F29170035448F /* CangYan.m in Sources */,
+				0CCBD596198AAF9300F7BD43 /* DifangBuilding.m in Sources */,
 				84350295195AFA0200503923 /* CCAnimationCache.m in Sources */,
 				8435034F195AFA0300503923 /* base64.c in Sources */,
 				843502D8195AFA0200503923 /* CCParticleSystemBase.m in Sources */,
@@ -2267,6 +2278,7 @@
 				84350278195AFA0100503923 /* CCAction.m in Sources */,
 				843503B2195AFA0400503923 /* ALWrapper.m in Sources */,
 				843503FC195AFA0400503923 /* CCBsequence.m in Sources */,
+				0CCBD599198AFE5900F7BD43 /* WuqiPurchase.m in Sources */,
 				843503E7195AFA0400503923 /* CCTableView.m in Sources */,
 				843502B6195AFA0200503923 /* CCLayout.m in Sources */,
 				843502E6195AFA0300503923 /* CCPhysicsShape.m in Sources */,

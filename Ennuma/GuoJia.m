@@ -121,4 +121,28 @@ static GuoJia* sharedGuoJia;
     
     [guojiaDic setObject:guanyuan forKey:@"官员"];
 }
+-(void)buildBuilding:(NSString *)buildingName AtCity:(NSString *)cityName
+{
+    NSMutableDictionary* difang = [[guojiaDic objectForKey:@"地方"]mutableCopy];
+    NSMutableDictionary* difangsub = [[difang objectForKey:cityName]mutableCopy];
+    NSNumber* i = [difangsub objectForKey:buildingName];
+    CCLOG(@"%@",i);
+    NSNumber* i2 = [NSNumber numberWithInt:[i intValue]+1];
+    CCLOG(@"%@",i2);
+    [difangsub setObject:i2 forKey:buildingName];
+    [difang setObject:difangsub forKey:cityName];
+    [guojiaDic setObject:difang forKey:@"地方"];
+}
+-(void)changeWuqi:(int)delta
+{
+    int wuqi = [[guojiaDic objectForKey:@"武器"] intValue];
+    wuqi = wuqi + delta;
+    [guojiaDic setObject:[NSNumber numberWithInt:wuqi] forKey:@"武器"];
+}
+-(void)changeMoney:(int)delta
+{
+    int money = [[guojiaDic objectForKey:@"国库"] intValue];
+    money = money + delta;
+    [guojiaDic setObject:[NSNumber numberWithInt:money] forKey:@"国库"];
+}
 @end

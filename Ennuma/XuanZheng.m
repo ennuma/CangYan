@@ -11,6 +11,8 @@
 #import "HuangDi.h"
 #import "RandomGuanYuanGenerater.h"
 #import "GuoJia.h"
+#import "DifangBuilding.h"
+#import "WuqiPurchase.h"
 @implementation XuanZheng
 -(id)init
 {
@@ -61,6 +63,7 @@
     
     CCButton* hukoupucha = [CCButton buttonWithTitle:@"户口普查"];
     CCButton* wuqigoumai = [CCButton buttonWithTitle:@"武器购买"];
+    [wuqigoumai setTarget:self selector:@selector(wuqigoumai)];
     CCButton* shuilvtiaozheng = [CCButton buttonWithTitle:@"税率调整"];
     CCButton* qiangzhizhengshui = [CCButton buttonWithTitle:@"强制征税"];
     peopleLayout = [[CCLayoutBox alloc]init];
@@ -121,6 +124,7 @@
 
     CCButton* teshujianshe = [CCButton buttonWithTitle:@"特殊建设"];
     CCButton* difangjianshe = [CCButton buttonWithTitle:@"地方建设"];
+    [difangjianshe setTarget:self selector:@selector(difangjianshe)];
     CCButton* zhaolanminfu = [CCButton buttonWithTitle:@"招揽民夫"];
     CCButton* jieguminfu = [CCButton buttonWithTitle:@"解雇民夫"];
     buildLayout = [[CCLayoutBox alloc]init];
@@ -150,6 +154,16 @@
     
     [self setUserInteractionEnabled:YES];
     return self;
+}
+-(void)wuqigoumai
+{
+    WuqiPurchase* wp = [WuqiPurchase sharedWuqiPurchase];
+    [[CCDirector sharedDirector]pushScene:wp];
+}
+-(void)difangjianshe
+{
+    DifangBuilding* df = [DifangBuilding sharedDifangBuilding];
+    [[CCDirector sharedDirector]pushScene:df];
 }
 -(void)finishqinglixianguan
 {
