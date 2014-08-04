@@ -18,6 +18,7 @@
 #import "WuqiPurchase.h"
 #import "WuDaoChang.h"
 #import "BaiXiYuan.h"
+#import "EventManager.h";
 // -----------------------------------------------------------------------
 #pragma mark - IntroScene
 // -----------------------------------------------------------------------
@@ -139,7 +140,7 @@ static IntroScene* sharedScene;
     }
     [self refreshHuangDi];
     
-    
+    //[[EventManager sharedEventManager]pushEvent:[WuqiPurchase sharedWuqiPurchase] ForDay:day ForTime:time];
     //reset everything like building records
     //[[DifangBuilding sharedDifangBuilding] resetBuildingRecords];
     //[[WuqiPurchase sharedWuqiPurchase]resetPurchaseRequest];
@@ -155,7 +156,11 @@ static IntroScene* sharedScene;
 {
     CCLOG(@"day: %i, time: %i", day, time);
     //[GuoJia sharedGuoJia];
-    
+    while ([[EventManager sharedEventManager]hasEventOnDay:day OnTime:time]) {
+        CCScene* eventScene = [[EventManager sharedEventManager]popEventForDay:day ForTime:time];
+        //TODO need to add transition, get an intro from event and displayed here
+        [[CCDirector sharedDirector]pushScene:eventScene];
+    }
     [super onEnter];
 }
 // -----------------------------------------------------------------------
