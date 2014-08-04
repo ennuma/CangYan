@@ -25,6 +25,9 @@
 		0CCBD5931989904B00F7BD43 /* selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CCBD5911989904B00F7BD43 /* selected.png */; };
 		0CCBD596198AAF9300F7BD43 /* DifangBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD595198AAF9300F7BD43 /* DifangBuilding.m */; };
 		0CCBD599198AFE5900F7BD43 /* WuqiPurchase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD598198AFE5900F7BD43 /* WuqiPurchase.m */; };
+		0CCBD59C199029B400F7BD43 /* SoldierRecruit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD59B199029B400F7BD43 /* SoldierRecruit.m */; };
+		0CCBD59F199035AA00F7BD43 /* WuDaoChang.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD59E199035AA00F7BD43 /* WuDaoChang.m */; };
+		0CCBD5A219903E6C00F7BD43 /* BaiXiYuan.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5A119903E6C00F7BD43 /* BaiXiYuan.m */; };
 		84065EB5196AA5A800858A91 /* BattleField.m in Sources */ = {isa = PBXBuildFile; fileRef = 84065EB4196AA5A800858A91 /* BattleField.m */; };
 		840D112119744BE400B19861 /* headIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 840D111F19744BE400B19861 /* headIcon.png */; };
 		840D112219744BE400B19861 /* stateHud.png in Resources */ = {isa = PBXBuildFile; fileRef = 840D112019744BE400B19861 /* stateHud.png */; };
@@ -359,6 +362,12 @@
 		0CCBD595198AAF9300F7BD43 /* DifangBuilding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DifangBuilding.m; path = Ennuma/DifangBuilding.m; sourceTree = "<group>"; };
 		0CCBD597198AFE5900F7BD43 /* WuqiPurchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WuqiPurchase.h; path = Ennuma/WuqiPurchase.h; sourceTree = "<group>"; };
 		0CCBD598198AFE5900F7BD43 /* WuqiPurchase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WuqiPurchase.m; path = Ennuma/WuqiPurchase.m; sourceTree = "<group>"; };
+		0CCBD59A199029B400F7BD43 /* SoldierRecruit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoldierRecruit.h; path = Ennuma/SoldierRecruit.h; sourceTree = "<group>"; };
+		0CCBD59B199029B400F7BD43 /* SoldierRecruit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SoldierRecruit.m; path = Ennuma/SoldierRecruit.m; sourceTree = "<group>"; };
+		0CCBD59D199035AA00F7BD43 /* WuDaoChang.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WuDaoChang.h; path = Ennuma/WuDaoChang.h; sourceTree = "<group>"; };
+		0CCBD59E199035AA00F7BD43 /* WuDaoChang.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WuDaoChang.m; path = Ennuma/WuDaoChang.m; sourceTree = "<group>"; };
+		0CCBD5A019903E6C00F7BD43 /* BaiXiYuan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaiXiYuan.h; path = Ennuma/BaiXiYuan.h; sourceTree = "<group>"; };
+		0CCBD5A119903E6C00F7BD43 /* BaiXiYuan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaiXiYuan.m; path = Ennuma/BaiXiYuan.m; sourceTree = "<group>"; };
 		84065EB3196AA5A800858A91 /* BattleField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleField.h; sourceTree = "<group>"; };
 		84065EB4196AA5A800858A91 /* BattleField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BattleField.m; sourceTree = "<group>"; };
 		840D111F19744BE400B19861 /* headIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = headIcon.png; path = Resources/headIcon.png; sourceTree = "<group>"; };
@@ -974,6 +983,12 @@
 				0CCBD595198AAF9300F7BD43 /* DifangBuilding.m */,
 				0CCBD597198AFE5900F7BD43 /* WuqiPurchase.h */,
 				0CCBD598198AFE5900F7BD43 /* WuqiPurchase.m */,
+				0CCBD59A199029B400F7BD43 /* SoldierRecruit.h */,
+				0CCBD59B199029B400F7BD43 /* SoldierRecruit.m */,
+				0CCBD59D199035AA00F7BD43 /* WuDaoChang.h */,
+				0CCBD59E199035AA00F7BD43 /* WuDaoChang.m */,
+				0CCBD5A019903E6C00F7BD43 /* BaiXiYuan.h */,
+				0CCBD5A119903E6C00F7BD43 /* BaiXiYuan.m */,
 			);
 			name = Huangdi;
 			path = ..;
@@ -2214,8 +2229,10 @@
 				843503E1195AFA0400503923 /* CCScrollView.m in Sources */,
 				8458BB2E19816E6C00BE8360 /* Place_FuWeiBiaoJv.m in Sources */,
 				8435037C195AFA0300503923 /* OALAction.m in Sources */,
+				0CCBD5A219903E6C00F7BD43 /* BaiXiYuan.m in Sources */,
 				84350318195AFA0300503923 /* CCTexturePVR.m in Sources */,
 				843503F9195AFA0400503923 /* CCBReader.m in Sources */,
+				0CCBD59F199035AA00F7BD43 /* WuDaoChang.m in Sources */,
 				84350398195AFA0400503923 /* ALBuffer.m in Sources */,
 				84C36030197C14AE00331A2B /* Wugong_HaMaGong.m in Sources */,
 				8435039E195AFA0400503923 /* ALChannelSource.m in Sources */,
@@ -2223,6 +2240,7 @@
 				843503A7195AFA0400503923 /* ALListener.m in Sources */,
 				84B823A2197DB1B600E57294 /* Wugong_LongXiangBoRuoGong.m in Sources */,
 				84350347195AFA0300503923 /* CCGLView.m in Sources */,
+				0CCBD59C199029B400F7BD43 /* SoldierRecruit.m in Sources */,
 				8435033A195AFA0300503923 /* CCGLView.m in Sources */,
 				84350392195AFA0400503923 /* OALSimpleAudio.m in Sources */,
 				843502FA195AFA0300503923 /* CCScene.m in Sources */,

@@ -79,6 +79,13 @@ static GuoJia* sharedGuoJia;
     //CCLOG(@"%i", ret);
     return ret;
 }
+-(NSInteger)getWuQi
+{
+    NSNumber* i = [guojiaDic objectForKey:@"武器"];
+    int ret = [i intValue];
+    //CCLOG(@"%i", ret);
+    return ret;
+}
 -(NSMutableArray*)getXianGuan
 {
     NSMutableArray* ret = [[NSMutableArray alloc]init];
@@ -139,10 +146,105 @@ static GuoJia* sharedGuoJia;
     wuqi = wuqi + delta;
     [guojiaDic setObject:[NSNumber numberWithInt:wuqi] forKey:@"武器"];
 }
+-(void)changeSoldier:(int)delta
+{
+    int soldier = [[guojiaDic objectForKey:@"士兵"] intValue];
+    soldier = soldier + delta;
+    [guojiaDic setObject:[NSNumber numberWithInt:soldier] forKey:@"士兵"];
+    [self changePopulation:delta];
+}
 -(void)changeMoney:(int)delta
 {
     int money = [[guojiaDic objectForKey:@"国库"] intValue];
     money = money + delta;
     [guojiaDic setObject:[NSNumber numberWithInt:money] forKey:@"国库"];
+}
+-(int)getMaxSoldierRecruitNum
+{
+    int ret = 0;
+    int totP = [self getTotPopulation];
+    ret += totP* 8/100;
+    return ret;
+}
+-(void)updateGuoKu
+{
+    int totalIncome = 0;
+    
+    //calculate tax
+    //NSDictionary* difangDic = [self getDiFangDic];
+    int totPopulation = [self getTotPopulation];
+    NSNumber* temp = [guojiaDic objectForKey:@"税收"];
+    int taxRatio = [temp intValue];
+    int taxIncome = taxRatio*totPopulation;
+    totalIncome += taxIncome;
+    CCLOG(@"taxincome: %i",taxIncome);
+    
+    //calculate spend for soldiers
+    NSNumber* temp2 = [guojiaDic objectForKey:@"士兵"];
+    int soldierNum = [temp2 intValue];
+    int costPerSoldier = 100;
+    int totCostForSoldier = soldierNum*costPerSoldier;
+    totalIncome -= totCostForSoldier;
+    CCLOG(@"soldiercost: %i",totCostForSoldier);
+    
+    //calculate spend for officier
+    int totCostForGuanYuan = 0;
+    NSDictionary* guanyuanDic = [self getGuanYuanDic];
+    int guanyuanNum = [guanyuanDic.allKeys count];
+    int costPerGuanYuan = 1000;
+    totCostForGuanYuan += costPerGuanYuan*guanyuanNum;
+    NSDictionary* guanzhiDic = [self getGuanZhiDic];
+    for (NSString* key in guanzhiDic.allKeys) {
+        NSNumber* val = [[guanzhiDic objectForKey:key] objectForKey:@"俸禄"];
+        int intVal = [val intValue];
+        if ([[[guanzhiDic objectForKey:key]objectForKey:@"官员"] isEqualToString:@""]) {
+            intVal = 0;
+        }else{
+            NSNumber* qinglianNum = [[guanyuanDic objectForKey:[[guanzhiDic objectForKey:key]objectForKey:@"官员"]]objectForKey:@"清廉"];
+            int qinglian = [qinglianNum intValue];
+            //CCLOG(@"%@",qinglianNum);
+            //CCLOG(@"%i",qinglian);
+            //some math TODO
+            intVal*= (10100-qinglian*qinglian)/100;
+        }
+        totCostForGuanYuan += intVal;
+    }
+    totalIncome -= totCostForGuanYuan;
+    CCLOG(@"guanyuancost: %i",totCostForGuanYuan);
+    
+    //add up total income
+    CCLOG(@"totalIncom: %i",totalIncome);
+    [self changeMoney:totalIncome];
+}
+-(int)getTotPopulation
+{
+    int totPopulation = 0;
+    NSDictionary* difangDic = [self getDiFangDic];
+    for (NSString* key in difangDic.allKeys) {
+        NSNumber* val = [[difangDic objectForKey:key] objectForKey:@"人口"];
+        int intVal = [val intValue];
+        totPopulation += intVal;
+        //TODO zhigu and zongbing affect income for province
+    }
+    return totPopulation;
+}
+-(void)changePopulation:(int)delta
+{
+    float percentage = (float)delta/(float)[self getTotPopulation];
+    //CCLOG(@"percentage: %f",percentage);
+    NSMutableDictionary* difangDic = [[self getDiFangDic]mutableCopy];
+    for (NSString* key in difangDic.allKeys) {
+        NSMutableDictionary* difangsub = [[difangDic objectForKey:key]mutableCopy];
+        NSNumber* val = [difangsub objectForKey:@"人口"];
+        int intVal = [val intValue];
+        //CCLOG(@"%i",intVal);
+        //CCLOG(@"%i",((int)(intVal-intVal*percentage)));
+        int result = ((int)(intVal-intVal*percentage));
+        [difangsub setObject:[NSNumber numberWithInt:(int)result]forKey:@"人口"];
+        [difangDic setObject:difangsub forKey:key];
+        [guojiaDic setObject:difangDic forKey:@"地方"];
+        //TODO zhigu and zongbing affect income for province
+    }
+    //CCLOG(@"%@",guojiaDic);
 }
 @end

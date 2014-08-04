@@ -13,6 +13,7 @@
 #import "GuoJia.h"
 #import "DifangBuilding.h"
 #import "WuqiPurchase.h"
+#import "SoldierRecruit.h"
 @implementation XuanZheng
 -(id)init
 {
@@ -96,6 +97,7 @@
     
     CCButton* fadongzhanzheng = [CCButton buttonWithTitle:@"发动战争"];
     CCButton* zhengzhaoshibing = [CCButton buttonWithTitle:@"征招士兵"];
+    [zhengzhaoshibing setTarget:self selector:@selector(zhengzhaoshibing)];
     CCButton* xiejiaguitian = [CCButton buttonWithTitle:@"卸甲归田"];
     warLayout = [[CCLayoutBox alloc]init];
     warLayout.anchorPoint = ccp(0.5, 0.5);
@@ -154,6 +156,11 @@
     
     [self setUserInteractionEnabled:YES];
     return self;
+}
+-(void)zhengzhaoshibing
+{
+    SoldierRecruit* wp = [SoldierRecruit sharedSoldierRecruit];
+    [[CCDirector sharedDirector]pushScene:wp];
 }
 -(void)wuqigoumai
 {
@@ -442,6 +449,7 @@
 -(void)onEnter
 {
     [self hideAllLayouts];
+    [super onEnter];
 }
 -(void)hideAllLayouts
 {

@@ -132,7 +132,7 @@ static HouGong* sharedHouGong;
     //shiqin = [FeiZi node];
     [self shiqin];
     [self showpopup];
-    newstage=2;
+    stage=2;
     //[hougongDic setObject:randomfeizi forKey:@"贵妃"];
     //CCLOG(((FeiZi*)[hougongDic objectForKey:@"贵妃"]).feiziname);
     //[[IntroScene sharedScene] passPhase];
@@ -166,7 +166,7 @@ static HouGong* sharedHouGong;
 }
 -(void)fengfeizi
 {
-    newstage= 3;
+    stage= 3;
 }
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
@@ -179,6 +179,9 @@ static HouGong* sharedHouGong;
             CGRect boundingbox = feizi.boundingBox;
             boundingbox.origin = [feizi convertToWorldSpace:CGPointZero];
             if (CGRectContainsPoint(boundingbox, touchpos)) {
+                if ([feizi.name isEqualToString:@"popup"]) {
+                    return;
+                }
                 if ([feizi.name isEqualToString:@"离开"]) {
                     [[CCDirector sharedDirector] popScene];
                 }
@@ -249,7 +252,7 @@ static HouGong* sharedHouGong;
         }
         [self refreshHouGong];
     }
-    stage = newstage;
+    //stage = newstage;
     return;
     //if (CGRectContainsPoint(box, touchpos)) {
     //    [[IntroScene sharedScene] passPhase];

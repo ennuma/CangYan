@@ -19,10 +19,15 @@
 -(NSDictionary*)getGuanZhiDic;
 -(NSDictionary*)getGuanYuanDic;
 -(int)getGuoKu;
+-(int)getWuQi;
 -(void)addGuanYuan:(GuanYuan*)gy;
 -(void)deleteGuanYuan:(GuanYuan*)gy;
 -(NSMutableArray*)getXianGuan;
 -(void)buildBuilding:(NSString*)buildingName AtCity:(NSString*) cityName;
 -(void)changeMoney:(int)delta;
 -(void)changeWuqi:(int)delta;
+-(void)changePopulation:(int)delta;
+-(void)changeSoldier:(int)delta;
+-(void)updateGuoKu;
+-(int)getMaxSoldierRecruitNum;
 @end

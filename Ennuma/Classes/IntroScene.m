@@ -16,6 +16,8 @@
 #import "GuoJia.h"
 #import "DifangBuilding.h"
 #import "WuqiPurchase.h"
+#import "WuDaoChang.h"
+#import "BaiXiYuan.h"
 // -----------------------------------------------------------------------
 #pragma mark - IntroScene
 // -----------------------------------------------------------------------
@@ -121,6 +123,11 @@ static IntroScene* sharedScene;
     label7.position = CGPointMake(self.contentSize.width-marginleft, label6.position.y-paddingbetween);
     [self removeChildByName:@"guoku"];
     [self addChild:label7 z:0 name:@"guoku"];
+    
+    CCLabelTTF *label8 = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"武器： %i万", [guojia getWuQi]/10000] fontName:@"Chalkduster" fontSize:10.0f];
+    label8.position = CGPointMake(self.contentSize.width-marginleft, label7.position.y-paddingbetween);
+    [self removeChildByName:@"wuqi"];
+    [self addChild:label8 z:0 name:@"wuqi"];
 }
 -(void)passPhase
 {
@@ -128,15 +135,22 @@ static IntroScene* sharedScene;
     if (time>4) {
         time=1;
         day++;
+        [self passDay];
     }
     [self refreshHuangDi];
     
     
     //reset everything like building records
+    //[[DifangBuilding sharedDifangBuilding] resetBuildingRecords];
+    //[[WuqiPurchase sharedWuqiPurchase]resetPurchaseRequest];
+}
+-(void)passDay
+{
+    CCLOG(@"pass day, reset everything, and update money.");
     [[DifangBuilding sharedDifangBuilding] resetBuildingRecords];
     [[WuqiPurchase sharedWuqiPurchase]resetPurchaseRequest];
+    [[GuoJia sharedGuoJia]updateGuoKu];
 }
-
 -(void)onEnter
 {
     CCLOG(@"day: %i, time: %i", day, time);
@@ -164,10 +178,14 @@ static IntroScene* sharedScene;
     }
     else if(CGRectContainsPoint(baixiyuan, touchpos))
     {
+        CCScene* baixi = [BaiXiYuan scene];
+        [[CCDirector sharedDirector] pushScene:baixi];
         CCLOG(@"baixiyuan");
     }
     else if(CGRectContainsPoint(wudaochang, touchpos))
     {
+        CCScene* wudao = [WuDaoChang scene];
+        [[CCDirector sharedDirector] pushScene:wudao];
         CCLOG(@"wudaochang");
     }
 }

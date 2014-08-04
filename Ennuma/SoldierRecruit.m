@@ -1,14 +1,14 @@
 //
-//  WuqiPurchase.m
+//  SoldierRecruit.m
 //  Ennuma
 //
-//  Created by Zhaoyang on 14-7-31.
+//  Created by Zhaoyang on 14-8-4.
 //  Copyright (c) 2014年 Zhaoyang. All rights reserved.
 //
 
-#import "WuqiPurchase.h"
+#import "SoldierRecruit.h"
 #import "GuoJia.h"
-@implementation WuqiPurchase
+@implementation SoldierRecruit
 -(id)init
 {
     self = [super init];
@@ -16,28 +16,28 @@
         return nil;
     }
     purchaseRecords = [[NSMutableSet alloc] init];
-    maxNumber = 30000;
-    price = 25;
+    maxNumber = [[GuoJia sharedGuoJia]getMaxSoldierRecruitNum];
+    price = 200;
     [self initLayout];
     return self;
 }
-static WuqiPurchase* sharedWuqipurchase;
+static SoldierRecruit* sharedSoldierRecruit;
 -(void)onEnter
 {
-    if ([purchaseRecords containsObject:@"武器"]) {
+    if ([purchaseRecords containsObject:@"士兵"]) {
         [[CCDirector sharedDirector]popScene];
     }
     [super onEnter];
 }
-+(WuqiPurchase*)sharedWuqiPurchase
++(SoldierRecruit*)sharedSoldierRecruit
 {
-    if (sharedWuqipurchase) {
-        return sharedWuqipurchase;
+    if (sharedSoldierRecruit) {
+        return sharedSoldierRecruit;
     }
     
-    sharedWuqipurchase = [WuqiPurchase node];
+    sharedSoldierRecruit = [SoldierRecruit node];
     
-    return sharedWuqipurchase;
+    return sharedSoldierRecruit;
 }
 -(void)resetPurchaseRequest
 {
@@ -67,17 +67,17 @@ static WuqiPurchase* sharedWuqipurchase;
 -(void)buttonClicked:(id)button
 {
     //CCButton* bt = button;
-    if ([purchaseRecords containsObject:@"武器"]) {
+    if ([purchaseRecords containsObject:@"士兵"]) {
         [[CCDirector sharedDirector]popScene];
     }else{
-        [purchaseRecords addObject:@"武器"];
+        [purchaseRecords addObject:@"士兵"];
         int inc = slider.sliderValue*maxNumber;
         int spend = -inc*price;
         
         GuoJia* guojia = [GuoJia sharedGuoJia];
         
         [guojia changeMoney:spend];
-        [guojia changeWuqi:inc];
+        [guojia changeSoldier:inc];
         CCLOG(@"%i",inc);
         [[CCDirector sharedDirector]popScene];
     }
@@ -88,4 +88,5 @@ static WuqiPurchase* sharedWuqipurchase;
     [purchaseNumber setString:[NSString stringWithFormat:@"%i",(int)(slider.sliderValue*maxNumber)]];
     [requiredMoney setString:[NSString stringWithFormat:@"%i",(int)(slider.sliderValue*maxNumber*price)]];
 }
+
 @end
