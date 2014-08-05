@@ -30,4 +30,7 @@
 -(void)changeSoldier:(int)delta;
 -(void)updateGuoKu;
 -(int)getMaxSoldierRecruitNum;
+-(void)changeTaxTo:(int)result;
+-(int)getTaxRatio;
+-(void)step;
 @end

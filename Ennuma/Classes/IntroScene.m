@@ -18,7 +18,8 @@
 #import "WuqiPurchase.h"
 #import "WuDaoChang.h"
 #import "BaiXiYuan.h"
-#import "EventManager.h";
+#import "EventManager.h"
+#import "ShuiLvAdjust.h"
 // -----------------------------------------------------------------------
 #pragma mark - IntroScene
 // -----------------------------------------------------------------------
@@ -150,7 +151,9 @@ static IntroScene* sharedScene;
     CCLOG(@"pass day, reset everything, and update money.");
     [[DifangBuilding sharedDifangBuilding] resetBuildingRecords];
     [[WuqiPurchase sharedWuqiPurchase]resetPurchaseRequest];
+    [[ShuiLvAdjust sharedShuiLvAdjust]resetAdjustRequest];
     [[GuoJia sharedGuoJia]updateGuoKu];
+    [[GuoJia sharedGuoJia]step];
 }
 -(void)onEnter
 {

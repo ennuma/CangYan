@@ -29,6 +29,7 @@
 		0CCBD59F199035AA00F7BD43 /* WuDaoChang.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD59E199035AA00F7BD43 /* WuDaoChang.m */; };
 		0CCBD5A219903E6C00F7BD43 /* BaiXiYuan.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5A119903E6C00F7BD43 /* BaiXiYuan.m */; };
 		0CCBD5A519904B6900F7BD43 /* EventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5A419904B6900F7BD43 /* EventManager.m */; };
+		0CCBD5A819914CBC00F7BD43 /* ShuiLvAdjust.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5A719914CBC00F7BD43 /* ShuiLvAdjust.m */; };
 		84065EB5196AA5A800858A91 /* BattleField.m in Sources */ = {isa = PBXBuildFile; fileRef = 84065EB4196AA5A800858A91 /* BattleField.m */; };
 		840D112119744BE400B19861 /* headIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 840D111F19744BE400B19861 /* headIcon.png */; };
 		840D112219744BE400B19861 /* stateHud.png in Resources */ = {isa = PBXBuildFile; fileRef = 840D112019744BE400B19861 /* stateHud.png */; };
@@ -371,6 +372,8 @@
 		0CCBD5A119903E6C00F7BD43 /* BaiXiYuan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaiXiYuan.m; path = Ennuma/BaiXiYuan.m; sourceTree = "<group>"; };
 		0CCBD5A319904B6900F7BD43 /* EventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventManager.h; path = Ennuma/EventManager.h; sourceTree = "<group>"; };
 		0CCBD5A419904B6900F7BD43 /* EventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventManager.m; path = Ennuma/EventManager.m; sourceTree = "<group>"; };
+		0CCBD5A619914CBC00F7BD43 /* ShuiLvAdjust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShuiLvAdjust.h; path = Ennuma/ShuiLvAdjust.h; sourceTree = "<group>"; };
+		0CCBD5A719914CBC00F7BD43 /* ShuiLvAdjust.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShuiLvAdjust.m; path = Ennuma/ShuiLvAdjust.m; sourceTree = "<group>"; };
 		84065EB3196AA5A800858A91 /* BattleField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleField.h; sourceTree = "<group>"; };
 		84065EB4196AA5A800858A91 /* BattleField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BattleField.m; sourceTree = "<group>"; };
 		840D111F19744BE400B19861 /* headIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = headIcon.png; path = Resources/headIcon.png; sourceTree = "<group>"; };
@@ -986,6 +989,8 @@
 				0CCBD595198AAF9300F7BD43 /* DifangBuilding.m */,
 				0CCBD597198AFE5900F7BD43 /* WuqiPurchase.h */,
 				0CCBD598198AFE5900F7BD43 /* WuqiPurchase.m */,
+				0CCBD5A619914CBC00F7BD43 /* ShuiLvAdjust.h */,
+				0CCBD5A719914CBC00F7BD43 /* ShuiLvAdjust.m */,
 				0CCBD59A199029B400F7BD43 /* SoldierRecruit.h */,
 				0CCBD59B199029B400F7BD43 /* SoldierRecruit.m */,
 				0CCBD59D199035AA00F7BD43 /* WuDaoChang.h */,
@@ -2429,6 +2434,7 @@
 				846E4404197DE2D70081318F /* Wugong_ShengHuoShenGong.m in Sources */,
 				8435047C195AFA0500503923 /* AppDelegate.m in Sources */,
 				84350333195AFA0300503923 /* CCDirectorIOS.m in Sources */,
+				0CCBD5A819914CBC00F7BD43 /* ShuiLvAdjust.m in Sources */,
 				8458BB37198184F500BE8360 /* Place_YanZiWu.m in Sources */,
 				84C36033197CD5BC00331A2B /* Wugong_HunYuanGong.m in Sources */,
 				84C36036197CF13100331A2B /* Wugong_JiuYangShenGong.m in Sources */,

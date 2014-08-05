@@ -14,6 +14,7 @@
 #import "DifangBuilding.h"
 #import "WuqiPurchase.h"
 #import "SoldierRecruit.h"
+#import "ShuiLvAdjust.h"
 @implementation XuanZheng
 -(id)init
 {
@@ -66,6 +67,7 @@
     CCButton* wuqigoumai = [CCButton buttonWithTitle:@"武器购买"];
     [wuqigoumai setTarget:self selector:@selector(wuqigoumai)];
     CCButton* shuilvtiaozheng = [CCButton buttonWithTitle:@"税率调整"];
+    [shuilvtiaozheng setTarget:self selector:@selector(shuilvtiaozheng)];
     CCButton* qiangzhizhengshui = [CCButton buttonWithTitle:@"强制征税"];
     peopleLayout = [[CCLayoutBox alloc]init];
     peopleLayout.anchorPoint = ccp(0.5, 0.5);
@@ -156,6 +158,11 @@
     
     [self setUserInteractionEnabled:YES];
     return self;
+}
+-(void)shuilvtiaozheng
+{
+    ShuiLvAdjust* sl = [ShuiLvAdjust sharedShuiLvAdjust];
+    [[CCDirector sharedDirector]pushScene:sl];
 }
 -(void)zhengzhaoshibing
 {

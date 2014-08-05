@@ -12,6 +12,7 @@
 -(void)onEnter
 {
     //CCLOG(@"%@",buildingRecordsSet);
+    [super onEnter];
 }
 -(id)init
 {

@@ -151,6 +151,7 @@ static GuoJia* sharedGuoJia;
     int soldier = [[guojiaDic objectForKey:@"士兵"] intValue];
     soldier = soldier + delta;
     [guojiaDic setObject:[NSNumber numberWithInt:soldier] forKey:@"士兵"];
+    delta = - delta;
     [self changePopulation:delta];
 }
 -(void)changeMoney:(int)delta
@@ -158,6 +159,13 @@ static GuoJia* sharedGuoJia;
     int money = [[guojiaDic objectForKey:@"国库"] intValue];
     money = money + delta;
     [guojiaDic setObject:[NSNumber numberWithInt:money] forKey:@"国库"];
+}
+-(void)changeTaxTo:(int)result
+{
+    //int money = [[guojiaDic objectForKey:@"国库"] intValue];
+    int money = result;
+    [guojiaDic setObject:[NSNumber numberWithInt:money] forKey:@"税收"];
+
 }
 -(int)getMaxSoldierRecruitNum
 {
@@ -239,12 +247,48 @@ static GuoJia* sharedGuoJia;
         int intVal = [val intValue];
         //CCLOG(@"%i",intVal);
         //CCLOG(@"%i",((int)(intVal-intVal*percentage)));
-        int result = ((int)(intVal-intVal*percentage));
+        int result = ((int)(intVal+intVal*percentage));
         [difangsub setObject:[NSNumber numberWithInt:(int)result]forKey:@"人口"];
         [difangDic setObject:difangsub forKey:key];
         [guojiaDic setObject:difangDic forKey:@"地方"];
         //TODO zhigu and zongbing affect income for province
     }
     //CCLOG(@"%@",guojiaDic);
+}
+
+-(int)getTaxRatio
+{
+    NSNumber* temp = [guojiaDic objectForKey:@"税收"];
+    int taxRatio = [temp intValue];
+    return taxRatio;
+}
+//all guojia step forward to update
+-(void)step
+{
+    int taxRatio = [self getTaxRatio];
+    int totPop = [self getTotPopulation];
+    
+    CCLOG(@"tax: %i",taxRatio);
+    int deltapop = (20-taxRatio)*(20-taxRatio)/10000.0*totPop;
+    if (deltapop>20) {
+        deltapop = -deltapop;
+    }
+    CCLOG(@"changepop before: %i",deltapop);
+    NSDictionary* difangDic = [self getDiFangDic];
+    for (NSString* key in difangDic.allKeys) {
+        NSNumber* pop = [[difangDic objectForKey:key] objectForKey:@"人口"];
+        int intPop = [pop intValue];
+        
+        NSNumber* will = [[difangDic objectForKey:key] objectForKey:@"民心"];
+        int intWill = [will intValue];
+        
+        NSNumber* temple = [[difangDic objectForKey:key] objectForKey:@"寺庙"];
+        int intTemple = [temple intValue];
+        
+        deltapop += intPop*intWill/100*sqrt(intTemple)/100;
+    }
+    CCLOG(@"changepop: %i",deltapop);
+    [self changePopulation:deltapop];
+    CCLOG(@"%@",guojiaDic);
 }
 @end
