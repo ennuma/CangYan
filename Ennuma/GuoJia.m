@@ -220,6 +220,10 @@ static GuoJia* sharedGuoJia;
     totalIncome -= totCostForGuanYuan;
     CCLOG(@"guanyuancost: %i",totCostForGuanYuan);
     
+    //calculate spend for this year
+    int spend = [[guojiaDic objectForKey:@"开销"] intValue];
+    totalIncome -= spend;
+    
     //add up total income
     CCLOG(@"totalIncom: %i",totalIncome);
     [self changeMoney:totalIncome];
@@ -262,12 +266,20 @@ static GuoJia* sharedGuoJia;
     int taxRatio = [temp intValue];
     return taxRatio;
 }
+-(void)spendMoney:(int)spend
+{
+    int sp = [[guojiaDic objectForKey:@"开销"] intValue];
+    sp = sp + spend;
+    
+    [guojiaDic setObject:[NSNumber numberWithInt:sp] forKey:@"开销"];
+
+}
 //all guojia step forward to update
 -(void)step
 {
+    //population change
     int taxRatio = [self getTaxRatio];
     int totPop = [self getTotPopulation];
-    
     CCLOG(@"tax: %i",taxRatio);
     int deltapop = (20-taxRatio)*(20-taxRatio)/10000.0*totPop;
     if (deltapop>20) {
@@ -289,6 +301,9 @@ static GuoJia* sharedGuoJia;
     }
     CCLOG(@"changepop: %i",deltapop);
     [self changePopulation:deltapop];
+    
+    //reset spend
+    [guojiaDic setObject:[NSNumber numberWithInt:0] forKey:@"开销"];
     CCLOG(@"%@",guojiaDic);
 }
 @end

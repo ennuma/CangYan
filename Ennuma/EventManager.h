@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "cocos2d-ui.h"
+#import "hdEvent.h"
 @interface EventManager : CCNode
 {
     NSMutableDictionary* sceneDic;
@@ -16,6 +17,6 @@
 }
 +(EventManager*)sharedEventManager;
 -(bool)hasEventOnDay:(int)day OnTime:(int)time;
--(void)pushEvent:(CCScene*)eventScene ForDay:(int)day ForTime:(int)time;
--(CCScene*)popEventForDay:(int)day ForTime:(int)time;
+-(void)pushEvent:(hdEvent*)eventScene ForDay:(int)day ForTime:(int)time;
+-(hdEvent*)popEventForDay:(int)day ForTime:(int)time;
 @end

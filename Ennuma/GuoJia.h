@@ -33,4 +33,5 @@
 -(void)changeTaxTo:(int)result;
 -(int)getTaxRatio;
 -(void)step;
+-(void)spendMoney:(int)spend;
 @end

@@ -15,6 +15,8 @@
 #import "WuqiPurchase.h"
 #import "SoldierRecruit.h"
 #import "ShuiLvAdjust.h"
+#import "Jisi.h"
+#import "JingFeiDiaoCha.h"
 @implementation XuanZheng
 -(id)init
 {
@@ -85,6 +87,7 @@
     CCButton* maoyi = [CCButton buttonWithTitle:@"贸易"];
     CCButton* lianyin = [CCButton buttonWithTitle:@"联姻"];
     CCButton* jisi = [CCButton buttonWithTitle:@"祭祀"];
+    [jisi setTarget:self selector:@selector(jisi)];
     customLayout = [[CCLayoutBox alloc]init];
     customLayout.anchorPoint = ccp(0.5, 0.5);
     [customLayout addChild:maoyi];
@@ -114,6 +117,7 @@
     [self addChild:warLayout];
     
     CCButton* jingfeidiaocha = [CCButton buttonWithTitle:@"经费调查"];
+    [jingfeidiaocha setTarget:self selector:@selector(jingfeidiaocha)];
     CCButton* dashetianxia = [CCButton buttonWithTitle:@"大赦天下"];
     prisonLayout = [[CCLayoutBox alloc]init];
     prisonLayout.anchorPoint = ccp(0.5, 0.5);
@@ -158,6 +162,16 @@
     
     [self setUserInteractionEnabled:YES];
     return self;
+}
+-(void)jingfeidiaocha
+{
+    JingFeiDiaoCha* jfdc = [JingFeiDiaoCha node];
+    [[CCDirector sharedDirector]pushScene:jfdc];
+}
+-(void)jisi
+{
+    Jisi* js = [Jisi sharedJiSi];
+    [[CCDirector sharedDirector] pushScene:js];
 }
 -(void)shuilvtiaozheng
 {
@@ -268,6 +282,7 @@
     [self setUserInteractionEnabled:YES];
     [self removeChildByName:@"diaohuan"];
 }
+
 -(void)diaohuanguanyuan
 {
     [self setUserInteractionEnabled:NO];

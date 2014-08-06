@@ -32,7 +32,14 @@ static EventManager* sharedManager;
 -(void)pushEvent:(CCScene*)eventScene ForDay:(int)day ForTime:(int)time
 {
     NSString* key = [NSString stringWithFormat:keyformat,day,time];
-    [sceneDic setObject:eventScene forKey:key];
+    if ([sceneDic.allKeys containsObject:key]) {
+        NSMutableArray* scenearr = [[sceneDic objectForKey:key]mutableCopy];
+        [scenearr addObject:eventScene];
+        [sceneDic setObject:scenearr forKey:key];
+    }else{
+        NSMutableArray* scenearr = [NSMutableArray arrayWithObject:eventScene];
+        [sceneDic setObject:scenearr forKey:key];
+    }
 }
 -(CCScene*)popEventForDay:(int)day ForTime:(int)time
 {
@@ -40,9 +47,17 @@ static EventManager* sharedManager;
     if (![sceneDic.allKeys containsObject:key]) {
         return nil;
     }
-    CCScene* ret = [sceneDic objectForKey:key];
+    NSMutableArray* retarr = [[sceneDic objectForKey:key]mutableCopy];
+    NSAssert([retarr isKindOfClass:[NSMutableArray class]], @"object in sceneDic is not nsmutable array.");
+    CCScene* ret = [retarr objectAtIndex:0];
     NSAssert([ret isKindOfClass:[CCScene class]], @"popEvent method try to return a none CCScene Object.");
-    [sceneDic removeObjectForKey:key];
+    [retarr removeObjectAtIndex:0];
+    if ([retarr count]==0) {
+        [sceneDic removeObjectForKey:key];
+    }else{
+        [sceneDic setObject:retarr forKey:key];
+    }
+    //CCLOG(@"delete event");
     return ret;
 }
 -(bool)hasEventOnDay:(int)day OnTime:(int)time

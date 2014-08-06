@@ -27,10 +27,13 @@
     CGRect wudaochang;
     int day;
     int time; //1 morning, 2 afternoon, 3 night, 4 sleeptime
+    
+    CCScene* eventScene;
 }
 
 // -----------------------------------------------------------------------
-
+@property int m_day;
+@property int m_time;
 + (IntroScene *)scene;
 +(IntroScene*)sharedScene;
 - (id)init;

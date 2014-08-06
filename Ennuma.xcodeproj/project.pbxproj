@@ -30,6 +30,11 @@
 		0CCBD5A219903E6C00F7BD43 /* BaiXiYuan.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5A119903E6C00F7BD43 /* BaiXiYuan.m */; };
 		0CCBD5A519904B6900F7BD43 /* EventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5A419904B6900F7BD43 /* EventManager.m */; };
 		0CCBD5A819914CBC00F7BD43 /* ShuiLvAdjust.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5A719914CBC00F7BD43 /* ShuiLvAdjust.m */; };
+		0CCBD5AB199158D700F7BD43 /* Jisi.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5AA199158D700F7BD43 /* Jisi.m */; };
+		0CCBD5AE19915C3800F7BD43 /* EventJisi.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5AD19915C3800F7BD43 /* EventJisi.m */; };
+		0CCBD5B119915D5200F7BD43 /* hdEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5B019915D5200F7BD43 /* hdEvent.m */; };
+		0CCBD5B3199292D800F7BD43 /* messageBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CCBD5B2199292D800F7BD43 /* messageBox.png */; };
+		0CCBD5B61992ABCA00F7BD43 /* JingFeiDiaoCha.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5B51992ABCA00F7BD43 /* JingFeiDiaoCha.m */; };
 		84065EB5196AA5A800858A91 /* BattleField.m in Sources */ = {isa = PBXBuildFile; fileRef = 84065EB4196AA5A800858A91 /* BattleField.m */; };
 		840D112119744BE400B19861 /* headIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 840D111F19744BE400B19861 /* headIcon.png */; };
 		840D112219744BE400B19861 /* stateHud.png in Resources */ = {isa = PBXBuildFile; fileRef = 840D112019744BE400B19861 /* stateHud.png */; };
@@ -374,6 +379,15 @@
 		0CCBD5A419904B6900F7BD43 /* EventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventManager.m; path = Ennuma/EventManager.m; sourceTree = "<group>"; };
 		0CCBD5A619914CBC00F7BD43 /* ShuiLvAdjust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShuiLvAdjust.h; path = Ennuma/ShuiLvAdjust.h; sourceTree = "<group>"; };
 		0CCBD5A719914CBC00F7BD43 /* ShuiLvAdjust.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShuiLvAdjust.m; path = Ennuma/ShuiLvAdjust.m; sourceTree = "<group>"; };
+		0CCBD5A9199158D700F7BD43 /* Jisi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Jisi.h; path = Ennuma/Jisi.h; sourceTree = "<group>"; };
+		0CCBD5AA199158D700F7BD43 /* Jisi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Jisi.m; path = Ennuma/Jisi.m; sourceTree = "<group>"; };
+		0CCBD5AC19915C3800F7BD43 /* EventJisi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventJisi.h; path = Ennuma/EventJisi.h; sourceTree = "<group>"; };
+		0CCBD5AD19915C3800F7BD43 /* EventJisi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventJisi.m; path = Ennuma/EventJisi.m; sourceTree = "<group>"; };
+		0CCBD5AF19915D5200F7BD43 /* hdEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hdEvent.h; path = Ennuma/hdEvent.h; sourceTree = "<group>"; };
+		0CCBD5B019915D5200F7BD43 /* hdEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = hdEvent.m; path = Ennuma/hdEvent.m; sourceTree = "<group>"; };
+		0CCBD5B2199292D800F7BD43 /* messageBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = messageBox.png; path = ../../Documents/messageBox.png; sourceTree = "<group>"; };
+		0CCBD5B41992ABCA00F7BD43 /* JingFeiDiaoCha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JingFeiDiaoCha.h; path = Ennuma/JingFeiDiaoCha.h; sourceTree = "<group>"; };
+		0CCBD5B51992ABCA00F7BD43 /* JingFeiDiaoCha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JingFeiDiaoCha.m; path = Ennuma/JingFeiDiaoCha.m; sourceTree = "<group>"; };
 		84065EB3196AA5A800858A91 /* BattleField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleField.h; sourceTree = "<group>"; };
 		84065EB4196AA5A800858A91 /* BattleField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BattleField.m; sourceTree = "<group>"; };
 		840D111F19744BE400B19861 /* headIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = headIcon.png; path = Resources/headIcon.png; sourceTree = "<group>"; };
@@ -999,6 +1013,14 @@
 				0CCBD5A119903E6C00F7BD43 /* BaiXiYuan.m */,
 				0CCBD5A319904B6900F7BD43 /* EventManager.h */,
 				0CCBD5A419904B6900F7BD43 /* EventManager.m */,
+				0CCBD5A9199158D700F7BD43 /* Jisi.h */,
+				0CCBD5AA199158D700F7BD43 /* Jisi.m */,
+				0CCBD5B41992ABCA00F7BD43 /* JingFeiDiaoCha.h */,
+				0CCBD5B51992ABCA00F7BD43 /* JingFeiDiaoCha.m */,
+				0CCBD5AC19915C3800F7BD43 /* EventJisi.h */,
+				0CCBD5AD19915C3800F7BD43 /* EventJisi.m */,
+				0CCBD5AF19915D5200F7BD43 /* hdEvent.h */,
+				0CCBD5B019915D5200F7BD43 /* hdEvent.m */,
 			);
 			name = Huangdi;
 			path = ..;
@@ -1096,6 +1118,7 @@
 		8435021B195AF9FF00503923 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0CCBD5B2199292D800F7BD43 /* messageBox.png */,
 				0CCBD5901989904B00F7BD43 /* highlighted.png */,
 				0CCBD5911989904B00F7BD43 /* selected.png */,
 				0CCBD58E1989772C00F7BD43 /* kaoshi.png */,
@@ -2203,6 +2226,7 @@
 				0CCBD58F1989772C00F7BD43 /* kaoshi.png in Resources */,
 				8435022A195AF9FF00503923 /* Icon-72.png in Resources */,
 				8435049F195BF42700503923 /* Enemy2.png in Resources */,
+				0CCBD5B3199292D800F7BD43 /* messageBox.png in Resources */,
 				84350406195AFA0400503923 /* LICENSE_CCBReader.txt in Resources */,
 				84675AAF1962F0940093F2EF /* menpai.png in Resources */,
 				84675AAE1962F0940093F2EF /* bg_map.png in Resources */,
@@ -2275,6 +2299,7 @@
 				0CCBD596198AAF9300F7BD43 /* DifangBuilding.m in Sources */,
 				84350295195AFA0200503923 /* CCAnimationCache.m in Sources */,
 				8435034F195AFA0300503923 /* base64.c in Sources */,
+				0CCBD5AB199158D700F7BD43 /* Jisi.m in Sources */,
 				843502D8195AFA0200503923 /* CCParticleSystemBase.m in Sources */,
 				84B823A8197DBA4D00E57294 /* Wugong_QianKunDaNuoYi.m in Sources */,
 				8435033D195AFA0300503923 /* UITouch+CC.m in Sources */,
@@ -2289,6 +2314,7 @@
 				8435028E195AFA0200503923 /* CCActionTween.m in Sources */,
 				8458BB27198163D900BE8360 /* Special_JianShenYiXiao.m in Sources */,
 				843503F0195AFA0400503923 /* CCAnimationManager.m in Sources */,
+				0CCBD5AE19915C3800F7BD43 /* EventJisi.m in Sources */,
 				8429176319678B5600D691D3 /* HengShanPai.m in Sources */,
 				843502C5195AFA0200503923 /* CCNode+Debug.m in Sources */,
 				843504CD195DB42900503923 /* Hero.m in Sources */,
@@ -2323,6 +2349,7 @@
 				8435037F195AFA0300503923 /* OALActionManager.m in Sources */,
 				843502E3195AFA0300503923 /* CCPhysicsNode.m in Sources */,
 				84350385195AFA0400503923 /* OALUtilityActions.m in Sources */,
+				0CCBD5B119915D5200F7BD43 /* hdEvent.m in Sources */,
 				8458BB3F19819B9A00BE8360 /* Entity_LingHuChong.m in Sources */,
 				843502BD195AFA0200503923 /* CCMotionStreak.m in Sources */,
 				843503C7195AFA0400503923 /* NSMutableArray+WeakReferences.m in Sources */,
@@ -2412,6 +2439,7 @@
 				8458BB461981A03000BE8360 /* Entity_QingChengDiZi.m in Sources */,
 				8435027E195AFA0100503923 /* CCActionEase.m in Sources */,
 				8435025F195AFA0000503923 /* CCEffectGlow.m in Sources */,
+				0CCBD5B61992ABCA00F7BD43 /* JingFeiDiaoCha.m in Sources */,
 				843503AB195AFA0400503923 /* ALSoundSourcePool.m in Sources */,
 				843503F6195AFA0400503923 /* CCBKeyframe.m in Sources */,
 				843502AC195AFA0200503923 /* CCLabelBMFont.m in Sources */,
@@ -2593,12 +2621,14 @@
 					"\"$(SRCROOT)/$(PROJECT_NAME)/Libraries/Chipmunk/objectivec/include\"",
 				);
 				INFOPLIST_FILE = Ennuma/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lsqlite3",
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2616,12 +2646,14 @@
 					"\"$(SRCROOT)/$(PROJECT_NAME)/Libraries/Chipmunk/objectivec/include\"",
 				);
 				INFOPLIST_FILE = Ennuma/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lsqlite3",
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

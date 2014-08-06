@@ -80,7 +80,7 @@ static CangYan* sharedScene;
         _player.agile = 65;
         _player.maxhealth = 60;
         _player.maxacume = 50;
-        _player.isPlayer = true;
+        _player.isPlayer = false;
         Wugong_SongFengJianFa *songfeng = [Wugong_SongFengJianFa node];
         [_player.wugong addObject:songfeng];
         //init place

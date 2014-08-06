@@ -20,12 +20,15 @@
 #import "BaiXiYuan.h"
 #import "EventManager.h"
 #import "ShuiLvAdjust.h"
+#import "hdEvent.h"
+#import "EventJisi.h"
 // -----------------------------------------------------------------------
 #pragma mark - IntroScene
 // -----------------------------------------------------------------------
 
 @implementation IntroScene
-
+@synthesize m_day = day;
+@synthesize m_time = time;
 // -----------------------------------------------------------------------
 #pragma mark - Create & Destroy
 // -----------------------------------------------------------------------
@@ -159,10 +162,14 @@ static IntroScene* sharedScene;
 {
     CCLOG(@"day: %i, time: %i", day, time);
     //[GuoJia sharedGuoJia];
-    while ([[EventManager sharedEventManager]hasEventOnDay:day OnTime:time]) {
-        CCScene* eventScene = [[EventManager sharedEventManager]popEventForDay:day ForTime:time];
+    if ([[EventManager sharedEventManager]hasEventOnDay:day OnTime:time]) {
+        
+        hdEvent* event = [[EventManager sharedEventManager]popEventForDay:day ForTime:time];
         //TODO need to add transition, get an intro from event and displayed here
-        [[CCDirector sharedDirector]pushScene:eventScene];
+        
+        CCNode* box = [self createMessageBoxForHDEvent:event];
+        box.position = ccp(self.contentSize.width/2,self.contentSize.height/3-box.contentSize.height/2);
+        [self addChild:box];
     }
     [super onEnter];
 }
@@ -204,5 +211,28 @@ static IntroScene* sharedScene;
                                withTransition:[CCTransition transitionPushWithDirection:CCTransitionDirectionLeft duration:1.0f]];
 }
 
+-(CCNode*)createMessageBoxForHDEvent:(hdEvent*)event
+{
+    //CCNode* ret = [CCNode node];
+    CCButton* confirm = [CCButton buttonWithTitle:@"确认"];
+    CCLabelTTF* text = [CCLabelTTF labelWithString:[event getIntroduction] fontName:@"Chalkduster" fontSize:10];
+    
+    CCSprite* ret = [CCSprite spriteWithImageNamed:@"messageBox.png"];
+    [ret addChild:confirm];
+    [ret addChild:text];
+    text.position = ccp(ret.contentSize.width/2,ret.contentSize.height/2-text.contentSize.height/2);
+    confirm.position = ccp(ret.contentSize.width/2,ret.contentSize.height/2-confirm.contentSize.height/2-10);
+    //[confirm addChild:event z:0 name:@"event"];
+    eventScene = event;
+    [confirm setTarget:self selector:@selector(messageButtonClicked:)];
+    return ret;
+}
+-(void)messageButtonClicked:(id)button
+{
+    CCButton* bt = button;
+    //CCScene* scene = (CCScene*)[bt getChildByName:@"event" recursively:NO];
+    [[CCDirector sharedDirector]pushScene:eventScene];
+    [bt.parent removeFromParentAndCleanup:YES];
+}
 // -----------------------------------------------------------------------
 @end

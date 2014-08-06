@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ennuma/Classes/IntroScene.m"
-            timestampString = "428954656.967577"
+            timestampString = "429039665.996027"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
             landmarkName = "@implementation IntroScene"
             landmarkType = "3">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ennuma/Classes/IntroScene.m"
-            timestampString = "428954656.967577"
+            timestampString = "429039665.996027"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "-onEnter"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ennuma/XuanZheng.m"
-            timestampString = "428953281.840694"
+            timestampString = "429043758.93176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "381"
-            endingLineNumber = "381"
+            startingLineNumber = "397"
+            endingLineNumber = "397"
             landmarkName = "-kaikekaoshi"
             landmarkType = "5">
          </BreakpointContent>

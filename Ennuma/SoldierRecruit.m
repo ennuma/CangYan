@@ -16,7 +16,6 @@
         return nil;
     }
     purchaseRecords = [[NSMutableSet alloc] init];
-    maxNumber = [[GuoJia sharedGuoJia]getMaxSoldierRecruitNum];
     price = 200;
     [self initLayout];
     return self;
@@ -27,6 +26,7 @@ static SoldierRecruit* sharedSoldierRecruit;
     if ([purchaseRecords containsObject:@"士兵"]) {
         [[CCDirector sharedDirector]popScene];
     }
+    maxNumber = [[GuoJia sharedGuoJia]getMaxSoldierRecruitNum];
     [super onEnter];
 }
 +(SoldierRecruit*)sharedSoldierRecruit
