@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "Invader.h"
+#import "hdEvent.h"
 
-@interface BattleField : CCScene {
+@interface BattleField : hdEvent {
     NSMutableArray* redTeam;
     NSMutableArray* blueTeam;
     

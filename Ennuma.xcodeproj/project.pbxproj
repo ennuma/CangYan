@@ -35,6 +35,8 @@
 		0CCBD5B119915D5200F7BD43 /* hdEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5B019915D5200F7BD43 /* hdEvent.m */; };
 		0CCBD5B3199292D800F7BD43 /* messageBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CCBD5B2199292D800F7BD43 /* messageBox.png */; };
 		0CCBD5B61992ABCA00F7BD43 /* JingFeiDiaoCha.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5B51992ABCA00F7BD43 /* JingFeiDiaoCha.m */; };
+		0CCBD5B91992BC5B00F7BD43 /* XieJiaGuiTian.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5B81992BC5B00F7BD43 /* XieJiaGuiTian.m */; };
+		0CCBD5BC1992BFA800F7BD43 /* FaDongZhanZheng.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5BB1992BFA800F7BD43 /* FaDongZhanZheng.m */; };
 		84065EB5196AA5A800858A91 /* BattleField.m in Sources */ = {isa = PBXBuildFile; fileRef = 84065EB4196AA5A800858A91 /* BattleField.m */; };
 		840D112119744BE400B19861 /* headIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 840D111F19744BE400B19861 /* headIcon.png */; };
 		840D112219744BE400B19861 /* stateHud.png in Resources */ = {isa = PBXBuildFile; fileRef = 840D112019744BE400B19861 /* stateHud.png */; };
@@ -388,6 +390,10 @@
 		0CCBD5B2199292D800F7BD43 /* messageBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = messageBox.png; path = ../../Documents/messageBox.png; sourceTree = "<group>"; };
 		0CCBD5B41992ABCA00F7BD43 /* JingFeiDiaoCha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JingFeiDiaoCha.h; path = Ennuma/JingFeiDiaoCha.h; sourceTree = "<group>"; };
 		0CCBD5B51992ABCA00F7BD43 /* JingFeiDiaoCha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JingFeiDiaoCha.m; path = Ennuma/JingFeiDiaoCha.m; sourceTree = "<group>"; };
+		0CCBD5B71992BC5B00F7BD43 /* XieJiaGuiTian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XieJiaGuiTian.h; path = Ennuma/XieJiaGuiTian.h; sourceTree = "<group>"; };
+		0CCBD5B81992BC5B00F7BD43 /* XieJiaGuiTian.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XieJiaGuiTian.m; path = Ennuma/XieJiaGuiTian.m; sourceTree = "<group>"; };
+		0CCBD5BA1992BFA800F7BD43 /* FaDongZhanZheng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FaDongZhanZheng.h; path = Ennuma/FaDongZhanZheng.h; sourceTree = "<group>"; };
+		0CCBD5BB1992BFA800F7BD43 /* FaDongZhanZheng.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FaDongZhanZheng.m; path = Ennuma/FaDongZhanZheng.m; sourceTree = "<group>"; };
 		84065EB3196AA5A800858A91 /* BattleField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleField.h; sourceTree = "<group>"; };
 		84065EB4196AA5A800858A91 /* BattleField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BattleField.m; sourceTree = "<group>"; };
 		840D111F19744BE400B19861 /* headIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = headIcon.png; path = Resources/headIcon.png; sourceTree = "<group>"; };
@@ -1017,6 +1023,10 @@
 				0CCBD5AA199158D700F7BD43 /* Jisi.m */,
 				0CCBD5B41992ABCA00F7BD43 /* JingFeiDiaoCha.h */,
 				0CCBD5B51992ABCA00F7BD43 /* JingFeiDiaoCha.m */,
+				0CCBD5B71992BC5B00F7BD43 /* XieJiaGuiTian.h */,
+				0CCBD5B81992BC5B00F7BD43 /* XieJiaGuiTian.m */,
+				0CCBD5BA1992BFA800F7BD43 /* FaDongZhanZheng.h */,
+				0CCBD5BB1992BFA800F7BD43 /* FaDongZhanZheng.m */,
 				0CCBD5AC19915C3800F7BD43 /* EventJisi.h */,
 				0CCBD5AD19915C3800F7BD43 /* EventJisi.m */,
 				0CCBD5AF19915D5200F7BD43 /* hdEvent.h */,
@@ -2326,6 +2336,7 @@
 				8435036A195AFA0300503923 /* NSThread+performBlock.m in Sources */,
 				0CCBD5801986F6FD00F7BD43 /* GuoJia.m in Sources */,
 				84350307195AFA0300503923 /* CCSpriteBatchNode.m in Sources */,
+				0CCBD5B91992BC5B00F7BD43 /* XieJiaGuiTian.m in Sources */,
 				84350257195AFA0000503923 /* CCEffectBrightness.m in Sources */,
 				8435038C195AFA0400503923 /* OALAudioTrackNotifications.m in Sources */,
 				84350353195AFA0300503923 /* CCFileUtils.m in Sources */,
@@ -2350,6 +2361,7 @@
 				843502E3195AFA0300503923 /* CCPhysicsNode.m in Sources */,
 				84350385195AFA0400503923 /* OALUtilityActions.m in Sources */,
 				0CCBD5B119915D5200F7BD43 /* hdEvent.m in Sources */,
+				0CCBD5BC1992BFA800F7BD43 /* FaDongZhanZheng.m in Sources */,
 				8458BB3F19819B9A00BE8360 /* Entity_LingHuChong.m in Sources */,
 				843502BD195AFA0200503923 /* CCMotionStreak.m in Sources */,
 				843503C7195AFA0400503923 /* NSMutableArray+WeakReferences.m in Sources */,

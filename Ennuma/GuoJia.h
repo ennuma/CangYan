@@ -32,6 +32,7 @@
 -(int)getMaxSoldierRecruitNum;
 -(void)changeTaxTo:(int)result;
 -(int)getTaxRatio;
+-(int)getSoldierNum;
 -(void)step;
 -(void)spendMoney:(int)spend;
 @end

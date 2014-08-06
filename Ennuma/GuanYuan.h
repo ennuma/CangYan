@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "Invader.h"
 @interface GuanYuan : CCNode
 {
     int _zhongcheng;
@@ -30,4 +31,5 @@
 @property NSString* guanyuanname;
 @property int age;
 +(GuanYuan*)initFromDictionary:(NSDictionary*)dic;
+-(Invader*)transformToInvader;
 @end

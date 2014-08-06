@@ -266,6 +266,12 @@ static GuoJia* sharedGuoJia;
     int taxRatio = [temp intValue];
     return taxRatio;
 }
+-(int)getSoldierNum
+{
+    NSNumber* temp = [guojiaDic objectForKey:@"士兵"];
+    int soldier = [temp intValue];
+    return soldier;
+}
 -(void)spendMoney:(int)spend
 {
     int sp = [[guojiaDic objectForKey:@"开销"] intValue];

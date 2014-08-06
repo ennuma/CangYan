@@ -7,7 +7,7 @@
 //
 
 #import "GuanYuan.h"
-
+#import "Wugong_SongFengJianFa.h"
 @implementation GuanYuan
 @synthesize guanyuanname = _guanyuanname;
 @synthesize qinglian = _qinglian;
@@ -47,4 +47,39 @@
 
 
 }
+
+-(Invader*)transformToInvader
+{
+    Invader* ret = [[Invader alloc]init];
+    ret.attack = _wuli;
+    ret.armor = _wuli-10;
+    ret.agile = _zhihui;
+    ret.poision = 0;
+    ret.health = _wuli*10;
+    ret.maxhealth = _wuli*10;
+    ret.acume = _wuli*10;
+    ret.maxacume = _wuli*10;
+    ret.quanFa = 10;
+    ret.jianFa = 10;
+    ret.daoFa = 10;
+    ret.qiMen = 10;
+    ret.antiPoisionIndex = 0;
+    ret.attackHasPoisionIndex = 0;//may be to much
+    ret.wuxueKnowledge = 100;
+    ret.talent = 20;
+    ret.isPlayer = false;
+    NSMutableArray* retwugong = [[NSMutableArray alloc] init];
+    //CCLOG(@"%i",[_wugong count]);
+    Wugong_SongFengJianFa* jianfa =[Wugong_SongFengJianFa node];
+    [retwugong addObject:jianfa];
+    ret.wugongArr = retwugong;
+    
+    //头像
+    //ret.bigIcon = [CCSprite spriteWithTexture:[_bigIcon texture]];
+    //ret.smallIcon = [CCSprite spriteWithTexture:[_smallIcon texture]];
+    //ret.headIcon = [CCSprite spriteWithTexture:[_statusIcon texture]];
+    
+    return ret;
+}
+
 @end

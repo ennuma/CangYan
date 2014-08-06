@@ -343,4 +343,13 @@ static NSObject* isActing = nil;
         [((Invader*)isActing).bigIcon setPaused:NO];
     }
 }
+-(NSString*)getIntroduction
+{
+    return @"战斗即将开始，众将出击";
+}
+-(void)onEnter
+{
+    [self startBattle];
+    [super onEnter];
+}
 @end

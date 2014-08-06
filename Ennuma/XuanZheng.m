@@ -17,6 +17,9 @@
 #import "ShuiLvAdjust.h"
 #import "Jisi.h"
 #import "JingFeiDiaoCha.h"
+#import "XieJiaGuiTian.h"
+#import "FaDongZhanZheng.h"
+
 @implementation XuanZheng
 -(id)init
 {
@@ -101,9 +104,11 @@
     [self addChild:customLayout];
     
     CCButton* fadongzhanzheng = [CCButton buttonWithTitle:@"发动战争"];
+    [fadongzhanzheng setTarget:self selector:@selector(fadongzhanzheng)];
     CCButton* zhengzhaoshibing = [CCButton buttonWithTitle:@"征招士兵"];
     [zhengzhaoshibing setTarget:self selector:@selector(zhengzhaoshibing)];
     CCButton* xiejiaguitian = [CCButton buttonWithTitle:@"卸甲归田"];
+    [xiejiaguitian setTarget: self selector:@selector(xiejiaguitian)];
     warLayout = [[CCLayoutBox alloc]init];
     warLayout.anchorPoint = ccp(0.5, 0.5);
     [warLayout addChild:fadongzhanzheng];
@@ -162,6 +167,16 @@
     
     [self setUserInteractionEnabled:YES];
     return self;
+}
+-(void)fadongzhanzheng
+{
+    FaDongZhanZheng* fdzz = [FaDongZhanZheng node];
+    [[CCDirector sharedDirector]pushScene:fdzz];
+}
+-(void)xiejiaguitian
+{
+    XieJiaGuiTian* xjgt = [XieJiaGuiTian node];
+    [[CCDirector sharedDirector]pushScene:xjgt];
 }
 -(void)jingfeidiaocha
 {
