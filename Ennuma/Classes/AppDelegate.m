@@ -25,6 +25,7 @@
 #import "Wugong_QianKunDaNuoYi.h"
 #import "Wugong_ShenZhaoGong.h"
 #import "Wugong_ShiZiHou.h"
+#import "DiaoHuanGuanYuan.h"
 @implementation AppDelegate
 
 // 
@@ -134,6 +135,8 @@
 
     CangYan* sc2 = [CangYan scene];
     IntroScene* intro = [IntroScene scene];
+    
+    //DiaoHuanGuanYuan* diaohuan = [DiaoHuanGuanYuan sharedScene];
     return intro;
 }
 

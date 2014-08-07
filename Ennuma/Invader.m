@@ -163,7 +163,8 @@
     
     CGPoint newpos = [[_map layerNamed:@"map"] positionAt:pos];
 
-    
+    //NSString *str = [NSString stringWithFormat:@"pos:%f,%f",newpos.x,newpos.y];
+    //CCLOG(str);
     newpos = CGPointMake(newpos.x+_bigIcon.contentSize.width/2, newpos.y-_bigIcon.contentSize.height/2);
     
     _bigIcon.position = newpos;

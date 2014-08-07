@@ -37,6 +37,7 @@
 		0CCBD5B61992ABCA00F7BD43 /* JingFeiDiaoCha.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5B51992ABCA00F7BD43 /* JingFeiDiaoCha.m */; };
 		0CCBD5B91992BC5B00F7BD43 /* XieJiaGuiTian.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5B81992BC5B00F7BD43 /* XieJiaGuiTian.m */; };
 		0CCBD5BC1992BFA800F7BD43 /* FaDongZhanZheng.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5BB1992BFA800F7BD43 /* FaDongZhanZheng.m */; };
+		0CCBD5BF1993F3E800F7BD43 /* DiaoHuanGuanYuan.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5BE1993F3E800F7BD43 /* DiaoHuanGuanYuan.m */; };
 		84065EB5196AA5A800858A91 /* BattleField.m in Sources */ = {isa = PBXBuildFile; fileRef = 84065EB4196AA5A800858A91 /* BattleField.m */; };
 		840C13141993EBAD00C3F8CC /* BattleField2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 840C13131993EBAD00C3F8CC /* BattleField2.tmx */; };
 		840D112119744BE400B19861 /* headIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 840D111F19744BE400B19861 /* headIcon.png */; };
@@ -395,6 +396,8 @@
 		0CCBD5B81992BC5B00F7BD43 /* XieJiaGuiTian.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XieJiaGuiTian.m; path = Ennuma/XieJiaGuiTian.m; sourceTree = "<group>"; };
 		0CCBD5BA1992BFA800F7BD43 /* FaDongZhanZheng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FaDongZhanZheng.h; path = Ennuma/FaDongZhanZheng.h; sourceTree = "<group>"; };
 		0CCBD5BB1992BFA800F7BD43 /* FaDongZhanZheng.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FaDongZhanZheng.m; path = Ennuma/FaDongZhanZheng.m; sourceTree = "<group>"; };
+		0CCBD5BD1993F3E800F7BD43 /* DiaoHuanGuanYuan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiaoHuanGuanYuan.h; path = Ennuma/DiaoHuanGuanYuan.h; sourceTree = "<group>"; };
+		0CCBD5BE1993F3E800F7BD43 /* DiaoHuanGuanYuan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiaoHuanGuanYuan.m; path = Ennuma/DiaoHuanGuanYuan.m; sourceTree = "<group>"; };
 		84065EB3196AA5A800858A91 /* BattleField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleField.h; sourceTree = "<group>"; };
 		84065EB4196AA5A800858A91 /* BattleField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BattleField.m; sourceTree = "<group>"; };
 		840C13131993EBAD00C3F8CC /* BattleField2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = BattleField2.tmx; path = Resources/BattleField2.tmx; sourceTree = "<group>"; };
@@ -1033,6 +1036,8 @@
 				0CCBD5AD19915C3800F7BD43 /* EventJisi.m */,
 				0CCBD5AF19915D5200F7BD43 /* hdEvent.h */,
 				0CCBD5B019915D5200F7BD43 /* hdEvent.m */,
+				0CCBD5BD1993F3E800F7BD43 /* DiaoHuanGuanYuan.h */,
+				0CCBD5BE1993F3E800F7BD43 /* DiaoHuanGuanYuan.m */,
 			);
 			name = Huangdi;
 			path = ..;
@@ -2347,6 +2352,7 @@
 				84350278195AFA0100503923 /* CCAction.m in Sources */,
 				843503B2195AFA0400503923 /* ALWrapper.m in Sources */,
 				843503FC195AFA0400503923 /* CCBsequence.m in Sources */,
+				0CCBD5BF1993F3E800F7BD43 /* DiaoHuanGuanYuan.m in Sources */,
 				0CCBD599198AFE5900F7BD43 /* WuqiPurchase.m in Sources */,
 				843503E7195AFA0400503923 /* CCTableView.m in Sources */,
 				843502B6195AFA0200503923 /* CCLayout.m in Sources */,
