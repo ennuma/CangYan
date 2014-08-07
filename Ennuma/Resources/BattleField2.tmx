@@ -15,7 +15,7 @@
   <tileoffset x="1" y="1"/>
   <image source="../../../../ennuma/Game/Resources/TileGameResources/tmw_desert_spacing.png" width="265" height="199"/>
  </tileset>
- <layer name="块层 1" width="20" height="20">
+ <layer name="map" width="20" height="20">
   <data encoding="base64" compression="zlib">
    eJzjZmJg4B7Fo3gUj+JRPIpJxACpcRRR
   </data>
