@@ -162,11 +162,11 @@
     }
     
     CGPoint newpos = [[_map layerNamed:@"map"] positionAt:pos];
+
     
     newpos = CGPointMake(newpos.x+_bigIcon.contentSize.width/2, newpos.y-_bigIcon.contentSize.height/2);
     
     _bigIcon.position = newpos;
-    
     self.position = pos;
 }
 -(CGPoint)convertToMapCord:(CGPoint)pos

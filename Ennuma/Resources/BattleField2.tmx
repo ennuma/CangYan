@@ -2,18 +2,18 @@
 <map version="1.0" orientation="orthogonal" width="20" height="20" tilewidth="16" tileheight="16">
  <tileset firstgid="1" name="tmw_desert_spacing" tilewidth="16" tileheight="16" spacing="1" margin="1">
   <tileoffset x="1" y="1"/>
-  <image source="../../../../ennuma/Game/Resources/TileGameResources/tmw_desert_spacing.png" width="265" height="199"/>
+  <image source="tmw_desert_spacing.png" width="265" height="199"/>
  </tileset>
  <tileset firstgid="166" name="tmw_desert_spacing" tilewidth="16" tileheight="16" spacing="1" margin="1">
-  <image source="../../../../ennuma/Game/Resources/TileGameResources/tmw_desert_spacing.png" width="265" height="199"/>
+  <image source="tmw_desert_spacing.png" width="265" height="199"/>
  </tileset>
  <tileset firstgid="331" name="tmw_desert_spacing" tilewidth="16" tileheight="16">
   <tileoffset x="1" y="1"/>
-  <image source="../../../../ennuma/Game/Resources/TileGameResources/tmw_desert_spacing.png" width="265" height="199"/>
+  <image source="tmw_desert_spacing.png" width="265" height="199"/>
  </tileset>
  <tileset firstgid="523" name="tmw_desert_spacing" tilewidth="16" tileheight="16" spacing="1" margin="1">
   <tileoffset x="1" y="1"/>
-  <image source="../../../../ennuma/Game/Resources/TileGameResources/tmw_desert_spacing.png" width="265" height="199"/>
+  <image source="tmw_desert_spacing.png" width="265" height="199"/>
  </tileset>
  <layer name="map" width="20" height="20">
   <data encoding="base64" compression="zlib">

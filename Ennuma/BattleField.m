@@ -43,7 +43,7 @@ CCSprite* bar;
     //[self addChild:sp2 z:99];
     [self addChild:bar z:98];
     
-    map = [CCTiledMap tiledMapWithFile:@"BattleField.tmx"];
+    map = [CCTiledMap tiledMapWithFile:@"BattleField2.tmx"];
     [self addChild:map z:-99];
     _width = map.mapSize.width;
     _height = map.mapSize.height;
