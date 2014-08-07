@@ -35,4 +35,5 @@
 -(int)getSoldierNum;
 -(void)step;
 -(void)spendMoney:(int)spend;
+-(void)changeGuanZhi:(NSString*)currentGuanZhi ToGuanYuan:(NSString*)gy;
 @end

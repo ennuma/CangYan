@@ -13,6 +13,7 @@
 {
     CGPoint lastTouch;
     CCLayoutBox* layout;
+    NSString* currentGuanZhi;
 }
 +(DiaoHuanGuanYuan*)sharedScene;
 @end

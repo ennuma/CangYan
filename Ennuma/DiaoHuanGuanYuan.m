@@ -90,7 +90,7 @@ static DiaoHuanGuanYuan* sharedScene;
         
         CCButton* guanzhiButton = [CCButton buttonWithTitle:key spriteFrame:[CCSpriteFrame frameWithImageNamed:@"maphud.png"] highlightedSpriteFrame:[CCSpriteFrame frameWithImageNamed:@"highlighted.png"] disabledSpriteFrame:[CCSpriteFrame frameWithImageNamed:@"selected.png"]];
         
-        [guanzhiButton setTarget:self selector:@selector(generateXianGuan)];
+        [guanzhiButton setTarget:self selector:@selector(generateXianGuan:)];
         CCButton* nameButton = [CCButton buttonWithTitle:gy.guanyuanname];
         nameButton.preferredSize = CGSizeMake(40, 20);
         CCButton* wuli = [CCButton buttonWithTitle:[NSString stringWithFormat:@"%i",gy.wuli]];
@@ -143,8 +143,11 @@ static DiaoHuanGuanYuan* sharedScene;
     
     layout = kaoshiLayout;
 }
--(void)generateXianGuan
+-(void)generateXianGuan:(id)button
 {
+    CCButton* bt = button;
+    currentGuanZhi = bt.title;
+    
     NSMutableArray* arr = [[GuoJia sharedGuoJia] getXianGuan];
     
     CCLayoutBox* kaoshiLayout = [[CCLayoutBox alloc]init];
@@ -175,7 +178,7 @@ static DiaoHuanGuanYuan* sharedScene;
         GuanYuan* gy = [arr objectAtIndex:i];
         CCButton* nameButton = [CCButton buttonWithTitle:gy.guanyuanname spriteFrame:[CCSpriteFrame frameWithImageNamed:@"maphud.png"] highlightedSpriteFrame:[CCSpriteFrame frameWithImageNamed:@"highlighted.png"] disabledSpriteFrame:[CCSpriteFrame frameWithImageNamed:@"selected.png"]];
         
-        [nameButton setTarget:self selector:@selector(generateScrollview)];
+        [nameButton setTarget:self selector:@selector(makeChange:)];
         //add to dictionary
         [nameButton addChild:gy z:0 name:@"guanyuan"];
         //[xianguanDic setObject:nameButton forKey:gy.guanyuanname];
@@ -210,6 +213,14 @@ static DiaoHuanGuanYuan* sharedScene;
     [self addChild: kaoshiLayout];
     
     layout = kaoshiLayout;
+}
+-(void)makeChange:(id)button
+{
+    CCButton* bt = button;
+    NSString* gy = bt.title;
+    
+    [[GuoJia sharedGuoJia]changeGuanZhi:currentGuanZhi ToGuanYuan:gy];
+    [self generateScrollview];
 }
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {

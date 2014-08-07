@@ -160,6 +160,15 @@ static GuoJia* sharedGuoJia;
     money = money + delta;
     [guojiaDic setObject:[NSNumber numberWithInt:money] forKey:@"国库"];
 }
+-(void)changeGuanZhi:(NSString *)currentGuanZhi ToGuanYuan:(NSString *)gy
+{
+    NSMutableDictionary* guanyuan = [[guojiaDic objectForKey:@"官职"]mutableCopy];
+    NSMutableDictionary* gz = [[guanyuan objectForKey:currentGuanZhi]mutableCopy];
+    [gz setObject:gy forKey:@"官员"];
+    [guanyuan setObject:gz forKey:currentGuanZhi];
+    [guojiaDic setObject:guanyuan forKey:@"官职"];
+
+}
 -(void)changeTaxTo:(int)result
 {
     //int money = [[guojiaDic objectForKey:@"国库"] intValue];
