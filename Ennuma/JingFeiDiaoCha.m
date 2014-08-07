@@ -72,6 +72,8 @@ static JingFeiDiaoCha* sharedScene;
     GuoJia* guojia = [GuoJia sharedGuoJia];
         
     [guojia spendMoney:result];
+    //add population
+    [guojia changePopulation:result/100];
     CCLOG(@"%i",result);
     [[CCDirector sharedDirector]popScene];
 }
