@@ -38,6 +38,7 @@
 		0CCBD5B91992BC5B00F7BD43 /* XieJiaGuiTian.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5B81992BC5B00F7BD43 /* XieJiaGuiTian.m */; };
 		0CCBD5BC1992BFA800F7BD43 /* FaDongZhanZheng.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCBD5BB1992BFA800F7BD43 /* FaDongZhanZheng.m */; };
 		84065EB5196AA5A800858A91 /* BattleField.m in Sources */ = {isa = PBXBuildFile; fileRef = 84065EB4196AA5A800858A91 /* BattleField.m */; };
+		840C13141993EBAD00C3F8CC /* BattleField2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 840C13131993EBAD00C3F8CC /* BattleField2.tmx */; };
 		840D112119744BE400B19861 /* headIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 840D111F19744BE400B19861 /* headIcon.png */; };
 		840D112219744BE400B19861 /* stateHud.png in Resources */ = {isa = PBXBuildFile; fileRef = 840D112019744BE400B19861 /* stateHud.png */; };
 		840D11251974620700B19861 /* Wugong.m in Sources */ = {isa = PBXBuildFile; fileRef = 840D11241974620700B19861 /* Wugong.m */; };
@@ -396,6 +397,7 @@
 		0CCBD5BB1992BFA800F7BD43 /* FaDongZhanZheng.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FaDongZhanZheng.m; path = Ennuma/FaDongZhanZheng.m; sourceTree = "<group>"; };
 		84065EB3196AA5A800858A91 /* BattleField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleField.h; sourceTree = "<group>"; };
 		84065EB4196AA5A800858A91 /* BattleField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BattleField.m; sourceTree = "<group>"; };
+		840C13131993EBAD00C3F8CC /* BattleField2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = BattleField2.tmx; path = Resources/BattleField2.tmx; sourceTree = "<group>"; };
 		840D111F19744BE400B19861 /* headIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = headIcon.png; path = Resources/headIcon.png; sourceTree = "<group>"; };
 		840D112019744BE400B19861 /* stateHud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stateHud.png; path = Resources/stateHud.png; sourceTree = "<group>"; };
 		840D11231974620700B19861 /* Wugong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wugong.h; sourceTree = "<group>"; };
@@ -1128,6 +1130,7 @@
 		8435021B195AF9FF00503923 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				840C13131993EBAD00C3F8CC /* BattleField2.tmx */,
 				0CCBD5B2199292D800F7BD43 /* messageBox.png */,
 				0CCBD5901989904B00F7BD43 /* highlighted.png */,
 				0CCBD5911989904B00F7BD43 /* selected.png */,
@@ -2255,6 +2258,7 @@
 				8435023E195AFA0000503923 /* Icon-Spotlight-iOS7@2x.png in Resources */,
 				8435022E195AF9FF00503923 /* Icon-76.png in Resources */,
 				0CCBD5921989904B00F7BD43 /* highlighted.png in Resources */,
+				840C13141993EBAD00C3F8CC /* BattleField2.tmx in Resources */,
 				84350243195AFA0000503923 /* iTunesArtwork@2x in Resources */,
 				846876E6198038A0009FDA85 /* leftbar.png in Resources */,
 				846876ED1980491F009FDA85 /* Place_XinShouChun.png in Resources */,
