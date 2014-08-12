@@ -28,6 +28,7 @@ CCSprite* bar;
     redTeam = [[NSMutableArray alloc] init];
     blueTeam = [[NSMutableArray alloc] init];
     whateverTeam = [[NSMutableArray alloc] init];
+    _touches = [[NSMutableSet alloc]init];
     
     interval = 0.1;
     tick = 0;
@@ -49,6 +50,9 @@ CCSprite* bar;
     _height = map.mapSize.height;
     
     [self setUserInteractionEnabled:YES];
+    
+    UIPinchGestureRecognizer *twoFingerPinch =[[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchZoomWithRecognizer:)];
+    [[CCDirector sharedDirector].view addGestureRecognizer:twoFingerPinch];
     
     return self;
 }
@@ -158,7 +162,7 @@ CCSprite* bar;
         [self resumeAction];
         return;
     }
-
+    lastloc = [touch locationInNode:map];
     if (waitForMove) {
         CCLOG(@"wait for move");
         CGPoint realpos = [touch locationInNode:map];
@@ -351,5 +355,62 @@ static NSObject* isActing = nil;
 {
     [self startBattle];
     [super onEnter];
+}
+/**
+-(void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    CGPoint curloc = [touch locationInNode:map];
+    CGPoint dif = ccp(curloc.x-lastloc.x,curloc.y-lastloc.y);
+    if (ccpLength(dif)<25) {
+        return;
+    }
+    CCActionMoveBy* moveBy = [CCActionMoveBy actionWithDuration:0 position:dif];
+    if([map numberOfRunningActions]==0){
+        [map runAction:moveBy];
+    }
+    
+    lastloc = curloc;
+}
+ **/
+- (void)panForTranslation:(CGPoint)translation {
+    translation = ccpMult(translation, map.scale);
+    CGPoint newPos = ccpAdd(map.position, translation);
+    map.position = newPos;
+}
+
+- (void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
+    CGPoint touchLocation = [touch locationInNode:map];
+    
+    CGPoint oldTouchLocation = [touch previousLocationInView:touch.view];
+    oldTouchLocation = [[CCDirector sharedDirector] convertToGL:oldTouchLocation];
+    oldTouchLocation = [map convertToNodeSpace:oldTouchLocation];
+    
+    CGPoint translation = ccpSub(touchLocation, oldTouchLocation);
+    [self panForTranslation:translation];
+}
+
+- (void) pinchZoomWithRecognizer: (UIPinchGestureRecognizer *)recognizer
+{
+    NSLog(@"Pinch scale: %f", recognizer.scale);
+    //map.scale *= recognizer.scale; // kPinchZoomCoeff is constant = 1.0 / 200.0f Adjust it for your needs
+    static float scale;
+    
+    if (recognizer.state == UIGestureRecognizerStateBegan)
+    {
+        scale = map.scale;
+    }
+    
+    //remove the fucking black line between IMPORTANT
+    CGFloat factor = [recognizer scale];
+    
+    float toScaleX = scale*factor;
+    
+    int sX = toScaleX *40; //-xxxx
+    
+    float finalScale = sX/40.0;//-x.yy
+    ///////////////////////////////////////////////
+    
+    [map setScale:finalScale];
+
 }
 @end

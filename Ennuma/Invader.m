@@ -108,7 +108,7 @@
     _isDefending=false;
     _life = 0;
     //self.runningInActiveScene = YES;
-    [parent addChild:_bigIcon z:0];
+    [_map addChild:_bigIcon z:0];
     
     //init state hud
     [self initStateWithParent:parent];
@@ -118,35 +118,45 @@
 
 -(void)initStateWithParent:(CCNode*)parent
 {
-    _state = [CCSprite spriteWithImageNamed:@"stateHud.png"];
-    [parent addChild:_state];
-    _state.position = CGPointMake(parent.contentSize.width-_state.contentSize.width/2, parent.contentSize.height/2);
+    //_state = [CCSprite spriteWithImageNamed:@"stateHud.png"];
+    //[parent addChild:_state];
+    //_state.position = CGPointMake(parent.contentSize.width-_state.contentSize.width/2, parent.contentSize.height/2);
     
     //init headIcon
     _headIcon = [CCSprite spriteWithImageNamed:@"headIcon.png"];
     [_state addChild:_headIcon];
     _headIcon.position = CGPointMake(_state.contentSize.width/2, _state.contentSize.height-_headIcon.contentSize.height/2);
     
-    CCLabelTTF* health = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"health: %i",_health] fontName:@"Verdana-Bold" fontSize:18.0f];
+    CCLabelTTF* health = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"health: %i",_health] fontName:@"Verdana-Bold" fontSize:8.0f];
+    //[_state addChild:health z:0 name:@"health"];
+    //health.position = CGPointMake(_state.contentSize.width/2, _headIcon.position.y - 64);
+    
+    CCLabelTTF* acume = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"acume: %i",_acume] fontName:@"Verdana-Bold" fontSize:8.0f];
+    //[_state addChild:acume z:0 name:@"acume"];
+    //acume.position = CGPointMake(_state.contentSize.width/2, health.position.y - 64);
+    
+    CCLabelTTF* poision = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"poision: %i",_poision] fontName:@"Verdana-Bold" fontSize:8.0f];
+    //[_state addChild:poision z:0 name:@"poision"];
+    //poision.position = CGPointMake(_state.contentSize.width/2, acume.position.y - 128);
+    
+    CCLabelTTF* bleed = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"bleed: %i",_bleed] fontName:@"Verdana-Bold" fontSize:8.0f];
+    //[_state addChild:bleed z:0 name:@"bleed"];
+    //bleed.position = CGPointMake(_state.contentSize.width/2, poision.position.y - 64);
+    
+    CCLabelTTF* fengXue = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"fengXue: %i",_fengXue] fontName:@"Verdana-Bold" fontSize:8.0f];
+    //[_state addChild:fengXue z:0 name:@"fengXue"];
+    //fengXue.position = CGPointMake(_state.contentSize.width/2, bleed.position.y - 64);
+    
+    _state = [[CCLayoutBox alloc]init];
     [_state addChild:health z:0 name:@"health"];
-    health.position = CGPointMake(_state.contentSize.width/2, _headIcon.position.y - 64);
-    
-    CCLabelTTF* acume = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"acume: %i",_acume] fontName:@"Verdana-Bold" fontSize:18.0f];
     [_state addChild:acume z:0 name:@"acume"];
-    acume.position = CGPointMake(_state.contentSize.width/2, health.position.y - 64);
-    
-    CCLabelTTF* poision = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"poision: %i",_poision] fontName:@"Verdana-Bold" fontSize:18.0f];
     [_state addChild:poision z:0 name:@"poision"];
-    poision.position = CGPointMake(_state.contentSize.width/2, acume.position.y - 128);
-    
-    CCLabelTTF* bleed = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"bleed: %i",_bleed] fontName:@"Verdana-Bold" fontSize:18.0f];
     [_state addChild:bleed z:0 name:@"bleed"];
-    bleed.position = CGPointMake(_state.contentSize.width/2, poision.position.y - 64);
-    
-    CCLabelTTF* fengXue = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"fengXue: %i",_bleed] fontName:@"Verdana-Bold" fontSize:18.0f];
     [_state addChild:fengXue z:0 name:@"fengXue"];
-    fengXue.position = CGPointMake(_state.contentSize.width/2, bleed.position.y - 64);
-    
+    ((CCLayoutBox*)_state).direction = CCLayoutBoxDirectionVertical;
+    [((CCLayoutBox*)_state) layout];
+    _state.position = ccp(0,_bigIcon.contentSize.height);
+    [_bigIcon addChild:_state];
     _state.visible=NO;
     
 }
@@ -797,7 +807,7 @@
 {
     CGPoint pos = [val CGPointValue];
     CCNode* atklayer = [CCNode node];
-    atklayer.position = _map.position;
+    //atklayer.position = _map.position;
     [_map addChild:atklayer z:1 name:@"attackLayer"];
     for (int i = 0 ; i < m_wugong.range ; i++) {
         if (dir==0) {
@@ -1190,7 +1200,7 @@
 -(void)renderReachable
 {
     CCNode* reachablelayer = [CCNode node];
-    reachablelayer.position = _map.position;
+    //reachablelayer.position = _map.position;
     [_map addChild:reachablelayer z:1 name:@"reachable"];
     for (NSValue* val in reachable) {
         CCSprite* colorlayer = [CCSprite spriteWithImageNamed:@"maphud.png"];
@@ -1323,7 +1333,7 @@
     words.position = [self convertToMapCord:self.position];
     words.position = CGPointMake(words.position.x-words.contentSize.width/2, words.position.y);
     words.anchorPoint = CGPointMake(0, 0.5);
-    [_map.parent addChild:words z:100];
+    [_map addChild:words z:100];
     CCActionMoveBy* moveUp = [CCActionMoveBy actionWithDuration:1 position:CGPointMake(0,2*words.contentSize.height)];
     CCActionCallFunc* delete = [CCActionCallFunc actionWithTarget:words selector:@selector(removeFromParent)];
     CCActionSequence* actions = [CCActionSequence actions:moveUp, delete, nil];

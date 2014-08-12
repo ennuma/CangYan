@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "cocos2d-ui.h"
 #import "Invader.h"
 #import "hdEvent.h"
 
@@ -31,6 +32,8 @@
     bool waitForAttack;
     bool waitForChooseWugong;
     Wugong* choosedWugong;
+    
+    CGPoint lastloc;
 }
 +(BattleField*)scene;
 -(void)startBattle;
@@ -41,4 +44,5 @@
 //-(void)waitForMove;
 @property int width;
 @property int height;
+@property (nonatomic, strong) NSMutableSet * touches;
 @end
